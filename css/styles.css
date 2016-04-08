@@ -1,0 +1,12 @@
+/*index*/
+.company{
+    margin:20px;
+}
+
+.experience .popover{
+    position: relative;
+    display: block;
+    max-width: 600px!important;
+    width:auto;
+    margin: 20px;
+}
