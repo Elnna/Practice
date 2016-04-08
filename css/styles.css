@@ -1,9 +1,9 @@
 /*index*/
-.company{
+.company,.education,.photo,.developer,.skills{
     margin:20px;
 }
 
-.experience .popover{
+.experience .popover,.basic-info .popover, .web-lang .popover{
     position: relative;
     display: block;
     max-width: 600px!important;
@@ -12,6 +12,12 @@
 }
 .divider{
     margin: 20px 0;
+}
+div .col-md-3 col-sm-3{
+    vertical-align: middle;
+}
+.img-polaroid{
+    margin-right: 10px;
 }
 /*home*/
 .banner{
