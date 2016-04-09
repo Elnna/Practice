@@ -2,6 +2,12 @@
 .company,.education,.photo,.developer,.skills{
     margin:20px;
 }
+/*
+.company,.education,.photo,.developer,.skills,
+.experience ,.basic-info , .web-lang {
+    line-height: normal;
+}
+*/
 
 .experience .popover,.basic-info .popover, .web-lang .popover{
     position: relative;
@@ -9,6 +15,7 @@
     max-width: 600px!important;
     width:auto;
     margin: 20px;
+    z-index: 1020;
 }
 .divider{
     margin: 20px 0;
@@ -19,6 +26,14 @@ div .col-md-3 col-sm-3{
 .img-polaroid{
     margin-right: 10px;
 }
+.row{
+    display: flex;
+}
+.my-works{
+    width:140px;
+    background: #ccc;
+}
+
 /*home*/
 .banner{
 /*    background-image: url(../img/background-image.png);*/
