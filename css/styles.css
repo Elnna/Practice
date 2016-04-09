@@ -33,6 +33,16 @@ div .col-md-3 col-sm-3{
     width:140px;
     background: #ccc;
 }
+ul .dropdown-menu{
+    background: rgba(0, 0, 0, 0.64);
+}
+.dropdown-menu > li > a {
+    color:#fff;
+    font-weight: 300;
+}
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+    background-color: rgba(255, 255, 255, .15);
+}
 
 /*home*/
 .banner{
