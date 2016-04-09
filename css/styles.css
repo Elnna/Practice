@@ -29,7 +29,7 @@ div .col-md-3 col-sm-3{
 .row{
     display: flex;
 }
-.my-works{
+.my-works,.cert{
     width:140px;
     background: #ccc;
 }
