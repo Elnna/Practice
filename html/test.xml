@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<item>
+    <entry>
+        <Date>1/01/2001</Date>
+        <ProductName>milk</ProductName>
+        <Quantity>10</Quantitty>
+        <GrossPrice>50</GrossPrice>
+        <Profit>10</Profit>
+      </entry>
+      <entry>
+        <Date>2/10/2007</Date>
+        <ProductName>milk</ProductName>
+        <Quantity>20</Quantitty>
+        <GrossPrice>100</GrossPrice>
+        <Profit>20</Profit>
+      </entry>
+</item>
