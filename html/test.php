@@ -32,10 +32,17 @@ $ip =  user_realip();
 $location = getIPLoc_QQ($ip);
 
 echo $location.'<br>';
-
-$iparr = explode(" ",$location);
+$location = '中国河南省信阳市 联通';
+$iparr = explode(' ',$location);
+$pos = trim(substr($location,0,strlen($location)-6));
+echo 'pos:'.$pos . '<br>';
+echo urlencode($pos);
+/*echo mb_detect_encoding($iparr[0]).'<br>';
+$pos = mb_convert_encoding($iparr[0],'UTF-8','ASCII');
 
 echo $iparr[0].'<br>';
-echo mb_detect_encoding($ip).'<br>';
+echo mb_detect_encoding($iparr[0]).'<br>';
+echo mb_detect_encoding($pos).'<br>';*/
+
 // echo getIPLoc_QQ($ip);
 ?>
