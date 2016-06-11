@@ -29,7 +29,11 @@ function user_realip() {
     return $ip;
 }
 $ip =  user_realip();
-echo getIPLoc_QQ($ip);
 
+echo getIPLoc_QQ($ip).'<br>';
+
+$iparr = split(' ',$ip);
+echo $iparr[0].'<br>';
+echo mb_detect_encoding($ip).'<br>';
 // echo getIPLoc_QQ($ip);
 ?>
