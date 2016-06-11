@@ -33,7 +33,7 @@ $location = getIPLoc_QQ($ip);
 
 echo $location.'<br>';
 
-$iparr = split(" ",$location);
+$iparr = explode(" ",$location);
 
 echo $iparr[0].'<br>';
 echo mb_detect_encoding($ip).'<br>';
