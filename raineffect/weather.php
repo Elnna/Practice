@@ -109,7 +109,7 @@ $ipWeatherResult = $weather->getWeatherByIP(getIp());
                         $ffc = $weather->getWeatherByWeatherId($ffc) ? $weather->getWeatherByWeatherId($ffc):'rainy';
                         $date =substr($fv['date'],6,2) . '/' . substr($fv['date'],4,2);
                 ?>
-				<a class="nav-item" href="#slide-<?php echo $navslide++; ?>"><i class="icon icon--<?php echo $ffc;?>"></i><span><?php echo $date;?></span></a>
+				<a class="nav-item" href="#slide-<?php echo ++$navsilde; ?>"><i class="icon icon--<?php echo $ffc;?>"></i><span><?php echo $date;?></span></a>
 				<?php }?>
 			</nav>
 		</div>
