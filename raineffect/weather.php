@@ -1,3 +1,14 @@
+<?php
+header('Content-type:text/html;charset=utf-8');
+include 'juhe.weather.php'; //引入天气请求类
+require_once('./api/get.ip.php'); 
+
+//接口基本信息配置
+$appkey = '895e98a1c9681cae048688ef98feffec'; //全国天气查询appkey
+$weather = new weather($appkey);
+//根据IP查询天气
+$ipWeatherResult = $weather->getWeatherByIP(getIp());
+?>
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 
@@ -34,16 +45,23 @@
 		<img src="img/weather/texture-drizzle-bg.png" />
 	</div>
 	<div class="container">
+        <?php if($ipWeatherResult['error_code'] == 0){
+                    $data = $ipWeatherResult['result'];
+        ?>   
 		<header class="codrops-header">
-			<h1>Rain &amp; Water Effects</h1>
+			<h1><?php echo $data['today']['city'];?></h1>
 			<nav class="codrops-demos">
-				<a class="current-demo" href="index.html">Weather</a>
-				<a href="index2.html">Water</a>
-				<a href="index3.html">Video</a>
+				<a class="current-demo" href="weather.php">Weather</a>
 			</nav>
 		</header>
+            
 		<div class="slideshow">
 			<canvas width="1" height="1" id="container" style="position:absolute"></canvas>
+            <!-- 当前天气 -->
+            <div class="slide" id="slide-1" data-weather="rain">
+				<div class="slide__element slide__element--date">Sunday, 24<sup>th</sup> of October 2043</div>
+				<div class="slide__element slide__element--temp">12°<small>C</small></div>
+			</div>
 			<!-- Heavy Rain -->
 			<div class="slide" id="slide-1" data-weather="rain">
 				<div class="slide__element slide__element--date">Sunday, 24<sup>th</sup> of October 2043</div>
@@ -77,7 +95,9 @@
 				<a class="nav-item" href="#slide-4"><i class="icon icon--radioactive"></i><span>10/27</span></a>
 			</nav>
 		</div>
-		<p class="nosupport">Sorry, but your browser does not support WebGL!</p>
+		<?php }else {?>
+        <?php }?>
+        <p class="nosupport">Sorry, but your browser does not support WebGL!</p>
 	</div>
 	<!-- /container -->
 	<script src="js/index.min.js"></script>
