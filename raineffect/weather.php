@@ -95,7 +95,7 @@ $ipWeatherResult = $weather->getWeatherByIP(getIp());
                     $temp = $fv['temperature'];
                     $week = $fv['week'];
                     $wind = $fv['wind'];
-                    echo '<br>datelength:' . strlen($date) .'<br>';
+                    echo 'weather:' . $ffc;
                     break;
 
             ?>
@@ -111,7 +111,7 @@ $ipWeatherResult = $weather->getWeatherByIP(getIp());
 			<nav class="slideshow__nav">
                 <?php 
                     $today = $data['today']['date_y'];
-                    $today = substr($today,8,2) . '/' . substr($today,6,2);
+                    $today = substr($today,13,2) . '/' . substr($today,6,2);
                 ?>
 				<a class="nav-item" href="#slide-1"><i class="icon icon--<?php echo $fc;?>"></i><span>实时天气</span></a>
 				<a class="nav-item" href="#slide-2"><i class="icon icon--<?php echo $fc;?>"></i><span><?php echo $today;?></span></a>
