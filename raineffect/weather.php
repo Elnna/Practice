@@ -66,7 +66,7 @@ $ipWeatherResult = $weather->getWeatherByIP(getIp());
 		<div class="slideshow">
 			<canvas width="1" height="1" id="container" style="position:absolute"></canvas>
             <!-- 当前实况天气 -->
-            <div class="slide" id="slide-1" data-weather="<?php echo $fc; ?>">
+            <div class="slide" id="slide-0" data-weather="<?php echo $fc; ?>">
 				<div class="slide__element slide__element--date"><?php echo  $data['today']['date_y'] . $data['today']['week'] . ', ' . $data['sk']['time']; ?></div>
                 <div class="slide__element slide__element--weather">
                     <?php echo '当前湿度  ' . $data['sk']['humidity'] . ' , 风向  ' . $data['sk']['wind_direction']  .  ' , 强度   ' . $data['sk']['wind_strength']; ?>
@@ -74,19 +74,9 @@ $ipWeatherResult = $weather->getWeatherByIP(getIp());
 				<div class="slide__element slide__element--temp"><?php echo $data['sk']['temp']?><small>C</small></div>
 			</div>
             
-            <!-- 今天天气 -->
-            <!--<div class="slide" id="slide-2" data-weather="<?php echo $fc; ?>">
-				<div class="slide__element slide__element--date"><?php //echo  $data['today']['date_y'] . $data['today']['week']; ?></div>
-                <div class="slide__element slide__element--weather">
-                    <?php //echo $data['today']['weather']; ?>
-                </div>
-				<div class="slide__element slide__element--temp"><?php //echo $data['today']['temperature']?><small>C</small></div>
-			</div>
-            -->
-            
             <!-- 未来几天天气 -->
             <?php 
-                $slide = 2;
+                $slide = 1;
                 foreach($future as $fk => $fv){
                     var_dump($fv);
                     
@@ -111,8 +101,8 @@ $ipWeatherResult = $weather->getWeatherByIP(getIp());
 			</div>
 			<?php } ?>
 			<nav class="slideshow__nav">
-				<a class="nav-item" href="#slide-1"><i class="icon icon--<?php echo $fc;?>"></i><span>实时天气</span></a>
-                <?php $navsilde = 2;
+				<a class="nav-item" href="#slide-0"><i class="icon icon--<?php echo $fc;?>"></i><span>实时天气</span></a>
+                <?php $navsilde = 1;
                     foreach($future as $fk => $fv){
                          $ffc = $fv['weather_id']['fa'];
                     $ffc = $weather->getWeatherByWeatherId($ffc) ? $weather->getWeatherByWeatherId($ffc):'rainy';
