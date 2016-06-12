@@ -7,6 +7,7 @@ require_once('./api/get.ip.php');
 //接口基本信息配置
 $appkey = '895e98a1c9681cae048688ef98feffec'; //全国天气查询appkey
 $weather = new weather($appkey);
+$fomateDate = '';
 //根据IP查询天气
 $ipWeatherResult = $weather->getWeatherByIP(getIp());
 //var_dump($ipWeatherResult);
@@ -90,7 +91,7 @@ $ipWeatherResult = $weather->getWeatherByIP(getIp());
                     var_dump($fv);
                     
                     $ffa = $fv['weather_id']['fa'];
-                    echo 'weather1:' . $ffa;
+//                    echo 'weather1:' . $ffa;
 
                     $ffc = $weather->getWeatherByWeatherId($ffa) ? $weather->getWeatherByWeatherId($ffa):'rainy';
                     $date = substr($fv['date'],1,4) . '年' . substr($fv['date'],7,2) .'月' . substr($fv['date'],9,2) . '日';
@@ -98,9 +99,12 @@ $ipWeatherResult = $weather->getWeatherByIP(getIp());
                     $temp = $fv['temperature'];
                     $week = $fv['week'];
                     $wind = $fv['wind'];
-                    echo 'weather2:' . $ffc;
+                    if($navslide ==2){
+                        $fomateDate = substr($fv['date'],9,2) . '/' . substr($fv['date'],7,2);
+                    }
+//                    echo 'weather2:' . $ffc;
                     
-                    break;
+//                    break;
 
             ?>
 			
@@ -122,9 +126,9 @@ $ipWeatherResult = $weather->getWeatherByIP(getIp());
                 <?php $silde = 2;
                     foreach($future as $fk => $fv){
                          $ffc = $fv['weather_id']['fa'];
-                    $ffc = $weather->getWeatherByWeatherId($ffc) ? $weather->getWeatherByWeatherId($fc):'rainy';
+                    $ffc = $weather->getWeatherByWeatherId($ffc) ? $weather->getWeatherByWeatherId($ffc):'rainy';
                         echo '<br>datelength:' . strlen($date) .'<br>';
-                    $date = substr($fv['date'],0,4) . '年' . substr($fv['date'],4,2) .'月' . substr($fv['date'],6,2) . '日';
+                    $date =substr($fv['date'],6,2).'/' substr($fv['date'],4,2);
                         ?>
 				<a class="nav-item" href="#slide-<?php echo ++$slide; ?>"><i class="icon icon--<?php echo $ffc;?>"></i><span><?php echo $date;?></span></a>
 				<?php }?>
