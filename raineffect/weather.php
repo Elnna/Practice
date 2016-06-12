@@ -50,7 +50,7 @@ $ipWeatherResult = $weather->getWeatherByIP(getIp());
                     $data = $ipWeatherResult['result'];
                     $fa = $data['today']['weather_id']['fa'];
                     $fb = $data['today']['weather_id']['fb'];
-                    $fc = getWeatherByWeatherId($fa) ? getWeatherByWeatherId($fa) : 'sunny' ;
+                    $fc = $weather->getWeatherByWeatherId($fa) ? $weather->getWeatherByWeatherId($fa) : 'sunny' ;
                     $future = $data['future'];
         ?>   
 		<header class="codrops-header">
@@ -86,9 +86,9 @@ $ipWeatherResult = $weather->getWeatherByIP(getIp());
                 $slide = 2;
                 foreach($future as $fk => $fv){
                     $ffc = $fv['weather_id']['fa'];
-                    $ffc = getWeatherByWeatherId($ffc) ? getWeatherByWeatherId($fc):'rainy';
+                    $ffc = $weather->getWeatherByWeatherId($ffc) ? $weather->getWeatherByWeatherId($fc):'rainy';
                     $date = substr($fv['date'],0,4) . '年' . substr($fv['date'],4,2) .'月' . substr($fv['date'],6,2) . '日';
-                    $weather = $fv['weather'];
+                    $w = $fv['weather'];
                     $temp = $fv['temperature'];
                     $week = $fv['week'];
                     $wind = $fv['wind'];
@@ -98,7 +98,7 @@ $ipWeatherResult = $weather->getWeatherByIP(getIp());
 			<div class="slide" id="slide-<?php echo ++$slide;?>" data-weather="<?php echo $ffc;?>">
 				<div class="slide__element slide__element--date"><?php echo $date . ' , '. $week; ?></div>
                 <div class="slide__element slide__element--weather">
-                    <?php echo $weather . ' , ' . $wind; ?>
+                    <?php echo $w . ' , ' . $wind; ?>
                 </div>
 				<div class="slide__element slide__element--temp"><?php echo $temp; ?><small>C</small></div>
 			</div>
@@ -113,12 +113,8 @@ $ipWeatherResult = $weather->getWeatherByIP(getIp());
                 <?php $silde = 2;
                     foreach($future as $fk => $fv){
                          $ffc = $fv['weather_id']['fa'];
-                    $ffc = getWeatherByWeatherId($ffc) ? getWeatherByWeatherId($fc):'rainy';
+                    $ffc = $weather->getWeatherByWeatherId($ffc) ? $weather->getWeatherByWeatherId($fc):'rainy';
                     $date = substr($fv['date'],0,4) . '年' . substr($fv['date'],4,2) .'月' . substr($fv['date'],6,2) . '日';
-                    $weather = $fv['weather'];
-                    $temp = $fv['temperature'];
-                    $week = $fv['week'];
-                    $wind = $fv['wind'];
                         ?>
 				<a class="nav-item" href="#slide-<?php echo ++$slide; ?>"><i class="icon icon--<?php echo $ffc;?>"></i><span><?php echo $date;?></span></a>
 				<?php }?>
