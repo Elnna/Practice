@@ -52,6 +52,7 @@ var_dump($ipWeatherResult);
                     $fa = $data['today']['weather_id']['fa'];
                     $fb = $data['today']['weather_id']['fb'];
                     $fc = $weather->getWeatherByWeatherId($fa) ? $weather->getWeatherByWeatherId($fa) : 'sunny' ;
+            echo 'weather-' .$slide . ' : '. $fc;
                     $future = $data['future'];
         ?>   
 		<header class="codrops-header">
