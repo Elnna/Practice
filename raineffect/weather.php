@@ -9,6 +9,7 @@ $appkey = '895e98a1c9681cae048688ef98feffec'; //全国天气查询appkey
 $weather = new weather($appkey);
 //根据IP查询天气
 $ipWeatherResult = $weather->getWeatherByIP(getIp());
+var_dump($ipWeatherResult);
 ?>
 <!DOCTYPE html>
 <html lang="en" class="no-js">
@@ -74,9 +75,9 @@ $ipWeatherResult = $weather->getWeatherByIP(getIp());
             <!-- 今天天气 -->
             <div class="slide" id="slide-2" data-weather="<?php echo $fc; ?>">
 				<div class="slide__element slide__element--date"><?php echo  $data['today']['date_y'] . $data['today']['week']; ?></div>
-                <div class="slide__element slide__element--weather">
-                    <?php echo $data['today']['weather']; ?>
-                </div>
+                <!--<div class="slide__element slide__element--weather">
+                    <?php //echo $data['today']['weather']; ?>
+                </div>-->
 				<div class="slide__element slide__element--temp"><?php echo $data['today']['temperature']?><small>C</small></div>
 			</div>
             
@@ -97,9 +98,9 @@ $ipWeatherResult = $weather->getWeatherByIP(getIp());
 			
 			<div class="slide" id="slide-<?php echo ++$navslide;?>" data-weather="<?php echo $ffc;?>">
 				<div class="slide__element slide__element--date"><?php echo $date . ' , '. $week; ?></div>
-                <div class="slide__element slide__element--weather">
-                    <?php echo $w . ' , ' . $wind; ?>
-                </div>
+                <!--<div class="slide__element slide__element--weather">
+                    <?php //echo $w . ' , ' . $wind; ?>
+                </div>-->
 				<div class="slide__element slide__element--temp"><?php echo $temp; ?><small>C</small></div>
 			</div>
 			<?php } ?>
