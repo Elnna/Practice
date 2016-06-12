@@ -88,14 +88,17 @@ $ipWeatherResult = $weather->getWeatherByIP(getIp());
                 $navslide = 2;
                 foreach($future as $fk => $fv){
                     var_dump($fv);
+                    
                     $ffc = $fv['weather_id']['fa'];
+                    echo 'weather1:' . $ffc;
+
                     $ffc = $weather->getWeatherByWeatherId($ffc) ? $weather->getWeatherByWeatherId($fc):'rainy';
                     $date = substr($fv['date'],1,4) . '年' . substr($fv['date'],7,2) .'月' . substr($fv['date'],9,2) . '日';
                     $w = $fv['weather'];
                     $temp = $fv['temperature'];
                     $week = $fv['week'];
                     $wind = $fv['wind'];
-                    echo 'weather:' . $ffc;
+                    echo 'weather2:' . $ffc;
                     break;
 
             ?>
@@ -111,7 +114,7 @@ $ipWeatherResult = $weather->getWeatherByIP(getIp());
 			<nav class="slideshow__nav">
                 <?php 
                     $today = $data['today']['date_y'];
-                    $today = substr($today,13,2) . '/' . substr($today,6,2);
+                    $today = substr($today,11,2) . '/' . substr($today,6,2);
                 ?>
 				<a class="nav-item" href="#slide-1"><i class="icon icon--<?php echo $fc;?>"></i><span>实时天气</span></a>
 				<a class="nav-item" href="#slide-2"><i class="icon icon--<?php echo $fc;?>"></i><span><?php echo $today;?></span></a>
