@@ -89,16 +89,17 @@ $ipWeatherResult = $weather->getWeatherByIP(getIp());
                 foreach($future as $fk => $fv){
                     var_dump($fv);
                     
-                    $ffc = $fv['weather_id']['fa'];
-                    echo 'weather1:' . $ffc;
+                    $ffa = $fv['weather_id']['fa'];
+                    echo 'weather1:' . $ffa;
 
-                    $ffc = $weather->getWeatherByWeatherId($ffc) ? $weather->getWeatherByWeatherId($fc):'rainy';
+                    $ffc = $weather->getWeatherByWeatherId($ffa) ? $weather->getWeatherByWeatherId($ffa):'rainy';
                     $date = substr($fv['date'],1,4) . '年' . substr($fv['date'],7,2) .'月' . substr($fv['date'],9,2) . '日';
                     $w = $fv['weather'];
                     $temp = $fv['temperature'];
                     $week = $fv['week'];
                     $wind = $fv['wind'];
                     echo 'weather2:' . $ffc;
+                    
                     break;
 
             ?>
