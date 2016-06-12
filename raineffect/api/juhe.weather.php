@@ -19,7 +19,7 @@ class weather{
  
     private $forecast3hUrl = 'http://v.juhe.cn/weather/forecast3h'; //获取城市天气3小时预报API URL
     
-    private $weatherCode = json_decode(WEATHER_CODE);
+    private $weatherCode = WEATHER_CODE;
     
     public function __construct($appkey){
         $this->appkey = $appkey;
@@ -114,7 +114,7 @@ class weather{
     *
     **/
     public function getWeatherByWeatherId($weatherId){
-        $codes = $this->weatherCode;
+        $codes = json_decode($this->weatherCode);
         $code = false;
         foreach($codes as $k => $v){
             if($k == $weatherId){
