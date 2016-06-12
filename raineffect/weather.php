@@ -10,7 +10,7 @@ $weather = new weather($appkey);
 $fomateDate = '';
 //根据IP查询天气
 $ipWeatherResult = $weather->getWeatherByIP(getIp());
-var_dump($ipWeatherResult);
+//var_dump($ipWeatherResult);
 ?>
 <!DOCTYPE html>
 <html lang="en" class="no-js">
