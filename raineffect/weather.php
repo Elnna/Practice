@@ -90,12 +90,13 @@ $ipWeatherResult = $weather->getWeatherByIP(getIp());
                     var_dump($fv);
                     $ffc = $fv['weather_id']['fa'];
                     $ffc = $weather->getWeatherByWeatherId($ffc) ? $weather->getWeatherByWeatherId($fc):'rainy';
-                    $date = substr($fv['date'],0,4) . '年' . substr($fv['date'],4,2) .'月' . substr($fv['date'],6,2) . '日';
+                    $date = substr($fv['date'],1,4) . '年' . substr($fv['date'],7,2) .'月' . substr($fv['date'],9,2) . '日';
                     $w = $fv['weather'];
                     $temp = $fv['temperature'];
                     $week = $fv['week'];
                     $wind = $fv['wind'];
                     echo '<br>datelength:' . strlen($date) .'<br>';
+                    break;
 
             ?>
 			
