@@ -5,6 +5,7 @@
 //----------------------------------
 // 聚合数据天气预报接口请求类
 //----------------------------------
+require_once('weather.code.php');
 class weather{
     private $appkey = false; //申请的聚合天气预报APPKEY
  
@@ -17,7 +18,9 @@ class weather{
     private $weatherGeoUrl = 'http://v.juhe.cn/weather/geo'; //根据GPS坐标获取天气API URL
  
     private $forecast3hUrl = 'http://v.juhe.cn/weather/forecast3h'; //获取城市天气3小时预报API URL
- 
+    
+    private $weatherCode = json_decode(WEATHER_CODE);
+    
     public function __construct($appkey){
         $this->appkey = $appkey;
     }
@@ -106,7 +109,21 @@ class weather{
     public function _returnArray($content){
         return json_decode($content,true);
     }
- 
+    /**
+    *
+    *
+    **/
+    public function getWeatherByWeatherId($weatherId){
+        $codes = $this->weatherCode;
+        $code = false;
+        foreach($codes as $k => $v){
+            if($k == $weatherId){
+                $code = $v;
+                break;
+            }
+        }
+        return $code;
+    }
     /**
      * 请求接口返回内容
      * @param  string $url [请求的URL地址]

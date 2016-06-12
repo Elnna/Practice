@@ -2,6 +2,7 @@
 header('Content-type:text/html;charset=utf-8');
 include 'juhe.weather.php'; //引入天气请求类
 require_once('./api/get.ip.php'); 
+require_once('./api/weather.code.php'); //引入天气标识
 
 //接口基本信息配置
 $appkey = '895e98a1c9681cae048688ef98feffec'; //全国天气查询appkey
@@ -47,6 +48,10 @@ $ipWeatherResult = $weather->getWeatherByIP(getIp());
 	<div class="container">
         <?php if($ipWeatherResult['error_code'] == 0){
                     $data = $ipWeatherResult['result'];
+                    $fa = $data['today']['weather_id']['fa'];
+                    $fb = $data['today']['weather_id']['fb'];
+                    $fc = getWeatherByWeatherId($fa) ? getWeatherByWeatherId($fa) : 'sunny' ;
+                    $future = $data['future'];
         ?>   
 		<header class="codrops-header">
 			<h1><?php echo $data['today']['city'];?></h1>
@@ -57,45 +62,70 @@ $ipWeatherResult = $weather->getWeatherByIP(getIp());
             
 		<div class="slideshow">
 			<canvas width="1" height="1" id="container" style="position:absolute"></canvas>
-            <!-- 当前天气 -->
-            <div class="slide" id="slide-1" data-weather="rain">
-				<div class="slide__element slide__element--date">Sunday, 24<sup>th</sup> of October 2043</div>
-				<div class="slide__element slide__element--temp">12°<small>C</small></div>
+            <!-- 当前实况天气 -->
+            <div class="slide" id="slide-1" data-weather="<?php echo $fc; ?>">
+				<div class="slide__element slide__element--date"><?php echo  $data['today']['date_y'] . $data['today']['week'] . ', ' . $data['sk']['time']; ?></div>
+                <div class="slide__element slide__element--weather">
+                    <?php echo '当前湿度  ' . $data['sk']['humidity'] . ' , 风向  ' . $data['sk']['wind_direction']  .  ' , 强度   ' . $data['sk']['wind_strength']; ?>
+                </div>
+				<div class="slide__element slide__element--temp"><?php echo $data['sk']['temp']?><small>C</small></div>
 			</div>
-			<!-- Heavy Rain -->
-			<div class="slide" id="slide-1" data-weather="rain">
-				<div class="slide__element slide__element--date">Sunday, 24<sup>th</sup> of October 2043</div>
-				<div class="slide__element slide__element--temp">12°<small>C</small></div>
+            
+            <!-- 今天天气 -->
+            <div class="slide" id="slide-2" data-weather="<?php echo $fc; ?>">
+				<div class="slide__element slide__element--date"><?php echo  $data['today']['date_y'] . $data['today']['week']; ?></div>
+                <div class="slide__element slide__element--weather">
+                    <?php echo $data['today']['weather']; ?>
+                </div>
+				<div class="slide__element slide__element--temp"><?php echo $data['today']['temperature']?><small>C</small></div>
 			</div>
-			<!-- Drizzle -->
-			<div class="slide" id="slide-2" data-weather="drizzle">
-				<div class="slide__element slide__element--date">Saturday, 25<sup>th</sup> of October 2043</div>
-				<div class="slide__element slide__element--temp">18°<small>C</small></div>
+            
+            
+            <!-- 未来几天天气 -->
+            <?php 
+                $slide = 2;
+                foreach($future as $fk => $fv){
+                    $ffc = $fv['weather_id']['fa'];
+                    $ffc = getWeatherByWeatherId($ffc) ? getWeatherByWeatherId($fc):'rainy';
+                    $date = substr($fv['date'],0,4) . '年' . substr($fv['date'],4,2) .'月' . substr($fv['date'],6,2) . '日';
+                    $weather = $fv['weather'];
+                    $temp = $fv['temperature'];
+                    $week = $fv['week'];
+                    $wind = $fv['wind'];
+                    
+            ?>
+			
+			<div class="slide" id="slide-<?php echo ++$slide;?>" data-weather="<?php echo $ffc;?>">
+				<div class="slide__element slide__element--date"><?php echo $date . ' , '. $week; ?></div>
+                <div class="slide__element slide__element--weather">
+                    <?php echo $weather . ' , ' . $wind; ?>
+                </div>
+				<div class="slide__element slide__element--temp"><?php echo $temp; ?><small>C</small></div>
 			</div>
-			<!-- Sunny -->
-			<div class="slide" id="slide-3" data-weather="sunny">
-				<div class="slide__element slide__element--date">Monday, 26<sup>th</sup> of October 2043</div>
-				<div class="slide__element slide__element--temp">25°<small>C</small></div>
-			</div>
-			<!-- Heavy rain -->
-			<div class="slide" id="slide-5" data-weather="storm">
-				<div class="slide__element slide__element--date">Wednesday, 28<sup>th</sup> of October 2043</div>
-				<div class="slide__element slide__element--temp">20°<small>C</small></div>
-			</div>
-			<!-- Fallout (greenish overlay with slightly greenish/yellowish drops) -->
-			<div class="slide" id="slide-4" data-weather="fallout">
-				<div class="slide__element slide__element--date">Tuesday, 27<sup>th</sup> of October 2043</div>
-				<div class="slide__element slide__element--temp">34°<small>C</small></div>
-			</div>
+			<?php } ?>
 			<nav class="slideshow__nav">
-				<a class="nav-item" href="#slide-1"><i class="icon icon--rainy"></i><span>10/24</span></a>
-				<a class="nav-item" href="#slide-2"><i class="icon icon--drizzle"></i><span>10/25</span></a>
-				<a class="nav-item" href="#slide-3"><i class="icon icon--sun"></i><span>10/26</span></a>
-				<a class="nav-item" href="#slide-5"><i class="icon icon--storm"></i><span>10/28</span></a>
-				<a class="nav-item" href="#slide-4"><i class="icon icon--radioactive"></i><span>10/27</span></a>
+                <?php 
+                    $today = $data['today']['date_y'];
+                    $today = substr($today,8,2) . '/' . substr($today,6,2);
+                ?>
+				<a class="nav-item" href="#slide-1"><i class="icon icon--<?php echo $fc;?>"></i><span>实时天气</span></a>
+				<a class="nav-item" href="#slide-2"><i class="icon icon--<?php echo $fc;?>"></i><span><?php echo $today;?></span></a>
+                <?php $silde = 2;
+                    foreach($future as $fk => $fv){
+                         $ffc = $fv['weather_id']['fa'];
+                    $ffc = getWeatherByWeatherId($ffc) ? getWeatherByWeatherId($fc):'rainy';
+                    $date = substr($fv['date'],0,4) . '年' . substr($fv['date'],4,2) .'月' . substr($fv['date'],6,2) . '日';
+                    $weather = $fv['weather'];
+                    $temp = $fv['temperature'];
+                    $week = $fv['week'];
+                    $wind = $fv['wind'];
+                        ?>
+				<a class="nav-item" href="#slide-<?php echo ++$slide; ?>"><i class="icon icon--<?php echo $ffc;?>"></i><span><?php echo $date;?></span></a>
+				<?php }?>
 			</nav>
 		</div>
 		<?php }else {?>
+        <p class="nosupport"><?php echo $ipWeatherResult['error_code'].":".$ipWeatherResult['reason']; ?></p>
         <?php }?>
         <p class="nosupport">Sorry, but your browser does not support WebGL!</p>
 	</div>
