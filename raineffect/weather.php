@@ -9,7 +9,7 @@ $appkey = '895e98a1c9681cae048688ef98feffec'; //全国天气查询appkey
 $weather = new weather($appkey);
 //根据IP查询天气
 $ipWeatherResult = $weather->getWeatherByIP(getIp());
-var_dump($ipWeatherResult);
+//var_dump($ipWeatherResult);
 ?>
 <!DOCTYPE html>
 <html lang="en" class="no-js">
@@ -52,7 +52,7 @@ var_dump($ipWeatherResult);
                     $fa = $data['today']['weather_id']['fa'];
                     $fb = $data['today']['weather_id']['fb'];
                     $fc = $weather->getWeatherByWeatherId($fa) ? $weather->getWeatherByWeatherId($fa) : 'sunny' ;
-            echo 'weather-' .$slide . ' : '. $fc;
+//            echo 'weather-' .$slide . ' : '. $fc;
                     $future = $data['future'];
         ?>   
 		<header class="codrops-header">
@@ -87,6 +87,7 @@ var_dump($ipWeatherResult);
             <?php 
                 $navslide = 2;
                 foreach($future as $fk => $fv){
+                    var_dump($fv);
                     $ffc = $fv['weather_id']['fa'];
                     $ffc = $weather->getWeatherByWeatherId($ffc) ? $weather->getWeatherByWeatherId($fc):'rainy';
                     $date = substr($fv['date'],0,4) . '年' . substr($fv['date'],4,2) .'月' . substr($fv['date'],6,2) . '日';
@@ -94,7 +95,8 @@ var_dump($ipWeatherResult);
                     $temp = $fv['temperature'];
                     $week = $fv['week'];
                     $wind = $fv['wind'];
-                    
+                    echo '<br>datelength:' . strlen($date) .'<br>';
+
             ?>
 			
 			<div class="slide" id="slide-<?php echo ++$navslide;?>" data-weather="<?php echo $ffc;?>">
@@ -116,6 +118,7 @@ var_dump($ipWeatherResult);
                     foreach($future as $fk => $fv){
                          $ffc = $fv['weather_id']['fa'];
                     $ffc = $weather->getWeatherByWeatherId($ffc) ? $weather->getWeatherByWeatherId($fc):'rainy';
+                        echo '<br>datelength:' . strlen($date) .'<br>';
                     $date = substr($fv['date'],0,4) . '年' . substr($fv['date'],4,2) .'月' . substr($fv['date'],6,2) . '日';
                         ?>
 				<a class="nav-item" href="#slide-<?php echo ++$slide; ?>"><i class="icon icon--<?php echo $ffc;?>"></i><span><?php echo $date;?></span></a>
