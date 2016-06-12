@@ -78,7 +78,7 @@ $ipWeatherResult = $weather->getWeatherByIP(getIp());
             <?php 
                 $slide = 1;
                 foreach($future as $fk => $fv){
-                    var_dump($fv);
+//                    var_dump($fv);
                     
                     $ffa = $fv['weather_id']['fa'];
                     $ffc = $weather->getWeatherByWeatherId($ffa) ? $weather->getWeatherByWeatherId($ffa):'rainy';
@@ -102,12 +102,13 @@ $ipWeatherResult = $weather->getWeatherByIP(getIp());
 			<?php } ?>
 			<nav class="slideshow__nav">
 				<a class="nav-item" href="#slide-0"><i class="icon icon--<?php echo $fc;?>"></i><span>实时天气</span></a>
-                <?php $navsilde = 1;
+                <?php 
+                    $navsilde = 1;
                     foreach($future as $fk => $fv){
-                         $ffc = $fv['weather_id']['fa'];
-                    $ffc = $weather->getWeatherByWeatherId($ffc) ? $weather->getWeatherByWeatherId($ffc):'rainy';
-                    $date =substr($fv['date'],6,2) . '/' . substr($fv['date'],4,2);
-                        ?>
+                        $ffc = $fv['weather_id']['fa'];
+                        $ffc = $weather->getWeatherByWeatherId($ffc) ? $weather->getWeatherByWeatherId($ffc):'rainy';
+                        $date =substr($fv['date'],6,2) . '/' . substr($fv['date'],4,2);
+                ?>
 				<a class="nav-item" href="#slide-<?php echo $navslide++; ?>"><i class="icon icon--<?php echo $ffc;?>"></i><span><?php echo $date;?></span></a>
 				<?php }?>
 			</nav>
