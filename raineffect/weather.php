@@ -83,7 +83,7 @@ $ipWeatherResult = $weather->getWeatherByIP(getIp());
             
             <!-- 未来几天天气 -->
             <?php 
-                $slide = 2;
+                $navslide = 2;
                 foreach($future as $fk => $fv){
                     $ffc = $fv['weather_id']['fa'];
                     $ffc = $weather->getWeatherByWeatherId($ffc) ? $weather->getWeatherByWeatherId($fc):'rainy';
@@ -95,7 +95,7 @@ $ipWeatherResult = $weather->getWeatherByIP(getIp());
                     
             ?>
 			
-			<div class="slide" id="slide-<?php echo ++$slide;?>" data-weather="<?php echo $ffc;?>">
+			<div class="slide" id="slide-<?php echo ++$navslide;?>" data-weather="<?php echo $ffc;?>">
 				<div class="slide__element slide__element--date"><?php echo $date . ' , '. $week; ?></div>
                 <div class="slide__element slide__element--weather">
                     <?php echo $w . ' , ' . $wind; ?>
