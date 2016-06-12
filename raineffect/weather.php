@@ -100,7 +100,7 @@ $ipWeatherResult = $weather->getWeatherByIP(getIp());
                     $week = $fv['week'];
                     $wind = $fv['wind'];
                     if($navslide ==2){
-                        $fomateDate = substr($fv['date'],9,2) . '/' . substr($fv['date'],7,2);
+                        $fomateDate = substr($fv['date'],6,2) . '/' . substr($fv['date'],4,2);
                     }
 //                    echo 'weather2:' . $ffc;
                     
