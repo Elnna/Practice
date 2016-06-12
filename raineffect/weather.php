@@ -1,6 +1,6 @@
 <?php
 header('Content-type:text/html;charset=utf-8');
-include 'juhe.weather.php'; //引入天气请求类
+include './api/juhe.weather.php'; //引入天气请求类
 require_once('./api/get.ip.php'); 
 //require_once('./api/weather.code.php'); //引入天气标识
 
