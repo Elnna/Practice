@@ -75,24 +75,22 @@ $ipWeatherResult = $weather->getWeatherByIP(getIp());
 			</div>
             
             <!-- 今天天气 -->
-            <div class="slide" id="slide-2" data-weather="<?php echo $fc; ?>">
-				<div class="slide__element slide__element--date"><?php echo  $data['today']['date_y'] . $data['today']['week']; ?></div>
-                <!--<div class="slide__element slide__element--weather">
+            <!--<div class="slide" id="slide-2" data-weather="<?php echo $fc; ?>">
+				<div class="slide__element slide__element--date"><?php //echo  $data['today']['date_y'] . $data['today']['week']; ?></div>
+                <div class="slide__element slide__element--weather">
                     <?php //echo $data['today']['weather']; ?>
-                </div>-->
-				<div class="slide__element slide__element--temp"><?php echo $data['today']['temperature']?><small>C</small></div>
+                </div>
+				<div class="slide__element slide__element--temp"><?php //echo $data['today']['temperature']?><small>C</small></div>
 			</div>
-            
+            -->
             
             <!-- 未来几天天气 -->
             <?php 
-                $navslide = 2;
+                $slide = 2;
                 foreach($future as $fk => $fv){
                     var_dump($fv);
                     
                     $ffa = $fv['weather_id']['fa'];
-//                    echo 'weather1:' . $ffa;
-
                     $ffc = $weather->getWeatherByWeatherId($ffa) ? $weather->getWeatherByWeatherId($ffa):'rainy';
                     $date = substr($fv['date'],0,4) . '年' . substr($fv['date'],4,2) .'月' . substr($fv['date'],6,2) . '日';
                     $w = $fv['weather'];
@@ -102,13 +100,9 @@ $ipWeatherResult = $weather->getWeatherByIP(getIp());
                     if($navslide ==2){
                         $fomateDate = substr($fv['date'],6,2) . '/' . substr($fv['date'],4,2);
                     }
-//                    echo 'weather2:' . $ffc;
-                    
-//                    break;
-
             ?>
 			
-			<div class="slide" id="slide-<?php echo ++$navslide;?>" data-weather="<?php echo $ffc;?>">
+			<div class="slide" id="slide-<?php echo $slide++;?>" data-weather="<?php echo $ffc;?>">
 				<div class="slide__element slide__element--date"><?php echo $date . ' , '. $week; ?></div>
                 <!--<div class="slide__element slide__element--weather">
                     <?php //echo $w . ' , ' . $wind; ?>
@@ -118,14 +112,13 @@ $ipWeatherResult = $weather->getWeatherByIP(getIp());
 			<?php } ?>
 			<nav class="slideshow__nav">
 				<a class="nav-item" href="#slide-1"><i class="icon icon--<?php echo $fc;?>"></i><span>实时天气</span></a>
-				<a class="nav-item" href="#slide-2"><i class="icon icon--<?php echo $fc;?>"></i><span><?php echo $fomateDate;?></span></a>
-                <?php $silde = 2;
+                <?php $navsilde = 2;
                     foreach($future as $fk => $fv){
                          $ffc = $fv['weather_id']['fa'];
                     $ffc = $weather->getWeatherByWeatherId($ffc) ? $weather->getWeatherByWeatherId($ffc):'rainy';
                     $date =substr($fv['date'],6,2) . '/' . substr($fv['date'],4,2);
                         ?>
-				<a class="nav-item" href="#slide-<?php echo ++$slide; ?>"><i class="icon icon--<?php echo $ffc;?>"></i><span><?php echo $date;?></span></a>
+				<a class="nav-item" href="#slide-<?php echo $navslide++; ?>"><i class="icon icon--<?php echo $ffc;?>"></i><span><?php echo $date;?></span></a>
 				<?php }?>
 			</nav>
 		</div>
