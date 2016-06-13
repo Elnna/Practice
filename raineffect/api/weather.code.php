@@ -15,14 +15,14 @@ foreach($xml->children() as $child)
   }
 */
 $weatherCodeArr = array(
-    '00' => 'sun',
+    '00' => 'sunny',
     '01' => 'cloudy',
-    '02' => 'storm',
+    '02' => 'cloudy',
     '03' => 'showers',   
     '04' => 'storm-showers',
     '05' => 'hail',
     '06' => 'sleet',
-    '07' => 'drizzle',
+    '07' => 'sprinkle',
     '08' => 'rainy',
     '09' => 'rain',
     '10' => 'thunderstorm',
@@ -32,7 +32,7 @@ $weatherCodeArr = array(
     '14' => 'snow',
     '15' => 'snow',
     '16' => 'snow',
-    '17' => 'snow-thunderstorm',
+    '17' => 'snowthunderstorm',
     '18' => 'fog',
     '19' => 'sleet',
     '20' => 'radioactive',
@@ -48,6 +48,8 @@ $weatherCodeArr = array(
     '30' => '',
     '31' => '',*/
     );
+
+
 $weatherCode = json_encode($weatherCodeArr);
 define('WEATHER_CODE',$weatherCode);
 ?>

@@ -11810,7 +11810,7 @@ function setupWeatherData() {
   };
 
   weatherData = {
-    rainy: weather({
+    rain: weather({
       rainChance: 0.35,
       rainLimit: 6,
       drizzle: 50,
@@ -11833,31 +11833,7 @@ function setupWeatherData() {
       flashBg: textureStormLightningBg,
       flashChance: 0.1
     }),
-    'storm-showers': weather({
-      minR: 20,
-      maxR: 45,
-      rainChance: 0.25,
-      rainLimit: 6,
-      drizzle: 30,
-      drizzleSize: [2, 6],
-      trailRate: 3,
-      trailScaleRange: [0.15, 0.3],
-      fg: textureFalloutFg,
-      bg: textureFalloutBg,
-      flashFg: textureStormLightningFg,
-      flashBg: textureStormLightningBg,
-      flashChance: 0.1
-    }),
-     /* fallout: weather({
-      rainChance: 0.35,
-      rainLimit: 6,
-      drizzle: 20,
-      trailRate: 4,
-      fg: textureFalloutFg,
-      bg: textureFalloutBg
-    }),*/
-      
-    thunderstorm: weather({
+    fallout: weather({
       rainChance: 0.35,
       rainLimit: 6,
       drizzle: 20,
@@ -11872,14 +11848,64 @@ function setupWeatherData() {
       fg: textureDrizzleFg,
       bg: textureDrizzleBg
     }),
-     cloudy: weather({
+    /**/
+    'rain-mix': weather({
+      rainChance: 0.35,
+      rainLimit: 6,
+      drizzle: 50,
+      raining: true,
+      fg: textureRainFg,
+      bg: textureRainBg
+    }),
+      
+      showers: weather({
+      rainChance: 0.35,
+      rainLimit: 6,
+      drizzle: 50,
+      raining: true,
+      fg: textureRainFg,
+      bg: textureRainBg
+    }),
+   'storm-showers': weather({
+      rainChance: 0.35,
+      rainLimit: 6,
+      drizzle: 20,
+      trailRate: 4,
+      fg: textureFalloutFg,
+      bg: textureFalloutBg
+    }),
+    thunderstorm: weather({
+      minR: 20,
+      maxR: 45,
+      rainChance: 0.55,
+      rainLimit: 6,
+      drizzle: 80,
+      drizzleSize: [2, 6],
+      trailRate: 1,
+      trailScaleRange: [0.15, 0.3],
+      fg: textureRainFg,
+      bg: textureRainBg,
+      flashFg: textureStormLightningFg,
+      flashBg: textureStormLightningBg,
+      flashChance: 0.1
+    }),
+    
+    sleet: weather({
+      rainChance: 0.15,
+      rainLimit: 2,
+      drizzle: 10,
+      fg: textureDrizzleFg,
+      bg: textureDrizzleBg
+    }),
+    cloudy: weather({
       rainChance: 0,
       rainLimit: 0,
       drizzle: 0,
       raining: false,
-      fg: textureFalloutFg,
-      bg: textureFalloutBg
+      fg: textureSunFg,
+      bg: textureSunBg
     }),  
+    /**/
     sunny: weather({
       rainChance: 0,
       rainLimit: 0,

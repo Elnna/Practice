@@ -177,6 +177,27 @@
     text-align: center;
     padding: 3em 0 1em 0;
 }
+/*gf*/
+.codrops-header h1>span{
+    font-size: 0.5em;
+	font-weight: 700;
+    margin-left: 1em;
+}
+.change-city{
+     position: absolute;
+    z-index: 200;
+}
+.change-city input{
+   
+    border: 1px solid #ccc;
+    
+    margin: 5em 5em 10em 1em;
+    height: 2em;
+    line-height: 2em;
+    width: 15em;
+    background-color: rgba(84, 78, 78, 0.29);
+}
+
 
 @media screen and (max-height: 39em) {
 	.slideshow {
@@ -186,7 +207,7 @@
 		padding-top: 35vh;
 	}
 	.slideshow__nav {
-		bottom: 6em;
+		bottom: 3em;
 	}
 }
 
