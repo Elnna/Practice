@@ -7,8 +7,9 @@ require_once('./api/get.city.php');
 $appkey = '2cf291486b5dd04551e81c11e1346615'; //全国天气查询appkey
 $weather = new weather($appkey);
 $gaddress = new gaddress();
-//$city = $gaddress->getCityByIp($gaddress->getIp());
-$city = $gaddress->getCityByIp('125.42.205.112');
+$city = $gaddress->getCityByIp($gaddress->getIp());
+
+//$city = $gaddress->getCityByIp('125.42.205.112');
 //var_dump($city);
 /*
 //根据IP设置默认地址
@@ -30,8 +31,10 @@ var_dump($address);
 //$ipWeatherResult = $weather->getWeatherByIP(getIp());
 //$ip = '218.28.144.40';
 //$ipWeatherResult = $weather->getWeatherByIP($ip);
-$ipWeatherResult = $weather->getWeather('朝阳');
-//$ipWeatherResult = $weather->getWeather($city);
+
+
+//$ipWeatherResult = $weather->getWeather('朝阳');
+$ipWeatherResult = $weather->getWeather($city);
 //var_dump($ipWeatherResult);
 ?>
 <!DOCTYPE html>
@@ -53,9 +56,9 @@ $ipWeatherResult = $weather->getWeather('朝阳');
 <!--<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />-->
 <link rel="stylesheet" type="text/css" href="css/style1.css" />
 <link rel="stylesheet" type="text/css" href="css/weather-icons.css" />
-<script src="js/jquery.js"></script>
-<script src="js/typeahead.js"></script>
-<script src="js/forecast.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+<script type="text/javascript" src="js/typeahead.bundle.js"></script>
+<script type="text/javascript" src="js/forecast.js"></script>
 
 
 <!--[if IE]>
@@ -78,6 +81,7 @@ $ipWeatherResult = $weather->getWeather('朝阳');
 		<img src="img/weather/texture-drizzle-bg.png" />
 	</div>
 	<div class="container">
+        <input id="city-name" type="hidden" value = "">
         <?php if($ipWeatherResult['errNum'] == 0){
                     $data = $ipWeatherResult['retData'];
                     $type = $data['today']['type'];
@@ -87,14 +91,14 @@ $ipWeatherResult = $weather->getWeather('朝阳');
                     $date = substr($data['today']['date'],0,4) . ' 年' . substr($data['today']['date'],5,2). '月' . substr($data['today']['date'],8,2) . '日' . $data['today']['week'];
         ?>   
 		<header class="codrops-header">
-			<h1><?php echo $data['city'];?><span id="addr">切换地址</span></h1>
+			<h1><?php echo $data['city'];?><span>切换地址</span></h1>
 			<nav class="codrops-demos">
 				<a class="current-demo" href="weather.php">Weather</a>
 			</nav>
 		</header>
-        <div class="change-city">
-            <input type="text" name="city" placeholder="请输入城市名称或拼音或编号"/>
-        </div>    
+        <!--<div class="change-city">
+            <input type="text" name="city"  placeholder="请输入城市名称或拼音或编号"/>
+        </div> -->   
 		<div class="slideshow">
 			<canvas width="1" height="1" id="container" style="position:absolute"></canvas>
             <!-- 当前实况天气 -->
@@ -113,10 +117,10 @@ $ipWeatherResult = $weather->getWeather('朝阳');
                     
                     $ftype = $fv['type'];
                     $ffc = $weather->getWeatherByWeatherId($ftype) ? $weather->getWeatherByWeatherId($ftype):'rainy';
-                    $date = $date = substr($data['today']['date'],0,4) . ' 年' . substr($data['today']['date'],5,2). '月' . substr($data['today']['date'],8,2) . '日&nbsp;' . $data['today']['week'];
+                    $date = $date = substr($fv['date'],0,4) . ' 年' . substr($fv['date'],5,2). '月' . substr($fv['date'],8,2) . '日&nbsp;' . $fv['week'];
                     
                     $w = $fv['fengxiang'] . '&nbsp;' . $fv['fengli'];
-                    $temp = substr($fv['lowtemp'],0,2). '°~&nbsp;&nbsp;' . substr($fv['hightemp'],0,2);
+                    $temp = substr($fv['lowtemp'],0,2). '°&nbsp;~&nbsp;' . substr($fv['hightemp'],0,2);
 
             ?>
 			

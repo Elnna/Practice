@@ -183,11 +183,45 @@
 	font-weight: 700;
     margin-left: 1em;
 }
-.change-city{
+
+/*.input-city{
      position: absolute;
-    z-index: 200;
+    z-index: 100;
+}*/
+.codrops-header input {
+    margin: 0 auto 0 0;
+    border: 1px solid #ccc;
+    letter-spacing: -1px;
+    color: rgba(65, 66, 24, 0.73);
+    font-size: 1.65em;
+    line-height: 1;
+    text-align: center;
+    display: inline-block;
+    width: 4em;
+    background-color: rgba(84, 78, 78, 0.29);
+
 }
-.change-city input{
+.submit-btn,.submit-btn:visited {
+	background-color: rgba(107, 144, 86, 0.17);
+    display: inline-block;
+    padding: 6px;
+    height: 30px;
+    line-height: 1em;
+    text-align: center;
+    color: #fff;
+    text-decoration: none;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.6);
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.6);
+    border-bottom: 1px solid rgba(0,0,0,0.25);
+    position: relative;
+    float:right;
+    margin-top:5px;
+    cursor: pointer;
+    margin-left: 0.5em;
+}
+/*.input-city input{
    
     border: 1px solid #ccc;
     
@@ -196,7 +230,7 @@
     line-height: 2em;
     width: 15em;
     background-color: rgba(84, 78, 78, 0.29);
-}
+}*/
 
 
 @media screen and (max-height: 39em) {
