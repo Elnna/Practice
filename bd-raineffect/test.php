@@ -1,26 +1,20 @@
-<!DOCTYPE html>
 <html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-    <script src="js/map.js"></script>
-    <script src="js/cityMap.js"></script>
-    <script src="js/jquery-1.10.2.min.js"></script>
-    <link rel="stylesheet" href="css/city.css"/>
+<head>
+<script>
+function temp(){
+   var test = document.getElementById("test").value;
+   if(!isNaN(test)){
+      alert("是数字");
+   }else{
+      alert("不是数字");
+   }
+}
+</script>
 </head>
 <body>
-<form>
-    <table>
-        <tr>
-            <td>公司名称</td>
-            <td><input type="text"></td>
-        </tr>
-        <tr>
-            <td>所在城市</td>
-            <td id="choose"><input type="text" id="cities"/></td>
-        </tr>
-    </table>
-</form>
-<script src="js/city.js"></script>
+<input type="text" id="test">
+
+<button onclick="temp();">sub</button>
+
 </body>
 </html>

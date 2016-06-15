@@ -80,3 +80,14 @@ div.question{
     color:aqua;
     
 }
+
+footer{
+    line-height: 80px;
+    font-size: 16px;
+    height: 80px;
+    background-color: black;
+    color: aliceblue;
+}
+footer span{
+    margin-right: 10px;
+}

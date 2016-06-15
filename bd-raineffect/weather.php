@@ -81,7 +81,6 @@ $ipWeatherResult = $weather->getWeather($city);
 		<img src="img/weather/texture-drizzle-bg.png" />
 	</div>
 	<div class="container">
-        <input id="city-name" type="hidden" value = "">
         <?php if($ipWeatherResult['errNum'] == 0){
                     $data = $ipWeatherResult['retData'];
                     $type = $data['today']['type'];
@@ -96,16 +95,17 @@ $ipWeatherResult = $weather->getWeather($city);
 				<a class="current-demo" href="weather.php">Weather</a>
 			</nav>
 		</header>
-        <!--<div class="change-city">
-            <input type="text" name="city"  placeholder="请输入城市名称或拼音或编号"/>
-        </div> -->   
+          
 		<div class="slideshow">
 			<canvas width="1" height="1" id="container" style="position:absolute"></canvas>
             <!-- 当前实况天气 -->
             <div class="slide" id="slide-0" data-weather="<?php echo $fc; ?>">
 				<div class="slide__element slide__element--date"><?php echo  $date; ?></div>
                 
-				<div class="slide__element slide__element--temp"><?php echo $data['today']['curTemp'] . '°'?><small>C</small></div>
+                 <div class="slide__element slide__element--weather">
+                    <span><?php echo $data['today']['type']; ?></span> <span><?php echo $data['today']['fengxiang']; ?></span><span><?php echo $data['today']['fengli'];?></span>
+                </div>
+				<div class="slide__element slide__element--temp"><?php echo substr($data['today']['curTemp'],0,2) . '°'?><small>C</small></div>
                 
 			</div>
             
@@ -119,7 +119,7 @@ $ipWeatherResult = $weather->getWeather($city);
                     $ffc = $weather->getWeatherByWeatherId($ftype) ? $weather->getWeatherByWeatherId($ftype):'rainy';
                     $date = $date = substr($fv['date'],0,4) . ' 年' . substr($fv['date'],5,2). '月' . substr($fv['date'],8,2) . '日&nbsp;' . $fv['week'];
                     
-                    $w = $fv['fengxiang'] . '&nbsp;' . $fv['fengli'];
+                    $w = '<span>' . $fv['type'] .'</span><span>' . $fv['fengxiang'] . '</span><span>' . $fv['fengli'] . '</span>';
                     $temp = substr($fv['lowtemp'],0,2). '°&nbsp;~&nbsp;' . substr($fv['hightemp'],0,2);
 
             ?>
@@ -140,7 +140,7 @@ $ipWeatherResult = $weather->getWeather($city);
                         $ftype = $fv['type'];
                         $ffc = $ffc = $weather->getWeatherByWeatherId($ftype) ? $weather->getWeatherByWeatherId($ftype):'rainy';
                        
-                        $date =substr($fv['date'],9,2) . '/' . substr($fv['date'],5,2);
+                        $date =substr($fv['date'],8,2) . '/' . substr($fv['date'],5,2);
                 ?>
 				<a class="nav-item" href="#slide-<?php echo $navsilde++; ?>"><i class="wi wi-day-<?php echo $ffc;?>"></i><span><?php echo $date;?></span></a>
 				<?php }?>

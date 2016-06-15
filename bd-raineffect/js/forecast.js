@@ -89,10 +89,17 @@ $( document ).ready(function() {
                        console.log(getWeatherCode(retData.today.type));
                        console.log("实况天气",$(".slideshow__nav i")[0]);
                        //更改温度
-                       var newTempNodeText0 = document.createTextNode(retData.today.curTemp);
+                       
+                       $('#slide-0 .slide__element--temp')[0].innerHTML = retData.today.curTemp.substr(0,2) + "<small>C<small>";
+                       /*var newTempNodeText0 = document.createTextNode(retData.today.curTemp);
                        var oldTempNode0 = $('#slide-0 .slide__element--temp')[0];
                        var oldTempNodeText0 = $('#slide-0 .slide__element--temp')[0].childNodes[0];
-                       oldTempNode0.replaceChild(newTempNodeText0,oldTempNodeText0);
+                       oldTempNode0.replaceChild(newTempNodeText0,oldTempNodeText0);*/
+                       //详细
+                       
+                       $(".slide__element--weather span")[0].innerText = retData.today.type;
+                       $(".slide__element--weather span")[1].innerText = retData.today.fengxiang;
+                       $(".slide__element--weather span")[2].innerText = retData.today.fengli;
                        
                        for(var i=1; i <= forecast.length; i++){
                         //更改日期：
@@ -109,10 +116,14 @@ $( document ).ready(function() {
                            /*$(".slideshow__nav")[0].childNodes[i+2].childNodes[1].innerText = forecast[i-1].date.substr(9,2) + '/' + forecast[i-2].date.substr(5,2);
                            */
                            //更改温度
-                           var newTempNodeText = document.createTextNode(forecast[i-1].lowtemp.substr(0,2) + '° ~ ' + forecast[i-1].hightemp.substr(0,2)+'°');
-                           var oldTempNode = $('#slide-'+ i +' .slide__element--temp')[0];
-                           var oldTempNodeText = $('#slide-'+ i +' .slide__element--temp')[0].childNodes[0];
-                           oldTempNode.replaceChild(newTempNodeText,oldTempNodeText);
+                           $('#slide-'+ i +' .slide__element--temp')[0].innerHTML = forecast[i-1].lowtemp.substr(0,2) + '° ~ ' + forecast[i-1].hightemp.substr(0,2)+'°' +  "<small>C<small>";
+//                           $('#slide-'+ i +' .slide__element--temp small')[0].innerText = 
+                           //详细
+                            $(".slide__element--weather span")[0 +3*i].innerText = forecast[i-1].type;
+                            $(".slide__element--weather span")[1 + 3*i].innerText = forecast[i-1].fengxiang;
+                            $(".slide__element--weather span")[2 + 3*i].innerText = forecast[i-1].fengli;
+                       
+                        
                        }
                        
                        
