@@ -25,9 +25,9 @@ http://themeforest.net/licenses
 		6.0 Page footer with scroll down button / .p-footer
 		6.1 Page general params / .page-cent, .page
 		6.3 Page and slide animation / .page.transition , .slide.transition
-		6.4 Clock countdown / .page-when, .pane-when .clock
-		6.5 Registration form / .page-register
-		6.6 About us / .page-about
+		6.4 Clock countdown / .page-weather, .pane-weather .clock
+		6.5 Registration form / .page-zodiac
+		6.6 About us / .page-tickets
 		6.7 Contact, Message / .page-contact
 	7. Video background / .video-container
 
@@ -1105,7 +1105,7 @@ strong,
 /* 6.2 Page and slide animation */
 .slide,
 .page .content,
-.page-home .logo-container ,
+.page-express .logo-container ,
 .page{
 	-webkit-transition: 0.8s background , 0.6s transform, 0.6s opacity;
 	transition: 0.8s background , 0.6s transform, 0.6s opacity;
@@ -1144,7 +1144,7 @@ strong,
 	transform: scale(0.8);
 /*	background: rgba(255, 255, 255, 0.15);*/
 }
-.page-home.transition .logo-container{
+.page-express.transition .logo-container{
 	-webkit-transform: translateY(20px) scale(0.1);
 	transform: translateY(20px) scale(0.1);
 	opacity: 0;
@@ -1159,20 +1159,20 @@ strong,
 	background: rgba(255, 255, 255, 0.15);
 }
 /* 6.3 Home page */
-.page-home .content ,
-.page-home.page-cent .content {
+.page-express .content ,
+.page-express.page-cent .content {
 	position: relative;
 	max-width: 1200px;
 	width: 100%;
 }
-.page-home .logo-container{
+.page-express .logo-container{
 	position: absolute;
 	top: 100px;
 	width: 100%;
 	text-align: center;
 }
 
-.page-home .logo-container img.h-logo{
+.page-express .logo-container img.h-logo{
 	position: relative;
 	display: inline-block;
 	/* adjust below according t your llogo dimension */
@@ -1180,25 +1180,25 @@ strong,
 	width: auto;
 }
 
-.page-home .content .header{
+.page-express .content .header{
 	margin: 0 auto;
 	text-align: left;
 /*	text-align: center;*/
 	position: relative;
 }
-.page-home .content .header>div{
+.page-express .content .header>div{
 /*	display: inline-block;*/
 	position: relative;
 }
 
-.page-home .content h2{
+.page-express .content h2{
 	text-transform: uppercase;
 	font-size: 56px;
 	text-align: left;
 	line-height: 1em;
 }
 
-.page-home .content h3{
+.page-express .content h3{
 	text-align: left;
 	text-transform: uppercase;
 	font-size: 32px;
@@ -1240,14 +1240,14 @@ strong,
 	color: inherit;
 }
 /* 6.4 Clock countdown */
-.pane-when{
+.pane-weather{
 	position: fixed;
 	left: 56px;
 	top: 0;
 	bottom: 0;
 	right: 50%;
 }
-.pane-when:after{
+.pane-weather:after{
 	position: absolute;
 	content: "";
 	top: 25%;
@@ -1257,19 +1257,19 @@ strong,
 	border-left: 1px solid #fff; 
 }
 /* Logo */
-.pane-when .logo{
+.pane-weather .logo{
 	width: 460px;
 	margin: 0 auto;
 	text-align: center;
 	margin-top: -120px;
 	position: relative;
 }
-.pane-when .logo img{
+.pane-weather .logo img{
 	height: 240px;
 	width: auto;
 }
 /* Clock */
-.pane-when .clock{
+.pane-weather .clock{
 	width: 460px;
 /*	height: 430px;*/
 	margin: 0 auto;
@@ -1277,26 +1277,26 @@ strong,
 	position: relative;
 }
 
-.pane-when .content{
+.pane-weather .content{
 		position: absolute;
 		top: 50%;
 		left: 0;
 		right: 0;
 	}
-	.pane-when::after {
+	.pane-weather::after {
 /*		display: none;*/
 	}
-	.pane-when .clock{
+	.pane-weather .clock{
 		margin-top: -60px;
 	}
 
 /* Mask to disable click */
 
-.pane-when .clock:before{
+.pane-weather .clock:before{
 	
 }
 
-.pane-when .clock .text{
+.pane-weather .clock .text{
     position: relative; 
     width: 100%;
     font-family: 'Opensans';
@@ -1308,10 +1308,10 @@ strong,
     color: #fff;
 	text-align: center;
 }
-.pane-when .clock .block:last-child .digit:after{
+.pane-weather .clock .block:last-child .digit:after{
     display: none;
 }
-.pane-when .clock .elem-center{
+.pane-weather .clock .elem-center{
     display: inline-block;
     position: relative;
     text-align: center;
@@ -1320,7 +1320,7 @@ strong,
 	bottom: 0;
 	margin-top: -100px;
 }
-.pane-when .clock .elem-center .digit{
+.pane-weather .clock .elem-center .digit{
     position: relative; 
     font-size: 240px;
 	letter-spacing: -0.02em;
@@ -1331,7 +1331,7 @@ strong,
     display: block;
 	width: auto;
 }
-.pane-when .clock .elem-center .txt{
+.pane-weather .clock .elem-center .txt{
 	position: absolute;
 	right: auto;
 	letter-spacing: 0em;
@@ -1342,15 +1342,15 @@ strong,
 	font-size: 24px;
 	width: auto;
 }
-.pane-when .clock .elem-center .text.top{
+.pane-weather .clock .elem-center .text.top{
 	bottom: 124%;
 }
-.pane-when .clock .elem-center .text.top img{
+.pane-weather .clock .elem-center .text.top img{
 	height: 65px;
 	margin-bottom: 20px;
 }
 
-.pane-when .clock .elem-bottom{
+.pane-weather .clock .elem-bottom{
 	position: relative;
 	width: 100%;
 /*	text-transform: uppercase;*/
@@ -1361,27 +1361,27 @@ strong,
 	text-align: center;
 }
 
-.pane-when .clock .elem-bottom .thin{
+.pane-weather .clock .elem-bottom .thin{
 	font-weight: 100;
 }
-.pane-when .clock .elem-bottom:after,
-.pane-when .clock .elem-bottom:before{
+.pane-weather .clock .elem-bottom:after,
+.pane-weather .clock .elem-bottom:before{
 	position: absolute;
 	content: '';
 	border-bottom: 1px solid #fff;
 	height: 1px;
 	bottom: 17px;
 }
-.pane-when .clock .elem-bottom:before{
+.pane-weather .clock .elem-bottom:before{
 	right: 0;
 	left: 75%;
 }
-.pane-when .clock .elem-bottom:after{
+.pane-weather .clock .elem-bottom:after{
 	left: 0;
 	right: 75%;
 }
-.pane-when .clock .elem-bottom .deco:after,
-.pane-when .clock .elem-bottom .deco:before{
+.pane-weather .clock .elem-bottom .deco:after,
+.pane-weather .clock .elem-bottom .deco:before{
 	position: absolute;
 	content: '';
 /*	background: #fff;*/
@@ -1390,29 +1390,29 @@ strong,
 	height: 120px;
 	bottom: 17px;
 }
-.pane-when .clock .elem-bottom .deco:before{
+.pane-weather .clock .elem-bottom .deco:before{
 	left: 0;
 	right: auto;
 	border-right: none;
 	border-bottom: none;
 }
-.pane-when .clock .elem-bottom .deco:after{
+.pane-weather .clock .elem-bottom .deco:after{
 	right: 0;
 	left: auto;
 	border-left: none;
 	border-bottom: none;
 }
-.pane-when footer {
+.pane-weather footer {
 	padding: 16px 48px;
 	margin-top: 32px;
 }
-.pane-when footer p{
+.pane-weather footer p{
 	color: #fff;
 	text-align: center;
     font-family: 'Opensans';
 }
 /* 6.5 Registration form */
-.page-register .content{
+.page-zodiac .content{
 /*    margin-top: -4rem;*/
 /*
     padding-left: 1em;
@@ -1420,7 +1420,7 @@ strong,
 */
 /*    padding-top: 0.2rem;*/
 }
-.page-register .form{  
+.page-zodiac .form{  
 	max-width: 480px;
 }
 .page .form{  
@@ -1548,7 +1548,7 @@ strong,
 }
 
 /* 6.6 About us */
-.page-about .content{
+.page-tickets .content{
     
 /*    margin-top: -4rem;*/
     border: none;
@@ -1559,7 +1559,7 @@ strong,
     padding-top: 112px;
     padding-bottom: 112px;
 }
-.page-about .article{
+.page-tickets .article{
        max-width: 480px;
     margin: auto;
 }

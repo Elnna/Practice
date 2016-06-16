@@ -12,7 +12,7 @@ class convenienceInfo{
  
     
     //查询天气
-    $weatherUrl = 'http://apis.baidu.com/apistore/weatherservice';
+    private $weatherUrl = 'http://apis.baidu.com/apistore/weatherservice';
     /*private $cityUrl = 'http://apis.baidu.com/apistore/weatherservice/citylist'; //城市列表API URL
  
     private $weatherUrl = 'http://apis.baidu.com/apistore/weatherservice/recentweathers'; //根据城市请求历史七天和未来四天天气API URL
@@ -35,6 +35,8 @@ class convenienceInfo{
         */
     
     //快递查询
+    private $expressUrl = 'http://api.kuaidi100.com/api';
+    private $expressId = 'false';
     
     private $weatherCode = WEATHER_CODE;
     
@@ -43,11 +45,24 @@ class convenienceInfo{
     }
     
     /**
+     * 将JSON内容转为数据，并返回
+     * @param string $content [内容]
+     * @return array
+     */
+    public function _returnArray($content){
+        return json_decode($content,true);
+    }
+    
+    
+    /**----------------------------天气---------------------------**/
+    /**
      * 获取天气预报支持城市列表
      * @return array
      */
     public function getCitys(){
-        $content = $this->juhecurl($this->cityUrl);
+        $params = false;
+        $baidu = true;
+        $content = $this->juhecurl($this->cityUrl,$params,$baidu);
         return $this->_returnArray($content);
     }
  
@@ -61,7 +76,8 @@ class convenienceInfo{
             'cityname'  => $city
         );
         $params = http_build_query($paramsArray);
-        $content = $this->juhecurl($this->weatherUrl,$params);
+        $baidu = true;
+        $content = $this->juhecurl($this->weatherUrl.'/recentweathers',$params,$baidu);
         return $this->_returnArray($content);
     }
  
@@ -75,7 +91,8 @@ class convenienceInfo{
             'citypinyin'  => $py
         );
         $params = http_build_query($paramsArray);
-        $content = $this->juhecurl($this->pyUrl,$params);
+        $baidu = true;
+        $content = $this->juhecurl($this->pyUrl.'/weather',$params,$baidu);
         return $this->_returnArray($content);
     }
  
@@ -89,7 +106,8 @@ class convenienceInfo{
             'cityname'    => $city
         );
         $params = http_build_query($paramsArray);
-        $content = $this->juhecurl($this->cityNameUrl,$params);
+        $baidu = true;
+        $content = $this->juhecurl($this->cityNameUrl.'/cityname',$params,$baidu);
         return $this->_returnArray($content);
     }
  
@@ -103,7 +121,8 @@ class convenienceInfo{
             'cityname'  => $city
         );
         $params = http_build_query($paramsArray);
-        $content = $this->juhecurl($this->cityInfoUrl,$params);
+        $baidu = true;
+        $content = $this->juhecurl($this->cityInfoUrl.'/cityinfo',$params,$baidu);
         return $this->_returnArray($content);
     }
  
@@ -117,22 +136,16 @@ class convenienceInfo{
             'cityid'  => $code
         );
         $params = http_build_query($paramsArray);
-        $content = $this->juhecurl($this->cityCodeUrl,$params);
+        $baidu = true;
+        $content = $this->juhecurl($this->cityCodeUrl.'/cityid',$params,$baidu);
         return $this->_returnArray($content);
     }
  
     
-    /**
-     * 将JSON内容转为数据，并返回
-     * @param string $content [内容]
-     * @return array
-     */
-    public function _returnArray($content){
-        return json_decode($content,true);
-    }
+    
     /**
     *
-    *
+    *查询天气代码
     **/
     public function getWeatherByWeatherId($weatherId){
         $codes = json_decode($this->weatherCode);
@@ -145,6 +158,8 @@ class convenienceInfo{
         }
         return $code;
     }
+/**----------------------------星座查询---------------------------**/
+
     
     /**
      * 根据星座名称获取星座运势
@@ -157,7 +172,8 @@ class convenienceInfo{
             'type'    => 'today'//default;
         );
         $params = http_build_query($paramsArray);
-        $content = $this->juhecurl($this->constellUrl,$params);
+        $baidu = true;
+        $content = $this->juhecurl($this->constellUrl,$params,$baidu);
         return $this->_returnArray($content);
     }
  
@@ -173,11 +189,113 @@ class convenienceInfo{
             'type'    => $type,
         );
         $params = http_build_query($paramsArray);
-        $content = $this->juhecurl($this->constellUrl,$params);
+        $baidu = true;
+        $content = $this->juhecurl($this->constellUrl,$params,$baidu);
         return $this->_returnArray($content);
+    }
+
+/**----------------------------快递查询---------------------------**/
+
+    /**
+    *运单查询
+    *@param  string $id  快递查询接口
+    *@param string $com 快递公司代码
+    *@param  string $nu  快递单号
+    *@param  string show  返回类型：0->json字符串，1->xml对象，2->html对象，3->text广本
+    *@param  string multi  返回类型：0->返回一行信息，1->返回多行完整信息
+    *@param  string order  desc->按时间由新到旧排列，asc->按时间由旧到新排列
+    */
+    public function getExpress($id,$com,$nu){
+        $paramsArray = array(
+            'id' => $id,
+            'com' => $com,
+            'nu' => $nu,
+            'show' => 0,
+            'multi' => 1,
+            'order' => 'desc'
+        );
+        
+        $params = http_build_query($paramsArray);
+        $content = $this->juhecurl($this->expressUrl,$params);
+        return $this->_returnArray($content);
+        
+    }
+    
+   
+    
+/**----------------------------火车票---------------------------**/
+    /**
+    *车次详情
+    *@param  string $train  车次
+    *@param  string $from   始发站
+    *@param  string $to   终点站
+    *@param  string $date   出发时间
+    */
+    public function getTrainDetail($train,$from,$to,$date){
+        $paramsArray = array(
+            'version' => '1.0',
+            'train' => $train,
+            'from' => $from,
+            'to' => $to,
+            'date' => $date
+        );
+        $params = http_build_query($paramsArray);
+        $baidu = true;
+        $content = $this->juhecurl($this->trainUrl . '/traindetail',$params,$baidu);
+        return $this->_returnArray($content);   
     }
     
     
+     /**
+    *车站搜索
+    *@param  string  $station 车次
+    */
+    public function getStationSearch($station){
+        $paramsArray = array(
+            'version' => '1.0',
+            'station' => $station
+        );
+        $params = http_build_query($paramsArray);
+        $baidu = true;
+        $content = $this->juhecurl($this->trainUrl . '/stationsearch',$params,$baidu);
+        return $this->_returnArray($content);   
+    }
+    
+    
+    /**
+    *站站搜索
+    *@param  string $from   出发站
+    *@param  string $to   到达站
+    *@param  string $date   出发时间
+    */
+    public function getS2SSearch($from,$to,$date){
+        $paramsArray = array(
+            'version' => '1.0',
+            'from' => $from,
+            'to' => $to,
+            'date' => $date
+        );
+        $params = http_build_query($paramsArray);
+        $baidu = true;
+        $content = $this->juhecurl($this->trainUrl . '/s2ssearch',$params,$baidu);
+        return $this->_returnArray($content);   
+    }
+    
+    
+     /**
+    *车次详情
+    *@param  string $key   车站字符串
+    */
+    public function getSuggestSearch($keyword){
+        $paramsArray = array(
+            'version' => '1.0',
+            'keyword' => $keyword,
+        );
+        $params = http_build_query($paramsArray);
+        $baidu = true;
+        $content = $this->juhecurl($this->trainUrl . '/suggestsearch',$params,$baidu);
+        return $this->_returnArray($content);   
+    }
     
     
     
@@ -185,10 +303,11 @@ class convenienceInfo{
      * 请求接口返回内容
      * @param  string $url [请求的URL地址]
      * @param  string $params [请求的参数]
+     * @param  string $baidu [api是否来自百度]
      * @param  int $ipost [是否采用POST形式]
      * @return  string
      */
-    public function juhecurl($url,$params=false,$ispost=0){
+    public function juhecurl($url,$params=false,$baidu=false,$ispost=0){
         $httpInfo = array();
         $ch = curl_init();
  
@@ -205,9 +324,12 @@ class convenienceInfo{
         }
         else
         {
-            $header = array('apikey:'. $this->appkey);
-            // 添加apikey到header
-            curl_setopt($ch, CURLOPT_HTTPHEADER  , $header);
+            if($baidu){
+                $header = array('apikey:'. $this->appkey);
+                // 添加apikey到header
+                curl_setopt($ch, CURLOPT_HTTPHEADER  , $header);
+            }
+           
             if($params){
                 curl_setopt( $ch , CURLOPT_URL , $url.'?'.$params );
             }else{

@@ -120,9 +120,9 @@ $(document).ready(function() {
     });
 	
 	/* Init video background */
-	$('.video-container video, .video-container object').maximage('maxcover');
+	/*$('.video-container video, .video-container object').maximage('maxcover');
 	
-	/* Init youtube video background */
+	 Init youtube video background 
 	if(backgroundVideoUrl != 'none'){
         
         //disable video background for smallscreen
@@ -131,12 +131,12 @@ $(document).ready(function() {
                     adproof: true
                     });
         }
-    }
+    }*/
 	
 	/** Init fullpage.js */
     $('#mainpage').fullpage({
 		menu: '#qmenu',
-		anchors: ['home',  'register', 'about-us', 'contact'],
+		anchors: ['express',  'zodiac', 'tickets', 'contact'],
 //        verticalCentered: false,
 //        resize : false,
 //		responsive: 900,
@@ -163,11 +163,7 @@ $(document).ready(function() {
     
     
     
-    //change iframe color:
-    var x=document.getElementById("express-iframe");
-    var y=(x.contentWindow || x.contentDocument);
-    if (y.document)y=y.document;
-    y.body.style.backgroundColor="red";
+   
     
 });
 

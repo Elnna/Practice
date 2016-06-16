@@ -10,6 +10,9 @@ $gaddress = new gaddress();
 $city = $gaddress->getCityByIp($gaddress->getIp());
 $ipWeatherResult = $weather->getWeather($city);  
 $zodiac = $weather->getZodiacFortuneByName("双子座");*/
+
+//快递：
+$nu = '1500066330925'; //测试单号；
 ?>
 
 <!doctype html>
@@ -77,25 +80,25 @@ http://themeforest.net/licenses
         <!-- BEGIN OF Quick nav icons at left -->
 		<nav class="quick-link count-4 nav-left">
 			<div class="logo">
-				<a href="#home">
+				<a href="#express">
 					<img src="img/logo_only.png" alt="Logo Brand">
 				</a>
 			</div>
 			<ul id="qmenu" class="qmenu">
-				<li data-menuanchor="home">
-					<a href="#home" class=""><i class="icon ion ion-home"></i>
+				<li data-menuanchor="express">
+					<a href="#express" class=""><i class="icon ion ion-plane"></i>
 					</a>
-					<span class="title">Home page</span>
+					<span class="title">快递</span>
 				</li>
-				<li data-menuanchor="register">
-					<a href="#register"><i class="icon ion ion-compose"></i>
+				<li data-menuanchor="zodiac">
+					<a href="#zodiac"><i class="icon ion ion-star"></i>
 					</a>
-					<span class="title">Stay in touch</span>
+					<span class="title">星座运势</span>
 				</li>
-				<li data-menuanchor="about-us">
-					<a href="#about-us"><i class="icon ion ion-android-information"></i>
+				<li data-menuanchor="tickets">
+					<a href="#tickets"><i class="icon ion ion-android-information"></i>
 					</a>
-					<span class="title">About Us</span>
+					<span class="title">火车票</span>
 				</li>
 				
 				<li data-menuanchor="contact">
@@ -135,13 +138,13 @@ http://themeforest.net/licenses
         <header class="header-top">
 			
             <div class="menu clearfix">
-                <a href="#about-us">about</a>
-                <a href="#contact">contact</a>
+                <a href="#tickets">出行</a>
+                <a href="#contact">联系我们</a>
             </div>
 		</header>
         
-		<!-- Begin of timer pane -->
-		<div class="pane-when " id="s-when">
+		<!-- Begin of weather pane -->
+		<div class="pane-weather " id="s-weather">
 			<div class="content">
 				 <!--Clock--> 
 				<div class="clock clock-countdown">
@@ -172,13 +175,13 @@ http://themeforest.net/licenses
 				</footer>                
 			</div> 
 		</div>
-		<!-- End of timer pane -->
+		<!-- End of weather pane -->
         
         <!-- BEGIN OF site main content content here -->
         <main class="page-main" id="mainpage">             
             
-			<!-- Begin of home page -->
-			<div class="section page-home page page-cent" id="s-home">
+			<!-- Begin of express page -->
+			<div class="section page-express page page-cent" id="s-express">
 				
 				<!-- Logo -->
 				<!--<div class="logo-container">
@@ -194,7 +197,7 @@ http://themeforest.net/licenses
 				
 				<!-- Scroll down button -->
                 <footer class="p-footer p-scrolldown">
-                    <a href="#register">
+                    <a href="#zodiac">
                         <div class="arrow-d">
 							<div class="before">Scroll</div>
 							<div class="after">Down</div>
@@ -207,8 +210,8 @@ http://themeforest.net/licenses
             
            
             
-            <!-- Begin of register page -->
-            <div class="section page-register page page-cent"  id="s-register">
+            <!-- Begin of zodiac page -->
+            <div class="section page-zodiac page page-cent"  id="s-zodiac">
                 <section class="content">
                     <header class="p-title">
                         <h3>Register <i class="ion ion-compose"></i></h3> 
@@ -231,7 +234,7 @@ http://themeforest.net/licenses
                     </div>
                 </section>
                 <footer class="p-footer p-scrolldown">
-                    <a href="#about-us">
+                    <a href="#tickets">
                         <div class="arrow-d">
 							<div class="before">About</div>
 							<div class="after">Lorem</div>
@@ -240,10 +243,10 @@ http://themeforest.net/licenses
                     </a>                        
                 </footer>
             </div>
-            <!-- End of register page -->
+            <!-- End of zodiac page -->
             
-            <!-- Begin of about us page -->
-            <div class="section page-about page page-cent" id="s-about-us">
+            <!-- Begin of tickets page -->
+            <div class="section page-tickets page page-cent" id="s-tickets">
                 <section class="content">
                     <header class="p-title">
                         <h3>About Us<i class="ion ion-android-information">
@@ -266,7 +269,7 @@ http://themeforest.net/licenses
                     </a>                        
                 </footer>
             </div>
-            <!-- End of about us page -->
+            <!-- End of tickets page -->
                 
             <!-- Begin of Contact page   -->
             <div class="section page-contact page page-cent  bg-color" data-bgcolor="rgba(95, 25, 208, 0.88)s" id="s-contact">
@@ -279,7 +282,7 @@ http://themeforest.net/licenses
 							</h3>
 							<ul class="buttons">
 								<li class="show-for-medium-up">
-									<a title="About" href="#about-us" ><i class="ion ion-android-information"></i></a>
+									<a title="About" href="#tickets" ><i class="ion ion-android-information"></i></a>
 								</li>
 								<!--<li>
 									<a title="Contact" href="#contact/information"><i class="ion ion-location"></i></a>
@@ -352,7 +355,7 @@ http://themeforest.net/licenses
 							</h3>
 							<ul class="buttons">
 								<li class="show-for-medium-up">
-									<a title="About" href="#about-us"><i class="ion ion-android-information"></i></a>
+									<a title="About" href="#tickets"><i class="ion ion-android-information"></i></a>
 								</li>
 								<li>
 									<a title="Contact" href="#contact/information"><i class="ion ion-location"></i></a>

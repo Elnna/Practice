@@ -13,53 +13,53 @@ http://themeforest.net/licenses
 
 /* Screen small than 1024px */
 @media (max-width : 1024px){
-	.pane-when{
+	.pane-weather{
 	}
-	.pane-when .content{
+	.pane-weather .content{
 		position: absolute;
 		top: 50%;
 		left: 0;
 		right: 0;
 	}
-	.pane-when::after {
+	.pane-weather::after {
 /*		display: none;*/
 	}
-	.pane-when .clock{
+	.pane-weather .clock{
 		width: 270px;
 		margin-top: 20px;
 	}
-	.pane-when .clock .elem-center .digit{
+	.pane-weather .clock .elem-center .digit{
     	font-size: 140px;
 	}
-	.pane-when .clock .elem-center .txt {
+	.pane-weather .clock .elem-center .txt {
 		top: 1em;
 		font-size: 20px;
 	}
-	.pane-when .clock .elem-bottom .deco:after,
-	.pane-when .clock .elem-bottom .deco:before{
+	.pane-weather .clock .elem-bottom .deco:after,
+	.pane-weather .clock .elem-bottom .deco:before{
 		width: 10px;
 		height: 70px;
 		bottom: 17px;
 	}
-	.pane-when .clock .elem-bottom:before{
+	.pane-weather .clock .elem-bottom:before{
 		right: 0;
 		left: 85%;
 	}
-	.pane-when .clock .elem-bottom:after{
+	.pane-weather .clock .elem-bottom:after{
 		left: 0;
 		right: 85%;
 	}
-	.pane-when .clock .elem-bottom {
+	.pane-weather .clock .elem-bottom {
 		font-size: 20px;
 	}
-	.pane-when .clock .elem-bottom>span{
+	.pane-weather .clock .elem-bottom>span{
 		margin-top: -6px;
 		vertical-align: top;
 		display: inline-block;
 	}
 	
 	.page-cent .content ,
-    .page-about .content {
+    .page-tickets .content {
 		padding-left: 32px;
 		padding-right: 56px;
 	}
@@ -67,35 +67,35 @@ http://themeforest.net/licenses
 }
 /* Screen Small than 768px */
 @media (max-width : 768px){
-	.pane-when .clock{
+	.pane-weather .clock{
 		width: 210px;
 		margin-top: 20px;
 	}
-	.pane-when .clock .elem-center .digit{
+	.pane-weather .clock .elem-center .digit{
     	font-size: 96px;
 	}
-	.pane-when .clock .elem-center .txt {
+	.pane-weather .clock .elem-center .txt {
 		top: 1em;
 		font-size: 20px;
 	}
-	.pane-when .clock .elem-bottom .deco:after,
-	.pane-when .clock .elem-bottom .deco:before{
+	.pane-weather .clock .elem-bottom .deco:after,
+	.pane-weather .clock .elem-bottom .deco:before{
 		width: 10px;
 		height: 70px;
 		bottom: 17px;
 	}
-	.pane-when .clock .elem-bottom:before{
+	.pane-weather .clock .elem-bottom:before{
 		right: 0;
 		left: 85%;
 	}
-	.pane-when .clock .elem-bottom:after{
+	.pane-weather .clock .elem-bottom:after{
 		left: 0;
 		right: 85%;
 	}
-	.pane-when .clock .elem-bottom {
+	.pane-weather .clock .elem-bottom {
 		font-size: 20px;
 	}
-	.pane-when .clock .elem-bottom>span{
+	.pane-weather .clock .elem-bottom>span{
 		margin-top: -6px;
 		vertical-align: top;
 		display: inline-block;
@@ -103,7 +103,7 @@ http://themeforest.net/licenses
 	
 	
 	
-	.pane-when .clock .elem-center .txt {
+	.pane-weather .clock .elem-center .txt {
 		top: 1.2em;
 		font-size: 16px;
 	}
@@ -123,7 +123,7 @@ http://themeforest.net/licenses
 	}
 	
 	.page-cent .content ,
-	.page-about .content {
+	.page-tickets .content {
 		padding-left: 16px;
 		padding-right: 56px;
 	}
@@ -169,61 +169,61 @@ http://themeforest.net/licenses
 
 /* Screen small than 600 Nexus 7, iPhone 6 plus : 412px*/
 @media (max-width : 600px){
-	.pane-when{
+	.pane-weather{
 		top: 48px;
 		left: 0;
 		right: 20px;
 		bottom: auto;
 /*		transform: scale(0.5)*/
 	}
-	.pane-when::after {
+	.pane-weather::after {
 		display: none;
 	}
-	.pane-when .clock{
+	.pane-weather .clock{
 		width: 180px;
 		margin-top: 64px;
 		float: right;
 	}
-	.pane-when .clock .elem-center .digit{
+	.pane-weather .clock .elem-center .digit{
     	font-size: 96px;
 	}
-	.pane-when .clock .elem-center .txt {
+	.pane-weather .clock .elem-center .txt {
 		top: -4px;
 		right: 0;
 		font-size: 12px;
 	}
-	.pane-when .clock .elem-bottom .deco:after,
-	.pane-when .clock .elem-bottom .deco:before{
+	.pane-weather .clock .elem-bottom .deco:after,
+	.pane-weather .clock .elem-bottom .deco:before{
 		width: 10px;
 		height: 48px;
 		bottom: 17px;
 	}
-	.pane-when .clock .elem-bottom:before{
+	.pane-weather .clock .elem-bottom:before{
 		right: 0;
 		left: 85%;
 	}
-	.pane-when .clock .elem-bottom:after{
+	.pane-weather .clock .elem-bottom:after{
 		left: 0;
 		right: 85%;
 	}
-	.pane-when .clock .elem-bottom {
+	.pane-weather .clock .elem-bottom {
 		font-size: 14px;
 	}
-	.pane-when .clock .elem-bottom>span{
+	.pane-weather .clock .elem-bottom>span{
 		margin-top: -6px;
 		vertical-align: top;
 		display: inline-block;
 	}
-	.pane-when .content{
+	.pane-weather .content{
 /*		transform: scale(0.5);*/
 		float: right;
 	}
-	.pane-when footer{
+	.pane-weather footer{
 		padding: 0;
 		margin: 0;
 		float: right;
 	}
-	.pane-when footer p{
+	.pane-weather footer p{
 		font-size: 14px;
 	}
 	/* Main page */
@@ -231,7 +231,7 @@ http://themeforest.net/licenses
 		margin-left: auto;
 		width: 100%;
 	}
-	.page-cent .content, .page-about .content {
+	.page-cent .content, .page-tickets .content {
 		padding-left: 64px;
 		padding-right: 20px;
 		padding-bottom: 96px;
@@ -274,21 +274,21 @@ http://themeforest.net/licenses
 }
 /* Screen small than 320px */
 @media (max-width : 320px){
-	.pane-when{
+	.pane-weather{
 		top: 36px;
 		left: 0;
 		right: 20px;
 		bottom: auto;
 	}
-	.pane-when::after {
+	.pane-weather::after {
 		display: none;
 	}
-	.pane-when .clock{
+	.pane-weather .clock{
 		width: 180px;
 		margin-top: 28px;
 		float: right;
 	}
-	.pane-when .clock .elem-center .digit{
+	.pane-weather .clock .elem-center .digit{
     	font-size: 72px;
 	}
 	.page-cent.page-contact .content{

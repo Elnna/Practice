@@ -5,11 +5,33 @@ require_once('./api/get.city.php');
 
 //接口基本信息配置
 $appkey = '2cf291486b5dd04551e81c11e1346615'; //全国天气查询appkey
-$weather = new weather($appkey);
+$convenienceInfo = new convenienceInfo($appkey);
 $gaddress = new gaddress();
 $city = $gaddress->getCityByIp($gaddress->getIp());
-$ipWeatherResult = $weather->getWeather($city);  
-$zodiac = $weather->getZodiacFortuneByName("双子座");
+$ipWeatherResult = $convenienceInfo->getWeather($city);  
+//星座运势
+$zodiac = $convenienceInfo->getZodiacFortuneByName("双子座");
+//火车票查询：
+//getTrainDetail($train,$from,$to,$date)
+$train = 'G101';
+$from = '北京南';
+$to = '上海虹桥';
+$trainDate = '2016-07-01';
+$station = '北京';
+/*
+$trainDetail = $convenienceInfo->getTrainDetail($train,$from,$to,$trainDate);
+$stationSearch = $convenienceInfo->getStationSearch($station);
+$ssSearch = $convenienceInfo->getS2SSearch($from,$to,$trainDate);
+$trainSuggest = $convenienceInfo->getSuggestSearch($station);
+*/
+
+//快递
+//apikey;
+$expressApiKey = '40bf371ed022440d';
+$expressCom = 'yunda';
+$expressNu = '1900171113992';
+$expressResult = $convenienceInfo->getExpress($expressApiKey,$expressCom,$expressNu);
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -67,26 +89,51 @@ $zodiac = $weather->getZodiacFortuneByName("双子座");
         }
 
     </style>
+<!--    <link rel="stylesheet" href="css/test.css">-->
+<script src="js/jquery-1.11.1.min.js"></script>
+
+
+    
 </head>
 <body>
     <div>
         <h1>天气查询</h1>
         <pre>
-        <?php var_dump($ipWeatherResult);?>
+        <?php //var_dump($ipWeatherResult);?>
         </pre>
     </div>
     <div>
         <h1>星座查询</h1>
         <pre>
-        <?php var_dump($zodiac);?>
+        <?php //var_dump($zodiac);?>
         </pre>
     </div>
     <div>
         <h1>快递查询</h1>
+        <pre>
+            <?php var_dump($expressResult);?>
+        </pre>
     </div>
     <div>
         <h1>火车票查询</h1>
+        <div>
+            <h4>车次详情</h4>
+            <pre> <?php //var_dump($trainDetail);?></pre>
+        </div>
+        <div>
+            <h4>车站搜索</h4>
+            <pre> <?php //var_dump($stationSearch);?></pre>
+        </div>
+        <div>
+            <h4>站站搜索</h4>
+            <pre> <?php //var_dump($ssSearch);?></pre>
+        </div>
+        <div>
+            <h4>站点建议</h4>
+            <pre> <?php //var_dump($trainSuggest);?></pre>
+        </div>
     </div>
+   
 </body>
 </html>
 <!-- IE needs 512+ bytes: http://blogs.msdn.com/b/ieinternals/archive/2010/08/19/http-error-pages-in-internet-explorer.aspx -->
