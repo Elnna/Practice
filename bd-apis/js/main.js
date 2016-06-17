@@ -211,8 +211,14 @@ $(document).ready(function() {
         
     });
     
+    var historyCity = '';
      $('.common-cities span, .history-cities span').on('click',function(data){
             var city = $(this).text();
+//            historyCity = document.createElement('span');
+//            historyCity.innerText = city;
+            if($('.history-cities span').text().indexOf(city) == -1){
+                $('.history-cities span:last-child').before('<span>' + city + '</span>');
+            }
 //            historyCity += '<span>' + city + '</span>';
 //            $('.history-cities').html(historyCity);
             $('.get-city').val(city);

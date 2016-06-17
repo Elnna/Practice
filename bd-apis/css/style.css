@@ -80,13 +80,18 @@ iframe{
     margin: 5px 10px 5px 5px;
     float: right;
 }
-.common-cities span{
+.common-cities span,.history-cities span{
     font-size: 0.75em;
     padding: 0.1em 0.2em;
 }
 .common-cities span:hover,
 .common-cities span:focus{
     background-color: rgba(255, 255, 255, 0.36);
+}
+
+.history-cities span i{
+    margin: 0.5em;
+    color: rgba(204, 204, 204, 0.56);
 }
 /*weather-pane*/
 .p-weather-date{
