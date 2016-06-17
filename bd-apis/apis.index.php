@@ -1,18 +1,40 @@
 <?php 
 header('Content-type:text/html;charset=utf-8');
-/*include './api/info.query.php'; //引入天气请求类
+include './api/info.query.php'; //引入天气请求类
 require_once('./api/get.city.php'); 
 
 //接口基本信息配置
 $appkey = '2cf291486b5dd04551e81c11e1346615'; //全国天气查询appkey
-$weather = new weather($appkey);
+$convenienceInfo = new convenienceInfo($appkey);
 $gaddress = new gaddress();
 $city = $gaddress->getCityByIp($gaddress->getIp());
-$ipWeatherResult = $weather->getWeather($city);  
-$zodiac = $weather->getZodiacFortuneByName("双子座");*/
+$ipWeatherResult = $convenienceInfo->getWeather($city);  
+//星座运势
+$zodiac = $convenienceInfo->getZodiacFortuneByName("双子座");
+//火车票查询：
+//getTrainDetail($train,$from,$to,$date)
+$train = 'G101';
+$from = '北京南';
+$to = '上海虹桥';
+$trainDate = '2016-07-01';
+$station = '北京';
+/*
+$trainDetail = $convenienceInfo->getTrainDetail($train,$from,$to,$trainDate);
+$stationSearch = $convenienceInfo->getStationSearch($station);
+$ssSearch = $convenienceInfo->getS2SSearch($from,$to,$trainDate);
+$trainSuggest = $convenienceInfo->getSuggestSearch($station);
+*/
 
-//快递：
-$nu = '1500066330925'; //测试单号；
+//快递
+//apikey;
+$expressApiKey = '40bf371ed022440d';
+$expressCom = 'yunda';
+$expressNu = '1900171113992';
+/*
+$expressResult = $convenienceInfo->getExpress($expressApiKey,$expressCom,$expressNu);
+*/
+
+$weeksArr = array('monday'=>'星期一','tuesday' => '星期二', 'wednesday','thursday' =>'星期四','friday' => '星期五','saturday' => '星期六', 'sunday' => '星期天');
 ?>
 
 <!doctype html>
@@ -47,6 +69,9 @@ http://themeforest.net/licenses
         <link rel="stylesheet" href="./fonts/asap/stylesheet.css">
         <link rel="stylesheet" href="./css/ionicons.min.css">
         
+        <!-- Weather CSS style -->
+        <link rel="stylesheet" href="./css/weather-icons.css">
+
         <!-- Vendor CSS style -->
         <link rel="stylesheet" href="./css/foundation.min.css">
         <link rel="stylesheet" href="./js/vendor/jquery.fullPage.css">
@@ -136,45 +161,115 @@ http://themeforest.net/licenses
        
         
         <header class="header-top">
-			
-            <div class="menu clearfix">
-                <a href="#tickets">出行</a>
-                <a href="#contact">联系我们</a>
-            </div>
+			<h1><?php echo (($ipWeatherResult['errNum'] == 0) ? $ipWeatherResult['retData']['city']: $city ); ?></h1>
 		</header>
         
 		<!-- Begin of weather pane -->
 		<div class="pane-weather " id="s-weather">
 			<div class="content">
-				 <!--Clock--> 
-				<div class="clock clock-countdown">
-					<div class="site-config"
-						 data-date="10/30/2016 00:00:00" 
-						 data-date-timezone="+0"
-						 ></div>					
-					<div class="elem-center">
-						<div class="digit">
-							<span class="days">81</span>
-							<span class="txt">days</span>
-						</div>
-					</div>
-					
-					
-					<div class="elem-bottom">
-						<div class="deco"></div>
-						
-						<span class="hours">18</span><span class="thin">H</span>
-						<span class="minutes">45</span><span class="thin">MN</span>
-						<span class="seconds">36</span><span class="thin">S</span>
-					</div>
-				</div> 
-				
-				
-				<footer>
-					<p>Before we launch our <strong>new website</strong></p>
-				</footer>                
+                <?php
+                    if($ipWeatherResult['errNum'] == 0){
+                        $data = $ipWeatherResult['retData'];
+                        $type = $data['today']['type'];
+                        $weather = $convenienceInfo->getWeatherByWeatherId($type) ? $convenienceInfo->getWeatherByWeatherId($type) : 'sunny' ;
+                        $forecast = $data['forecast'];
+                        $date = substr($data['today']['date'],0,4) . ' 年' . substr($data['today']['date'],5,2). '月' . substr($data['today']['date'],8,2) . '日' . $data['today']['week'];  
+                ?>
+               <div class="weather-forecast" data-bgcolor="rgba(95, 25, 208, 0.88)s" id="s-forecast">
+				    <!-- Begin of current weather -->
+                   <?php
+                        ini_set('date.timezone', 'Asia/Shanghai');
+                        $time = date('H:i', time());
+                    ?>
+                    <div class="weather-item active" id="s-current" >
+                        <section class="content">
+                            <header class="p-weather-date">
+                                <h6><?php echo $date;?><span><?php echo $time;?></span></h6>
+                            </header>
+                            <div class="weather-type">
+                                <p><span><?php echo $data['today']['type']; ?></span> <span><?php echo $data['today']['fengxiang']; ?></span><span><?php echo $data['today']['fengli'];?></span></p>
+                            </div>
+                            <div class="weather-temp" style="font-size:7em margin-top:5%">
+                                <?php echo substr($data['today']['curTemp'],0,2) .'°';?><small>C</small>
+                            </div>                            
+                        </section>  
+                    </div>
+				    <!-- Begin of today weather -->
+                   
+                    <div class="weather-item" id="s-today" >
+                        <section class="content">
+                            <header class="p-weather-date">
+                                <h6><?php echo $date;?></h6>
+                            </header>
+                            <div class="weather-type">
+                                <p><span><?php echo $data['today']['type']; ?></span> <span><?php echo $data['today']['fengxiang']; ?></span><span><?php echo $data['today']['fengli'];?></span></p>
+                            </div>
+                            <div class="weather-temp" >
+                                <?php echo substr($data['today']['lowtemp'],0,2). '°~' . substr($data['today']['hightemp'],0,2) .'°'?><small>C</small>
+                            </div>                            
+                        </section>  
+                    </div>
+    
+                    <!-- end of today weather   -->
+
+                   
+                   <!-- Begin of forecast weather -->
+                   <?php 
+                    foreach($forecast as $fk => $fv){
+                        $ftype = $fv['type'];
+                        $fc = $convenienceInfo->getWeatherByWeatherId($ftype) ? $convenienceInfo->getWeatherByWeatherId($ftype):'rainy';
+                        $fdate = substr($fv['date'],0,4) . ' 年' . substr($fv['date'],5,2). '月' . substr($fv['date'],8,2) . '日&nbsp;' . $fv['week'];
+                        $fweather = '<span>' . $fv['type'] .'</span><span>' . $fv['fengxiang'] . '</span><span>' . $fv['fengli'] . '</span>';
+                        $ftemp = substr($fv['lowtemp'],0,2). '°~' . substr($fv['hightemp'],0,2) .'°';
+                        $anchor = array_search($fv['week'],$weeksArr);
+                    ?>
+                   <div class="weather-item" id="s-<?php echo $anchor;?>">
+                        <section class="content">
+                            <header class="p-weather-date">
+                                <h6><?php echo $fdate;?></h6>
+                            </header>
+                            <div class="weather-type">
+                                <p><?php echo $fweather;?></p>
+                            </div>
+                            <div class="weather-temp">
+                               <?php echo $ftemp; ?><small>C</small>
+                            </div>                            
+                        </section>  
+                    </div>
+                   <?php }?>
+                    <!-- end of forecast weather   -->
+                   				
+<!--				<footer>-->
+                     <!-- start of weather nav   -->
+                   <nav class="slide-nav" id="weather-nav">
+                       <a class="nav-item active" href="#current">
+                           <i class="wi wi-day-<?php echo $fc;?>"></i><span>实时天气</span>
+                       </a>
+                       <a class="nav-item" href="#today">
+                            <i class="wi wi-day-<?php echo $fc;?>"></i><span><?php echo substr($data['today']['date'],8,2) . '/' . substr($data['today']['date'],5,2);?></span>
+                       </a>
+                    <?php 
+                        foreach($forecast as $fk => $fv){
+                            $ftype = $fv['type'];
+                            $fweather = $convenienceInfo->getWeatherByWeatherId($ftype) ? $convenienceInfo->getWeatherByWeatherId($ftype):'rainy';
+
+                            $fdate =substr($fv['date'],8,2) . '/' . substr($fv['date'],5,2);
+                            $anchor = array_search($fv['week'],$weeksArr);
+
+                    ?>
+                       <a class="nav-item" href="#<?php echo $anchor; ?>">
+                            <i class="wi wi-day-<?php echo $fweather;?>"></i><span><?php echo $fdate;?></span>
+                       </a>
+                    <?php }?>  
+                   </nav>
+                    <!-- end of weather nav  -->
+<!--                </footer>                -->
 			</div> 
-		</div>
+            <?php }else{?>
+                 <p class="error-code"> Sorry!!!<?php echo $ipWeatherResult['errMsg']; ?></p>
+            <?php }?>
+		  </div>
+        </div>
 		<!-- End of weather pane -->
         
         <!-- BEGIN OF site main content content here -->
@@ -191,7 +286,7 @@ http://themeforest.net/licenses
 				<section class="content">
 					
 <!--					<header class="header">-->
-						<iframe  id="express-iframe" name="kuaidi100" src="//www.kuaidi100.com/frame/app/index2.html" width="700" height="350" marginwidth="0" marginheight="0" hspace="0" vspace="0" frameborder="0" scrolling="no"></iframe>
+						<iframe  id="express-iframe" name="kuaidi100" src="//www.kuaidi100.com/frame/app/index2.html" width="700" height="350" marginwidth="0" marginheight="10" hspace="0" vspace="0" frameborder="0" scrolling="no"></iframe>
 <!--					</header>-->
 				</section>
 				
@@ -284,9 +379,6 @@ http://themeforest.net/licenses
 								<li class="show-for-medium-up">
 									<a title="About" href="#tickets" ><i class="ion ion-android-information"></i></a>
 								</li>
-								<!--<li>
-									<a title="Contact" href="#contact/information"><i class="ion ion-location"></i></a>
-								</li>-->
 								<li>
 									<a title="Message" href="#contact/message"><i class="ion ion-email"></i></a>
 								</li>
@@ -425,6 +517,7 @@ http://themeforest.net/licenses
         <!-- All Javascript plugins goes here -->
 <!--		<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>-->
         <script src="./js/vendor/jquery-1.11.2.min.js"></script>
+        <script src="./js/jquery-ui.min.js"></script>
 		<!-- All vendor scripts -->
         <script src="./js/vendor/all.js"></script>
 		

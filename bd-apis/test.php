@@ -18,12 +18,10 @@ $from = '北京南';
 $to = '上海虹桥';
 $trainDate = '2016-07-01';
 $station = '北京';
-/*
 $trainDetail = $convenienceInfo->getTrainDetail($train,$from,$to,$trainDate);
 $stationSearch = $convenienceInfo->getStationSearch($station);
 $ssSearch = $convenienceInfo->getS2SSearch($from,$to,$trainDate);
 $trainSuggest = $convenienceInfo->getSuggestSearch($station);
-*/
 
 //快递
 //apikey;
@@ -31,6 +29,11 @@ $expressApiKey = '40bf371ed022440d';
 $expressCom = 'yunda';
 $expressNu = '1900171113992';
 $expressResult = $convenienceInfo->getExpress($expressApiKey,$expressCom,$expressNu);
+ 
+
+//航班动态, 来自于juhe，
+$juheAppKey = '33760b60b674362611ac6241386f5f59';
+$convenienceInfo->setAppKey($juheAppKey);
 
 ?>
 <!doctype html>
@@ -99,13 +102,13 @@ $expressResult = $convenienceInfo->getExpress($expressApiKey,$expressCom,$expres
     <div>
         <h1>天气查询</h1>
         <pre>
-        <?php //var_dump($ipWeatherResult);?>
+        <?php var_dump($ipWeatherResult);?>
         </pre>
     </div>
     <div>
         <h1>星座查询</h1>
         <pre>
-        <?php //var_dump($zodiac);?>
+        <?php var_dump($zodiac);?>
         </pre>
     </div>
     <div>
@@ -118,19 +121,19 @@ $expressResult = $convenienceInfo->getExpress($expressApiKey,$expressCom,$expres
         <h1>火车票查询</h1>
         <div>
             <h4>车次详情</h4>
-            <pre> <?php //var_dump($trainDetail);?></pre>
+            <pre> <?php var_dump($trainDetail);?></pre>
         </div>
         <div>
             <h4>车站搜索</h4>
-            <pre> <?php //var_dump($stationSearch);?></pre>
+            <pre> <?php var_dump($stationSearch);?></pre>
         </div>
         <div>
             <h4>站站搜索</h4>
-            <pre> <?php //var_dump($ssSearch);?></pre>
+            <pre> <?php var_dump($ssSearch);?></pre>
         </div>
         <div>
             <h4>站点建议</h4>
-            <pre> <?php //var_dump($trainSuggest);?></pre>
+            <pre> <?php var_dump($trainSuggest);?></pre>
         </div>
     </div>
    

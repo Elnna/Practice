@@ -27,6 +27,7 @@ $(window).load(function(){
 
 /* 1. Clock attribute */
 
+/*
 var dateReadableText = 'Upcoming date';
     if($('.site-config').attr('data-date-readable') && ($('.site-config').attr('data-date-readable') != '')){
         $('.timeout-day').text('');
@@ -46,6 +47,7 @@ $('.clock-countdown').downCount({
     }
     $('.timeout-day').text(zerodayText);
 });
+*/
 
 
 /* 2. Background for page / section */
@@ -86,6 +88,12 @@ var isSlide = false;
 var slideElem = $('.slide');
 var arrowElem = $('.p-footer .arrow-d');
 var pageElem = $('.page');
+
+
+
+
+
+
 
 /* 3. Init all plugin on load */
 $(document).ready(function() {
@@ -160,7 +168,25 @@ $(document).ready(function() {
 		
         afterRender: function(){}
     });
-    
+    $('.nav-item').click(function(e){ 
+        var oldHash = $('.nav-item.active').attr('href');
+        var newHash = $(this).attr('href');
+        console.log("oldhash:" , oldHash);
+        console.log("newhash:" , newHash);
+        
+        $('.nav-item.active').removeClass('active');
+        $(this).addClass('active');
+        console.log($('#s-' + oldHash.substr(1,oldHash.length-1)));
+        $('#s-' + oldHash.substr(1,oldHash.length-1)).removeClass('active');
+        $('#s-' + newHash.substr(1,newHash.length-1)).addClass('active');
+       /* $(this).addClass('active');
+        $('#s-' + newHash.substr(1,newHash.length-1)).addClass('active');*/
+//        alert("click");
+    });
+  /*$('.nav-item').on('click','weather-item',function(data){
+//      console.log(data);
+      alert("data");
+  })*/
     
     
    

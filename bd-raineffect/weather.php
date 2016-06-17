@@ -138,7 +138,7 @@ $ipWeatherResult = $weather->getWeather($city);
                     $navsilde = 1;
                     foreach($future as $fk => $fv){
                         $ftype = $fv['type'];
-                        $ffc = $ffc = $weather->getWeatherByWeatherId($ftype) ? $weather->getWeatherByWeatherId($ftype):'rainy';
+                        $ffc = $weather->getWeatherByWeatherId($ftype) ? $weather->getWeatherByWeatherId($ftype):'rainy';
                        
                         $date =substr($fv['date'],8,2) . '/' . substr($fv['date'],5,2);
                 ?>

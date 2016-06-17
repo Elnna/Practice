@@ -13,29 +13,20 @@ http://themeforest.net/licenses
 
 /* Screen small than 1024px */
 @media (max-width : 1024px){
-	.pane-weather{
-	}
 	.pane-weather .content{
 		position: absolute;
-		top: 50%;
+		top: 20%;
 		left: 0;
 		right: 0;
 	}
-	.pane-weather::after {
-/*		display: none;*/
+    #s-current .weather-temp{
+        font-size: 7em;
+    }
+	.weather-temp{
+    	font-size: 6em;
+        margin-top: 10%;
 	}
-	.pane-weather .clock{
-		width: 270px;
-		margin-top: 20px;
-	}
-	.pane-weather .clock .elem-center .digit{
-    	font-size: 140px;
-	}
-	.pane-weather .clock .elem-center .txt {
-		top: 1em;
-		font-size: 20px;
-	}
-	.pane-weather .clock .elem-bottom .deco:after,
+	/*.pane-weather .clock .elem-bottom .deco:after,
 	.pane-weather .clock .elem-bottom .deco:before{
 		width: 10px;
 		height: 70px;
@@ -62,19 +53,32 @@ http://themeforest.net/licenses
     .page-tickets .content {
 		padding-left: 32px;
 		padding-right: 56px;
-	}
+	}*/
 	
+}
+/* Screen Small than 866px */
+@media (max-width : 866px){
+    
+    .weather-temp{
+    	font-size: 5em;
+	}
+    #s-current .weather-temp{
+        font-size: 6em;
+    }
 }
 /* Screen Small than 768px */
 @media (max-width : 768px){
-	.pane-weather .clock{
-		width: 210px;
+	.pane-weather {
+		width: 40%;
 		margin-top: 20px;
 	}
-	.pane-weather .clock .elem-center .digit{
-    	font-size: 96px;
+	.weather-temp{
+    	font-size: 4em;
 	}
-	.pane-weather .clock .elem-center .txt {
+    #s-current .weather-temp{
+        font-size: 5em;
+    }
+	/*.pane-weather .clock .elem-center .txt {
 		top: 1em;
 		font-size: 20px;
 	}
@@ -106,15 +110,26 @@ http://themeforest.net/licenses
 	.pane-weather .clock .elem-center .txt {
 		top: 1.2em;
 		font-size: 16px;
-	}
+	}*/
 }
 /* Screen Small than 720px */
 @media (max-width : 720px){
 	
+    .weather-temp{
+    	font-size: 3em;
+	}
+    #s-current .weather-temp{
+        font-size: 4em;
+    }
+    #weather-nav{
+        top:25vh;
+    }
+    
+    
 	#fp-nav.right{
 		right: 5px;
 	}
-    .page .content .clock {
+    .page .content {
 		-webkit-transform: scale(0.6);
 		transform: scale(0.6);
 	}
@@ -137,13 +152,13 @@ http://themeforest.net/licenses
 	.page p{
 		font-size: 14px;
 	}
-	.page .form.send_email_form .fields{
+	/*.page .form.send_email_form .fields{
 		height: 35px;
 	}
 	.page .form.send_email_form .buttons,
 	.page .form.send_email_form .buttons button{
 		height: 34px;
-	}
+	}*/
 	.page-cent .p-title h3{
 		font-size: 24px;
 		border-bottom-width: 5px;
@@ -169,24 +184,57 @@ http://themeforest.net/licenses
 
 /* Screen small than 600 Nexus 7, iPhone 6 plus : 412px*/
 @media (max-width : 600px){
+     .weather-temp{
+    	font-size: 2em;
+	}
+    #s-current .weather-temp{
+        font-size: 3em;
+    }
+   /* #weather-nav{
+        top:15vh;
+    }*/
 	.pane-weather{
-		top: 48px;
-		left: 0;
-		right: 20px;
+		top: 20px;
+		left: 35%;
 		bottom: auto;
-/*		transform: scale(0.5)*/
+        z-index: 100;
 	}
-	.pane-weather::after {
-		display: none;
-	}
-	.pane-weather .clock{
-		width: 180px;
-		margin-top: 64px;
+	
+	.pane-weather .p-weather-date{
+		width: 100%;
+        font-size: 0.5em;
+        text-align: center;
+		margin-top: 50px;
 		float: right;
 	}
-	.pane-weather .clock .elem-center .digit{
-    	font-size: 96px;
-	}
+    
+    .pane-weather .weather-type{
+        width: 100%;
+        text-align: center;
+		margin-top: 0px;
+		float: right;
+        font-size: .0.45em;
+    }
+   /* .nav-item{
+        top:25vh;
+    }*/
+    .nav-item span{
+        display: none;
+    }
+    .nav-item span:hover,
+    .nav-item span:focus,{
+        display: block;
+       /* background-color: #ccc;
+        float: right*/
+        font-size: 0.5em;
+        color: #fff;
+    }
+    .page .page-cent{
+        width: 100%;
+        margin-top: 10%;
+        
+    }
+	/*
 	.pane-weather .clock .elem-center .txt {
 		top: -4px;
 		right: 0;
@@ -215,7 +263,7 @@ http://themeforest.net/licenses
 		display: inline-block;
 	}
 	.pane-weather .content{
-/*		transform: scale(0.5);*/
+		transform: scale(0.5);
 		float: right;
 	}
 	.pane-weather footer{
@@ -225,12 +273,15 @@ http://themeforest.net/licenses
 	}
 	.pane-weather footer p{
 		font-size: 14px;
-	}
+	}*/
 	/* Main page */
 	.page-main{
 		margin-left: auto;
 		width: 100%;
 	}
+    iframe .page-cent{
+        margin-top: 50px;
+    }
 	.page-cent .content, .page-tickets .content {
 		padding-left: 64px;
 		padding-right: 20px;

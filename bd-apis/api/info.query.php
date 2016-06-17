@@ -45,6 +45,14 @@ class convenienceInfo{
     }
     
     /**
+    *  更改appkey
+    * @param string $appKey [api key]
+    */
+    public function setAppKey($appKey){
+        $this->appkey = $appKey;
+    }
+    
+    /**
      * 将JSON内容转为数据，并返回
      * @param string $content [内容]
      * @return array
