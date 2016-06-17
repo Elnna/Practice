@@ -25,6 +25,7 @@ $(window).load(function(){
 });
 
 
+
 /* 1. Clock attribute */
 
 /*
@@ -89,8 +90,7 @@ var slideElem = $('.slide');
 var arrowElem = $('.p-footer .arrow-d');
 var pageElem = $('.page');
 
-
-
+//var historyCity = '';
 
 
 
@@ -168,28 +168,246 @@ $(document).ready(function() {
 		
         afterRender: function(){}
     });
+    
+    
+    /*nav slide*/
     $('.nav-item').click(function(e){ 
         var oldHash = $('.nav-item.active').attr('href');
         var newHash = $(this).attr('href');
-        console.log("oldhash:" , oldHash);
-        console.log("newhash:" , newHash);
+//        console.log("oldhash:" , oldHash);
+//        console.log("newhash:" , newHash);
         
         $('.nav-item.active').removeClass('active');
         $(this).addClass('active');
-        console.log($('#s-' + oldHash.substr(1,oldHash.length-1)));
+//        console.log($('#s-' + oldHash.substr(1,oldHash.length-1)));
         $('#s-' + oldHash.substr(1,oldHash.length-1)).removeClass('active');
         $('#s-' + newHash.substr(1,newHash.length-1)).addClass('active');
-       /* $(this).addClass('active');
-        $('#s-' + newHash.substr(1,newHash.length-1)).addClass('active');*/
-//        alert("click");
+      
     });
-  /*$('.nav-item').on('click','weather-item',function(data){
-//      console.log(data);
-      alert("data");
-  })*/
     
     
+    /*change city*/
+    $('.header-top h1').on("click",function(e){
+//       alert("success");
+        
+        //替换header top 
+//        var oldNode = $(this)[0];
+        /*var newNodes = "<div id='change-city' class='change-city'>\
+        <div class='input-box'><input class='get-city' type='text' name='city' value='" + 
+        $('.header-top h1 span')[0].innerText  + "' style='background-color: transparent;'/>\
+        <button class='submit-btn' type='button' name='submit'>确定</button></div>\
+        <div class='history-cities'></div>\
+        <hr style='width:10%'>\
+        <div class='common-cities'><span>北京</span><span>上海</span><span>深圳</span>" +  
+        "<span>武汉</span><span>广州</span><span>杭州</span><span>南京</span><span>成都</span>\
+        <span>天津</span><span>西安</span><span>福州</span><span>重庆</span><span>厦门</span>"+
+        "<span>青岛</span><span>大连</span></div></div>";*/
+        
+//        $('.header-top').html(newNodes);
+        
+        $(this).addClass('hide');
+        $('.get-city').val($('.header-top h1 span')[0].innerText);
+        $('.change-city').removeClass('hide');
+        
+    });
+    
+     $('.common-cities span, .history-cities span').on('click',function(data){
+            var city = $(this).text();
+//            historyCity += '<span>' + city + '</span>';
+//            $('.history-cities').html(historyCity);
+            $('.get-city').val(city);
+            $('.header-top h1 span')[0].innerText = city;
+            $('.change-city').addClass('hide');
+            $('.header-top h1').removeClass('hide');
+//            var cityNode = "<h1><span>" +city + "</span><span>切换地址</span>";
+//             alert(city);
+//            $('.header-top').html(cityNode);
+//            alert(city);
+//            oldNode = "<h1><span>" +city + "</span><span>切换地址</span>";
+//            thisObj.html(oldNode);
+         
+         
+            var apikey = {'apikey':'2cf291486b5dd04551e81c11e1346615'};
+            var url = 'http://apis.baidu.com/apistore/weatherservice/recentweathers?cityname=' + city;
+            $.ajax({
+               url:url, 
+               method: "GET",  
+               headers: apikey, 
+               dataType: "json",
+               success: function(data){
+                   console.log('success',data);
+                   if(data.errNum==0){
+                      
+                       var retData = data.retData;
+                       var today = retData.today.date.split("-");
+                       var forecast = retData.forecast;
+                       var date = new Date();
+                       var time = date.getHours() + ':' + date.getMinutes();
+                       
+                      //实时天气
+                       $("#s-current .p-weather-date h6")[0].innerText = today[0] + "年" + today[1] + "月" + today[2] + "日" + forecast[0].week + time;
+                       
+                       $("[href=#current].nav-item i,[href=#today].nav-item i")[0].className = "wi wi-day-" + getWeatherCode(retData.today.type);
+                       
+                       
+                       //更改温度
+                       var tempHtml = retData.today.curTemp.substr(0,2) + "°<small>C</small>";
+                       $('#s-current .weather-temp,#s-today .weather-temp').html(tempHtml);
+                       
+                       var typeHtml = '<span>' + retData.today.type + '</span><span>' + retData.today.fengxiang + '</span><span>' + retData.today.fengxiang + '</span>';
+                       $('#s-current .weather-type p,#s-today .weather-type p').html(typeHtml);
+                       
+                      
+                       //当天天气
+                        $("#s-today .p-weather-date h6")[0].innerText = today[0] + "年" + today[1] + "月" + today[2] + "日" + forecast[0].week ;
+                       
+                      /* $('[href=#today].nav-item i')[0].className = "wi wi-day-" + getWeatherCode(retData.today.type);
+                       */
+                       
+                       //更改温度
+                      /* var tempHtml = retData.today.curTemp.substr(0,2) + "°<small>C</small>";
+                       $('#s-today .weather-temp').html(tempHtml);
+                       */
+                      /* var typeHtml = '<span>' + retData.today.type + '</span><span>' + retData.today.fengxiang + '</span><span>' + retData.today.fengxiang + '</span>';
+                       $('#s-today .weather-type p').html(typeHtml);
+                       */
+                      
+                       
+                       for(var i=1; i <= forecast.length; i++){
+                       
+                           //更改天气标识
+//                           console.log(getWeatherCode(forecast[i-1].type));
+                           $("[href=#" + getWeekEn(forecast[i-1]['week']) + "].nav-item i")[0].className = "wi wi-day-" + getWeatherCode(forecast[i-1].type);
+                          
+                           //更改温度
+                           $('#'+ getWeekEn(forecast[i-1]['week']) + ' .weather-temp').innerHTML = forecast[i-1].lowtemp.substr(0,2) + '°~' + forecast[i-1].hightemp.substr(0,2)+'°' +  "<small>C</small>";
+//                         //更改天气详细说明
+                           typeHtml = '<span>' + retData.today.type + '</span><span>' + retData.today.fengxiang + '</span><span>' + retData.today.fengxiang + '</span>';
+                            $('#s-'+ getWeekEn(forecast[i-1]['week']) + ' .weather-type p').html(typeHtml);
+                           
+                       }
+                    
+                       
+                   } else{
+                       if(window.confirm(data.errMsg)){
+                           return false;
+                       }
+
+                   }
+
+                },
+                error:function(data){
+                    $('.change-city').addClass('hide');
+                    $('.header-top h1').removeClass('hide');
+                    console.log('failed',data);
+                    
+                }
+               });
+         
+        });
+        
+       
+        
+        
    
     
 });
 
+var getWeekEn = function(str){
+    var en = '';
+    switch(str){
+        case '星期一':
+            en = 'monday';
+            break;
+        case '星期二':
+            en = 'tuesday';
+            break;
+        case '星期三':
+            en = 'wednesday';
+            break;
+        case '星期四':
+            en = 'thursday';
+            break;
+        case '星期五':
+            en = 'friday';
+            break;
+        case  '星期六':
+            en = 'saturday' ;
+            break;
+        case '星期天':
+            en = 'sunday';
+            break;
+        default:
+            break;        
+    }
+    return en;
+}
+
+var getWeatherCode = function(data){
+      var code = '';
+      switch(data){
+              case'晴': code = 'sunny';
+              break;
+              case'多云': code = 'cloudy';
+              break;
+              case'阴': code = 'cloudy';
+              break;
+              case'阵雨': code = 'showers';
+              break;
+              case'雷阵雨': code = 'storm-showers';
+              break;
+              case'雷阵雨并伴有冰雹': code = 'radioactive'/* 'hail'*/;
+              break;
+              case'雨夹雪': code = 'sleet';
+              break;
+              case'小雨': code = 'sprinkle';
+              break;
+              case'中雨': code = 'rain-mix';
+              break;
+              case'大雨': code = 'rain';
+              break;
+              case'暴雨': code = 'thunderstorm';
+              break;
+              case'大暴雨': code = 'thunderstorm';
+              break;
+              case'特大暴雨': code = 'thunderstorm';
+              break;
+              case'阵雪': code = 'radioactive'/*'snow'*/;
+              break;
+              case'小雪': code = 'radioactive'/*'snow'*/;
+              break;
+              case'中雪': code = 'radioactive'/*'snow'*/;
+              break;
+              case'大雪': code = 'radioactive'/*'snow'*/;
+              break;
+              case'暴雪': code = 'radioactive'/*'snowthunderstorm'*/;
+              break;
+              case'雾': code = 'radioactive'/*'fog'*/;
+              break;
+              case'冻雨': code = 'sleet';
+              break;
+              case'沙尘暴': code = 'radioactive';
+              break;
+              case'小雨-中雨': code = 'radioactive';
+              break;
+              case'暴雨-大暴雨': code = 'radioactive';
+              break;
+              case'大暴雨-特大暴雨': code = 'radioactive';
+              break;
+              case'小雪-中雪': code = 'radioactive';
+              break;
+              case'中雪-大雪': code = 'radioactive';
+              break;
+              case'大雪-暴雪': code = 'radioactive';
+              break;
+              case'浮沉': code = 'radioactive';
+              break;
+              case'扬沙': code = 'radioactive';
+              break;
+              case'强沙尘暴': code = 'radioactive';
+              break;
+          default:code = 'sunny';
+              break;
+      }
+      return code;
+  }

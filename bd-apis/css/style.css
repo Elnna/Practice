@@ -1,29 +1,94 @@
 iframe{
     margin-left:-110px;
 }
-
-.weather-header{
+/*header-top*/
+.header-top{
     position: fixed;
     z-index: 20;
+    top:1%;
+    left:56px;
+    margin-left: 10px;
+/*
     top:0;
     left: 56px;
 	height: 56px;
-}
-
-.weather-header>div{
-		display: inline-block;
-		float: left;
+*/
 }
 
 
-.weather-header h1{
-		background: transparent;
-		font-weight: normal;
-/*		font-weight: bold;*/
-		color: #fff;
-		position: relative;
+.header-top h1{
+    background: transparent;
+    font-weight: normal;
+    color: #fff;
+    position: relative;
+}
+.header-top h1 span{
+    margin-right: 0.35em;
 }
 
+.header-top span:first-child{
+    font-size: 0.75em;
+}
+.header-top span:last-child{
+    font-size: 0.25em;
+}
+.header-top span:hover{
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    cursor: pointer;
+}
+
+
+/*change-city*/
+.hide{
+    display: none;
+}
+.change-city{
+    display: block;
+    border: none;
+    background: rgba(49, 48, 48, 0.23);
+    width: 70%;
+    -webkit-border-radius:6px;
+}
+.input-box{
+    height: 4em;
+/*    display: inline-block;*/
+}
+/*.input-box input{
+    background-color: #ccc;
+}*/
+.input-box .get-city{
+/*    background: transparent;*/
+    background-color: transparent;
+    margin: 5px 2px 5px 5px;
+    width: 60%;
+    display: inline-block;
+    text-align: center;
+    font-size: 1.65em;
+    height: 2em;
+    line-height: 1.7em;
+    letter-spacing: 1px;
+    color: #fff;
+    -webkit-border-radius:7px;
+}
+
+.input-box .submit-btn{
+    -webkit-border-radius: 7px;
+    background: rgba(255, 255, 255, 0.36);
+    padding: 1em;
+    position: relative;
+    margin: 5px 10px 5px 5px;
+    float: right;
+}
+.common-cities span{
+    font-size: 0.75em;
+    padding: 0.1em 0.2em;
+}
+.common-cities span:hover,
+.common-cities span:focus{
+    background-color: rgba(255, 255, 255, 0.36);
+}
+/*weather-pane*/
 .p-weather-date{
     text-align: center;
 }

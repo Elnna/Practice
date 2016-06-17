@@ -424,18 +424,14 @@ strong,
 }
 
 /* 1. Link and logo at top  */
-.header-top{
+/*.header-top{
     position: fixed;
     z-index: 20;
     top:0;
     left: 56px;
 	height: 56px;
-/*
-	background: rgba(255, 255, 255, 0.15);
-	-webkit-box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.2), 0px 0px 2px 0px rgba(0, 0, 0, 0.1);
-	box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.2), 0px 0px 2px 0px rgba(0, 0, 0, 0.1);
-*/
-}
+
+}*/
 /*
 .header-top.material{
 	background: rgba(255, 255, 255, 0.15);
@@ -444,10 +440,10 @@ strong,
 }
 */
 
-	.header-top>div{
+	/*.header-top>div{
 		display: inline-block;
 		float: left;
-	}
+	}*/
 	/*.header-top .logo img{
 		height: 56px;
 		width: auto;
@@ -467,9 +463,8 @@ strong,
 		border-right: none;
 	}
 	.header-top.material .menu a,*/
-	.header-top .menu a{
+	/*.header-top .menu a{
 		height: 56px;
-/*		display: inline-block;*/
 		display: block;
 		float: left;
 		background: #fff;
@@ -482,18 +477,17 @@ strong,
 		padding: 14px 16px;
 		-webkit-transition: 0.3s;
 		transition: 0.3s;
-	}
-	.header-top .menu a{
+	}*/
+	/*.header-top .menu a{
 		background: transparent;
 		font-weight: normal;
-/*		font-weight: bold;*/
 		color: #fff;
 		position: relative;
-	}
+	}*/
 	/*.header-top.material .menu a:first-child:after{
 		display: none;
 	}*/
-	.header-top .menu a:first-child:after{
+	/*.header-top .menu a:first-child:after{
 		display: none;
 	}
 	.header-top .menu a:after{
@@ -504,16 +498,16 @@ strong,
 		width: 1px;
 		background: #fff;
 		content: "";
-	}
+	}*/
 
 	/*.header-top.material .menu a:hover{
 		background: #5677fc;
 	}*/
-	.header-top .menu a:hover{
+	/*.header-top .menu a:hover{
 		background: rgba(255, 255, 255, 0.15);
 		color: #fff;
 	}
- 
+ */
 /* 2. Dot navigation at right */
 #fp-nav.right{
     right: 0px;

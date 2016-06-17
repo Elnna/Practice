@@ -34,7 +34,7 @@ $expressNu = '1900171113992';
 $expressResult = $convenienceInfo->getExpress($expressApiKey,$expressCom,$expressNu);
 */
 
-$weeksArr = array('monday'=>'星期一','tuesday' => '星期二', 'wednesday','thursday' =>'星期四','friday' => '星期五','saturday' => '星期六', 'sunday' => '星期天');
+$weeksArr = array('monday'=>'星期一','tuesday' => '星期二', 'wednesday' => '星期三','thursday' =>'星期四','friday' => '星期五','saturday' => '星期六', 'sunday' => '星期天');
 ?>
 
 <!doctype html>
@@ -161,7 +161,18 @@ http://themeforest.net/licenses
        
         
         <header class="header-top">
-			<h1><?php echo (($ipWeatherResult['errNum'] == 0) ? $ipWeatherResult['retData']['city']: $city ); ?></h1>
+			<h1><span><?php echo (($ipWeatherResult['errNum'] == 0) ? $ipWeatherResult['retData']['city']: $city ); ?></span><span>切换地址</span></h1>
+            <div id='change-city' class='change-city hide'>
+                <div class='input-box'>
+                    <input class='get-city' type='text' name='city' value='' style='background-color: transparent;'/>
+                    <button class='submit-btn' type='button' name='submit'>确定</button>
+                </div>
+                <div class='history-cities'></div>
+                <hr style='width:10%'>
+                <div class='common-cities'>
+                    <span>北京</span><span>上海</span><span>深圳</span><span>武汉</span><span>广州</span><span>杭州</span><span>南京</span><span>成都</span><span>天津</span><span>西安</span><span>福州</span><span>重庆</span><span>厦门</span><span>青岛</span><span>大连</span>
+                </div>
+            </div>
 		</header>
         
 		<!-- Begin of weather pane -->
@@ -173,7 +184,8 @@ http://themeforest.net/licenses
                         $type = $data['today']['type'];
                         $weather = $convenienceInfo->getWeatherByWeatherId($type) ? $convenienceInfo->getWeatherByWeatherId($type) : 'sunny' ;
                         $forecast = $data['forecast'];
-                        $date = substr($data['today']['date'],0,4) . ' 年' . substr($data['today']['date'],5,2). '月' . substr($data['today']['date'],8,2) . '日' . $data['today']['week'];  
+                        $today = split('-',$data['today']['date']);
+                        $date = $today[0] . ' 年' . $today[1]. '月' . $today[2] . $data['today']['week'];  
                 ?>
                <div class="weather-forecast" data-bgcolor="rgba(95, 25, 208, 0.88)s" id="s-forecast">
 				    <!-- Begin of current weather -->
@@ -218,7 +230,10 @@ http://themeforest.net/licenses
                     foreach($forecast as $fk => $fv){
                         $ftype = $fv['type'];
                         $fc = $convenienceInfo->getWeatherByWeatherId($ftype) ? $convenienceInfo->getWeatherByWeatherId($ftype):'rainy';
-                        $fdate = substr($fv['date'],0,4) . ' 年' . substr($fv['date'],5,2). '月' . substr($fv['date'],8,2) . '日&nbsp;' . $fv['week'];
+                        $fvdate = split('-',$fv['date']);
+                        $fdate = $fvdate[0] . ' 年' . $fvdate[1]. '月' . $fvdate[2] . '日&nbsp;' . $fv['week'];
+//                        $fdate = $today[0] + "年" + $today[1] + "月" + $fv['date'];
+                        
                         $fweather = '<span>' . $fv['type'] .'</span><span>' . $fv['fengxiang'] . '</span><span>' . $fv['fengli'] . '</span>';
                         $ftemp = substr($fv['lowtemp'],0,2). '°~' . substr($fv['hightemp'],0,2) .'°';
                         $anchor = array_search($fv['week'],$weeksArr);
@@ -246,14 +261,14 @@ http://themeforest.net/licenses
                            <i class="wi wi-day-<?php echo $fc;?>"></i><span>实时天气</span>
                        </a>
                        <a class="nav-item" href="#today">
-                            <i class="wi wi-day-<?php echo $fc;?>"></i><span><?php echo substr($data['today']['date'],8,2) . '/' . substr($data['today']['date'],5,2);?></span>
+                            <i class="wi wi-day-<?php echo $fc;?>"></i><span><?php echo $today[2] . '/' . $today[1];?></span>
                        </a>
                     <?php 
                         foreach($forecast as $fk => $fv){
                             $ftype = $fv['type'];
                             $fweather = $convenienceInfo->getWeatherByWeatherId($ftype) ? $convenienceInfo->getWeatherByWeatherId($ftype):'rainy';
-
-                            $fdate =substr($fv['date'],8,2) . '/' . substr($fv['date'],5,2);
+                            $fvdate = split('-',$fv['date']);
+                            $fdate =$fvdate[2] . '/' . $fvdate[1];
                             $anchor = array_search($fv['week'],$weeksArr);
 
                     ?>
