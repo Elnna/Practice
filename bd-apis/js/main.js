@@ -312,7 +312,10 @@ $(document).ready(function() {
          
         });
         
-       
+    $('.history-cities span i').on('click',function(e){
+       var keepNode = $(this).parent();
+       keepNode.parent().empty().append(keepNode);
+    });
         
         
    
