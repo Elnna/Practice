@@ -225,14 +225,7 @@ $(document).ready(function() {
             $('.header-top h1 span')[0].innerText = city;
             $('.change-city').addClass('hide');
             $('.header-top h1').removeClass('hide');
-//            var cityNode = "<h1><span>" +city + "</span><span>切换地址</span>";
-//             alert(city);
-//            $('.header-top').html(cityNode);
-//            alert(city);
-//            oldNode = "<h1><span>" +city + "</span><span>切换地址</span>";
-//            thisObj.html(oldNode);
-         
-         
+     
             var apikey = {'apikey':'2cf291486b5dd04551e81c11e1346615'};
             var url = 'http://apis.baidu.com/apistore/weatherservice/recentweathers?cityname=' + city;
             $.ajax({
@@ -317,7 +310,15 @@ $(document).ready(function() {
        keepNode.parent().empty().append(keepNode);
     });
         
-        
+    $('button.submit-btn').on('click',function(e){
+        var city = $('input.get-city').val();
+        $('.header-top h1 span')[0].innerText = city;
+         if($('.history-cities span').text().indexOf(city) == -1){
+            $('.history-cities span:last-child').before('<span>' + city + '</span>');
+        }
+        $('.change-city').addClass('hide');
+        $('.header-top h1').removeClass('hide');
+    });
    
     
 });
