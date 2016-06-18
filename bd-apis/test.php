@@ -8,7 +8,7 @@ $appkey = '2cf291486b5dd04551e81c11e1346615'; //全国天气查询appkey
 $convenienceInfo = new convenienceInfo($appkey);
 $gaddress = new gaddress();
 $city = $gaddress->getCityByIp($gaddress->getIp());
-$ipWeatherResult = $convenienceInfo->getWeather($city);  
+//$ipWeatherResult = $convenienceInfo->getWeather($city);  
 //星座运势
 $zodiac = $convenienceInfo->getZodiacFortuneByName("双子座");
 //火车票查询：
@@ -102,7 +102,7 @@ $convenienceInfo->setAppKey($juheAppKey);
     <div>
         <h1>天气查询</h1>
         <pre>
-        <?php var_dump($ipWeatherResult);?>
+        <?php //var_dump($ipWeatherResult);?>
         </pre>
     </div>
     <div>

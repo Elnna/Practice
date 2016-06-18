@@ -115,17 +115,28 @@ http://themeforest.net/licenses
 					</a>
 					<span class="title">快递</span>
 				</li>
-				<li data-menuanchor="zodiac">
+				
+               <!-- <li data-menuanchor="illegal">
+					<a href="#tickets"><i class="icon ion ion-android-car"></i>
+					</a>
+					<span class="title">违章查询</span>
+				</li>-->
+                <li data-menuanchor="zodiac">
 					<a href="#zodiac"><i class="icon ion ion-star"></i>
 					</a>
 					<span class="title">星座运势</span>
 				</li>
 				<li data-menuanchor="tickets">
-					<a href="#tickets"><i class="icon ion ion-android-information"></i>
+					<a href="#tickets"><i class="icon ion ion-ios-information"></i>
 					</a>
 					<span class="title">火车票</span>
 				</li>
-				
+				<!--<li data-menuanchor="plane-tickets">
+					<a href="#tickets"><i class="icon ion ion-android-plane"></i>
+					</a>
+					<span class="title">订机票</span>
+				</li>-->
+                
 				<li data-menuanchor="contact">
 					<a href="#contact"><i class="icon ion ion-email"></i>
 					</a>
@@ -184,7 +195,7 @@ http://themeforest.net/licenses
                         $type = $data['today']['type'];
                         $weather = $convenienceInfo->getWeatherByWeatherId($type) ? $convenienceInfo->getWeatherByWeatherId($type) : 'sunny' ;
                         $forecast = $data['forecast'];
-                        $today = split('-',$data['today']['date']);
+                        $today = explode('-',$data['today']['date']);
                         $date = $today[0] . ' 年' . $today[1]. '月' . $today[2] . $data['today']['week'];  
                 ?>
                <div class="weather-forecast" data-bgcolor="rgba(95, 25, 208, 0.88)s" id="s-forecast">
@@ -230,7 +241,7 @@ http://themeforest.net/licenses
                     foreach($forecast as $fk => $fv){
                         $ftype = $fv['type'];
                         $fc = $convenienceInfo->getWeatherByWeatherId($ftype) ? $convenienceInfo->getWeatherByWeatherId($ftype):'rainy';
-                        $fvdate = split('-',$fv['date']);
+                        $fvdate = explode('-',$fv['date']);
                         $fdate = $fvdate[0] . ' 年' . $fvdate[1]. '月' . $fvdate[2] . '日&nbsp;' . $fv['week'];
 //                        $fdate = $today[0] + "年" + $today[1] + "月" + $fv['date'];
                         
@@ -267,7 +278,7 @@ http://themeforest.net/licenses
                         foreach($forecast as $fk => $fv){
                             $ftype = $fv['type'];
                             $fweather = $convenienceInfo->getWeatherByWeatherId($ftype) ? $convenienceInfo->getWeatherByWeatherId($ftype):'rainy';
-                            $fvdate = split('-',$fv['date']);
+                            $fvdate = explode('-',$fv['date']);
                             $fdate =$fvdate[2] . '/' . $fvdate[1];
                             $anchor = array_search($fv['week'],$weeksArr);
 
