@@ -206,18 +206,21 @@ $(document).ready(function() {
 //        $('.header-top').html(newNodes);
         
         $(this).addClass('hide');
-        $('.get-city').val($('.header-top h1 span')[0].innerText);
+        var city = $('.header-top h1 span')[0].innerText;
+        $('.get-city').val(city);
+        if($('.history-cities span').text().indexOf(city) == -1){
+                $('.history-cities i').before('<span>' + city + '</span>');
+        }
         $('.change-city').removeClass('hide');
         
     });
     
-    var historyCity = '';
-     $('.common-cities span, .history-cities span').on('click',function(data){
+     $('.common-cities span').on('click',function(data){
             var city = $(this).text();
 //            historyCity = document.createElement('span');
 //            historyCity.innerText = city;
             if($('.history-cities span').text().indexOf(city) == -1){
-                $('.history-cities span:last-child').before('<span>' + city + '</span>');
+                $('.history-cities i').before('<span>' + city + '</span>');
             }
 //            historyCity += '<span>' + city + '</span>';
 //            $('.history-cities').html(historyCity);
@@ -226,103 +229,116 @@ $(document).ready(function() {
             $('.change-city').addClass('hide');
             $('.header-top h1').removeClass('hide');
      
-            var apikey = {'apikey':'2cf291486b5dd04551e81c11e1346615'};
-            var url = 'http://apis.baidu.com/apistore/weatherservice/recentweathers?cityname=' + city;
-            $.ajax({
-               url:url, 
-               method: "GET",  
-               headers: apikey, 
-               dataType: "json",
-               success: function(data){
-                   console.log('success',data);
-                   if(data.errNum==0){
-                      
-                       var retData = data.retData;
-                       var today = retData.today.date.split("-");
-                       var forecast = retData.forecast;
-                       var date = new Date();
-                       var time = date.getHours() + ':' + date.getMinutes();
-                       
-                      //实时天气
-                       $("#s-current .p-weather-date h6")[0].innerText = today[0] + "年" + today[1] + "月" + today[2] + "日" + forecast[0].week + time;
-                       
-                       $("[href=#current].nav-item i,[href=#today].nav-item i")[0].className = "wi wi-day-" + getWeatherCode(retData.today.type);
-                       
-                       
-                       //更改温度
-                       var tempHtml = retData.today.curTemp.substr(0,2) + "°<small>C</small>";
-                       $('#s-current .weather-temp,#s-today .weather-temp').html(tempHtml);
-                       
-                       var typeHtml = '<span>' + retData.today.type + '</span><span>' + retData.today.fengxiang + '</span><span>' + retData.today.fengxiang + '</span>';
-                       $('#s-current .weather-type p,#s-today .weather-type p').html(typeHtml);
-                       
-                      
-                       //当天天气
-                        $("#s-today .p-weather-date h6")[0].innerText = today[0] + "年" + today[1] + "月" + today[2] + "日" + forecast[0].week ;
-                       
-                      /* $('[href=#today].nav-item i')[0].className = "wi wi-day-" + getWeatherCode(retData.today.type);
-                       */
-                       
-                       //更改温度
-                      /* var tempHtml = retData.today.curTemp.substr(0,2) + "°<small>C</small>";
-                       $('#s-today .weather-temp').html(tempHtml);
-                       */
-                      /* var typeHtml = '<span>' + retData.today.type + '</span><span>' + retData.today.fengxiang + '</span><span>' + retData.today.fengxiang + '</span>';
-                       $('#s-today .weather-type p').html(typeHtml);
-                       */
-                      
-                       
-                       for(var i=1; i <= forecast.length; i++){
-                       
-                           //更改天气标识
-//                           console.log(getWeatherCode(forecast[i-1].type));
-                           $("[href=#" + getWeekEn(forecast[i-1]['week']) + "].nav-item i")[0].className = "wi wi-day-" + getWeatherCode(forecast[i-1].type);
-                          
-                           //更改温度
-                           $('#'+ getWeekEn(forecast[i-1]['week']) + ' .weather-temp').innerHTML = forecast[i-1].lowtemp.substr(0,2) + '°~' + forecast[i-1].hightemp.substr(0,2)+'°' +  "<small>C</small>";
-//                         //更改天气详细说明
-                           typeHtml = '<span>' + retData.today.type + '</span><span>' + retData.today.fengxiang + '</span><span>' + retData.today.fengxiang + '</span>';
-                            $('#s-'+ getWeekEn(forecast[i-1]['week']) + ' .weather-type p').html(typeHtml);
-                           
-                       }
-                    
-                       
-                   } else{
-                       if(window.confirm(data.errMsg)){
-                           return false;
-                       }
-
-                   }
-
-                },
-                error:function(data){
-                    $('.change-city').addClass('hide');
-                    $('.header-top h1').removeClass('hide');
-                    console.log('failed',data);
-                    
-                }
-               });
+            changeWeather(city);
          
-        });
-        
-    $('.history-cities span i').on('click',function(e){
-       var keepNode = $(this).parent();
-       keepNode.parent().empty().append(keepNode);
+    });
+    $('.history-cities').on('click',' .history-cities span',function(){
+        //alert("cc");
+        var city = $(this).text();
+        $('.header-top h1 span')[0].innerText = city;
+
+        $('.change-city').addClass('hide');
+        $('.header-top h1').removeClass('hide');
+        changeWeather(city);
+
+    });
+    $('.history-cities i').on('click',function(e){
+       $(this).parent().empty().append($(this));
     });
         
     $('button.submit-btn').on('click',function(e){
         var city = $('input.get-city').val();
         $('.header-top h1 span')[0].innerText = city;
          if($('.history-cities span').text().indexOf(city) == -1){
-            $('.history-cities span:last-child').before('<span>' + city + '</span>');
+            $('.history-cities i').before('<span>' + city + '</span>');
         }
         $('.change-city').addClass('hide');
         $('.header-top h1').removeClass('hide');
+        changeWeather(city);
+
     });
    
     
 });
 
+var changeWeather = function(city){
+    var apikey = {'apikey':'2cf291486b5dd04551e81c11e1346615'};
+    var url = 'http://apis.baidu.com/apistore/weatherservice/recentweathers?cityname=' + city;
+    $.ajax({
+       url:url, 
+       method: "GET",  
+       headers: apikey, 
+       dataType: "json",
+       success: function(data){
+           console.log('success',data);
+           if(data.errNum==0){
+
+               var retData = data.retData;
+               var today = retData.today.date.split("-");
+               var forecast = retData.forecast;
+               var date = new Date();
+               var time = date.getHours() + ':' + date.getMinutes();
+
+              //实时天气
+               $("#s-current .p-weather-date h6")[0].innerText = today[0] + "年" + today[1] + "月" + today[2] + "日" + forecast[0].week + time;
+
+               $("[href=#current].nav-item i,[href=#today].nav-item i")[0].className = "wi wi-day-" + getWeatherCode(retData.today.type);
+
+
+               //更改温度
+               var tempHtml = retData.today.curTemp.substr(0,2) + "°<small>C</small>";
+               $('#s-current .weather-temp').html(tempHtml);
+
+               var typeHtml = '<span>' + retData.today.type + '</span><span>' + retData.today.fengxiang + '</span><span>' + retData.today.fengxiang + '</span>';
+               $('#s-current .weather-type p,#s-today .weather-type p').html(typeHtml);
+
+
+               //当天天气
+                $("#s-today .p-weather-date h6")[0].innerText = today[0] + "年" + today[1] + "月" + today[2] + "日" + forecast[0].week ;
+
+              /* $('[href=#today].nav-item i')[0].className = "wi wi-day-" + getWeatherCode(retData.today.type);
+               */
+
+               //更改温度
+               var tempHtml = retData.today.lowtemp.substr(0,2) + "°~" + retData.today.lowtemp.substr(0,2) + "°<small>C</small>" ;
+               $('#s-today .weather-temp').html(tempHtml);
+
+              /* var typeHtml = '<span>' + retData.today.type + '</span><span>' + retData.today.fengxiang + '</span><span>' + retData.today.fengxiang + '</span>';
+               $('#s-today .weather-type p').html(typeHtml);
+               */
+
+
+               for(var i=1; i <= forecast.length; i++){
+
+                   //更改天气标识
+    //                           console.log(getWeatherCode(forecast[i-1].type));
+                   $("[href=#" + getWeekEn(forecast[i-1]['week']) + "].nav-item i")[0].className = "wi wi-day-" + getWeatherCode(forecast[i-1].type);
+
+                   //更改温度
+                   $('#'+ getWeekEn(forecast[i-1]['week']) + ' .weather-temp').innerHTML = forecast[i-1].lowtemp.substr(0,2) + '°~' + forecast[i-1].hightemp.substr(0,2)+'°' +  "<small>C</small>";
+    //                         //更改天气详细说明
+                   typeHtml = '<span>' + retData.today.type + '</span><span>' + retData.today.fengxiang + '</span><span>' + retData.today.fengxiang + '</span>';
+                    $('#s-'+ getWeekEn(forecast[i-1]['week']) + ' .weather-type p').html(typeHtml);
+
+               }
+
+
+           } else{
+               if(window.confirm(data.errMsg)){
+                   return false;
+               }
+
+           }
+
+        },
+        error:function(data){
+            $('.change-city').addClass('hide');
+            $('.header-top h1').removeClass('hide');
+            console.log('failed',data);
+
+        }
+       });
+}
 var getWeekEn = function(str){
     var en = '';
     switch(str){

@@ -178,7 +178,7 @@ http://themeforest.net/licenses
                     <input class='get-city' type='text' name='city' value='' style='background-color: transparent;'/>
                     <button class='submit-btn' type='button' name='submit'>确定</button>
                 </div>
-                <div class='history-cities'><span><?php echo (($ipWeatherResult['errNum'] == 0) ? $ipWeatherResult['retData']['city']: $city ); ?></span><span><i class='ion ion-close'></i></span></div>
+                <div class='history-cities'><i class='ion ion-close'></i></div>
                 <hr style='width:10%'>
                 <div class='common-cities'>
                     <span>北京</span><span>上海</span><span>深圳</span><span>武汉</span><span>广州</span><span>杭州</span><span>南京</span><span>成都</span><span>天津</span><span>西安</span><span>福州</span><span>重庆</span><span>厦门</span><span>青岛</span><span>大连</span>
