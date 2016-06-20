@@ -144,7 +144,7 @@ $(document).ready(function() {
 	/** Init fullpage.js */
     $('#mainpage').fullpage({
 		menu: '#qmenu',
-		anchors: ['express',  'zodiac', 'tickets', 'contact'],
+		anchors: ['express', 'illegal', 'tickets','plane-tickets','zodiac'],
 //        verticalCentered: false,
 //        resize : false,
 //		responsive: 900,

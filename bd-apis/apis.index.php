@@ -96,7 +96,7 @@ http://themeforest.net/licenses
         
         <!-- Page Loader -->
         <div class="page-loader" id="page-loader">
-            <div><i class="ion ion-loading-d"></i><p>请耐心等待</p></div>
+            <div><i class="ion ion-load-a"></i><p>请耐心等待</p></div>
         </div>
         
         <!-- BEGIN OF site header Menu -->
@@ -115,37 +115,37 @@ http://themeforest.net/licenses
 			</div>
 			<ul id="qmenu" class="qmenu">
 				<li data-menuanchor="express">
-					<a href="#express" class=""><i class="icon ion ion-plane"></i>
+					<a href="#express" class=""><i class="icon ion ion-android-bicycle"></i>
 					</a>
 					<span class="title">快递</span>
 				</li>
 				
-               <!-- <li data-menuanchor="illegal">
-					<a href="#tickets"><i class="icon ion ion-android-car"></i>
+                <li data-menuanchor="illegal">
+					<a href="#illegal"><i class="icon ion ion-android-car"></i>
 					</a>
 					<span class="title">违章查询</span>
-				</li>-->
+				</li>
+               
+				<li data-menuanchor="tickets">
+					<a href="#tickets"><i class="icon ion ion-android-train"></i>
+					</a>
+					<span class="title">火车票</span>
+				</li>
+				<li data-menuanchor="plane-tickets">
+					<a href="#plane-tickets"><i class="icon ion ion-android-plane"></i>
+					</a>
+					<span class="title">订机票</span>
+				</li>
                 <li data-menuanchor="zodiac">
 					<a href="#zodiac"><i class="icon ion ion-star"></i>
 					</a>
 					<span class="title">星座运势</span>
 				</li>
-				<li data-menuanchor="tickets">
-					<a href="#tickets"><i class="icon ion ion-android-information"></i>
-					</a>
-					<span class="title">火车票</span>
-				</li>
-				<!--<li data-menuanchor="plane-tickets">
-					<a href="#tickets"><i class="icon ion ion-android-plane"></i>
-					</a>
-					<span class="title">订机票</span>
-				</li>-->
-                
-				<li data-menuanchor="contact">
+				<!--<li data-menuanchor="contact">
 					<a href="#contact"><i class="icon ion ion-email"></i>
 					</a>
 					<span class="title">Contact</span>
-				</li>
+				</li>-->
 			</ul>
 		</nav>
         <!-- END OF Quick nav icons at left -->
@@ -322,6 +322,102 @@ http://themeforest.net/licenses
 				
 				<!-- Scroll down button -->
                 <footer class="p-footer p-scrolldown">
+                    <a href="#illegal">
+                        <div class="arrow-d">
+							<div class="before">Scroll</div>
+							<div class="after">Down</div>
+							<div class="circle"><i class="ion ion-mouse"></i></div>
+						</div>
+                    </a>                        
+                </footer>
+			</div>
+			<!-- End of express page -->
+            
+           <!-- Begin of illegal page -->
+			<div class="section page-illegal page page-cent" id="s-illegal">
+				
+				<!-- Logo -->
+				<!--<div class="logo-container">
+					<img class="h-logo" src="img/logo_only.png" alt="Logo">
+				</div>-->
+				<!-- Content -->
+				<section class="content">
+					
+					<header class="header">
+						<div class="h-left">
+							<h2>New <strong>Company</strong></h2>
+						</div>
+						<div class="h-right">
+							<h3>Lorem <br>product</h3>
+							<h4 class="subhead"><a href="#zodiac">Available here soon</a></h4>
+						</div>
+					</header>
+				</section>
+				
+				<!-- Scroll down button -->
+                <footer class="p-footer p-scrolldown">
+                    <a href="#tickets">
+                        <div class="arrow-d">
+							<div class="before">Scroll</div>
+							<div class="after">Down</div>
+							<div class="circle"><i class="ion ion-mouse"></i></div>
+						</div>
+                    </a>                        
+                </footer>
+			</div>
+			<!-- End of illegal page -->
+            
+            
+            
+            <!-- Begin of tickets page -->
+            <div class="section page-tickets page page-cent" id="s-tickets">
+                <section class="content">
+                    <header class="p-title">
+                        <h3>About Us<i class="ion ion-android-information">
+                            </i>
+                        </h3>
+						<h4 class="subhead">We <span class="bold">make</span> only <span class="bold">beautiful</span> things</h4>
+                    </header>
+                    <article class="text">
+                        <p>Lorem ipsum <strong>magicum </strong>dolor sit amet, consectetur adipiscing elit. Maecenas a sem ultrices neque vehicula fermentum a sit amet nulla.</p>
+                        <p>Aenean ultricies odio at erat facilisis tincidunt. Fusce tempor auctor justo, nec facilisis quam vehicula vel. Aenean non mattis purus, eget lobortis odio. </p>
+                    </article>
+                </section>
+                <footer class="p-footer p-scrolldown">
+                    <a href="#plane-tickets">
+                        <div class="arrow-d">
+							<div class="before">Contact</div>
+							<div class="after">Message</div>
+							<div class="circle"><i class="ion ion-mouse"></i></div>
+						</div>
+                    </a>                        
+                </footer>
+            </div>
+            <!-- End of tickets page -->
+                
+            <!-- Begin of illegal page -->
+			<div class="section page-plane-tickets page page-cent" id="s-plane-tickets">
+				
+				<!-- Logo -->
+				<!--<div class="logo-container">
+					<img class="h-logo" src="img/logo_only.png" alt="Logo">
+				</div>-->
+				<!-- Content -->
+				<section class="content">
+					
+					<header class="header">
+						<div class="h-left">
+							<h2>New <strong>Company</strong></h2>
+						</div>
+						<div class="h-right">
+							<h3>Lorem <br>product</h3>
+							<h4 class="subhead"><a href="#register">Available here soon</a></h4>
+						</div>
+					</header>
+				</section>
+				
+				<!-- Scroll down button -->
+                <footer class="p-footer p-scrolldown">
                     <a href="#zodiac">
                         <div class="arrow-d">
 							<div class="before">Scroll</div>
@@ -331,10 +427,7 @@ http://themeforest.net/licenses
                     </a>                        
                 </footer>
 			</div>
-			<!-- End of home page -->
-            
-           
-            
+			<!-- End of illegal page -->
             <!-- Begin of zodiac page -->
             <div class="section page-zodiac page page-cent  bg-color" data-bgcolor="rgba(95, 25, 208, 0.88)s" id="s-zodiac">
 				<!-- Begin of  zodiac daily fortune -->
@@ -363,7 +456,7 @@ http://themeforest.net/licenses
            
 					<section class="content">
 						<header class="p-title">
-							<h3>今日运势<i class="ion ion-ios7-gear">
+							<h3>今日运势<i class="ion ion-ios-gear">
 								</i>
 							</h3>
 							<ul class="buttons">
@@ -371,7 +464,10 @@ http://themeforest.net/licenses
 									<a title="本周运势" href="#zodiac/zodiac-week" ><i class="ion ion-android-calendar"></i></a>
 								</li>
 								<li>
-									<a title="本月运势" href="#zodiac/zodiac-month"><i class="ion ion-ios7-pulse"></i></a>
+									<a title="本月运势" href="#zodiac/zodiac-month"><i class="ion ion-ios-pulse"></i></a>
+								</li>
+                                <li>
+									<a title="本年运势" href="#zodiac/zodiac-year"><i class="ion ion-ios-analytics"></i></a>
 								</li>
 							</ul>
 						</header>
@@ -421,10 +517,13 @@ http://themeforest.net/licenses
 							</h3>
 							<ul class="buttons">
 								<li>
-									<a title="今日运势" href="#zodiac/zodiac-day"><i class="ion ion-ios7-gear"></i></a>
+									<a title="今日运势" href="#zodiac/zodiac-day"><i class="ion ion-ios-gear"></i></a>
 								</li>
 								<li>
-									<a title="本月运势" href="#zodiac/zodiac-month"><i class="ion ion-ios7-pulse"></i></a>
+									<a title="本月运势" href="#zodiac/zodiac-month"><i class="ion ion-ios-pulse"></i></a>
+								</li>
+                                <li>
+									<a title="本年运势" href="#zodiac/zodiac-year"><i class="ion ion-ios-analytics"></i></a>
 								</li>
 							</ul>
 						</header>
@@ -433,19 +532,19 @@ http://themeforest.net/licenses
                             <div class="row">
                                 <h5><?php echo $zodiacWeek['date'];?></h5>
                             </div>
-                            <div class="row">
-                                <p><i class="ion-ios7-medkit"></i><?php echo $zodiacWeek['health'];?></p>
+                            <div class="row" title="<?php echo $zodiacWeek['health'];?>">
+                                <p><i class="ion-ios-body"></i><?php echo $zodiacWeek['health'];?></p>
                             </div>
-                            <div class="row">
-                                <p><i class="ion-ios7-paper"></i><?php echo $zodiacWeek['job'];?></p>
+                            <div class="row" title="<?php  echo $zodiacWeek['job'];?>">
+                                <p><i class="ion-ios-paper"></i><?php echo $zodiacWeek['job'];?></p>
                             </div>
-                            <div class="row">
-                                <p><i class="ion-heart"></i><?php echo $zodiacWeek['love'];?></p>
+                            <div class="row" title="<?php  echo $zodiacWeek['love'];?>">
+                                <p><i class="ion-ios-rose"></i><?php echo $zodiacWeek['love'];?></p>
                             </div>
-                            <div class="row">
-                                <p><i class="ion-social-usd"></i><?php echo $zodiacWeek['money'];?></p>
+                            <div class="row" title="<?php  echo $zodiacWeek['money'];?>">
+                                <p><i class="ion-social-yen"></i><?php echo $zodiacWeek['money'];?></p>
                             </div>
-                            <div class="row">
+                            <div class="row" title="<?php echo $zodiacWeek['work'];?>">
                                 <p><i class="ion-briefcase"></i><?php echo $zodiacWeek['work'];?></p>
                             </div>
                             
@@ -461,215 +560,114 @@ http://themeforest.net/licenses
 				<!-- End of zodiac message -->
                 <!-- begin of zodiac month fortune --> 
 				<div class="slide" id="s-zodiac-month" data-anchor="zodiac-month">
+                    <?php 
+                        $zodiacMonth = $convenienceInfo->getZodiacFortuneByNameType($zodiacName,$zodiacType[4]);
+                    
+                        if($zodiacMonth['error_code'] == 0):
+                    ?>
 					<section class="content">
 						<header class="p-title">
-							<h3>本月/年运势<i class="ion ion-ios7-pulse">
+							<h3>本月运势<i class="ion ion-ios-pulse">
 								</i>
 							</h3>
 							<ul class="buttons">
-								<li class="show-for-medium-up">
-									<a title="今日运势" href="#zodiac/zodiac-day"><i class="ion ion-ios7-gear"></i></a>
+								<li>
+									<a title="今日运势" href="#zodiac/zodiac-day"><i class="ion ion-ios-gear"></i></a>
 								</li>
 								<li>
 									<a title="本周运势" href="#zodiac/zodiac-week"><i class="ion ion-android-calendar"></i></a>
 								</li>
-								<!--<li>
-									<a title="Message" href="#contact/message"><i class="ion ion-email"></i></a>
-								</li>-->
+								<li>
+									<a title="本年运势" href="#zodiac/zodiac-year"><i class="ion ion-ios-analytics"></i></a>
+								</li>
 							</ul>
 						</header>
 						<!-- Begin Of month fortune Page SubSction -->
-						
-						
-                        <article class="text">
-                            <p>Lorem ipsum <strong>magicum </strong>dolor sit amet, consectetur adipiscing elit. Maecenas a sem ultrices neque vehicula fermentum a sit amet nulla.</p>
-                            <p>Aenean ultricies odio at erat facilisis tincidunt. Fusce tempor auctor justo, nec facilisis quam vehicula vel. Aenean non mattis purus, eget lobortis odio. </p>
-                        </article>
+                        <div class="zodiac-month-info">
+                            <div class="row">
+                                <h5><?php echo $zodiacMonth['date'];?></h5>
+                            </div>
+                            
+                            <div class="row" title="<?php echo $zodiacMonth['all'];?>">
+                                <p><i class="ion-compose"></i><?php echo $zodiacMonth['all'];?></p></div>
+                            <div class="row" title="<?php echo $zodiacMonth['health'];?>">
+                                <p><i class="ion-ios-body"></i><?php echo $zodiacMonth['health'];?></p></div>
+                            <div class="row" title="<?php echo $zodiacMonth['love'];?>">
+                                <p><i class="ion-ios-rose"></i><?php echo $zodiacMonth['love'];?></p></div>
+                            <div class="row" title="<?php echo $zodiacMonth['money'];?>">
+                                <p><i class="ion-social-yen"></i><?php echo $zodiacMonth['money'];?></p></div>
+                            <div class="row" title="<?php echo $zodiacMonth['work'];?>">
+                                <p><i class="ion-briefcase"></i><?php echo $zodiacMonth['work'];?></p></div>
+                        
+                        </div>
                     </section>
 				    <!-- End Of month fortune Page SubSction -->
-						
+					<?php else:?>
+                    <div class="error-code">查询失败，请重试！</div>
+                    <?php endif;?>		
 				</div>
-				<!-- End of contact message -->
-            </div>
-            <!-- End of Contact page  -->   
-            
-            
-            
-           <!-- <div class="section page-zodiac page page-cent"  id="s-zodiac">
-                <section class="content">
-                       
-                
-                </section>
-                <footer class="p-footer p-scrolldown">
-                    <a href="#tickets">
-                        <div class="arrow-d">
-							<div class="before">Express</div>
-							<div class="after">Lorem</div>
-							<div class="circle"><i class="ion ion-mouse"></i></div>
-						</div>
-                    </a>                        
-                </footer>
-            </div>-->
-            <!-- End of zodiac page -->
-            
-            <!-- Begin of tickets page -->
-            <div class="section page-tickets page page-cent" id="s-tickets">
-                <section class="content">
-                    <header class="p-title">
-                        <h3>About Us<i class="ion ion-android-information">
-                            </i>
-                        </h3>
-						<h4 class="subhead">We <span class="bold">make</span> only <span class="bold">beautiful</span> things</h4>
-                    </header>
-                    <article class="text">
-                        <p>Lorem ipsum <strong>magicum </strong>dolor sit amet, consectetur adipiscing elit. Maecenas a sem ultrices neque vehicula fermentum a sit amet nulla.</p>
-                        <p>Aenean ultricies odio at erat facilisis tincidunt. Fusce tempor auctor justo, nec facilisis quam vehicula vel. Aenean non mattis purus, eget lobortis odio. </p>
-                    </article>
-                </section>
-                <footer class="p-footer p-scrolldown">
-                    <a href="#contact">
-                        <div class="arrow-d">
-							<div class="before">Contact</div>
-							<div class="after">Message</div>
-							<div class="circle"><i class="ion ion-mouse"></i></div>
-						</div>
-                    </a>                        
-                </footer>
-            </div>
-            <!-- End of tickets page -->
-                
-            <!-- Begin of Contact page   -->
-            <div class="section page-contact page page-cent  bg-color" data-bgcolor="rgba(95, 25, 208, 0.88)s" id="s-contact">
-				<!-- Begin of contact information -->
-				<div class="slide" id="s-information" data-anchor="information">
-					<section class="content">
-						<header class="p-title">
-							<h3>Contact<i class="ion ion-location">
-								</i>
-							</h3>
-							<ul class="buttons">
-								<li class="show-for-medium-up">
-									<a title="About" href="#tickets" ><i class="ion ion-android-information"></i></a>
-								</li>
-								<li>
-									<a title="Message" href="#contact/message"><i class="ion ion-email"></i></a>
-								</li>
-							</ul>
-						</header>
-						<!-- Begin Of Page SubSction -->
-						<div class="contact">
-							<div class="row">
-								<div class="medium-6 columns left">
-									<ul>
-										<li>
-											<h4>Email</h4>
-											<p><a href="mailto://contact@mail.com">contactemail@mail.com</a></p>
-										</li>
-										<li>
-											<h4>Address</h4>
-											<p>99 Location Street
-											<br>Antartica SP</p>
-										</li>
-										<li>
-											<h4>Phone</h4>
-											<p>+999 123 456 89</p>
-										</li>
-									</ul>
-								</div>
-								<div class="medium-6 columns social-links right">
-									<ul>
-
-										<!-- legal notice -->
-										<li class="show-for-medium-up">
-											<h4>Website</h4>
-											<p><a href="http://www.highhay.com">www.highhay.com</a></p>
-										</li>
-										<li  class="show-for-medium-up">
-											<h4>Find us on</h4>
-											<!-- Begin of Social links -->
-											<div class="socialnet">
-												<a href="#"><i class="ion ion-social-facebook"></i></a>
-												<a href="#"><i class="ion ion-social-instagram"></i></a>
-												<a href="#"><i class="ion ion-social-twitter"></i></a>
-												<a href="#"><i class="ion ion-social-pinterest"></i></a>
-												<a href="#"><i class="ion ion-social-tumblr"></i></a>
-											</div>
-											<!-- End of Social links -->
-										</li>
-										<li>
-											<p><img src="img/logo_large.png" alt="Logo" class="logo"></p>
-											<p class="small">Bientot by <strong><a href="http://highhay.com">Brand</a></strong>. All right reserved 2015</p>
-										</li>
-									</ul>
-
-								</div>
-							</div>
-						</div>
-						<!-- End of page SubSection -->
-					</section>  
+				<!-- End of zodiac month fortune  -->
+                <!-- begin of zodiac year fortune --> 
+				<div class="slide" id="s-zodiac-year" data-anchor="zodiac-year">
+                    <?php 
+                        $zodiacYear = $convenienceInfo->getZodiacFortuneByNameType($zodiacName,$zodiacType[5]);
                     
-				</div>
-				<!-- end of contact information -->
-				
-				<!-- begin of contact message --> 
-				<div class="slide" id="s-message" data-anchor="message">
+                        if($zodiacYear['error_code'] == 0):
+                    ?>
 					<section class="content">
 						<header class="p-title">
-							<h3>Write to us<i class="ion ion-email">
+							<h3>本年运势<i class="ion ion-ios-analytics">
 								</i>
 							</h3>
 							<ul class="buttons">
-								<li class="show-for-medium-up">
-									<a title="About" href="#tickets"><i class="ion ion-android-information"></i></a>
+								<li>
+									<a title="今日运势" href="#zodiac/zodiac-day"><i class="ion ion-ios-gear"></i></a>
 								</li>
 								<li>
-									<a title="Contact" href="#contact/information"><i class="ion ion-location"></i></a>
+									<a title="本周运势" href="#zodiac/zodiac-week"><i class="ion ion-android-calendar"></i></a>
 								</li>
-								<!--<li>
-									<a title="Message" href="#contact/message"><i class="ion ion-email"></i></a>
-								</li>-->
+								<li>
+									<a title="本月运势" href="#zodiac/zodiac-month"><i class="ion ion-ios-pulse"></i></a>
+								</li>
 							</ul>
 						</header>
-						<!-- Begin Of Page SubSction -->
+						<!-- Begin Of year fortune Page SubSction -->
 						
-						<div class="page-block c-right v-zoomIn">
-							<div class="wrapper">
-								<div>
-									<form class="message form send_message_form" method="get" action="ajaxserver/serverfile.php">
-										<div class="fields clearfix">
-											<div class="input">
-												<label for="mes-name">Name </label>
-												<input id="mes-name" name="name" type="text" placeholder="Your Name" required></div>
-											<div class="buttons">
-												<button id="submit-message" class="button email_b" name="submit_message">Ok</button>
-											</div>
-										</div>
-										<div class="fields clearfix">
-											<div class="input">
-												<label for="mes-email">Email </label>
-												<input id="mes-email" type="email" placeholder="Email Address" name="email" required>
-											</div>
-										</div>
-										<div class="fields clearfix no-border">
-											<label for="mes-text">Message </label>
-											<textarea id="mes-text" placeholder="Message ..." name="message" required></textarea>
-
-											<div>
-												<p class="message-ok invisible">Your message has been sent, thank you.</p>
-											</div>
-										</div>
-									</form>
-								</div>
-							</div>
-						</div>
-						<!-- End Of Page SubSction -->
-					</section>
 						
+                        <div class="zodiac-year-info">
+                            <div class="row">
+                                <h5><?php echo $zodiacYear['date'];?></h5>
+                            </div>
+                            <div class="row" title="<?php echo $zodiacYear['mima']['text'][0];?>">
+                                <p><i class="ion-stats-bars"></i><span><?php echo $zodiacYear['mima']['info']; ?></span><span><?php echo $zodiacYear['mima']['text'][0];?></span></p>
+                            </div>
+                            <div class="row" title="<?php echo $zodiacYear['career'][0];?>">
+                                <p><i class="ion-briefcase"></i><?php echo $zodiacYear['career'][0]; ?></p>
+                            </div>
+                            <div class="row" title="<?php echo $zodiacYear['love'][0];?>">
+                                <p><i class="ion-heart"></i><?php echo $zodiacYear['love'][0]; ?></p>
+                            </div>
+                            <div class="row" title="<?php echo $zodiacYear['health'][0];?>">
+                                <p><i class="ion-ios-body"></i><?php echo $zodiacYear['health'][0]; ?></p>
+                            </div>
+                            <div class="row" title="<?php echo $zodiacYear['finance'][0];?>">
+                                <p><i class="ion-cash"></i><?php echo $zodiacYear['finance'][0]; ?></p>
+                            </div>
+                            <div class="row" >
+                                <p><i class="ion-egg"></i><?php echo $zodiacYear['luckyStone']; ?></p>
+                            </div>
+                           
+                        </div>
+                    </section>
+				    <!-- End Of year fortune Page SubSction -->
+					<?php else:?>
+                    <div class="error-code">查询失败，请重试！</div>
+                    <?php endif;?>		
 				</div>
-				<!-- End of contact message -->
+				<!-- End of zodiac month fortune  -->
             </div>
-            <!-- End of Contact page  -->   
-        
+            <!-- End of zodiac page  -->   
+            
         </main>
 
         <!-- END OF site main content content here -->  
