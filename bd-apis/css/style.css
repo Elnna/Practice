@@ -392,6 +392,8 @@ a.nav-item .active, .nav-item:hover,.nav-item:focus{
 .fp-controlArrow.fp-next{
     display: none;
 }
+
+
 div .zodiac-img{
 /*    background: url('./img/zodiac/Gemini.png') 154px 370px;*/
 /*    width: 100px;*/
@@ -401,7 +403,9 @@ div .zodiac-img{
 }
 
 .page-zodiac .p-title{
-   margin-bottom: 3em;
+    position: relative;
+    top: -50px;
+/*   margin-bottom: 3em;*/
 }
 .page-zodiac .p-title h3{
     font-size:2em;
@@ -485,24 +489,32 @@ h4.zodiac-qfriend span:last-child{
     font-size: 1.25em;
     color: #F9FBE7;
 }
-.zodiac-info h5 span:nth-child(1),
-.zodiac-info h5 span:nth-child(3){
+.zodiac-info-header{
+    position: fixed;
+    top: 166px;
+    width: 60%;
+}
+.zodiac-info-header h5 span:nth-child(1),
+.zodiac-info-header h5 span:nth-child(3){
     font-size: 0.5em;
     color: rgba(255,255,255,0.5);
     margin-right: 0.5em;
 }
-.zodiac-info h5 span:nth-child(2),
-.zodiac-info h5 span:nth-child(4){
+.zodiac-info-header h5 span:nth-child(2),
+.zodiac-info-header h5 span:nth-child(4){
     color: #fff;
     font-weight: bold;
 }
-.zodiac-info h5 span:nth-child(2){
+.zodiac-info-header h5 span:nth-child(2){
     margin-right: 0.5em;
 }
 
 /*progress bar*/
 
-
+.zodiac-info{
+    position: relative;
+    top: 75px;
+}
 .zodiac-info dl dt{
 /*    font-size: 0.75em;*/
     text-align: left;

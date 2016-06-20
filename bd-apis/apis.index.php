@@ -342,7 +342,24 @@ http://themeforest.net/licenses
                     <?php 
                         $zodiacToday = $convenienceInfo->getZodiacFortuneByNameType($zodiacName,$zodiacType[0]);
                     ?>
-                       
+                     <div class="zodiac-info-header">
+                        <div class="zodiac-img col-md-4 col-xs-4" >
+                            <img class="img-rounded" data-src="holder.js/140x140" alt="skills" src="img/zodiac/Gemini.png" style="width:100px; height:100px;">
+                        </div>
+                        <div class="zodiac-basic-info col-md-6 col-xs-6">
+                            <h3 class="zodiac-name">
+                                <?php echo $zodiacToday['name'];?>
+                            </h3>
+                            <h4 class="zodiac-qfriend">
+                                <span>速配星座</span><span><?php echo $zodiacToday['QFriend'];?></span>
+                            </h4>
+                           <h5>
+                               <span>幸运色</span><span><?php echo $zodiacToday['color'];?></span>
+                               <span>幸运数字</span><span><?php echo $zodiacToday['number'];?></span>
+                            </h5>
+                        </div>
+                    </div>
+           
 					<section class="content">
 						<header class="p-title">
 							<h3>今日运势<i class="ion ion-location">
@@ -360,7 +377,7 @@ http://themeforest.net/licenses
 						<!-- Begin Of Today Fortune Page SubSction -->
 						<div class="zodiac-info">
                             <?php if($zodiacToday['error_code'] == 0):?>
-                            <div class="row">
+                           <!-- <div class="row">
                                 <div class="zodiac-img col-md-4 col-xs-4" >
                                     <img class="img-rounded" data-src="holder.js/140x140" alt="skills" src="img/zodiac/Gemini.png" style="width:100px; height:100px;">
                                 </div>
@@ -377,7 +394,7 @@ http://themeforest.net/licenses
                                     </h5>
                                 </div>
                             </div>
-        
+        -->
                             <div class="row">
                                 <dl class="dl-horizontal">
                                     <dt>综合指数</dt>
@@ -408,6 +425,9 @@ http://themeforest.net/licenses
 				<!-- begin of zodiac week fortune --> 
 				<div class="slide" id="s-zodiac-week" data-anchor="zodiac-week">
 					<section class="content">
+                        <?php 
+                            $zodiacWeek = $convenienceInfo->getZodiacFortuneByNameType($zodiacName,$zodiacType[2]);
+                        ?>
 						<header class="p-title">
 							<h3>Write to us<i class="ion ion-email">
 								</i>
@@ -424,38 +444,50 @@ http://themeforest.net/licenses
 								</li>-->
 							</ul>
 						</header>
+                        
 						<!-- Begin Of week fortune Page SubSction -->
+						<div class="zodiac-week-info">
+                            <?php if($zodiacWeek['error_code'] == 0):?>
+                            <!--<div class="row">
+                                <div class="zodiac-img col-md-4 col-xs-4" >
+                                    <img class="img-rounded" data-src="holder.js/140x140" alt="skills" src="img/zodiac/Gemini.png" style="width:100px; height:100px;">
+                                </div>
+                                <div class="zodiac-basic-info col-md-6 col-xs-6">
+                                    <h3 class="zodiac-name">
+                                        <?php echo $zodiacToday['name'];?>
+                                    </h3>
+                                    <h4 class="zodiac-qfriend">
+                                        <span>速配星座</span><span><?php echo $zodiacToday['QFriend'];?></span>
+                                    </h4>
+                                   <h5>
+                                       <span>幸运色</span><span><?php echo $zodiacToday['color'];?></span>
+                                       <span>幸运数字</span><span><?php echo $zodiacToday['number'];?></span>
+                                    </h5>
+                                </div>
+                            </div>-->
+        
+                            <div class="row">
+                                <dl class="dl-horizontal">
+                                    <dt>综合指数</dt>
+                                    <dd><div class="progress"><div class="progress-bar progress-bar-info" style="width: <?php echo $zodiacToday['all']; ?>;"><?php echo $zodiacToday['all']; ?></div></div></dd>
+                                    <dt>健康指数</dt>
+                                    <dd><div class="progress"><div class="progress-bar progress-bar-success" style="width: <?php echo $zodiacToday['health']; ?>;"><?php echo $zodiacToday['health']; ?></div></div></dd>
+                                    <dt>爱情指数</dt>
+                                    <dd><div class="progress"><div class="progress-bar progress-bar-danger" style="width: <?php echo $zodiacToday['love']; ?>;"><?php echo $zodiacToday['love']; ?></div></div></dd>
+                                    <dt>财运指数</dt>
+                                    <dd><div class="progress"><div class="progress-bar progress-bar-warning" style="width: <?php echo $zodiacToday['money']; ?>;"><?php echo $zodiacToday['money']; ?></div></div></dd>
+                                    <dt>工作指数</dt>
+                                    <dd><div class="progress"><div class="progress-bar progress-bar-success" style="width: <?php echo $zodiacToday['work']; ?>;"><?php echo $zodiacToday['work']; ?></div></div></dd>
+                                </dl>
+                            </div>
+                            <div class="row">
+                                <div class="zodiac-conclude"><span>总结</span><span><?php echo $zodiacToday['summary']; ?></span></div>
+                            </div>
+                            <?php else:?>
+                            <div class="error-code">查询失败，请重试！</div>
+                            <?php endif;?>
+                        </div>
 						
-						<div class="page-block c-right v-zoomIn">
-							<div class="wrapper">
-								<div>
-									<form class="message form send_message_form" method="get" action="ajaxserver/serverfile.php">
-										<div class="fields clearfix">
-											<div class="input">
-												<label for="mes-name">Name </label>
-												<input id="mes-name" name="name" type="text" placeholder="Your Name" required></div>
-											<div class="buttons">
-												<button id="submit-message" class="button email_b" name="submit_message">Ok</button>
-											</div>
-										</div>
-										<div class="fields clearfix">
-											<div class="input">
-												<label for="mes-email">Email </label>
-												<input id="mes-email" type="email" placeholder="Email Address" name="email" required>
-											</div>
-										</div>
-										<div class="fields clearfix no-border">
-											<label for="mes-text">Message </label>
-											<textarea id="mes-text" placeholder="Message ..." name="message" required></textarea>
-
-											<div>
-												<p class="message-ok invisible">Your message has been sent, thank you.</p>
-											</div>
-										</div>
-									</form>
-								</div>
-							</div>
-						</div>
 						<!-- End Of week fortune Page SubSction -->
 					</section>
 						
