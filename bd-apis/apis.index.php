@@ -341,6 +341,7 @@ http://themeforest.net/licenses
 				<div class="slide" id="s-zodiac-day" data-anchor="zodiac-day">
                     <?php 
                         $zodiacToday = $convenienceInfo->getZodiacFortuneByNameType($zodiacName,$zodiacType[0]);
+                        if($zodiacToday['error_code'] == 0):
                     ?>
                      <div class="zodiac-info-header">
                         <div class="zodiac-img col-md-4 col-xs-4" >
@@ -362,39 +363,22 @@ http://themeforest.net/licenses
            
 					<section class="content">
 						<header class="p-title">
-							<h3>今日运势<i class="ion ion-location">
+							<h3>今日运势<i class="ion ion-ios7-gear">
 								</i>
 							</h3>
 							<ul class="buttons">
 								<li>
-									<a title="Week" href="#zodiac/zodiac-week" ><i class="ion ion-android-information"></i></a>
+									<a title="本周运势" href="#zodiac/zodiac-week" ><i class="ion ion-android-calendar"></i></a>
 								</li>
 								<li>
-									<a title="Month" href="#zodiac/zodiac-month"><i class="ion ion-email"></i></a>
+									<a title="本月运势" href="#zodiac/zodiac-month"><i class="ion ion-ios7-pulse"></i></a>
 								</li>
 							</ul>
 						</header>
 						<!-- Begin Of Today Fortune Page SubSction -->
 						<div class="zodiac-info">
-                            <?php if($zodiacToday['error_code'] == 0):?>
-                           <!-- <div class="row">
-                                <div class="zodiac-img col-md-4 col-xs-4" >
-                                    <img class="img-rounded" data-src="holder.js/140x140" alt="skills" src="img/zodiac/Gemini.png" style="width:100px; height:100px;">
-                                </div>
-                                <div class="zodiac-basic-info col-md-6 col-xs-6">
-                                    <h3 class="zodiac-name">
-                                        <?php echo $zodiacToday['name'];?>
-                                    </h3>
-                                    <h4 class="zodiac-qfriend">
-                                        <span>速配星座</span><span><?php echo $zodiacToday['QFriend'];?></span>
-                                    </h4>
-                                   <h5>
-                                       <span>幸运色</span><span><?php echo $zodiacToday['color'];?></span>
-                                       <span>幸运数字</span><span><?php echo $zodiacToday['number'];?></span>
-                                    </h5>
-                                </div>
-                            </div>
-        -->
+                            
+                         
                             <div class="row">
                                 <dl class="dl-horizontal">
                                     <dt>综合指数</dt>
@@ -412,100 +396,82 @@ http://themeforest.net/licenses
                             <div class="row">
                                 <div class="zodiac-conclude"><span>总结</span><span><?php echo $zodiacToday['summary']; ?></span></div>
                             </div>
-                            <?php else:?>
-                            <div class="error-code">查询失败，请重试！</div>
-                            <?php endif;?>
+                            
                         </div>
 						<!-- End of page SubSection -->
-					</section>  
-                    
+                        
+					</section> 
+                    <?php else:?>
+                    <div class="error-code">查询失败，请重试！</div>
+                           
+                    <?php endif;?>
 				</div>
 				<!-- end of daily fortune  -->
 				
 				<!-- begin of zodiac week fortune --> 
 				<div class="slide" id="s-zodiac-week" data-anchor="zodiac-week">
-					<section class="content">
-                        <?php 
+					<?php 
                             $zodiacWeek = $convenienceInfo->getZodiacFortuneByNameType($zodiacName,$zodiacType[2]);
+                            if($zodiacWeek['error_code'] == 0):
                         ?>
+                    <section class="content">
 						<header class="p-title">
-							<h3>Write to us<i class="ion ion-email">
+							<h3>本周运势<i class="ion ion-android-calendar">
 								</i>
 							</h3>
 							<ul class="buttons">
-								<li class="show-for-medium-up">
-									<a title="Daily" href="#zodiac/zodiac-day"><i class="ion ion-android-information"></i></a>
+								<li>
+									<a title="今日运势" href="#zodiac/zodiac-day"><i class="ion ion-ios7-gear"></i></a>
 								</li>
 								<li>
-									<a title="Month" href="#zodiac/zodiac-month"><i class="ion ion-location"></i></a>
+									<a title="本月运势" href="#zodiac/zodiac-month"><i class="ion ion-ios7-pulse"></i></a>
 								</li>
-								<!--<li>
-									<a title="Message" href="#contact/message"><i class="ion ion-email"></i></a>
-								</li>-->
 							</ul>
 						</header>
-                        
 						<!-- Begin Of week fortune Page SubSction -->
 						<div class="zodiac-week-info">
-                            <?php if($zodiacWeek['error_code'] == 0):?>
-                            <!--<div class="row">
-                                <div class="zodiac-img col-md-4 col-xs-4" >
-                                    <img class="img-rounded" data-src="holder.js/140x140" alt="skills" src="img/zodiac/Gemini.png" style="width:100px; height:100px;">
-                                </div>
-                                <div class="zodiac-basic-info col-md-6 col-xs-6">
-                                    <h3 class="zodiac-name">
-                                        <?php echo $zodiacToday['name'];?>
-                                    </h3>
-                                    <h4 class="zodiac-qfriend">
-                                        <span>速配星座</span><span><?php echo $zodiacToday['QFriend'];?></span>
-                                    </h4>
-                                   <h5>
-                                       <span>幸运色</span><span><?php echo $zodiacToday['color'];?></span>
-                                       <span>幸运数字</span><span><?php echo $zodiacToday['number'];?></span>
-                                    </h5>
-                                </div>
-                            </div>-->
-        
                             <div class="row">
-                                <dl class="dl-horizontal">
-                                    <dt>综合指数</dt>
-                                    <dd><div class="progress"><div class="progress-bar progress-bar-info" style="width: <?php echo $zodiacToday['all']; ?>;"><?php echo $zodiacToday['all']; ?></div></div></dd>
-                                    <dt>健康指数</dt>
-                                    <dd><div class="progress"><div class="progress-bar progress-bar-success" style="width: <?php echo $zodiacToday['health']; ?>;"><?php echo $zodiacToday['health']; ?></div></div></dd>
-                                    <dt>爱情指数</dt>
-                                    <dd><div class="progress"><div class="progress-bar progress-bar-danger" style="width: <?php echo $zodiacToday['love']; ?>;"><?php echo $zodiacToday['love']; ?></div></div></dd>
-                                    <dt>财运指数</dt>
-                                    <dd><div class="progress"><div class="progress-bar progress-bar-warning" style="width: <?php echo $zodiacToday['money']; ?>;"><?php echo $zodiacToday['money']; ?></div></div></dd>
-                                    <dt>工作指数</dt>
-                                    <dd><div class="progress"><div class="progress-bar progress-bar-success" style="width: <?php echo $zodiacToday['work']; ?>;"><?php echo $zodiacToday['work']; ?></div></div></dd>
-                                </dl>
+                                <h5><?php echo $zodiacWeek['date'];?></h5>
                             </div>
                             <div class="row">
-                                <div class="zodiac-conclude"><span>总结</span><span><?php echo $zodiacToday['summary']; ?></span></div>
+                                <p><i class="ion-ios7-medkit"></i><?php echo $zodiacWeek['health'];?></p>
                             </div>
-                            <?php else:?>
-                            <div class="error-code">查询失败，请重试！</div>
-                            <?php endif;?>
+                            <div class="row">
+                                <p><i class="ion-ios7-paper"></i><?php echo $zodiacWeek['job'];?></p>
+                            </div>
+                            <div class="row">
+                                <p><i class="ion-heart"></i><?php echo $zodiacWeek['love'];?></p>
+                            </div>
+                            <div class="row">
+                                <p><i class="ion-social-usd"></i><?php echo $zodiacWeek['money'];?></p>
+                            </div>
+                            <div class="row">
+                                <p><i class="ion-briefcase"></i><?php echo $zodiacWeek['work'];?></p>
+                            </div>
+                            
+                           
                         </div>
 						
 						<!-- End Of week fortune Page SubSction -->
 					</section>
-						
+				    <?php else:?>
+                    <div class="error-code">查询失败，请重试！</div>
+                    <?php endif;?>	
 				</div>
 				<!-- End of zodiac message -->
                 <!-- begin of zodiac month fortune --> 
 				<div class="slide" id="s-zodiac-month" data-anchor="zodiac-month">
 					<section class="content">
 						<header class="p-title">
-							<h3>Write to us<i class="ion ion-email">
+							<h3>本月/年运势<i class="ion ion-ios7-pulse">
 								</i>
 							</h3>
 							<ul class="buttons">
 								<li class="show-for-medium-up">
-									<a title="Daily" href="#zodiac/zodiac-day"><i class="ion ion-android-information"></i></a>
+									<a title="今日运势" href="#zodiac/zodiac-day"><i class="ion ion-ios7-gear"></i></a>
 								</li>
 								<li>
-									<a title="Week" href="#zodiac/zodiac-week"><i class="ion ion-location"></i></a>
+									<a title="本周运势" href="#zodiac/zodiac-week"><i class="ion ion-android-calendar"></i></a>
 								</li>
 								<!--<li>
 									<a title="Message" href="#contact/message"><i class="ion ion-email"></i></a>

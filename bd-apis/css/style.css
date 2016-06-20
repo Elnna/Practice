@@ -403,10 +403,13 @@ div .zodiac-img{
 }
 
 .page-zodiac .p-title{
-    position: relative;
-    top: -50px;
-/*   margin-bottom: 3em;*/
+    position: absolute;
+    top: 90px;
 }
+/*.zodiac-week .p-title{
+    position: relative;
+    top: -4px;
+}*/
 .page-zodiac .p-title h3{
     font-size:2em;
     font-weight: 800;
@@ -419,6 +422,7 @@ div .zodiac-img{
  .page-zodiac .p-title .buttons{
 	position: relative;
     float: right;
+     margin-left: 4em;
     padding: 0.1em;
     right: 0;
     background: rgba(255,255,255,0.15);
@@ -511,10 +515,10 @@ h4.zodiac-qfriend span:last-child{
 
 /*progress bar*/
 
-.zodiac-info{
+/*.zodiac-info{
     position: relative;
     top: 75px;
-}
+}*/
 .zodiac-info dl dt{
 /*    font-size: 0.75em;*/
     text-align: left;
@@ -556,7 +560,52 @@ div .zodiac-conclude span:first-child{
 }
 div .zodiac-conclude span:last-child{
     font-size: 0.5em;
-    color: rgba(255, 255, 255, 0.45);
+    color: #F9FBE7;
 }
 
+/*zodiac week fortune*/
+.zodiac-week-info,.zodiac-info{
+    position: absolute;
+    top: 276px;
+    width: 30%;
+    margin-left: -40px;
+    margin-top: 1em;
+    
+}
+.zodiac-week-info .row p{
+    font-size:0.75em;
+    line-height: 1.2em;
+    color:#F9FBE7;
+    
+}
+.zodiac-week-info .row h5{
+    font-size: 0.5em;
+    margin-top: 20px;
+    font-weight: 400;
+    color: rgba(200, 230, 201, 0.46);
+    height: 1em;
+    line-height: 1em;
+    text-align: center;
+    margin-left: -5em;
+}
+.ion-heart,.ion-briefcase,
+.ion-ios7-medkit,.ion-social-usd,
+.ion-ios7-paper{
+    margin-right: 0.5em;
+}
+.ion-heart{
+    color: red;
+}
+.ion-briefcase{
+    color:black;
+}
+.ion-ios7-medkit{
+    color:white;
+}
+.ion-social-usd{
+    color:gold;
+}
+.ion-ios7-paper{
+    color:aliceblue;
+}
 
