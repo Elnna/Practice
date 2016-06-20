@@ -387,9 +387,9 @@ http://themeforest.net/licenses
                                     <dt>爱情指数</dt>
                                     <dd><div class="progress"><div class="progress-bar progress-bar-danger" style="width: <?php echo $zodiacToday['love']; ?>;"><?php echo $zodiacToday['love']; ?></div></div></dd>
                                     <dt>财运指数</dt>
-                                    <dd><div class="progress"><div class="progress-bar progress-bar-warning" style="width: <?php echo $zodiacToday['love']; ?>;"><?php echo $zodiacToday['money']; ?></div></div></dd>
+                                    <dd><div class="progress"><div class="progress-bar progress-bar-warning" style="width: <?php echo $zodiacToday['money']; ?>;"><?php echo $zodiacToday['money']; ?></div></div></dd>
                                     <dt>工作指数</dt>
-                                    <dd><div class="progress"><div class="progress-bar progress-bar-success" style="width: <?php echo $zodiacToday['love']; ?>;"><?php echo $zodiacToday['work']; ?></div></div></dd>
+                                    <dd><div class="progress"><div class="progress-bar progress-bar-success" style="width: <?php echo $zodiacToday['work']; ?>;"><?php echo $zodiacToday['work']; ?></div></div></dd>
                                 </dl>
                             </div>
                             <div class="row">
