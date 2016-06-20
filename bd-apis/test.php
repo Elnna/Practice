@@ -10,7 +10,11 @@ $gaddress = new gaddress();
 $city = $gaddress->getCityByIp($gaddress->getIp());
 //$ipWeatherResult = $convenienceInfo->getWeather($city);  
 //星座运势
-$zodiac = $convenienceInfo->getZodiacFortuneByName("双子座");
+//today,tomorrow,week,nextweek,month,year
+$zodiacToday = $convenienceInfo->getZodiacFortuneByNameType("双子座",'today');
+$zodiacWeek = $convenienceInfo->getZodiacFortuneByNameType("双子座",'week');
+$zodiacMonth = $convenienceInfo->getZodiacFortuneByNameType("双子座",'month');
+$zodiacYear = $convenienceInfo->getZodiacFortuneByNameType("双子座",'year');
 //火车票查询：
 //getTrainDetail($train,$from,$to,$date)
 $train = 'G101';
@@ -108,8 +112,18 @@ $convenienceInfo->setAppKey($juheAppKey);
     <div>
         <h1>星座查询</h1>
         <pre>
-        <?php var_dump($zodiac);?>
+        <?php var_dump($zodiacToday);?>
         </pre>
+        <pre>
+        <?php var_dump($zodiacWeek);?>
+        </pre>
+        <pre>
+        <?php var_dump($zodiacMonth);?>
+        </pre>
+        <pre>
+        <?php var_dump($zodiacYear);?>
+        </pre>
+        
     </div>
     <div>
         <h1>快递查询</h1>

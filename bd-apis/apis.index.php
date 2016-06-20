@@ -10,7 +10,9 @@ $gaddress = new gaddress();
 $city = $gaddress->getCityByIp($gaddress->getIp());
 $ipWeatherResult = $convenienceInfo->getWeather($city);  
 //星座运势
-$zodiac = $convenienceInfo->getZodiacFortuneByName("双子座");
+$zodiacType = array('today','tomorrow','week','nextweek','month','year');
+$zodiacName = '双子座';
+
 //火车票查询：
 //getTrainDetail($train,$from,$to,$date)
 $train = 'G101';
@@ -71,6 +73,8 @@ http://themeforest.net/licenses
         
         <!-- Weather CSS style -->
         <link rel="stylesheet" href="./css/weather-icons.css">
+         <!-- bootstrap CSS style -->
+        <link rel="stylesheet" href="./css/bootstrap.css">
 
         <!-- Vendor CSS style -->
         <link rel="stylesheet" href="./css/foundation.min.css">
@@ -127,7 +131,7 @@ http://themeforest.net/licenses
 					<span class="title">星座运势</span>
 				</li>
 				<li data-menuanchor="tickets">
-					<a href="#tickets"><i class="icon ion ion-ios-information"></i>
+					<a href="#tickets"><i class="icon ion ion-android-information"></i>
 					</a>
 					<span class="title">火车票</span>
 				</li>
@@ -332,38 +336,182 @@ http://themeforest.net/licenses
            
             
             <!-- Begin of zodiac page -->
-            <div class="section page-zodiac page page-cent"  id="s-zodiac">
-                <section class="content">
-                    <header class="p-title">
-                        <h3>Register <i class="ion ion-compose"></i></h3> 
-						<h4 class="subhead">Register to get our latest news</h4>
-                    </header>
-                    <div>
-                        <form id="mail-subscription" class="form magic send_email_form" method="get" action="ajaxserver/serverfile.php">
-                            <p class="invite">Please, write your email below to stay in touch with us :</p>
-							<div class="fields clearfix">
-								<div class="input">
-									<label for="reg-email">Email </label>
-									<input id="reg-email" class="email_f"  name="email" type="email" required placeholder="your@email.address" data-validation-type="email"></div>
-								<div class="buttons">
-									<button id="submit-email" class="button email_b" name="submit_email">Ok</button>
+            <div class="section page-zodiac page page-cent  bg-color" data-bgcolor="rgba(95, 25, 208, 0.88)s" id="s-zodiac">
+				<!-- Begin of  zodiac daily fortune -->
+				<div class="slide" id="s-zodiac-day" data-anchor="zodiac-day">
+                    <?php 
+                        $zodiacToday = $convenienceInfo->getZodiacFortuneByNameType($zodiacName,$zodiacType[0]);
+                    ?>
+                       
+					<section class="content">
+						<header class="p-title">
+							<h3>今日运势<i class="ion ion-location">
+								</i>
+							</h3>
+							<ul class="buttons">
+								<li>
+									<a title="Week" href="#zodiac/zodiac-week" ><i class="ion ion-android-information"></i></a>
+								</li>
+								<li>
+									<a title="Month" href="#zodiac/zodiac-month"><i class="ion ion-email"></i></a>
+								</li>
+							</ul>
+						</header>
+						<!-- Begin Of Today Fortune Page SubSction -->
+						<div class="zodiac-info">
+                            <?php if($zodiacToday['error_code'] == 0):?>
+                            <div class="row">
+                                <div class="zodiac-img col-md-4 col-xs-4" >
+                                    <img class="img-rounded" data-src="holder.js/140x140" alt="skills" src="img/zodiac/Gemini.png" style="width:100px; height:100px;">
+                                </div>
+                                <div class="zodiac-basic-info col-md-6 col-xs-6">
+                                    <h3 class="zodiac-name">
+                                        <?php echo $zodiacToday['name'];?>
+                                    </h3>
+                                    <h4 class="zodiac-qfriend">
+                                        <span>速配星座</span><span><?php echo $zodiacToday['QFriend'];?></span>
+                                    </h4>
+                                   <h5>
+                                       <span>幸运色</span><span><?php echo $zodiacToday['color'];?></span>
+                                       <span>幸运数字</span><span><?php echo $zodiacToday['number'];?></span>
+                                    </h5>
+                                </div>
+                            </div>
+        
+                            <div class="row">
+                                <dl class="dl-horizontal">
+                                    <dt>综合指数</dt>
+                                    <dd><div class="progress"><div class="progress-bar progress-bar-info" style="width: <?php echo $zodiacToday['all']; ?>;"><?php echo $zodiacToday['all']; ?></div></div></dd>
+                                    <dt>健康指数</dt>
+                                    <dd><div class="progress"><div class="progress-bar progress-bar-success" style="width: <?php echo $zodiacToday['health']; ?>;"><?php echo $zodiacToday['health']; ?></div></div></dd>
+                                    <dt>爱情指数</dt>
+                                    <dd><div class="progress"><div class="progress-bar progress-bar-danger" style="width: <?php echo $zodiacToday['love']; ?>;"><?php echo $zodiacToday['love']; ?></div></div></dd>
+                                    <dt>财运指数</dt>
+                                    <dd><div class="progress"><div class="progress-bar progress-bar-warning" style="width: <?php echo $zodiacToday['love']; ?>;"><?php echo $zodiacToday['money']; ?></div></div></dd>
+                                    <dt>工作指数</dt>
+                                    <dd><div class="progress"><div class="progress-bar progress-bar-success" style="width: <?php echo $zodiacToday['love']; ?>;"><?php echo $zodiacToday['work']; ?></div></div></dd>
+                                </dl>
+                            </div>
+                            <div class="row">
+                                <div class="zodiac-conclude"><span>总结</span><span><?php echo $zodiacToday['summary']; ?></span></div>
+                            </div>
+                            <?php else:?>
+                            <div class="error-code">查询失败，请重试！</div>
+                            <?php endif;?>
+                        </div>
+						<!-- End of page SubSection -->
+					</section>  
+                    
+				</div>
+				<!-- end of daily fortune  -->
+				
+				<!-- begin of zodiac week fortune --> 
+				<div class="slide" id="s-zodiac-week" data-anchor="zodiac-week">
+					<section class="content">
+						<header class="p-title">
+							<h3>Write to us<i class="ion ion-email">
+								</i>
+							</h3>
+							<ul class="buttons">
+								<li class="show-for-medium-up">
+									<a title="Daily" href="#zodiac/zodiac-day"><i class="ion ion-android-information"></i></a>
+								</li>
+								<li>
+									<a title="Month" href="#zodiac/zodiac-month"><i class="ion ion-location"></i></a>
+								</li>
+								<!--<li>
+									<a title="Message" href="#contact/message"><i class="ion ion-email"></i></a>
+								</li>-->
+							</ul>
+						</header>
+						<!-- Begin Of week fortune Page SubSction -->
+						
+						<div class="page-block c-right v-zoomIn">
+							<div class="wrapper">
+								<div>
+									<form class="message form send_message_form" method="get" action="ajaxserver/serverfile.php">
+										<div class="fields clearfix">
+											<div class="input">
+												<label for="mes-name">Name </label>
+												<input id="mes-name" name="name" type="text" placeholder="Your Name" required></div>
+											<div class="buttons">
+												<button id="submit-message" class="button email_b" name="submit_message">Ok</button>
+											</div>
+										</div>
+										<div class="fields clearfix">
+											<div class="input">
+												<label for="mes-email">Email </label>
+												<input id="mes-email" type="email" placeholder="Email Address" name="email" required>
+											</div>
+										</div>
+										<div class="fields clearfix no-border">
+											<label for="mes-text">Message </label>
+											<textarea id="mes-text" placeholder="Message ..." name="message" required></textarea>
+
+											<div>
+												<p class="message-ok invisible">Your message has been sent, thank you.</p>
+											</div>
+										</div>
+									</form>
 								</div>
 							</div>
-                            
-                            <p class="email-ok invisible"><strong>Thank you</strong> for your subscription. We will inform you.</p>
-                        </form>
-                    </div>
+						</div>
+						<!-- End Of week fortune Page SubSction -->
+					</section>
+						
+				</div>
+				<!-- End of zodiac message -->
+                <!-- begin of zodiac month fortune --> 
+				<div class="slide" id="s-zodiac-month" data-anchor="zodiac-month">
+					<section class="content">
+						<header class="p-title">
+							<h3>Write to us<i class="ion ion-email">
+								</i>
+							</h3>
+							<ul class="buttons">
+								<li class="show-for-medium-up">
+									<a title="Daily" href="#zodiac/zodiac-day"><i class="ion ion-android-information"></i></a>
+								</li>
+								<li>
+									<a title="Week" href="#zodiac/zodiac-week"><i class="ion ion-location"></i></a>
+								</li>
+								<!--<li>
+									<a title="Message" href="#contact/message"><i class="ion ion-email"></i></a>
+								</li>-->
+							</ul>
+						</header>
+						<!-- Begin Of month fortune Page SubSction -->
+						
+						
+                        <article class="text">
+                            <p>Lorem ipsum <strong>magicum </strong>dolor sit amet, consectetur adipiscing elit. Maecenas a sem ultrices neque vehicula fermentum a sit amet nulla.</p>
+                            <p>Aenean ultricies odio at erat facilisis tincidunt. Fusce tempor auctor justo, nec facilisis quam vehicula vel. Aenean non mattis purus, eget lobortis odio. </p>
+                        </article>
+                    </section>
+				    <!-- End Of month fortune Page SubSction -->
+						
+				</div>
+				<!-- End of contact message -->
+            </div>
+            <!-- End of Contact page  -->   
+            
+            
+            
+           <!-- <div class="section page-zodiac page page-cent"  id="s-zodiac">
+                <section class="content">
+                       
+                
                 </section>
                 <footer class="p-footer p-scrolldown">
                     <a href="#tickets">
                         <div class="arrow-d">
-							<div class="before">About</div>
+							<div class="before">Express</div>
 							<div class="after">Lorem</div>
 							<div class="circle"><i class="ion ion-mouse"></i></div>
 						</div>
                     </a>                        
                 </footer>
-            </div>
+            </div>-->
             <!-- End of zodiac page -->
             
             <!-- Begin of tickets page -->
@@ -461,6 +609,7 @@ http://themeforest.net/licenses
 						</div>
 						<!-- End of page SubSection -->
 					</section>  
+                    
 				</div>
 				<!-- end of contact information -->
 				
@@ -544,6 +693,7 @@ http://themeforest.net/licenses
 <!--		<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>-->
         <script src="./js/vendor/jquery-1.11.2.min.js"></script>
         <script src="./js/jquery-ui.min.js"></script>
+        <script src="./js/bootstrap.js"></script>
 		<!-- All vendor scripts -->
         <script src="./js/vendor/all.js"></script>
 		

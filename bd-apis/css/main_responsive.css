@@ -305,12 +305,12 @@ http://themeforest.net/licenses
 /* Screen small than 360px */
 @media (max-width : 360px){
 	
-	.page-contact .fields:first-child ,
-	.page-contact .contact .columns li:first-child {
+	.page-zodiac .fields:first-child ,
+	.page-zodiac .zodiac .columns li:first-child {
 		margin-top: 0;
 	}
-	.page-contact .form .fields,
-	.page-contact .contact .columns li{
+	.page-zodiac .form .fields,
+	.page-zodiac .zodiac .columns li{
 		margin-top: 10px;
 	}
 	.page .form textarea {
@@ -318,7 +318,7 @@ http://themeforest.net/licenses
 	}
 	
 	
-	.contact .social-links{
+	.zodiac .social-links{
 		display: none;
 	}
 	
@@ -342,7 +342,7 @@ http://themeforest.net/licenses
 	.pane-weather .clock .elem-center .digit{
     	font-size: 72px;
 	}
-	.page-cent.page-contact .content{
+	.page-cent.page-zodiac .content{
 		padding-bottom: 40px;
 	}
 	
@@ -440,12 +440,12 @@ http://themeforest.net/licenses
 	.page-home .logo-container img.h-logo{
 		height: 80px;
 	}
-	.page-contact .fields:first-child ,
-	.page-contact .contact .columns li:first-child {
+	.page-zodiac .fields:first-child ,
+	.page-zodiac .zodiac .columns li:first-child {
 		margin-top: 0;
 	}
-	.page-contact .form .fields,
-	.page-contact .contact .columns li{
+	.page-zodiac .form .fields,
+	.page-zodiac .zodiac .columns li{
 		margin-top: 5px;
 	}
 	.page .form textarea {

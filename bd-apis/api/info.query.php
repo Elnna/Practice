@@ -174,7 +174,7 @@ class convenienceInfo{
      * @param string $star [星座名称]
      * @return array
      */
-    public function getZodiacFortuneByName($star){
+   /* public function getZodiacFortuneByName($star){
         $paramsArray = array(
             'consName'  => $star,
             'type'    => 'today'//default;
@@ -183,15 +183,15 @@ class convenienceInfo{
         $baidu = true;
         $content = $this->juhecurl($this->constellUrl,$params,$baidu);
         return $this->_returnArray($content);
-    }
+    }*/
  
      /**
      * 根据星座名称与时间类型查询星座运势
      * @param string $star [星座名称]
-     * @param string $type [时间类型]
+     * @param string $type [时间类型:默认today]
      * @return array
      */
-    public function getZodiacFortuneByNameType($star,$type){
+    public function getZodiacFortuneByNameType($star,$type ='today'){
          $paramsArray = array(
             'consName'  => $star,
             'type'    => $type,

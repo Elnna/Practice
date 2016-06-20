@@ -1,6 +1,10 @@
 iframe{
     margin-left:-110px;
 }
+
+
+
+
 /*header-top*/
 .header-top{
     position: fixed;
@@ -181,3 +185,366 @@ a.nav-item .active, .nav-item:hover,.nav-item:focus{
     font-size: 2em;
     font-weight: 400;
 }
+
+
+/* slide page */
+/*footer arrow*/
+.p-footer {
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+    padding-top: 5rem;
+}
+.p-footer .icon{
+	position: absolute;
+	top: 24px;
+	color: #fff;
+	text-align: center;
+	width: 24px;
+	margin-left: -12px;
+	font-size: 20px;
+	transition: 0.3s;
+}
+	.p-footer .text{
+		font-size: 12px;
+		font-family: "Opensans";
+		text-transform: uppercase;
+	}
+.p-footer:hover .icon{
+	opacity: 0;
+	-webkit-transform: scale(0);
+	transform: scale(0);
+}
+.p-footer .arrow-d{
+    position: relative;
+    width: 1px;
+    background: rgba(255, 255, 255, 0.1);
+    height: 48px;
+    width: 48px;
+/*    left: 50%;*/
+    left: 0;
+    bottom: 32px;
+	margin: 0;
+	display: block;
+	border: 0px solid #fff;
+	border-radius: 100%;
+    margin-left: -24px;   
+	transition: 0.3s;
+	font-family: "Opensans";
+	color: #fff;
+	font-size: 14px;
+}
+	.p-footer .arrow-d:hover{
+		background: #5677fc;
+		background: #fff;
+	}
+	.p-footer .arrow-d.gone{
+		-webkit-transform: scale(0);   
+		transform: scale(0);   
+		-webkit-transition: 0.2s;
+		transition: 0.2s;
+	}
+	.p-footer .arrow-d .circle{
+		top: 12px;
+		bottom: 12px;
+		left: 12px;
+		right: 12px;
+		position: absolute;
+		content: "\f340";
+		font-size: 28px;
+		line-height: 0;
+		margin-top: -2px;
+		font-family: "Ionicons";
+		color: #fff;
+/*		background: #fff;*/
+		border-radius: 100%;
+		-webkit-transition: 0.3s;
+		transition: 0.3s;
+	}
+
+	.p-footer .arrow-d .circle:after{
+		top: 12px;
+		bottom: 12px;
+		left: 12px;
+		right: 12px;
+		position: absolute;
+		content: "";
+		background: #fff;
+		border-radius: 100%;
+		-webkit-transition: 0.3s ;
+		transition: 0.3s ;
+	}
+	.p-footer .arrow-d .after,
+	.p-footer .arrow-d .before{
+		top: 14px;
+		position: absolute;
+		-webkit-transition: 0.3s;
+		transition: 0.3s;
+		opacity: 1;
+	}
+	/* Hover animation */
+	.p-footer .arrow-d:hover .after,
+	.p-footer .arrow-d:hover .before{
+		opacity: 0.15;
+	}
+	.p-footer .arrow-d:hover .circle{
+		background: #5677fc;
+		background: rgba(86, 119, 252, 0);
+		top: 0px;
+		bottom: 0px;
+		left: 0px;
+		right: 0px; 
+	}
+	.p-footer .arrow-d:hover .circle:after{	
+		border-radius: 0;
+		left: 23px;
+		right: 23px;
+	}
+	.p-footer .arrow-d .before{
+		text-align: right;
+		float: right;
+		right: 72px;
+	}
+	.p-footer .arrow-d .after{
+		text-align: left;
+		float: left;
+		left: 72px;
+	}
+	.p-footer .arrow-d:after,
+	.p-footer .arrow-d:before{
+		position: absolute; content: ' ';
+		width: 24px;
+		height: 24px;
+		left: 12px;
+		margin-left: 0.5px;
+	/*
+		-webkit-transform: rotateY(45deg);
+		-ie-transform: rotateY(45deg);
+	*/
+		border: 2px solid rgba(255, 255, 255, 0.15);
+		border-left-color: transparent;
+		border-top-color: transparent;  
+		-ms-transition: 0.3s;
+		-webkit-transition: 0.3s;
+		transition: 0.3s;
+	}
+	.p-footer .arrow-d:after{   
+		border-right-color: transparent;  
+		top: 12px;
+		left: 36px;
+		-ms-transform: rotateZ(-45deg); 
+		-webkit-transform: rotateZ(-45deg); 
+		transform: rotateZ(-45deg); 
+	}
+	.p-footer .arrow-d:before{  
+		border-bottom-color: transparent;
+		top: 12px; 
+		left: -12px;
+		-ms-transform: rotateZ(-135deg);
+		-moz-transform: rotateZ(-135deg);
+		transform: rotateZ(-135deg);
+	}
+	.p-footer .arrow-d.no-change:after, 
+	.p-footer .arrow-d:hover:after{ 
+		margin-top: 1px;
+		top: 16px; 
+		left: 16px;
+		bottom: 16px;
+		right: 16px;
+		width: auto;
+		height: auto;
+		border: 2px solid #1d1d1d;
+		border-left-color: transparent;
+		border-top-color: transparent;  
+		border-right-color: transparent; 
+		-ms-transform: rotateZ(45deg);
+		-webkit-transform: rotateZ(45deg);
+		transform: rotateZ(45deg);
+	}
+	.p-footer .arrow-d.no-change:before,
+	.p-footer .arrow-d:hover:before{
+/*		margin-top: 1px;*/
+		top: 16px;
+		left: 16px;
+		bottom: 16px;
+		right: 16px;
+		width: auto;
+		height: auto;
+
+		border: 2px solid #1d1d1d;
+		border-left-color: transparent;
+		border-top-color: transparent;  
+		border-bottom-color: transparent;
+		-ms-transform: rotateZ(45deg);
+		-webkit-transform: rotateZ(45deg);
+		transform: rotateZ(45deg);
+	}
+	.p-footer:hover .arrow-d.no-change:after, 
+	.p-footer:hover .arrow-d.no-change:before{
+		top: 4rem;
+	}
+	.p-footer .arrow-d a{
+		color: inherit;
+	}
+
+
+.fp-controlArrow.fp-prev,
+.fp-controlArrow.fp-next{
+    display: none;
+}
+div .zodiac-img{
+/*    background: url('./img/zodiac/Gemini.png') 154px 370px;*/
+/*    width: 100px;*/
+/*    height: 100px;*/
+/*    color: black;*/
+    -webkit-border-radius: 10px;
+}
+
+.page-zodiac .p-title{
+   margin-bottom: 3em;
+}
+.page-zodiac .p-title h3{
+    font-size:2em;
+    font-weight: 800;
+    display: inline-block;
+}
+.page-zodiac .p-title h3 i{
+    margin-left: 0.5em;
+}
+
+ .page-zodiac .p-title .buttons{
+	position: relative;
+    float: right;
+    padding: 0.1em;
+    right: 0;
+    background: rgba(255,255,255,0.15);
+    display: inline-block;
+}
+
+.page-zodiac .p-title .buttons li{
+	position: relative;
+	display: block;
+	width: 48px;
+	float: left;
+}
+.page-zodiac .p-title .buttons a{
+	text-align: center;
+	width: 48px;
+	height: 48px;
+	display: inline-block;
+	position: relative;
+	margin: 0;
+}
+.page-zodiac .p-title .buttons a i{
+	margin: 0;
+	font-size: 24px;
+	padding-top: 0.5em;
+}
+
+.page-zodiac .p-title .buttons a:after{
+	position: absolute;
+	content: "";
+	background: rgba(255,255,255,0);
+	border-radius: 100%;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	-webkit-transition: 0.2s;
+	transition: 0.2s;
+}
+.page-zodiac .p-title .buttons a:hover:after{
+	border-radius: 0;
+	background: rgba(255,255,255,0.15);
+}
+.page-zodiac .zodiac li{
+	margin-top: 20px;
+}
+.page-zodiac .zodiac img{
+	height: 56px;
+	width: auto;
+}
+.page-zodiac a{
+    color: #fff;
+}
+.page-zodiac .right{
+	text-align: right;
+}
+h3.zodiac-name{
+    font-size: 2em;
+    font-weight: bolder;
+    margin: 0.1em 0;
+    text-align: left;
+}
+h4.zodiac-qfriend span:first-child{
+    font-size: 0.75em;
+    padding-right: 1em;
+    color: rgba(255,255,255,0.5);
+}
+h4.zodiac-qfriend span:last-child{
+    font-size: 1.25em;
+    color: #F9FBE7;
+}
+.zodiac-info h5 span:nth-child(1),
+.zodiac-info h5 span:nth-child(3){
+    font-size: 0.5em;
+    color: rgba(255,255,255,0.5);
+    margin-right: 0.5em;
+}
+.zodiac-info h5 span:nth-child(2),
+.zodiac-info h5 span:nth-child(4){
+    color: #fff;
+    font-weight: bold;
+}
+.zodiac-info h5 span:nth-child(2){
+    margin-right: 0.5em;
+}
+
+/*progress bar*/
+
+
+.zodiac-info dl dt{
+/*    font-size: 0.75em;*/
+    text-align: left;
+    /* margin-right: 0px; */
+    margin-left: 5%;
+    width: 20%;
+    color: rgba(255,255,255,0.5);
+    /* width: 30%; */
+}
+
+.zodiac-info dl dd{
+    margin: 0 2em;
+    padding: 0.25em 0;
+    
+}
+
+
+
+div.progress {
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    background-color: rgba(251, 247, 247, 0.29);
+    height: 0.75em;
+}
+div.progress-bar {
+    margin-left: -2px;
+    font-size: 0.5em;
+    height: 1em;
+    line-height: 0.5em;
+    margin-top: -2px;
+    padding: 2px;
+}
+
+/*summary*/
+div .zodiac-conclude span:first-child{
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #123;
+    margin-right: 0.1em;
+}
+div .zodiac-conclude span:last-child{
+    font-size: 0.5em;
+    color: rgba(255, 255, 255, 0.45);
+}
+
+
