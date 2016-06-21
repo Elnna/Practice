@@ -430,19 +430,64 @@ http://themeforest.net/licenses
 			<!-- End of illegal page -->
             <!-- Begin of zodiac page -->
             <div class="section page-zodiac page page-cent  bg-color" data-bgcolor="rgba(95, 25, 208, 0.88)s" id="s-zodiac">
+                <!--        begin of zodiac search modal         -->
+                
+                <div class="modal fade" id="zodiacSearchModal" tabindex="-1" role="dialog" aria-labelledby="zodiacSearchModalLabel">
+                    <div class="modal-dialog" role = "document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                 <h4 class="modal-title" id="zodiacSearchModalLabel">星座查询</h4>
+                            </div>
+                            <div class="modal-body">
+                                <input type="text" placeholder="星座名" id="zodiac-input" data-provide="typeahead">
+                                <div class="daily-options">
+                                    <label for="radio" class="col-sm-4 control-label">日查询</label>
+                                    <div class="col-sm-8">
+                                        <div class="radio-inline"><label><input type="radio" name="daily-option" value="today" checked=""> 今日</label></div>
+                                        <div class="radio-inline"><label><input type="radio" name="daily-option"  value="tomorrow" > 明日</label></div>
+                                    </div>
+                                    
+                                </div>
+                                <div class="week-options">
+                                    <label for="radio" class="col-sm-4 control-label">周查询</label>
+                                    <div class="col-sm-8">
+                                        <div class="radio-inline"><label><input type="radio" checked="" name="week-option" value="week"> 本周</label></div>
+                                        <div class="radio-inline"><label><input type="radio"   name="week-option" value="nextweek"> 下周</label></div>
+                                    </div>
+                                </div>
+                                <div class="zodiac-options">
+                                    <div class="row"></div>
+                                    <div class="row"></div>
+                                    <div class="row"></div>
+                                    <div class="row"></div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal" name="cancel">取消</button>
+                                <button type="button" class="btn btn-primary" name="submit" id="zodiac-search-submit">确定</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                 <!--        begin of zodiac search modal         -->
+
 				<!-- Begin of  zodiac daily fortune -->
+                
 				<div class="slide" id="s-zodiac-day" data-anchor="zodiac-day">
                     <?php 
                         $zodiacToday = $convenienceInfo->getZodiacFortuneByNameType($zodiacName,$zodiacType[0]);
                         if($zodiacToday['error_code'] == 0):
                     ?>
-                     <div class="zodiac-info-header">
+                     <div class="zodiac-info-header" >
                         <div class="zodiac-img col-md-4 col-xs-4" >
-                            <img class="img-rounded" data-src="holder.js/140x140" alt="skills" src="img/zodiac/Gemini.png" style="width:100px; height:100px;">
+                            <img class="img-rounded" data-src="holder.js/140x140" alt="skills" src="img/zodiac/Gemini.png" style="width:100px; height:100px;" >
                         </div>
                         <div class="zodiac-basic-info col-md-6 col-xs-6">
                             <h3 class="zodiac-name">
-                                <?php echo $zodiacToday['name'];?>
+                                <span><?php echo $zodiacToday['name'];?></span>
+                                <span data-toggle="modal" data-target="#zodiacSearchModal" >星座查询</span>
                             </h3>
                             <h4 class="zodiac-qfriend">
                                 <span>速配星座</span><span><?php echo $zodiacToday['QFriend'];?></span>
@@ -638,19 +683,19 @@ http://themeforest.net/licenses
                             <div class="row">
                                 <h5><?php echo $zodiacYear['date'];?></h5>
                             </div>
-                            <div class="row" title="<?php echo $zodiacYear['mima']['text'][0];?>">
+                            <div class="row" title="<?php echo $zodiacYear['mima']['text'][0];?>" >
                                 <p><i class="ion-stats-bars"></i><span><?php echo $zodiacYear['mima']['info']; ?></span><span><?php echo $zodiacYear['mima']['text'][0];?></span></p>
                             </div>
-                            <div class="row" title="<?php echo $zodiacYear['career'][0];?>">
+                            <div class="row" title="<?php echo $zodiacYear['career'][0];?>" >
                                 <p><i class="ion-briefcase"></i><?php echo $zodiacYear['career'][0]; ?></p>
                             </div>
-                            <div class="row" title="<?php echo $zodiacYear['love'][0];?>">
+                            <div class="row" title="<?php echo $zodiacYear['love'][0];?>" >
                                 <p><i class="ion-heart"></i><?php echo $zodiacYear['love'][0]; ?></p>
                             </div>
-                            <div class="row" title="<?php echo $zodiacYear['health'][0];?>">
+                            <div class="row" title="<?php echo $zodiacYear['health'][0];?>" >
                                 <p><i class="ion-ios-body"></i><?php echo $zodiacYear['health'][0]; ?></p>
                             </div>
-                            <div class="row" title="<?php echo $zodiacYear['finance'][0];?>">
+                            <div class="row" title="<?php echo $zodiacYear['finance'][0];?>" >
                                 <p><i class="ion-cash"></i><?php echo $zodiacYear['finance'][0]; ?></p>
                             </div>
                             <div class="row" >
@@ -690,6 +735,7 @@ http://themeforest.net/licenses
         <script src="./js/vendor/jquery-1.11.2.min.js"></script>
         <script src="./js/jquery-ui.min.js"></script>
         <script src="./js/bootstrap.js"></script>
+        <script src="./js/bootstrap3-typeahead.js"></script>
 		<!-- All vendor scripts -->
         <script src="./js/vendor/all.js"></script>
 		

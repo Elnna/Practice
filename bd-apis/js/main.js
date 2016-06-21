@@ -90,13 +90,13 @@ var slideElem = $('.slide');
 var arrowElem = $('.p-footer .arrow-d');
 var pageElem = $('.page');
 
-//var historyCity = '';
+/*zodiac*/
 
-
-
+var zodiacArr = ["白羊座", "金牛座", "双子座","巨蟹座","狮子座","处女座","天秤座","天蝎座","射手座","摩羯座","水瓶座","双鱼座"];
+var dayProgressBar = ['all','health','love','money','work'];
 
 /* 3. Init all plugin on load */
-$(document).ready(function() {
+$(document).ready(function($) {
 	/* Init console to avoid error */
 	var method;
     var noop = function () {};
@@ -190,21 +190,6 @@ $(document).ready(function() {
     $('.header-top h1').on("click",function(e){
 //       alert("success");
         
-        //替换header top 
-//        var oldNode = $(this)[0];
-        /*var newNodes = "<div id='change-city' class='change-city'>\
-        <div class='input-box'><input class='get-city' type='text' name='city' value='" + 
-        $('.header-top h1 span')[0].innerText  + "' style='background-color: transparent;'/>\
-        <button class='submit-btn' type='button' name='submit'>确定</button></div>\
-        <div class='history-cities'></div>\
-        <hr style='width:10%'>\
-        <div class='common-cities'><span>北京</span><span>上海</span><span>深圳</span>" +  
-        "<span>武汉</span><span>广州</span><span>杭州</span><span>南京</span><span>成都</span>\
-        <span>天津</span><span>西安</span><span>福州</span><span>重庆</span><span>厦门</span>"+
-        "<span>青岛</span><span>大连</span></div></div>";*/
-        
-//        $('.header-top').html(newNodes);
-        
         $(this).addClass('hide');
         var city = $('.header-top h1 span')[0].innerText;
         $('.get-city').val(city);
@@ -258,61 +243,148 @@ $(document).ready(function() {
 
     });
     
-    /*
-    <form class="form-horizontal">
-        <div class="form-group">
-            <label for="focusedinput" class="col-sm-2 control-label">Focused Input</label>
-            <div class="col-sm-8">
-                <input type="text" class="form-control1" id="focusedinput" placeholder="Default Input">
-            </div>
-            <div class="col-sm-2">
-                <p class="help-block">Your help text!</p>
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="disabledinput" class="col-sm-2 control-label">Disabled Input</label>
-            <div class="col-sm-8">
-                <input disabled="" type="text" class="form-control1" id="disabledinput" placeholder="Disabled Input">
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="inputPassword" class="col-sm-2 control-label">Password</label>
-            <div class="col-sm-8">
-                <input type="password" class="form-control1" id="inputPassword" placeholder="Password">
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="checkbox" class="col-sm-2 control-label">Checkbox</label>
-            <div class="col-sm-8">
-                <div class="checkbox-inline1"><label><input type="checkbox"> Unchecked</label></div>
-                <div class="checkbox-inline1"><label><input type="checkbox" checked=""> Checked</label></div>
-                <div class="checkbox-inline1"><label><input type="checkbox" disabled=""> Disabled Unchecked</label></div>
-                <div class="checkbox-inline1"><label><input type="checkbox" disabled="" checked=""> Disabled Checked</label></div>
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="checkbox" class="col-sm-2 control-label">Checkbox Inline</label>
-            <div class="col-sm-8">
-                <div class="checkbox-inline"><label><input type="checkbox"> Unchecked</label></div>
-                <div class="checkbox-inline"><label><input type="checkbox" checked=""> Checked</label></div>
-                <div class="checkbox-inline"><label><input type="checkbox" disabled=""> Disabled Unchecked</label></div>
-                <div class="checkbox-inline"><label><input type="checkbox" disabled="" checked=""> Disabled Checked</label></div>
-            </div>
-        </div>
-    </form>
-    */
-    /*$('.zodiac-img').hover(
-        function(){
-            var pageZodiac = $('.page-zodiac');
-            var newPgae = "<div class='page-search-zodiac'></div>"
-        },
-        function(){
-            
-        }
-    );*/
    
+   //zodiac typeahead
+   
+
+   $('#zodiac-input').typeahead({source: zodiacArr,items:12});
     
+    $('#zodiac-search-submit').on('click',function(){
+        $('#zodiacSearchModal').modal('hide');
+//        alert("success");
+        var daily = $(".daily-options input[type='radio']:checked").val();
+        var week = $(".week-options input[type='radio']:checked").val();
+        var zodiac  = $("#zodiac-input").val()== "" ? "双子座" :  $("#zodiac-input").val();
+        var currentZodiac = $('h3.zodiac-name')[0].innerText.substr(0,3);
+        var currentDaily = $('header.p-title h3')[1].innerText.substr(0,2);
+        var currentWeek = $('header.p-title h3')[2].innerText.substr(0,2);
+        
+        if(zodiac != currentZodiac){
+//            alert("data",zodiac);
+            //更改日运势
+            changeZodiacFortune(zodiac,daily);
+            //更改周运势
+            changeZodiacFortune(zodiac,week);
+            //更改月运势
+            changeZodiacFortune(zodiac,'month');
+            //更改年运势
+            changeZodiacFortune(zodiac,'year');
+
+        }else{
+            if(daily != currentDaily ){
+                changeZodiacFortune(zodiacArr[2],daily);
+            }
+            if(week !=currentWeek){
+                changeZodiacFortune(zodiacArr[2],week);
+            }
+        }
+        
+        
+    });
 });
+var changeZodiacFortune = function(zodiacName,zodiacType){
+    var apikey = {'apikey':'2cf291486b5dd04551e81c11e1346615'};
+    var url = 'http://apis.baidu.com/bbtapi/constellation/constellation_query?consName=' + zodiacName + '&type=' + zodiacType;
+    $.ajax({
+       url:url, 
+       method: "GET",  
+       headers: apikey, 
+       dataType: "json",
+       success: function(data){
+           console.log("success",data);
+           console.log("success",data.error_code == 0);
+           var zodiacIcon = '';
+           if(data.error_code == 0){
+               console.log("day:",zodiacType);
+               if(zodiacType == 'today' || zodiacType == 'tomorrow'){
+                   console.log("day:",zodiacType);
+                   //更改zodiac-name
+                   var day = (zodiacType == 'today') ? '今日运势':'明日运势';
+                   var oldDay = $('header.p-title h3')[1].innerText;
+                    $('header.p-title h3')[1].innerText = day;
+                   $("[title='" + oldDay + "']").attr('title',day);
+                   $('h3.zodiac-name span:first-child')[0].innerText = zodiacName;
+                   $('h4.zodiac-qfriend span:last-child')[0].innerText = data.QFriend;
+                   $('.zodiac-basic-info h5 span:nth-child(2)')[0].innerText = data.color;
+                   $('.zodiac-basic-info h5 span:nth-child(4)')[0].innerText = data.number;
+                   //progress bar
+                  
+                   $('.dl-horizontal .progress >div')[0].style.width = data.all;
+                   $('.dl-horizontal .progress >div')[0].innerText = data.all;
+                   $('.dl-horizontal .progress >div')[1].style.width = data.health;
+                   $('.dl-horizontal .progress >div')[1].innerText = data.health;
+                   $('.dl-horizontal .progress >div')[2].style.width = data.love;
+                   $('.dl-horizontal .progress >div')[2].innerText = data.love;
+                   $('.dl-horizontal .progress >div')[3].style.width = data.money;
+                   $('.dl-horizontal .progress >div')[3].innerText = data.money;
+                   $('.dl-horizontal .progress >div')[4].style.width = data.work;
+                   $('.dl-horizontal .progress >div')[4].innerText = data.work;
+                   
+                   $('.zodiac-conclude span:last-child')[0].innerText = data.summary;
+               }
+               
+               if(zodiacType == 'week' || zodiacType == 'nextweek'){
+                   var week = (zodiacType == 'week') ? '本周运势':'下周运势';
+                   var oldWeek = $('header.p-title h3')[2].innerText;
+                   $('header.p-title h3')[2].innerText = week;
+                   $("[title='" + oldWeek + "']").attr('title',day);
+                   $('.zodiac-week-info .row:nth-child(1) h5')[0].innerText = data.date;
+                   zodiacIcon = $('.zodiac-week-info .row:nth-child(2) i')[0];
+                   $('.zodiac-week-info .row:nth-child(2) p')[0].innerText = data.health;
+                   $('.zodiac-week-info .row:nth-child(2) p').prepend(zodiacIcon);
+                   zodiacIcon = $('.zodiac-week-info .row:nth-child(3) i')[0];
+                   $('.zodiac-week-info .row:nth-child(3) p')[0].innerText = data.job;
+                   $('.zodiac-week-info .row:nth-child(3) p').prepend(zodiacIcon);
+                   zodiacIcon = $('.zodiac-week-info .row:nth-child(4) i')[0];
+                   $('.zodiac-week-info .row:nth-child(4) p')[0].innerText = data.love;
+                   $('.zodiac-week-info .row:nth-child(4) p').prepend(zodiacIcon);
+                   zodiacIcon = $('.zodiac-week-info .row:nth-child(5) i')[0];
+                   $('.zodiac-week-info .row:nth-child(5) p')[0].innerText = data.money;
+                   $('.zodiac-week-info .row:nth-child(5) p').prepend(zodiacIcon);
+                   zodiacIcon = $('.zodiac-week-info .row:nth-child(6) i')[0];
+                   $('.zodiac-week-info .row:nth-child(6) p')[0].innerText = data.work;
+                   $('.zodiac-week-info .row:nth-child(6) p').prepend(zodiacIcon);
+               }
+               if(zodiacType == 'year'){
+//                   $('.zodiac-year-info .row:nth-child(1) h5')[0].innerText = data.date;
+                   $('.zodiac-year-info .row:nth-child(2) span')[0].innerText = data.mima.info;
+                   $('.zodiac-year-info .row:nth-child(2) span')[1].innerText = data.mima.text[0];
+                   $('.zodiac-year-info .row:nth-child(2)').attr("title",data.mima.text[0]);
+                   $('.zodiac-year-info .row:nth-child(3) p')[0].innerText = data.career;
+                   $('.zodiac-year-info .row:nth-child(3)').attr("title", data.career);
+                   $('.zodiac-year-info .row:nth-child(4) p')[0].innerText = data.love;
+                   $('.zodiac-year-info .row:nth-child(4)').attr("title", data.love);
+                   $('.zodiac-year-info .row:nth-child(5) p')[0].innerText = data.health;
+                   $('.zodiac-year-info .row:nth-child(5)').attr("title", data.health);
+                   $('.zodiac-year-info .row:nth-child(6) p')[0].innerText = data.finance;
+                   $('.zodiac-year-info .row:nth-child(6)').attr("title", data.finance);
+                   $('.zodiac-year-info .row:nth-child(7) p')[0].innerText = data.luckyStone;
+                   
+               }
+               if(zodiacType == 'month'){
+                   $('.zodiac-month-info .row:nth-child(2) p')[0].innerText = data.all;
+                   $('.zodiac-month-info .row:nth-child(2)').attr("title", data.all);
+                   $('.zodiac-month-info .row:nth-child(3) p')[0].innerText = data.health;
+                   $('.zodiac-month-info .row:nth-child(3)').attr("title", data.health);
+                   $('.zodiac-month-info .row:nth-child(4) p')[0].innerText = data.love;
+                   $('.zodiac-month-info .row:nth-child(4)').attr("title", data.love);
+                   $('.zodiac-month-info .row:nth-child(5) p')[0].innerText = data.money;
+                   $('.zodiac-month-info .row:nth-child(5)').attr("title", data.money);
+                   $('.zodiac-month-info .row:nth-child(6) p')[0].innerText = data.work;
+                   $('.zodiac-month-info .row:nth-child(6)').attr("title", data.work);
+               }
+            } else{
+                alert("查询失败，请重新查询!!!");
+            }
+               
+       },
+       
+       error:function(data){
+
+       }
+    });
+        
+}
 
 var changeWeather = function(city){
     var apikey = {'apikey':'2cf291486b5dd04551e81c11e1346615'};
@@ -349,27 +421,21 @@ var changeWeather = function(city){
                //当天天气
                 $("#s-today .p-weather-date h6")[0].innerText = today[0] + "年" + today[1] + "月" + today[2] + "日" + forecast[0].week ;
 
-              /* $('[href=#today].nav-item i')[0].className = "wi wi-day-" + getWeatherCode(retData.today.type);
-               */
-
+            
                //更改温度
                var tempHtml = retData.today.lowtemp.substr(0,2) + "°~" + retData.today.lowtemp.substr(0,2) + "°<small>C</small>" ;
                $('#s-today .weather-temp').html(tempHtml);
 
-              /* var typeHtml = '<span>' + retData.today.type + '</span><span>' + retData.today.fengxiang + '</span><span>' + retData.today.fengxiang + '</span>';
-               $('#s-today .weather-type p').html(typeHtml);
-               */
-
+            
 
                for(var i=1; i <= forecast.length; i++){
 
-                   //更改天气标识
-    //                           console.log(getWeatherCode(forecast[i-1].type));
+                  
                    $("[href=#" + getWeekEn(forecast[i-1]['week']) + "].nav-item i")[0].className = "wi wi-day-" + getWeatherCode(forecast[i-1].type);
 
                    //更改温度
                    $('#'+ getWeekEn(forecast[i-1]['week']) + ' .weather-temp').innerHTML = forecast[i-1].lowtemp.substr(0,2) + '°~' + forecast[i-1].hightemp.substr(0,2)+'°' +  "<small>C</small>";
-    //                         //更改天气详细说明
+                   //更改天气详细说明
                    typeHtml = '<span>' + retData.today.type + '</span><span>' + retData.today.fengxiang + '</span><span>' + retData.today.fengxiang + '</span>';
                     $('#s-'+ getWeekEn(forecast[i-1]['week']) + ' .weather-type p').html(typeHtml);
 

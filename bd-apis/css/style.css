@@ -404,6 +404,11 @@ div .zodiac-img{
 /*    color: black;*/
     -webkit-border-radius: 10px;
 }
+/*.zodiac-info-header:hover,
+.zodiac-info-header:visited{
+    cursor: pointer;
+}*/
+
 
 .page-zodiac .p-title{
     position: absolute;
@@ -464,10 +469,10 @@ div .zodiac-img{
 	-webkit-transition: 0.2s;
 	transition: 0.2s;
 }
-.page-zodiac .p-title .buttons a:hover:after{
+/*.page-zodiac .p-title .buttons a:hover:after{
 	border-radius: 0;
 	background: rgba(255,255,255,0.15);
-}
+}*/
 .page-zodiac .zodiac li{
 	margin-top: 20px;
 }
@@ -481,11 +486,16 @@ div .zodiac-img{
 .page-zodiac .right{
 	text-align: right;
 }
-h3.zodiac-name{
-    font-size: 2em;
+h3.zodiac-name span:first-child{
+/*    font-size: 2em;*/
     font-weight: bolder;
     margin: 0.1em 0;
     text-align: left;
+}
+.zodiac-name span:last-child{
+    font-size: 0.25%;
+    margin-left: 2em;
+    cursor: pointer;
 }
 h4.zodiac-qfriend span:first-child{
     font-size: 0.75em;
@@ -647,3 +657,89 @@ div .zodiac-conclude span:last-child{
 }
 
 
+/*page search zodiac*/
+div.modal-header,
+div.modal-footer{
+    height: 3.5em;
+}
+
+div.modal-body{
+    height: 150px;
+}
+div .modal-content{
+    position: absolute;
+    left: 400px;
+/*    background: rgba(247, 240, 240, 0.17);*/
+    width: 300px;
+}
+
+div.modal-content label,.modal-title{
+    color:#000;
+}
+h4#zodiacSearchModalLabel{
+    color: #555;
+    text-align: left;
+}
+input#zodiac-input{
+    background: transparent;
+    color: #000;
+    font-weight: bold;
+    font-size: 2em;
+    height: 1.65em;
+    line-height: 1.65em;
+    border: 1px solid rgba(204, 204, 204, 0.47);
+}
+
+/*.page-search-zodiac{
+    position: absolute;
+    top: 200px;
+    width: 100%;
+    background-color: rgba(43, 40, 40, 0.23);
+}
+.form-horizontal .form-group {
+    width: 100%;
+    margin-left: 0px;
+}
+
+label{
+    position: relative;
+    float: left;
+    font-size: 2em;
+    width: 3em;
+    display: inline-block;
+    font-weight: bold;
+    color: #fff;
+    padding-top: 0px;
+    margin-left: 15px;
+
+}
+[for='zodiacinput']{
+    padding-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 5px;
+}
+[for='radio']{
+    font-size: 1.5em;
+    color: #fff;
+    text-align: left;
+}
+.form-group div{
+    float: left;
+    text-align: center;
+    height: 48px;
+    line-height: 2em;
+    font-size: 0.75em;
+}
+
+#zodiacinput {
+    font-size: 1.65em;
+    line-height: 1.7em;
+    height: 1.7em;
+    color: #fff;
+    background: transparent;
+    border: 1px solid #ccc;
+    margin-top: 5px;
+}
+col-sm-6{
+    text-align: left;
+}*/
