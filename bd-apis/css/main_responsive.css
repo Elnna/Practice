@@ -11,9 +11,14 @@ http://themeforest.net/licenses
 
 /* Screen small than 1024px */
 @media (max-width : 1120px){
-     .zodiac-week-info,.zodiac-info,
+    .zodiac-week-info,.zodiac-info,
     .zodiac-month-info,.zodiac-year-info{
         max-width: 500px;
+    }
+    .zodiac-year-info .row span:first{
+        padding: 0 0.5em;
+        font-weight: 600;
+        color: #ECEAB7;
     }
 }
 
@@ -36,6 +41,11 @@ http://themeforest.net/licenses
     .zodiac-week-info,.zodiac-info,
     .zodiac-month-info,.zodiac-year-info{
         max-width: 400px;
+    }
+    .zodiac-year-info .row span:first{
+        padding: 0 0.5em;
+        font-weight: 600;
+        color: #ECEAB7;
     }
 	/*.pane-weather .clock .elem-bottom .deco:after,
 	.pane-weather .clock .elem-bottom .deco:before{
@@ -80,6 +90,11 @@ http://themeforest.net/licenses
     .zodiac-month-info,.zodiac-year-info{
         max-width: 300px;
     }
+    .zodiac-year-info .row span:first{
+        padding: 0 0.5em;
+        font-weight: 600;
+        color: #ECEAB7;
+    }
 }
 /* Screen Small than 768px */
 @media (max-width : 768px){
@@ -96,6 +111,11 @@ http://themeforest.net/licenses
     .zodiac-week-info,.zodiac-info,
     .zodiac-month-info,.zodiac-year-info{
         max-width: 260px;
+    }
+    .zodiac-year-info .row span:first{
+        padding: 0 0.5em;
+        font-weight: 600;
+        color: #ECEAB7;
     }
 	/*.pane-weather .clock .elem-center .txt {
 		top: 1em;
@@ -200,6 +220,11 @@ http://themeforest.net/licenses
     .zodiac-week-info,.zodiac-info,
     .zodiac-month-info,.zodiac-year-info{
         max-width: 200px;
+    }
+    .zodiac-year-info .row span:first{
+        padding: 0 0.5em;
+        font-weight: 600;
+        color: #ECEAB7;
     }
     
 }

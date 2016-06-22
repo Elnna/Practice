@@ -486,6 +486,15 @@ div .zodiac-img{
 .page-zodiac .right{
 	text-align: right;
 }
+div.zodiac-basic-info{
+    text-align: left;
+    margin-left: 10px;
+}
+div.zodiac-basic-info h6{
+    color: #fff;
+    font-size: 0.5em;
+    margin: 0px;
+}
 h3.zodiac-name span:first-child{
 /*    font-size: 2em;*/
     font-weight: bolder;
@@ -532,6 +541,9 @@ h4.zodiac-qfriend span:last-child{
     position: relative;
     top: 75px;
 }*/
+.zodiac-info dl {
+    margin-top: 10px;
+}
 .zodiac-info dl dt{
 /*    font-size: 0.75em;*/
     text-align: left;
@@ -580,12 +592,13 @@ div .zodiac-conclude span:last-child{
 .zodiac-week-info,.zodiac-info,
 .zodiac-month-info,.zodiac-year-info{
     position: absolute;
-    top: 276px;
+    top: 290px;
     max-width: 600px;
     margin-left: -40px;
     margin-top: 1em;
     
 }
+
 .zodiac-week-info .row p,
 .zodiac-month-info .row p,
 .zodiac-year-info .row p
@@ -600,11 +613,12 @@ div .zodiac-conclude span:last-child{
     white-space: nowrap;
     
 }
-.zodiac-week-info .row span:first-child{
-    padding: 0 0.45em;
+/*.zodiac-week-info .row span:first-child{*/
+/*.zodiac-year-info .row span:first{
+    padding: 0 0.5em;
     font-weight: 600;
     color: #ECEAB7;
-}
+}*/
 
 .zodiac-week-info .row:hover p,
 .zodiac-month-info .row:hover p,

@@ -37,6 +37,8 @@ $expressResult = $convenienceInfo->getExpress($expressApiKey,$expressCom,$expres
 */
 
 $weeksArr = array('monday'=>'星期一','tuesday' => '星期二', 'wednesday' => '星期三','thursday' =>'星期四','friday' => '星期五','saturday' => '星期六', 'sunday' => '星期天');
+$zodiacDateArr = array('白羊座'=>'3月21日-4月19日','金牛座'=>'4月20日-5月20日','双子座'=>'5月21日-6月21日','巨蟹座'=>'6月22日-7月22日','狮子座'=>'7月23日-8月22日','处女座'=>'8月23日-9月22日','天枰座'=>'9月23日-10月23日','天蝎座'=>'10月24日-11月22日','射手座'=>'11月23日-12月21日','摩羯座'=>'12月22日-1月19日','水瓶座'=>'1月20日-2月18日','双鱼座'=>'2月19日-3月20日');
+$zodiacDateArr = array_flip($zodiacDateArr);
 ?>
 
 <!doctype html>
@@ -482,13 +484,14 @@ http://themeforest.net/licenses
                     ?>
                      <div class="zodiac-info-header" >
                         <div class="zodiac-img col-md-4 col-xs-4" >
-                            <img class="img-rounded" data-src="holder.js/140x140" alt="skills" src="img/zodiac/Gemini.png" style="width:100px; height:100px;" >
+                            <img class="img-rounded" data-src="holder.js/140x140" alt="zodiac" src="img/zodiac/Gemini.png" style="width:140px; height:140px;" >
                         </div>
                         <div class="zodiac-basic-info col-md-6 col-xs-6">
                             <h3 class="zodiac-name">
                                 <span><?php echo $zodiacToday['name'];?></span>
                                 <span data-toggle="modal" data-target="#zodiacSearchModal" >星座查询</span>
                             </h3>
+                            <h6><?php echo array_search($zodiacToday['name'],$zodiacDateArr);?></h6>
                             <h4 class="zodiac-qfriend">
                                 <span>速配星座</span><span><?php echo $zodiacToday['QFriend'];?></span>
                             </h4>
@@ -522,16 +525,17 @@ http://themeforest.net/licenses
                          
                             <div class="row">
                                 <dl class="dl-horizontal">
-                                    <dt>综合指数</dt>
-                                    <dd><div class="progress"><div class="progress-bar progress-bar-info" style="width: <?php echo $zodiacToday['all']; ?>;"><?php echo $zodiacToday['all']; ?></div></div></dd>
-                                    <dt>健康指数</dt>
-                                    <dd><div class="progress"><div class="progress-bar progress-bar-success" style="width: <?php echo $zodiacToday['health']; ?>;"><?php echo $zodiacToday['health']; ?></div></div></dd>
-                                    <dt>爱情指数</dt>
-                                    <dd><div class="progress"><div class="progress-bar progress-bar-danger" style="width: <?php echo $zodiacToday['love']; ?>;"><?php echo $zodiacToday['love']; ?></div></div></dd>
-                                    <dt>财运指数</dt>
-                                    <dd><div class="progress"><div class="progress-bar progress-bar-warning" style="width: <?php echo $zodiacToday['money']; ?>;"><?php echo $zodiacToday['money']; ?></div></div></dd>
-                                    <dt>工作指数</dt>
-                                    <dd><div class="progress"><div class="progress-bar progress-bar-success" style="width: <?php echo $zodiacToday['work']; ?>;"><?php echo $zodiacToday['work']; ?></div></div></dd>
+                                    <?php 
+                                        
+                                        $arrIndex = array('综合指数','健康指数','爱情指数','财运指数','工作指数');
+                                        $zodiacDayArr = array('all','health','love','money','work');
+                                        $colorArr = array('info','success','danger','warning','success');
+                                        foreach($zodiacDayArr as $k => $v){
+                                            
+                                    ?>
+                                    <dt><?php echo $arrIndex[$k];?></dt>
+                                    <dd><div class="progress"><div class="progress-bar progress-bar-<?php echo $colorArr[$k];?>" style="width:<?php echo $zodiacToday[$v];?>;"><?php echo $zodiacToday[$v];?></div></div></dd>
+                                    <?php } ?>
                                 </dl>
                             </div>
                             <div class="row">
@@ -577,23 +581,15 @@ http://themeforest.net/licenses
                             <div class="row">
                                 <h5><?php echo $zodiacWeek['date'];?></h5>
                             </div>
-                            <div class="row" title="<?php echo $zodiacWeek['health'];?>">
-                                <p><i class="ion-ios-body"></i><?php echo $zodiacWeek['health'];?></p>
+                            <?php 
+                                $zodiacWeekArr = array('health','job','love','money','work');
+                                $iconArr = array('ion-ios-body','ion-ios-paper','ion-ios-rose','ion-social-yen','ion-briefcase');
+                                foreach($zodiacWeekArr as $k => $v){
+                            ?>
+                            <div class="row" title="<?php echo $zodiacWeek[$v];?>">
+                                <p><i class="<?php  echo $iconArr[$k];?>"></i><?php echo $zodiacWeek[$v];?></p>
                             </div>
-                            <div class="row" title="<?php  echo $zodiacWeek['job'];?>">
-                                <p><i class="ion-ios-paper"></i><?php echo $zodiacWeek['job'];?></p>
-                            </div>
-                            <div class="row" title="<?php  echo $zodiacWeek['love'];?>">
-                                <p><i class="ion-ios-rose"></i><?php echo $zodiacWeek['love'];?></p>
-                            </div>
-                            <div class="row" title="<?php  echo $zodiacWeek['money'];?>">
-                                <p><i class="ion-social-yen"></i><?php echo $zodiacWeek['money'];?></p>
-                            </div>
-                            <div class="row" title="<?php echo $zodiacWeek['work'];?>">
-                                <p><i class="ion-briefcase"></i><?php echo $zodiacWeek['work'];?></p>
-                            </div>
-                            
-                           
+                            <?php }?>
                         </div>
 						
 						<!-- End Of week fortune Page SubSction -->
@@ -632,18 +628,15 @@ http://themeforest.net/licenses
                             <div class="row">
                                 <h5><?php echo $zodiacMonth['date'];?></h5>
                             </div>
-                            
-                            <div class="row" title="<?php echo $zodiacMonth['all'];?>">
-                                <p><i class="ion-compose"></i><?php echo $zodiacMonth['all'];?></p></div>
-                            <div class="row" title="<?php echo $zodiacMonth['health'];?>">
-                                <p><i class="ion-ios-body"></i><?php echo $zodiacMonth['health'];?></p></div>
-                            <div class="row" title="<?php echo $zodiacMonth['love'];?>">
-                                <p><i class="ion-ios-rose"></i><?php echo $zodiacMonth['love'];?></p></div>
-                            <div class="row" title="<?php echo $zodiacMonth['money'];?>">
-                                <p><i class="ion-social-yen"></i><?php echo $zodiacMonth['money'];?></p></div>
-                            <div class="row" title="<?php echo $zodiacMonth['work'];?>">
-                                <p><i class="ion-briefcase"></i><?php echo $zodiacMonth['work'];?></p></div>
-                        
+                            <?php 
+                                $zodiacMonArr = array('all','health','love','money','work');
+                                $iconArr = array('ion-compose','ion-ios-body','ion-ios-rose','ion-social-yen','ion-briefcase');
+                                foreach($zodiacMonArr as $k =>$v){
+                            ?>
+                            <div class="row" title="<?php echo $zodiacMonth[$v];?>">
+                                <p><i class="<?php echo $iconArr[$k]; ?>"></i><?php echo $zodiacMonth[$v];?></p>
+                            </div>
+                            <?php }?>
                         </div>
                     </section>
 				    <!-- End Of month fortune Page SubSction -->
@@ -683,10 +676,20 @@ http://themeforest.net/licenses
                             <div class="row">
                                 <h5><?php echo $zodiacYear['date'];?></h5>
                             </div>
+                            
                             <div class="row" title="<?php echo $zodiacYear['mima']['text'][0];?>" >
                                 <p><i class="ion-stats-bars"></i><span><?php echo $zodiacYear['mima']['info']; ?></span><span><?php echo $zodiacYear['mima']['text'][0];?></span></p>
                             </div>
-                            <div class="row" title="<?php echo $zodiacYear['career'][0];?>" >
+                            <?php 
+                                $zodiacYearArr = array('career','love','health','finance');
+                                $iconArr = array('ion-briefcase','heart','ion-ios-body','ion-cash');
+                                foreach($zodiacYearArr as $k => $v){
+                            ?>
+                            <div class="row"  title="<?php echo $zodiacYear[$v][0];?>">
+                                <p><i class="<?php echo $iconArr[$k];?>"></i><?php echo $zodiacYear[$v][0];?></p>
+                            </div>
+                            <?php }?>
+                            <!--<div class="row" title="<?php echo $zodiacYear['career'][0];?>" >
                                 <p><i class="ion-briefcase"></i><?php echo $zodiacYear['career'][0]; ?></p>
                             </div>
                             <div class="row" title="<?php echo $zodiacYear['love'][0];?>" >
@@ -697,7 +700,7 @@ http://themeforest.net/licenses
                             </div>
                             <div class="row" title="<?php echo $zodiacYear['finance'][0];?>" >
                                 <p><i class="ion-cash"></i><?php echo $zodiacYear['finance'][0]; ?></p>
-                            </div>
+                            </div>-->
                             <div class="row" >
                                 <p><i class="ion-egg"></i><?php echo $zodiacYear['luckyStone']; ?></p>
                             </div>

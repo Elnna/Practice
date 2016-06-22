@@ -260,6 +260,9 @@ $(document).ready(function($) {
         var currentWeek = $('header.p-title h3')[2].innerText.substr(0,2);
         
         if(zodiac != currentZodiac){
+            //更改图像
+            console.log("image",'img/zodiac/' + changeZodiacImg(zodiac) + '.png');
+            $('.zodiac-img img').attr('src','img/zodiac/' + changeZodiacImg(zodiac) + '.png');
 //            alert("data",zodiac);
             //更改日运势
             changeZodiacFortune(zodiac,daily);
@@ -282,6 +285,42 @@ $(document).ready(function($) {
         
     });
 });
+
+var changeZodiacImg = function(imgNameChi){
+    var zodiacImgName = '';
+    switch(imgNameChi){
+            
+        case '白羊座': zodiacImgName = 'Aries';
+            break;
+        case '金牛座': zodiacImgName = 'Taurus';
+            break;
+        case '双子座': zodiacImgName = 'Gemini';
+            break;
+        case '巨蟹座': zodiacImgName = 'Cancer';
+            break;
+        case '狮子座': zodiacImgName = 'Leo';
+            break;
+        case '处女座': zodiacImgName = 'Virgo';
+            break;
+        case '天枰座': zodiacImgName = 'Libra';
+            break;
+        case '天蝎座': zodiacImgName = 'Scorpio';
+            break;
+        case '射手座': zodiacImgName = 'Sagittarius';
+            break;
+        case '摩羯座': zodiacImgName = 'Capricorn';
+            break;
+        case '水瓶座': zodiacImgName = 'Aquarius';
+            break;
+        case '双鱼座': zodiacImgName = 'Pisces';
+            break;
+        default:
+            zodiacImgName = 'Gemini';
+            break;
+    }
+    return zodiacImgName; 
+}
+
 var changeZodiacFortune = function(zodiacName,zodiacType){
     var apikey = {'apikey':'2cf291486b5dd04551e81c11e1346615'};
     var url = 'http://apis.baidu.com/bbtapi/constellation/constellation_query?consName=' + zodiacName + '&type=' + zodiacType;
@@ -292,34 +331,25 @@ var changeZodiacFortune = function(zodiacName,zodiacType){
        dataType: "json",
        success: function(data){
            console.log("success",data);
-           console.log("success",data.error_code == 0);
+           console.log("type:",zodiacType);
            var zodiacIcon = '';
            if(data.error_code == 0){
-               console.log("day:",zodiacType);
                if(zodiacType == 'today' || zodiacType == 'tomorrow'){
-                   console.log("day:",zodiacType);
                    //更改zodiac-name
                    var day = (zodiacType == 'today') ? '今日运势':'明日运势';
                    var oldDay = $('header.p-title h3')[1].innerText;
                     $('header.p-title h3')[1].innerText = day;
                    $("[title='" + oldDay + "']").attr('title',day);
+                   var dataArr = [data.all,data.health,data.love,data.money,data.work];
                    $('h3.zodiac-name span:first-child')[0].innerText = zodiacName;
                    $('h4.zodiac-qfriend span:last-child')[0].innerText = data.QFriend;
                    $('.zodiac-basic-info h5 span:nth-child(2)')[0].innerText = data.color;
                    $('.zodiac-basic-info h5 span:nth-child(4)')[0].innerText = data.number;
                    //progress bar
-                  
-                   $('.dl-horizontal .progress >div')[0].style.width = data.all;
-                   $('.dl-horizontal .progress >div')[0].innerText = data.all;
-                   $('.dl-horizontal .progress >div')[1].style.width = data.health;
-                   $('.dl-horizontal .progress >div')[1].innerText = data.health;
-                   $('.dl-horizontal .progress >div')[2].style.width = data.love;
-                   $('.dl-horizontal .progress >div')[2].innerText = data.love;
-                   $('.dl-horizontal .progress >div')[3].style.width = data.money;
-                   $('.dl-horizontal .progress >div')[3].innerText = data.money;
-                   $('.dl-horizontal .progress >div')[4].style.width = data.work;
-                   $('.dl-horizontal .progress >div')[4].innerText = data.work;
-                   
+                   for(var i=0;i<5;i++){
+                       $('.dl-horizontal .progress >div')[i].style.width = dataArr[i];
+                       $('.dl-horizontal .progress >div')[i].innerText = dataArr[i];
+                   }
                    $('.zodiac-conclude span:last-child')[0].innerText = data.summary;
                }
                
@@ -328,50 +358,42 @@ var changeZodiacFortune = function(zodiacName,zodiacType){
                    var oldWeek = $('header.p-title h3')[2].innerText;
                    $('header.p-title h3')[2].innerText = week;
                    $("[title='" + oldWeek + "']").attr('title',day);
+                   
                    $('.zodiac-week-info .row:nth-child(1) h5')[0].innerText = data.date;
-                   zodiacIcon = $('.zodiac-week-info .row:nth-child(2) i')[0];
-                   $('.zodiac-week-info .row:nth-child(2) p')[0].innerText = data.health;
-                   $('.zodiac-week-info .row:nth-child(2) p').prepend(zodiacIcon);
-                   zodiacIcon = $('.zodiac-week-info .row:nth-child(3) i')[0];
-                   $('.zodiac-week-info .row:nth-child(3) p')[0].innerText = data.job;
-                   $('.zodiac-week-info .row:nth-child(3) p').prepend(zodiacIcon);
-                   zodiacIcon = $('.zodiac-week-info .row:nth-child(4) i')[0];
-                   $('.zodiac-week-info .row:nth-child(4) p')[0].innerText = data.love;
-                   $('.zodiac-week-info .row:nth-child(4) p').prepend(zodiacIcon);
-                   zodiacIcon = $('.zodiac-week-info .row:nth-child(5) i')[0];
-                   $('.zodiac-week-info .row:nth-child(5) p')[0].innerText = data.money;
-                   $('.zodiac-week-info .row:nth-child(5) p').prepend(zodiacIcon);
-                   zodiacIcon = $('.zodiac-week-info .row:nth-child(6) i')[0];
-                   $('.zodiac-week-info .row:nth-child(6) p')[0].innerText = data.work;
-                   $('.zodiac-week-info .row:nth-child(6) p').prepend(zodiacIcon);
+                   var dataArr = [data.health,data.job,data.love,data.money,data.work];
+                   for(var i=0;i<5;i++){
+                       zodiacIcon = $('.zodiac-week-info .row:nth-child(' + (i+2) + ') i')[0];
+                       $('.zodiac-week-info .row:nth-child(' + (i+2) + ') p')[0].innerText = dataArr[i];
+                       $('.zodiac-week-info .row:nth-child(' + (i+2) + ') p').prepend(zodiacIcon);
+                   }
+                  
                }
                if(zodiacType == 'year'){
-//                   $('.zodiac-year-info .row:nth-child(1) h5')[0].innerText = data.date;
                    $('.zodiac-year-info .row:nth-child(2) span')[0].innerText = data.mima.info;
                    $('.zodiac-year-info .row:nth-child(2) span')[1].innerText = data.mima.text[0];
                    $('.zodiac-year-info .row:nth-child(2)').attr("title",data.mima.text[0]);
-                   $('.zodiac-year-info .row:nth-child(3) p')[0].innerText = data.career;
-                   $('.zodiac-year-info .row:nth-child(3)').attr("title", data.career);
-                   $('.zodiac-year-info .row:nth-child(4) p')[0].innerText = data.love;
-                   $('.zodiac-year-info .row:nth-child(4)').attr("title", data.love);
-                   $('.zodiac-year-info .row:nth-child(5) p')[0].innerText = data.health;
-                   $('.zodiac-year-info .row:nth-child(5)').attr("title", data.health);
-                   $('.zodiac-year-info .row:nth-child(6) p')[0].innerText = data.finance;
-                   $('.zodiac-year-info .row:nth-child(6)').attr("title", data.finance);
+                   var dataArr = [data.career,data.love,data.health,data.finance];
+                   for(var i=0;i<4;i++){
+                       zodiacIcon = $('.zodiac-year-info .row:nth-child(' + (i+3) + ') i')[0];
+                       $('.zodiac-year-info .row:nth-child(' + (i+3) + ') p')[0].innerText = dataArr[i];
+                       $('.zodiac-year-info .row:nth-child(' + (i+3) + ') p').prepend(zodiacIcon);
+                       $('.zodiac-year-info .row:nth-child(' + (i+3) + ')').attr("title", dataArr[i]);
+                   }
+                
                    $('.zodiac-year-info .row:nth-child(7) p')[0].innerText = data.luckyStone;
                    
                }
                if(zodiacType == 'month'){
-                   $('.zodiac-month-info .row:nth-child(2) p')[0].innerText = data.all;
-                   $('.zodiac-month-info .row:nth-child(2)').attr("title", data.all);
-                   $('.zodiac-month-info .row:nth-child(3) p')[0].innerText = data.health;
-                   $('.zodiac-month-info .row:nth-child(3)').attr("title", data.health);
-                   $('.zodiac-month-info .row:nth-child(4) p')[0].innerText = data.love;
-                   $('.zodiac-month-info .row:nth-child(4)').attr("title", data.love);
-                   $('.zodiac-month-info .row:nth-child(5) p')[0].innerText = data.money;
-                   $('.zodiac-month-info .row:nth-child(5)').attr("title", data.money);
-                   $('.zodiac-month-info .row:nth-child(6) p')[0].innerText = data.work;
-                   $('.zodiac-month-info .row:nth-child(6)').attr("title", data.work);
+//                   console.log("month",data);
+                   var dataArr = [data.all,data.health,data.love,data.money,data.work];
+                   for(var i=0;i<dataArr.length;i++){
+//                       console.log("i:",i);
+                       zodiacIcon = $('.zodiac-month-info .row:nth-child(' + (i+2) + ') i')[0];
+                       $('.zodiac-month-info .row:nth-child(' + (i+2) + ') p')[0].innerText = dataArr[i];
+                       $('.zodiac-month-info .row:nth-child(' + (i+2) + ') p').prepend(zodiacIcon);
+                       $('.zodiac-month-info .row:nth-child(' + (i+2) + ')').attr("title", dataArr[i]);
+                   }
+                   
                }
             } else{
                 alert("查询失败，请重新查询!!!");
