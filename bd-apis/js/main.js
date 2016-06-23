@@ -166,7 +166,19 @@ $(document).ready(function($) {
 			}
 		},
 		
-        afterRender: function(){}
+//        afterRender: function(){}
+        afterRender: function(){
+           /* $('.modal')
+                .on('shown.bs.modal', function() {
+                    $.fn.fullpage().setScrollOverflow(false);
+                })
+                .on('hidden.bs.modal', function() {
+//                    $.fn.fullpage.setAutoScrolling(false);
+
+//                    $.fn.fullpage().setScrollOverflow(true);
+                });*/
+        }
+        
     });
     
     
@@ -247,7 +259,7 @@ $(document).ready(function($) {
    //zodiac typeahead
    
 
-   $('#zodiac-input').typeahead({source: zodiacArr,items:12});
+    $('#zodiac-input').typeahead({source: zodiacArr});
     
     $('#zodiac-search-submit').on('click',function(){
         $('#zodiacSearchModal').modal('hide');
@@ -284,7 +296,158 @@ $(document).ready(function($) {
         
         
     });
+    
+//    $('.page-tickets #ss-datepicker,.page-tickets .input-group-addon:nth-child(5)').on('click',pickDate());
+    $('#ss-datepicker,#ts-datepicker').datepicker({
+        autoclose: true,//选中之后自动隐藏日期选择框
+        clearBtn: true,//清除按钮
+        format: "yyyy-mm-dd",
+        startDate:'now',
+        endDate:'+2m',
+        todayHighlight:true,
+        orientation:'bottom right',
+    });
+    
+    $('#station-change').on('click',function(){
+        var from = $('#start-station').val();
+        var to = $('#dest-station').val();
+        $('#start-station').val(to);
+        $('#dest-station').val(from);
+        
+    });
+    
+     $('#ss-submit').on('click',function(){
+//         alert("test");
+        var from = $('#start-station').val();
+        var to = $('#dest-station').val();
+        var date = $("#ss-datepicker").val();
+         trainSSSearch(from,to,date);
+         
+    });
+    $("#train-submit").on('click',function(){
+        var from = $('#start-station').val();
+        var to = $('#dest-station').val();
+        var date = $("#ts-datepicker").val();
+        var train = unescape(encodeURIComponent($('#train-search').val()));
+        tarinSearch(train,date,from,to);
+
+    });
+    $("#station-search").on('click',function(){
+        
+    });
+    
+    
+    
 });
+
+
+/*var pickDate = function(){
+     $('#ss-datepicker,#ts-datepicker').datepicker({
+        autoclose: true,//选中之后自动隐藏日期选择框
+        clearBtn: true,//清除按钮
+        format: "yyyy-mm-dd",
+        startDate:'now',
+        endDate:'+2m',
+        todayHighlight:true,
+        orientation:'bottom right',
+    });
+}*/
+var tarinSearch = function(train,date,from,to){
+    console.log("date",date);
+    var apikey = {'apikey':'2cf291486b5dd04551e81c11e1346615'};
+    var url = 'http://apis.baidu.com/qunar/qunar_train_service/traindetail?version=1.0&train=' + train + '&from=' + from + '&to=' + to +'&date=' + date;
+    console.log(url);
+     $.ajax({
+        url:url, 
+        method: "GET",  
+        headers: apikey, 
+        dataType: "json",
+        success: function(data){
+            console.log(data);
+            if(data.ret){
+                var html = '<table class="table table-striped"><thead>';
+                var info = data.data.info;
+                console.log("head", info.head);
+                for(var x in info.head ){
+                    html += '<th>' + info.head[x] + '</th>';
+//                    console.log("x:",x);
+                }
+                html += '</thead><tbody>';
+                console.log("y",info.head.length);
+                for(var i=0; i< info.value.length; i++){
+                    html += '<tr>';
+                    for(var j=0; j < info.head.length; j++){
+                        html += '<td>' +info.value[i][j] + '</td>';
+                    }
+                    html += '</tr>';
+                }
+               
+                html += '</tbody></table>';
+               
+                var start = from ? from: info.value[0][1];
+                var end = to ? to : info.value[info.value.length -1][1];
+                console.log("from",start);
+                console.log("end",end);
+                
+                var html2 = '<address><strong>' + train + '</strong><br>\
+                '+ start + '~' + end +   '<br>\
+                本趟行程' + data.data.extInfo.intervalMileage +  '公里,行驶' + data.data.extInfo.intervalTime + '<br>\
+                全程' + data.data.extInfo.totalMileage +  '公里,行驶' + data.data.extInfo.totalTime + '<br></address>'
+                $('.page-tickets .modal-body').html(html);
+                $('.page-tickets .modal-footer').html(html2);
+            }else{
+                $('.page-tickets .modal-body').html('<div class="error-code">'+ data.errmsg +'</div>');
+            }
+        },
+        error:function(data){
+            console.log(data);
+        }
+     });
+}
+var trainSSSearch = function(from,to,date){
+        console.log("date",date);
+        var apikey = {'apikey':'2cf291486b5dd04551e81c11e1346615'};
+        var url = 'http://apis.baidu.com/qunar/qunar_train_service/s2ssearch?version=1.0&from=' + from + '&to=' + to +'&date=' + date;
+
+        $.ajax({
+            url:url, 
+            method: "GET",  
+            headers: apikey, 
+            dataType: "json",
+            success: function(data){
+                console.log("data",data);
+                if(data.ret){
+                    var data = data.data.trainList;
+                
+                    var html = '<table class="table table-striped"><thead>\
+                    <th>车次信息</th><th>座位信息</th></thead><tbody>';
+                    for(var i=0; i<data.length; i++){
+                        html += '<tr><td><div class="ticket-info"><h1>' + data[i].trainNo + '</h1>\
+                                <div class="tcdd"><span><i class="ion-android-locate"></i></span><strong class="start-s">' + data[i].from + '</strong><span><i class="ion-android-pin"></i></span><strong class="end-s">' + data[i].to +'</strong></div>\
+                                <div class="tcds"><span><i class="ion-ios-clock-outline"></i></span>'+ data[i].startTime + '<span><i class="ion-ios-time-outline"></i></span>' + data[i].endTime +'\
+                                </div> <div class="train-ls"><span><i class="ion-speedometer"></i></span><strong>' + data[i].duration + '</strong></div></div></td><td><ul class="list-group">';//</tr>';
+
+                        for(var j=0;j <data[i]['seatInfos'].length; j++){
+                            html += '<li class="list-group-item"><span class="badge">' + data[i].seatInfos[j].remainNum + '张\
+                                    </span>' + data[i].seatInfos[j].seat  + '(' + data[i].seatInfos[j].seatPrice + '￥/张' + ')\
+                                    ' + '</li>';
+                        }
+                        html += '</ul></td></tr>';
+                    }
+                    html += '</tbody></table>';
+                  
+                     $('.page-tickets .modal-body').html(html);
+                     $('.page-tickets .modal-footer').html('');
+                }else{
+                     $('.page-tickets .modal-body').html('<div class="error-code">'+ data.errmsg +'</div>');
+                     $('.page-tickets .modal-footer').html('');
+                }
+            },
+            error:function(data){
+
+            }
+        });
+    }
 
 var changeZodiacImg = function(imgNameChi){
     var zodiacImgName = '';

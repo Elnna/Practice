@@ -191,6 +191,110 @@ a.nav-item .active, .nav-item:hover,.nav-item:focus{
 
 
 /* slide page */
+/* page tickets */
+.page-tickets .container{
+    position: absolute;
+    top: 250px;
+    z-index: 5;
+}
+.page-tickets .p-title{
+    position: absolute;
+    top: 120px;
+}
+.page-tickets .form-group{
+    margin-bottom: 30px;
+    margin-left: -50px;
+}
+.page-tickets .input-group-addon,
+.page-tickets input,
+.page-tickets input:after,
+.page-tickets input.form-control
+{
+    background-color: transparent;
+    
+}
+
+
+.page-tickets .input-group-addon:nth-child(1){
+    border: none;
+    color: #fff;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+.page-tickets .input-group-addon:nth-child(3),
+.page-tickets .input-group-addon:nth-child(5),
+.page-tickets .input-group-addon:nth-child(7){
+    color:#fff;
+    background: rgba(255,255,255,0.15);
+}
+
+
+.page-tickets .input-group-addon:nth-child(3):hover,
+.page-tickets .input-group-addon:nth-child(3):hover:after,
+.page-tickets .input-group-addon:nth-child(5):hover,
+.page-tickets .input-group-addon:nth-child(5):hover:after,
+.page-tickets .input-group-addon:nth-child(7):hover,
+.page-tickets .input-group-addon:nth-child(7):hover:after{
+	border-radius: 0;
+	background: rgba(255,255,255,0.55);
+    cursor: pointer;
+    
+}
+
+.page-tickets input,
+.page-tickets input:focus{
+    background: transparent;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.65);
+}
+
+.page-tickets .modal-header{
+    height: 48px;
+}
+.page-tickets h4.modal-title{
+    text-align: left;
+    color:#555;
+}
+
+.page-tickets .help-block {
+    font-size: 0.5em;
+    margin-left: 50px;
+    color: rgba(255, 255, 255, 0.41);
+}
+.page-tickets .help-block span{
+    font-weight: bold;
+    color: #ccc;
+    padding-right: 0.5em;
+}
+/*.page-tickets #ss-datepicker{
+    font-size: 0.5em;
+}*/
+.page-tickets .ticket-info i{
+    color: rgba(0, 0, 0, .5);
+    padding: 0 0.5em;
+}
+/*.page-tickets .tcdd,
+.page-tickets .tcds,
+.page-tickets .train-ls{
+    font-size: 2em;
+}*/
+.page-tickets .tcdd span,
+.page-tickets .tcds span,
+.page-tickets .train-ls span,{
+    font-size: 0.5em;
+    color: #ccc;
+    padding-right: 1em;
+}
+
+/*.page-tickets .tcdd strong{
+    padding: 0.15em;
+}*/
+.page-tickets  strong.end-s
+.page-tickets  strong.end-t,{
+    color: rgba(85, 85, 85, 0.58);
+}
+
+
 /*footer arrow*/
 .p-footer {
     bottom: 0;
@@ -414,6 +518,7 @@ div .zodiac-img{
     position: absolute;
     top: 90px;
 }
+
 /*.zodiac-week .p-title{
     position: relative;
     top: -4px;
@@ -672,22 +777,22 @@ div .zodiac-conclude span:last-child{
 
 
 /*page search zodiac*/
-div.modal-header,
-div.modal-footer{
+.page-zodiac div.modal-header,
+.page-zodiac div.modal-footer{
     height: 3.5em;
 }
 
-div.modal-body{
+.page-zodiac div.modal-body{
     height: 150px;
 }
-div .modal-content{
+.page-zodiac div .modal-content{
     position: absolute;
     left: 400px;
 /*    background: rgba(247, 240, 240, 0.17);*/
     width: 300px;
 }
 
-div.modal-content label,.modal-title{
+.page-zodiac div.modal-content label,.modal-title{
     color:#000;
 }
 h4#zodiacSearchModalLabel{

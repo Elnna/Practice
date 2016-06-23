@@ -109,7 +109,7 @@ $convenienceInfo->setAppKey($juheAppKey);
         <?php //var_dump($ipWeatherResult);?>
         </pre>
     </div>
-    <div>
+    <!--<div>
         <h1>星座查询</h1>
         <pre>
         <?php var_dump($zodiacToday);?>
@@ -124,7 +124,7 @@ $convenienceInfo->setAppKey($juheAppKey);
         <?php var_dump($zodiacYear);?>
         </pre>
         
-    </div>
+    </div>-->
     <div>
         <h1>快递查询</h1>
         <pre>
@@ -143,6 +143,7 @@ $convenienceInfo->setAppKey($juheAppKey);
         </div>
         <div>
             <h4>站站搜索</h4>
+            <pre> <?php var_dump(json_encode($ssSearch));?></pre>
             <pre> <?php var_dump($ssSearch);?></pre>
         </div>
         <div>

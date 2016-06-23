@@ -41,12 +41,7 @@ $zodiacDateArr = array('白羊座'=>'3月21日-4月19日','金牛座'=>'4月20�
 $zodiacDateArr = array_flip($zodiacDateArr);
 ?>
 
-<!doctype html>
-<!--
-COPYRIGHT by HighHay/Mivfx
-Before using this theme, you should accept themeforest licenses terms.
-http://themeforest.net/licenses
--->
+<!DOCTYPE html>
 
 <html class="no-js" lang="en">
     <head>
@@ -77,6 +72,8 @@ http://themeforest.net/licenses
         <link rel="stylesheet" href="./css/weather-icons.css">
          <!-- bootstrap CSS style -->
         <link rel="stylesheet" href="./css/bootstrap.css">
+        <link rel="stylesheet" href="./css/bootstrap-datepicker.css">
+<!--        <link rel="stylesheet" href="./css/jquery-ui.css">-->
 
         <!-- Vendor CSS style -->
         <link rel="stylesheet" href="./css/foundation.min.css">
@@ -316,9 +313,17 @@ http://themeforest.net/licenses
 				</div>-->
 				<!-- Content -->
 				<section class="content">
-					
+					<header class="header">
+						<div class="h-left">
+							<h2>New <strong>Company</strong></h2>
+						</div>
+						<div class="h-right">
+							<h3>Lorem <br>product</h3>
+							<h4 class="subhead"><a href="#zodiac">Available here soon</a></h4>
+						</div>
+					</header>
 <!--					<header class="header">-->
-						<iframe  id="express-iframe" name="kuaidi100" src="//www.kuaidi100.com/frame/app/index2.html" width="700" height="350" marginwidth="0" marginheight="10" hspace="0" vspace="0" frameborder="0" scrolling="no"></iframe>
+						<!--<iframe  id="express-iframe" name="kuaidi100" src="//www.kuaidi100.com/frame/app/index2.html" width="700" height="350" marginwidth="0" marginheight="10" hspace="0" vspace="0" frameborder="0" scrolling="no"></iframe>-->
 <!--					</header>-->
 				</section>
 				
@@ -373,17 +378,59 @@ http://themeforest.net/licenses
             
             <!-- Begin of tickets page -->
             <div class="section page-tickets page page-cent" id="s-tickets">
+                <div class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" id="trainSearch">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="gridSystemModalLabel">查询结果</h4>
+                            </div>
+                            <div class="modal-body">
+
+                            </div>
+                            <div class="modal-footer"></div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
                 <section class="content">
                     <header class="p-title">
-                        <h3>About Us<i class="ion ion-android-information">
+                        <h3>火车票查询<i class="ion ion-android-train">
                             </i>
                         </h3>
-						<h4 class="subhead">We <span class="bold">make</span> only <span class="bold">beautiful</span> things</h4>
                     </header>
-                    <article class="text">
-                        <p>Lorem ipsum <strong>magicum </strong>dolor sit amet, consectetur adipiscing elit. Maecenas a sem ultrices neque vehicula fermentum a sit amet nulla.</p>
-                        <p>Aenean ultricies odio at erat facilisis tincidunt. Fusce tempor auctor justo, nec facilisis quam vehicula vel. Aenean non mattis purus, eget lobortis odio. </p>
-                    </article>
+                    <div class="container">
+                        <div class="form-group">
+                            <div class="input-group col-md-6 col-xs-6">
+                                <div class="input-group-addon"><span>站站查询</span></div>
+                                <input type="text" class="form-control" id="start-station" placeholder="出发站" >
+                                <div class="input-group-addon" id="station-change"><span><i class="ion-ios-loop"></i></span></div>
+                                <input type="text" class="form-control" id="dest-station" placeholder="到达站" >
+                                <div class="input-group-addon"><i class="icon ion-clock"></i></div>
+                                <input type="text" class="form-control"  id="ss-datepicker" style="width:90px" readonly>
+                                <div class="input-group-addon" data-toggle="modal" data-target="#trainSearch" id="ss-submit"><span >确定</span></div> 
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group col-md-6 col-xs-6">
+                                <div class="input-group-addon"><span>车次查询</span></div>
+                                <input type="text" class="form-control" id="train-search" placeholder="车次 G101" style="width:180px">
+                                <div class="input-group-addon"><i class="icon ion-clock"></i></div>
+                                <input type="text" class="form-control"  id="ts-datepicker" readonly>
+                                <div class="input-group-addon" data-toggle="modal" data-target="#trainSearch"><span id="train-submit">确定</span></div>
+                            </div>
+                            <p class="help-block">车次的站站查询 = <span>站站查询</span>站点 + <span>车次查询</span>车次、时间</p>
+
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group col-md-6 col-xs-6">
+                                <div class="input-group-addon"><span>车站查询</span></div>
+                                <input type="text" class="form-control" id="train-station-search" placeholder="北京西">
+                                <div class="input-group-addon" data-toggle="modal" data-target="#trainSearch"><span id="station-search">确定</span></div>
+                            </div>
+                        </div>
+                       
+                    </div>
                 </section>
                 <footer class="p-footer p-scrolldown">
                     <a href="#plane-tickets">
@@ -736,9 +783,10 @@ http://themeforest.net/licenses
         <!-- All Javascript plugins goes here -->
 <!--		<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>-->
         <script src="./js/vendor/jquery-1.11.2.min.js"></script>
-        <script src="./js/jquery-ui.min.js"></script>
+<!--        <script src="./js/jquery-ui.min.js"></script>-->
         <script src="./js/bootstrap.js"></script>
         <script src="./js/bootstrap3-typeahead.js"></script>
+        <script src="./js/bootstrap-datepicker.js"></script>
 		<!-- All vendor scripts -->
         <script src="./js/vendor/all.js"></script>
 		
