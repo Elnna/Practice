@@ -29,12 +29,16 @@ $trainSuggest = $convenienceInfo->getSuggestSearch($station);
 
 //快递
 //apikey;
-$expressApiKey = '40bf371ed022440d';
+/*$expressApiKey = '40bf371ed022440d';
 $expressCom = 'yunda';
-$expressNu = '1900171113992';
+$expressNu = '1900171113992';*/
 /*
 $expressResult = $convenienceInfo->getExpress($expressApiKey,$expressCom,$expressNu);
 */
+$expKey = '25b8f22d3ca6bdc864a1b5e7984f0395';
+$convenienceInfo->setAppKey($expKey);//set key;
+$expressResult = $convenienceInfo->getExpressCom();
+//var_dump($expressResult);
 
 $weeksArr = array('monday'=>'星期一','tuesday' => '星期二', 'wednesday' => '星期三','thursday' =>'星期四','friday' => '星期五','saturday' => '星期六', 'sunday' => '星期天');
 $zodiacDateArr = array('白羊座'=>'3月21日-4月19日','金牛座'=>'4月20日-5月20日','双子座'=>'5月21日-6月21日','巨蟹座'=>'6月22日-7月22日','狮子座'=>'7月23日-8月22日','处女座'=>'8月23日-9月22日','天枰座'=>'9月23日-10月23日','天蝎座'=>'10月24日-11月22日','射手座'=>'11月23日-12月21日','摩羯座'=>'12月22日-1月19日','水瓶座'=>'1月20日-2月18日','双鱼座'=>'2月19日-3月20日');
@@ -313,18 +317,36 @@ $zodiacDateArr = array_flip($zodiacDateArr);
 				</div>-->
 				<!-- Content -->
 				<section class="content">
-					<header class="header">
-						<div class="h-left">
-							<h2>New <strong>Company</strong></h2>
-						</div>
-						<div class="h-right">
-							<h3>Lorem <br>product</h3>
-							<h4 class="subhead"><a href="#zodiac">Available here soon</a></h4>
-						</div>
-					</header>
-<!--					<header class="header">-->
-						<!--<iframe  id="express-iframe" name="kuaidi100" src="//www.kuaidi100.com/frame/app/index2.html" width="700" height="350" marginwidth="0" marginheight="10" hspace="0" vspace="0" frameborder="0" scrolling="no"></iframe>-->
-<!--					</header>-->
+                  
+					<form class="form-horizontal">
+                        <div class="form-group">
+                            <label for="express-com" class="col-sm-3 control-label">快递公司</label>
+                            <?php if($expressResult['resultcode'] == '200'):
+                                $expData = $expressResult['result'];
+                            ?>
+                            <select class="col-sm-9 form-control">
+                                <?php for($i=0; $i<count($expData);$i++): ?>
+                                <option value="<?php echo $expData[$i]['no'];?>"><?php echo $expData[$i]['com'];?></option>
+                                <?php endfor;?>
+                            </select>
+                            <?php else:?>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="express-com" placeholder="快递公司编号 顺丰 sf">
+                            </div>
+                            <?php endif;?>
+                        </div>
+                        <div class="form-group">
+                            <label for="express-nu" class="col-sm-3 control-label">单号</label>
+                            <div class="col-sm-9">
+                                <input type="email" class="form-control" id="express-nu" placeholder="快递单号">
+                            </div>
+                        </div>
+                         <div class="form-group">
+                             <div class="col-sm-offset-3 col-sm-9">
+                                 <button type="submit" class="btn btn-primary">确定</button>
+                             </div>
+                          </div>
+                    </form>
 				</section>
 				
 				<!-- Scroll down button -->
@@ -525,7 +547,9 @@ $zodiacDateArr = array_flip($zodiacDateArr);
 				<!-- Begin of  zodiac daily fortune -->
                 
 				<div class="slide" id="s-zodiac-day" data-anchor="zodiac-day">
-                    <?php 
+                    <?php
+                        $bdKey = '2cf291486b5dd04551e81c11e1346615';
+                        $convenienceInfo->setAppKey($bdKey);
                         $zodiacToday = $convenienceInfo->getZodiacFortuneByNameType($zodiacName,$zodiacType[0]);
                         if($zodiacToday['error_code'] == 0):
                     ?>

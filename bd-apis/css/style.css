@@ -191,6 +191,27 @@ a.nav-item .active, .nav-item:hover,.nav-item:focus{
 
 
 /* slide page */
+/*page express*/
+.page-express section.content{
+    z-index: 5;
+    cursor: pointer;
+}
+.page-express form{
+    left: -20px;
+    margin: 0 50px 0 -50px;
+}
+.page-express .form-group label{
+    font-size: 1em;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.47);
+}
+.page-express .form-group input,
+.page-express .form-group input:focus{
+    background: transparent;
+    border: 1px solid #eee;
+    color:#fff;
+}
+
 /* page tickets */
 .page-tickets .container{
     position: absolute;

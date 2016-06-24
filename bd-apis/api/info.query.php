@@ -35,8 +35,9 @@ class convenienceInfo{
         */
     
     //快递查询
-    private $expressUrl = 'http://api.kuaidi100.com/api';
+//    private $expressUrl = 'http://api.kuaidi100.com/api';
     private $expressId = 'false';
+    private $expressUrl = 'http://v.juhe.cn/exp'; //聚合网
     
     private $weatherCode = WEATHER_CODE;
     
@@ -50,6 +51,7 @@ class convenienceInfo{
     */
     public function setAppKey($appKey){
         $this->appkey = $appKey;
+        return $this->appkey;
     }
     
     /**
@@ -213,7 +215,7 @@ class convenienceInfo{
     *@param  string multi  返回类型：0->返回一行信息，1->返回多行完整信息
     *@param  string order  desc->按时间由新到旧排列，asc->按时间由旧到新排列
     */
-    public function getExpress($id,$com,$nu){
+    /*public function getExpress($id,$com,$nu){
         $paramsArray = array(
             'id' => $id,
             'com' => $com,
@@ -227,6 +229,10 @@ class convenienceInfo{
         $content = $this->juhecurl($this->expressUrl,$params);
         return $this->_returnArray($content);
         
+    }*/
+    public function getExpressCom(){
+        $content = $this->juhecurl($this->expressUrl. '/com');
+        return $this->_returnArray($content);
     }
     
    
