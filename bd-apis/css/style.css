@@ -197,52 +197,53 @@ a.nav-item .active, .nav-item:hover,.nav-item:focus{
     top: 250px;
     z-index: 5;
 }
-.page-tickets .p-title{
+.page-tickets section .p-title{
     position: absolute;
     top: 120px;
 }
-.page-tickets .form-group{
+.page-tickets section .form-group{
     margin-bottom: 30px;
     margin-left: -50px;
+    padding-right: 30px;
 }
-.page-tickets .input-group-addon,
-.page-tickets input,
-.page-tickets input:after,
-.page-tickets input.form-control
+.page-tickets section .input-group-addon,
+.page-tickets section input,
+.page-tickets section input:after,
+.page-tickets section input.form-control
 {
     background-color: transparent;
     
 }
 
 
-.page-tickets .input-group-addon:nth-child(1){
+.page-tickets section .input-group-addon:nth-child(1){
     border: none;
     color: #fff;
     font-size: 1.5em;
     font-weight: bold;
 }
-.page-tickets .input-group-addon:nth-child(3),
-.page-tickets .input-group-addon:nth-child(5),
-.page-tickets .input-group-addon:nth-child(7){
+.page-tickets section .input-group-addon:nth-child(3),
+.page-tickets section .input-group-addon:nth-child(5),
+.page-tickets section .input-group-addon:nth-child(7){
     color:#fff;
     background: rgba(255,255,255,0.15);
 }
 
 
-.page-tickets .input-group-addon:nth-child(3):hover,
-.page-tickets .input-group-addon:nth-child(3):hover:after,
-.page-tickets .input-group-addon:nth-child(5):hover,
-.page-tickets .input-group-addon:nth-child(5):hover:after,
-.page-tickets .input-group-addon:nth-child(7):hover,
-.page-tickets .input-group-addon:nth-child(7):hover:after{
+.page-tickets section .input-group-addon:nth-child(3):hover,
+.page-tickets section .input-group-addon:nth-child(3):hover:after,
+.page-tickets section .input-group-addon:nth-child(5):hover,
+.page-tickets section .input-group-addon:nth-child(5):hover:after,
+.page-tickets section .input-group-addon:nth-child(7):hover,
+.page-tickets section .input-group-addon:nth-child(7):hover:after{
 	border-radius: 0;
 	background: rgba(255,255,255,0.55);
     cursor: pointer;
     
 }
 
-.page-tickets input,
-.page-tickets input:focus{
+.page-tickets section input,
+.page-tickets section input:focus{
     background: transparent;
     color: #fff;
     border: 1px solid rgba(255, 255, 255, 0.65);
@@ -256,12 +257,12 @@ a.nav-item .active, .nav-item:hover,.nav-item:focus{
     color:#555;
 }
 
-.page-tickets .help-block {
+.page-tickets section .help-block {
     font-size: 0.5em;
     margin-left: 50px;
     color: rgba(255, 255, 255, 0.41);
 }
-.page-tickets .help-block span{
+.page-tickets section .help-block span{
     font-weight: bold;
     color: #ccc;
     padding-right: 0.5em;
@@ -269,7 +270,7 @@ a.nav-item .active, .nav-item:hover,.nav-item:focus{
 /*.page-tickets #ss-datepicker{
     font-size: 0.5em;
 }*/
-.page-tickets .ticket-info i{
+.page-tickets section .ticket-info i{
     color: rgba(0, 0, 0, .5);
     padding: 0 0.5em;
 }
@@ -278,9 +279,9 @@ a.nav-item .active, .nav-item:hover,.nav-item:focus{
 .page-tickets .train-ls{
     font-size: 2em;
 }*/
-.page-tickets .tcdd span,
-.page-tickets .tcds span,
-.page-tickets .train-ls span,{
+.page-tickets section .tcdd span,
+.page-tickets section .tcds span,
+.page-tickets section .train-ls span,{
     font-size: 0.5em;
     color: #ccc;
     padding-right: 1em;
@@ -289,10 +290,16 @@ a.nav-item .active, .nav-item:hover,.nav-item:focus{
 /*.page-tickets .tcdd strong{
     padding: 0.15em;
 }*/
-.page-tickets  strong.end-s
-.page-tickets  strong.end-t,{
+.page-tickets section  strong.end-s
+.page-tickets section  strong.end-t,{
     color: rgba(85, 85, 85, 0.58);
 }
+
+
+.page-tickets .modal-body .filter-btn{
+    cursor: pointer;
+}
+
 
 
 /*footer arrow*/

@@ -3,7 +3,13 @@
         <link rel="stylesheet" href="./css/bootstrap.css">
         <link rel="stylesheet" href="./css/bootstrap-datepicker.css">
         <link rel="stylesheet" href="./css/ionicons.min.css">
+<!--        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+<!--        <link rel="../src/stylesheet" href="bootstrap-table-filter.css">-->
 
+<!--    <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>-->
+<!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>-->
+<!--    <script src="../src/bootstrap-table-filter.js"></script>-->
     </head>
     <body>
         
@@ -47,7 +53,13 @@
                 <p class="help-block">车次的站站查询 = <span>站站查询</span>站点 + <span>车次查询</span>车次、时间</p>
 
             </div>
-       
+        <div class="form-group">
+            <div class="input-group col-md-6 col-xs-6">
+                <div class="input-group-addon"><span>车站查询</span></div>
+                <input type="text" class="form-control" id="train-station-search" placeholder="北京西">
+                <div class="input-group-addon" data-toggle="modal" data-target="#trainSearch"><span id="station-search">确定</span></div>
+            </div>
+        </div>
         
         <script src="./js/vendor/jquery-1.11.2.min.js"></script>
         <script src="./js/jquery-ui.min.js"></script>
@@ -55,8 +67,13 @@
         <script src="./js/bootstrap.js"></script>
         <script src="./js/bootstrap3-typeahead.js"></script>
         <script src="./js/bootstrap-datepicker.js"></script>
+        <script src="./js/bootstrap-table-filter.js"></script>
+
+        
 
         <script>
+            
+            
             $(document).ready(function(){
                 $('#ss-datepicker,#ts-datepicker').datepicker({
                     autoclose: true,//选中之后自动隐藏日期选择框
@@ -81,7 +98,7 @@
                     var date = $("#ss-datepicker").val();
                      trainSSSearch(from,to,date);
                 });
-                 $("#train-submit").on('click',function(){
+                $("#train-submit").on('click',function(){
                     var from = $('#start-station').val();
                     var to = $('#dest-station').val();
                     var date = $("#ts-datepicker").val();
@@ -90,9 +107,109 @@
                     tarinSearch(train,date,from,to);
 
                 });
+                $('#station-search').on('click',function(){
+                    var sta = $('#train-station-search').val();
+                    stationSearch(sta);
+                });
+                
+                $('.modal-body').on('click','.filter-btn',function (e){
+                    
+//                    console.log("filter");
+                    var rex = new RegExp($('#filter').val(), 'i');
+//                    alert(rex);
+                    console.log(rex);
+                    $('.searchable tr').after('<tr></tr>').hide();
+                    $('.searchable tr').filter(function () {
+                        return rex.test($(this).text());
+                    }).show();
+
+                });
+                
+                
         });
             
+var filtersName = function(filter){
+    var fname = '';
+    switch(filter){
+        case 'arriTimeRange': fname='到站时间';
+            break;
+        case 'deptTimeRange': fname='发车时间';
+            break;
+        case 'station': fname = '站点信息'
+            break;
+        case 'stationType': fname='站点类型';
+            break;
+        case 'ticketType': fname='座位类型';
+            break;
+        case 'trainType': fname='车次类型';
+            break;
+        default:
+            break;
+    }
+    return fname;
+}
+
+var stationSearch = function(station){
+    console.log("station",station);
+    var apikey = {'apikey':'2cf291486b5dd04551e81c11e1346615'};
+    var url = 'http://apis.baidu.com/qunar/qunar_train_service/stationsearch?version=1.0&station=' + station;
+    console.log(url);
+    $.ajax({
+        url:url, 
+        method: "GET",  
+        headers: apikey, 
+        dataType: "json",
+        success: function(data){
+            console.log("success",data);
+            if(data.ret){
+                var filters = data.data.filters;
+                var trainInfo = data.data.trainInfo;
+                var ticketInfo = data.data.ticketInfo;
+               
+                console.log("filters",filters);
+                
+                //搜索框
+                var html = '<div class="form-inline"><div class="input-group"><div class="input-group-addon filter-btn" ><span >过滤</span></div><div class="input-group"><input id="filter" type="text" class="form-control" placeholder="自定义搜索" ></div>';
+                for(var x in filters){
+                    html += '<div class="form-group"><select class="form-control">';
+                   
+                    html += '<option>' + filtersName(x)+ '</option>';
+                    for(var i=0; i < filters[x].length;i++){
+                        html += '<option value="' + filters[x][i].value + '">'+ filters[x][i].name + '</option>';
+                    }
+                    html += '</select></div>';
+                }
+                html += '</div></div>';
+                
+                //table
+                html += '<table class="table table-bordered table-hover"><thead><th>车次</th><th>站点</th><th>类型</th><th>出发站</th><th>终点站</th><th>城市</th><th>时间</th><th>座位信息</th></thead><tbody class="searchable">';
+                for(var x in trainInfo){
+                    html += '<tr><td>'+trainInfo[x].code+'</td><td>'+trainInfo[x].station+'</td><td>'+ trainInfo[x].stationType +'</td><td>'+ trainInfo[x].deptStation +'</td><td>'+
+                    trainInfo[x].arriStation +'</td><td>'+ trainInfo[x].deptCity + '<i class="ion-arrow-right-c"></i>' + trainInfo[x].arriCity +'</td><td>'+ trainInfo[x].deptTime + '<i class="ion-arrow-right-c"></i>'+ trainInfo[x].arriTime +'<span>'+ '(历时' + trainInfo[x].interval + ')' +'</span></td><td><ul class="list-group">';
+                   
+                    for(var j=0; j< ticketInfo[x].length;j++){
+                        html += '<li class="list-group-item">'  + '<span class="badge">'+ '￥'+ ticketInfo[x][j].pr +'</span>' + ticketInfo[x][j].type + '</li>';
+                       
+                    }
+                    html += '</ul></td></tr>';
+                }
+                html += '</tbody></table>';
+                $('.modal .modal-body').html(html);
+               
+                var html2 = '<address>站点:<strong>'+ data.data.city+'</strong><br>总计:<abbr>'+ data.data.count+'</abbr></address>';
+                $('.modal-footer').html(html2);
+                
+            } else{
+                $('.modal .modal-body').html('<div class="error-code">'+ data.errmsg +'</div>');
+            }
             
+        },
+        error:function(data){
+            console.log("failed",data);
+
+        }
+    })
+}            
             
 var tarinSearch = function(train,date,from,to){
     console.log("date",date);

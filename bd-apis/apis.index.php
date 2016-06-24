@@ -414,7 +414,7 @@ $zodiacDateArr = array_flip($zodiacDateArr);
                         <div class="form-group">
                             <div class="input-group col-md-6 col-xs-6">
                                 <div class="input-group-addon"><span>车次查询</span></div>
-                                <input type="text" class="form-control" id="train-search" placeholder="车次 G101" style="width:180px">
+                                <input type="text" class="form-control" id="train-search" placeholder="车次 G101">
                                 <div class="input-group-addon"><i class="icon ion-clock"></i></div>
                                 <input type="text" class="form-control"  id="ts-datepicker" readonly>
                                 <div class="input-group-addon" data-toggle="modal" data-target="#trainSearch"><span id="train-submit">确定</span></div>

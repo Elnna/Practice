@@ -333,9 +333,19 @@ $(document).ready(function($) {
 
     });
     $("#station-search").on('click',function(){
-        
+        var sta = $('#train-station-search').val();
+        stationSearch(sta);
     });
-    
+    $('.page-tickets .modal-body').on('click','.filter-btn',function (e){
+        var rex = new RegExp($('#filter').val(), 'i');
+        console.log(rex);
+        $('.searchable tr').after('<tr></tr>').hide();
+        $('.searchable tr').filter(function () {
+            return rex.test($(this).text());
+        }).show();
+
+    });
+                
     
     
 });
@@ -352,6 +362,75 @@ $(document).ready(function($) {
         orientation:'bottom right',
     });
 }*/
+
+var stationSearch = function(station){
+    console.log("station",station);
+    var apikey = {'apikey':'2cf291486b5dd04551e81c11e1346615'};
+    var url = 'http://apis.baidu.com/qunar/qunar_train_service/stationsearch?version=1.0&station=' + station;
+    console.log(url);
+    $.ajax({
+        url:url, 
+        method: "GET",  
+        headers: apikey, 
+        dataType: "json",
+        success: function(data){
+            console.log("success",data);
+            if(data.ret){
+                var filters = data.data.filters;
+                var trainInfo = data.data.trainInfo;
+                var ticketInfo = data.data.ticketInfo;
+               
+                console.log("filters",filters);
+                /*
+                    <div class="input-group"> <span class="input-group-addon">Filter</span>
+
+    <input id="filter" type="text" class="form-control" placeholder="Type here...">
+</div>
+                */
+                //搜索框
+                var html = '<div class="input-group"><span class="input-group-addon filter-btn">搜索</span><input id="filter" type="text" class="form-control" placeholder="请输入关键字进行搜索" ></div>';
+               /* var html = '<div class="form-inline"><div class="input-group"><div class="input-group-addon filter-btn" ><span >过滤</span></div><div class="input-group"><input id="filter" type="text" class="form-control" placeholder="自定义搜索" ></div>';
+                for(var x in filters){
+                    html += '<div class="form-group"><select class="form-control">';
+                   
+                    html += '<option>' + filtersName(x)+ '</option>';
+                    for(var i=0; i < filters[x].length;i++){
+                        html += '<option value="' + filters[x][i].value + '">'+ filters[x][i].name + '</option>';
+                    }
+                    html += '</select></div>';
+                }
+                html += '</div></div>';
+                */
+                //table
+                html += '<table class="table table-bordered table-hover"><thead><th>车次</th><th>站点</th><th>类型</th><th>出发站</th><th>终点站</th><th>城市</th><th>时间</th><th>座位信息</th></thead><tbody class="searchable">';
+                for(var x in trainInfo){
+                    html += '<tr><td>'+trainInfo[x].code+'</td><td>'+trainInfo[x].station+'</td><td>'+ trainInfo[x].stationType +'</td><td>'+ trainInfo[x].deptStation +'</td><td>'+
+                    trainInfo[x].arriStation +'</td><td>'+ trainInfo[x].deptCity + '<i class="ion-arrow-right-c"></i>' + trainInfo[x].arriCity +'</td><td>'+ trainInfo[x].deptTime + '<i class="ion-arrow-right-c"></i>'+ trainInfo[x].arriTime +'<br><span>'+ '(历时' + trainInfo[x].interval + ')' +'</span></td><td><ul class="list-group">';
+                   
+                    for(var j=0; j< ticketInfo[x].length;j++){
+                        html += '<li class="list-group-item">'  + '<span class="badge">'+ '￥'+ ticketInfo[x][j].pr +'</span>' + ticketInfo[x][j].type + '</li>';
+                       
+                    }
+                    html += '</ul></td></tr>';
+                }
+                html += '</tbody></table>';
+                $('.page-tickets .modal-body').html(html);
+               
+                var html2 = '<address>站点:<strong>'+ data.data.city+'</strong><br>总计:<abbr>'+ data.data.count+'</abbr></address>';
+                $('.page-tickets .modal-footer').html(html2);
+                
+            } else{
+                $('.page-tickets .modal-body').html('<div class="error-code">'+ data.errmsg +'</div>');
+            }
+            
+        },
+        error:function(data){
+            console.log("failed",data);
+
+        }
+    })
+}     
+
 var tarinSearch = function(train,date,from,to){
     console.log("date",date);
     var apikey = {'apikey':'2cf291486b5dd04551e81c11e1346615'};
