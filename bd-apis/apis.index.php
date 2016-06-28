@@ -80,7 +80,7 @@ $zodiacDateArr = array_flip($zodiacDateArr);
 <!--        <link rel="stylesheet" href="./css/jquery-ui.css">-->
 
         <!-- Vendor CSS style -->
-        <link rel="stylesheet" href="./css/foundation.min.css">
+<!--        <link rel="stylesheet" href="./css/foundation.min.css">-->
         <link rel="stylesheet" href="./js/vendor/jquery.fullPage.css">
         <link rel="stylesheet" href="./js/vegas/vegas.min.css">
         
@@ -311,42 +311,46 @@ $zodiacDateArr = array_flip($zodiacDateArr);
 			<!-- Begin of express page -->
 			<div class="section page-express page page-cent" id="s-express">
 				
-				<!-- Logo -->
-				<!--<div class="logo-container">
-					<img class="h-logo" src="img/logo_only.png" alt="Logo">
-				</div>-->
-				<!-- Content -->
+				<div class="modal fade" role="dialog" aria-labelledby="gridSysModLab" id="expressSearch">
+                  <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="gridSysModLab">查询结果</h4>
+                      </div>
+
+                      <div class="modal-body">
+
+                      </div>
+                      <div class="modal-footer"></div>
+                    </div><!-- /.modal-content -->
+
+                  </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
+
 				<section class="content">
-                  
-					<form class="form-horizontal">
+					<div class="form-horizontal">
                         <div class="form-group">
                             <label for="express-com" class="col-sm-3 control-label">快递公司</label>
-                            <?php if($expressResult['resultcode'] == '200'):
-                                $expData = $expressResult['result'];
-                            ?>
-                            <select class="col-sm-9 form-control">
-                                <?php for($i=0; $i<count($expData);$i++): ?>
-                                <option value="<?php echo $expData[$i]['no'];?>"><?php echo $expData[$i]['com'];?></option>
-                                <?php endfor;?>
-                            </select>
-                            <?php else:?>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" id="express-com" placeholder="快递公司编号 顺丰 sf">
+                            <div class=" input-group col-sm-8">
+                                <span class="input-group-addon" id="expressComList"><i class="ion-ios-list-outline"></i></span>
+                                <input type="text" class="form-control" id="express-type" placeholder="快递公司 顺丰 ">
+                                <input type="hidden" class="form-control" id="express-type-code" placeholder="快递公司编号 顺丰 sf">
                             </div>
-                            <?php endif;?>
                         </div>
                         <div class="form-group">
                             <label for="express-nu" class="col-sm-3 control-label">单号</label>
-                            <div class="col-sm-9">
+                            <div class="input-group col-sm-8">
+                                <span class="input-group-addon"><i class="ion-merge"></i></span>
                                 <input type="email" class="form-control" id="express-nu" placeholder="快递单号">
                             </div>
                         </div>
                          <div class="form-group">
-                             <div class="col-sm-offset-3 col-sm-9">
-                                 <button type="submit" class="btn btn-primary">确定</button>
+                             <div class="col-sm-offset-3 col-sm-8">
+                                 <button type="submit" class="btn btn-primary" id="express-submit">确定</button>
                              </div>
                           </div>
-                    </form>
+                    </div>
 				</section>
 				
 				<!-- Scroll down button -->
@@ -466,7 +470,7 @@ $zodiacDateArr = array_flip($zodiacDateArr);
             </div>
             <!-- End of tickets page -->
                 
-            <!-- Begin of illegal page -->
+            <!-- Begin of plane tickets page -->
 			<div class="section page-plane-tickets page page-cent" id="s-plane-tickets">
 				
 				<!-- Logo -->

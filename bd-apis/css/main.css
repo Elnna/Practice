@@ -556,199 +556,7 @@ strong,
 		bottom: -6px;
 		right: -6px;
 	}
-/* 3.  Quick links at left*/
-.quick-link{
-	position: fixed;
-	top: 0;
-	left: 0;
-	bottom: 0;
-    width: 56px;
-	-webkit-box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.2), 0px 0px 2px 0px rgba(0, 0, 0, 0.1);
-	box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.2), 0px 0px 2px 0px rgba(0, 0, 0, 0.1);
-	z-index: 100;
-	background: rgba(0, 0, 0, 0.26);
-}
-.quick-link .logo{
-	width: 56px;
-	height: 56px;
-	position: absolute;
-	top: 0;
-	left: 0;
-	background: #1d1d1d;
-}
-.quick-link .logo a{
-	padding: 8px;
-	height: 100%;
-	width: 100%;
-}
-.quick-link .logo a:after{
-	background: none !important;
-}
-.quick-link .qmenu{
-	position: relative;
-	position: absolute;
-	top: 50%;
-}
-.quick-link li{
-	list-style: none;
-	list-style-position: outside;
-	display: block;
-	height: 48px;
-	width: 56px;
-	position: relative;
-}
-/* 3.1 quick link position : use it to adjust its position */
-	.quick-link.count-1 .qmenu{
-		margin-top: -24px; /* 48*1/2*/
-	}
-	.quick-link.count-2 .qmenu{
-		margin-top: -48px; /* 48*5/2*/
-	}
-	.quick-link.count-3 .qmenu{
-		margin-top: -72px; /* 48*3/2*/
-	}
-	.quick-link.count-4 .qmenu{
-		margin-top: -96px; /* 48*4/2*/
-	}
-	.quick-link.count-5 .qmenu{
-		margin-top: -120px; /* 48*5/2*/
-	}
-	.quick-link.count-6 .qmenu{
-		margin-top: -144px; /* 48*6/2*/
-	}
-	.quick-link.count-7 .qmenu{
-		margin-top: -168px; /* 48*7/2*/
-	}
-/* 3.2 Links */
-.quick-link a{
-/*	background: #fff;*/
-/*	background: rgba(255, 255, 255, 0.15);*/
-	height: 48px;
-	width: 56px;
-	display: block;
-	text-align: center;
-	font-size: 22px;
-	padding-top: 0.4rem;
-	color: #fff;
-	opacity: 1;
-	position: relative;
-	z-index: 1;
-	-webkit-transition: 0.2s;
-	transition: 0.2s;
-}
-.quick-link a:hover{
-/*		opacity: 0.5;*/
-/*		color: #5677fc;*/
-}
-.quick-link ul li{
-	position: relative;
-}
-.quick-link ul li:after,
-.quick-link a:after{
-	position: absolute;
-	content: "";
-	background: rgba(255,255,255,0);
-	border-radius: 100%;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 1px;
-	-webkit-transform: scale(0.5);
-	transform: scale(0.5);
-/*		transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);*/
-	-webkit-transition: 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
-	transition: 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
-	z-index: -1;
-}
-.quick-link li:before{
-	position: absolute;
-	content: "";
-	width: 50%;
-	left: 25%;
-	bottom: 0;
-	border-bottom: 1px solid #fff;
-}
-.quick-link li:last-child:before{
-	border-bottom: none;
-}
-.quick-link ul li.active:after,
-.quick-link a:hover:after{
-	-webkit-transform: none;
-	transform: none;
-	border-radius: 0;
-	background: rgba(255,255,255,0.15);
-	background: #5677fc;
-}
 
-.quick-link ul li.active:after{
-	background: rgba(230, 230, 230, 0.12);
-}
-.quick-link a.marked{
-	color: #fff;
-	background: #5677fc;
-}
-	.quick-link .title{
-		position: absolute;
-		font-size: 12px;
-		left: 64px;
-		top: 17px;
-		color: #fff;
-		font-family: "Opensans";
-		text-transform: uppercase;
-		text-align: left;
-		width: 100px;
-		border-bottom: 1px solid currentColor;
-		display: block;
-		transform: translateX(10px);
-		-webkit-transition: 0.3s;
-		transition: 0.3s;
-		visibility: hidden;
-		opacity: 0;
-		text-shadow: 0 0 10px #000;
-	}
-	.quick-link li:hover .title{
-		-webkit-transform: none;
-		transform: none;
-		display: block;
-		opacity: 1;
-		visibility: visible;
-	}
-
-/* 4. Page footer */
-.page-footer{
-	z-index: 100;
-	position: fixed;
-	bottom: 8px;
-	left: 56px;
-	margin-left: 9px;
-	color: #fff;
-	font-size:18px;
-	font-family: 'Opensans';
-	font-weight: normal;
-}
-.page-footer a:first-child{
-/*	margin-left: 8px;*/
-}
-.page-footer a{
-	color: #fff;
-	-webkit-transition: 0.3s;
-	transition: 0.3s;
-	float: left;
-	display: block;
-	margin-right: 8px;
-	padding: 4px ;
-	width: 32px;
-	height: 32px;
-	text-align: center;
-	background: #fff;
-	color: #1d1d1d;
-}
-.page-footer a .ion{
-	font-size: 1.2em;
-}
-.page-footer a:hover{
-	opacity: 0.8;
-}
 
 
 /* 5. Page cover */
@@ -886,6 +694,7 @@ strong,
 .page p.light{
     font-family: 'OpenSans-Light';
 }
+/*
 .page h4{
 	text-transform: uppercase;
 	font-weight: bold;
@@ -894,10 +703,12 @@ strong,
 	margin-bottom: 0;
 	margin-top: 0;
 }
+*/
 
-.page h2,
-.page h3,
-.page h4{
+/*.page h2,*/
+.page-tickets h3,
+.page-zodiac h3
+/*.page h4*/{
     font-family: 'Opensans';
     color: #ffffff;
 }

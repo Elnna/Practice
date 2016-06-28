@@ -509,4 +509,119 @@ http://themeforest.net/licenses
 	}
 }
 
+
+
+/*page express*/
+@media(min-width: 768px){
+  .page-express .modal-body .timeline {
+    width: 660px;
+    margin: 0 auto;
+    margin-top: 20px;
+  }
+
+  .page-express .modal-body .timeline li:after {
+    content: "";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+  
+  .page-express .modal-body .timeline .hexa {
+    left: -28px;
+    right: auto;
+    top: 8px;
+  }
+
+  .page-express .modal-body .timeline .direction-l .hexa {
+    left: auto;
+    right: -28px;
+  }
+
+  .page-express .modal-body .direction-l {
+    position: relative;
+    width: 310px;
+    float: left;
+    text-align: right;
+  }
+
+  .page-express .modal-body .direction-r {
+    position: relative;
+    width: 310px;
+    float: right;
+    text-align: left;
+  }
+
+  .page-express .modal-body .flag-wrapper {
+    display: inline-block;
+  }
+  
+  .page-express .modal-body .flag {
+    font-size: 18px;
+  }
+
+  .page-express .modal-body .direction-l .flag:after {
+    left: auto;
+    right: -16px;
+    top: 50%;
+    margin-top: -8px;
+    border: solid transparent;
+    border-left-color: rgb(254,254,254);
+    border-width: 8px;
+  }
+
+  .page-express .modal-body .direction-r .flag:after {
+    top: 50%;
+    margin-top: -8px;
+    border: solid transparent;
+    border-right-color: rgb(254,254,254);
+    border-width: 8px;
+    left: -8px;
+  }
+
+  .page-express .modal-body .time-wrapper {
+    display: inline;
+    vertical-align: middle;
+    margin: 0;
+  }
+
+  .page-express .modal-body .direction-l .time-wrapper {
+    float: left;
+  }
+
+  .page-express .modal-body .direction-r .time-wrapper {
+    float: right;
+  }
+
+  .page-express .modal-body .time {
+    padding: 5px 10px;
+  }
+
+  .page-express .modal-body .direction-r .desc {
+    margin: 1em 0 0 0.75em;
+  }
+}
+
+@media(min-width: 992px){
+  .page-express .modal-body .timeline {
+    width: 800px;
+    margin: 0 auto;
+    margin-top: 20px;
+  }
+
+  .page-express .modal-body .direction-l {
+    position: relative;
+    width: 380px;
+    float: left;
+    text-align: right;
+  }
+
+  .page-express .modal-body .direction-r {
+    position: relative;
+    width: 380px;
+    float: right;
+    text-align: left;
+  }
+}
+/*end express*/
     

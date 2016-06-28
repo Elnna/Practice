@@ -94,6 +94,8 @@ var pageElem = $('.page');
 
 var zodiacArr = ["白羊座", "金牛座", "双子座","巨蟹座","狮子座","处女座","天秤座","天蝎座","射手座","摩羯座","水瓶座","双鱼座"];
 var dayProgressBar = ['all','health','love','money','work'];
+/*express*/
+var expComList = '';
 
 /* 3. Init all plugin on load */
 $(document).ready(function($) {
@@ -256,6 +258,158 @@ $(document).ready(function($) {
     });
     
    
+    
+    
+    /*page express*/
+    
+    $("#express-type").typeahead({
+        source: function (query, process) {
+                var names = [];
+                if(expComList== ''){
+                    var apikey = {'apikey':'0a6c63dd26f6268752341ed2ef15dba6'};
+                    var url = 'http://apis.baidu.com/netpopo/express/express2';
+                     $.ajax({
+                        url:url, 
+                        method: "GET",  
+                        headers: apikey, 
+                        dataType: "json",
+    //                    async:false, 
+                        success: function(data){
+                            console.log("url",url);
+                            console.log("get express com success",data);
+    //                        var comList = getExpressCom();
+                            expComList = data;
+                            $.each(expComList.result, function (index, ele) {
+                                comMap[ele.name] = ele.type;
+                                names.push(ele.name);
+                            });
+                            process(names);//调用处理函数，格式化
+
+    //                        return data;
+                        },
+                        error:function(data){
+                            console.log("failed",data);
+                        }
+                    });
+                } else{
+                    $.each(expComList.result, function (index, ele) {
+                        comMap[ele.name] = ele.type;
+                        names.push(ele.name);
+                    });
+                    process(names);//调用处理函数，格式化
+                }
+                
+               
+
+            },
+        afterSelect: function (item) {
+            $("#express-type-code").val(comMap[item]);
+            console.log(comMap[item]);//取出选中项的值
+        }
+    });
+
+
+    $('#expressComList').on('click',function(){
+        //查询快递公司
+//                    alert("test");
+        var expCom = '';
+        if(expComList == ''){
+            var apikey = {'apikey':'0a6c63dd26f6268752341ed2ef15dba6'};
+            var url = 'http://apis.baidu.com/netpopo/express/express2';
+             $.ajax({
+                url:url, 
+                method: "GET",  
+                headers: apikey, 
+                dataType: "json",
+//                    async:false, 
+                success: function(data){
+                    console.log("url",url);
+                    console.log("get express com success",data);
+//                        var comList = getExpressCom();
+                    expComList = data;
+                    makeComHtml(expComList);
+
+                },
+                error:function(data){
+                    console.log("failed",data);
+                }
+            });
+        } else {
+            console.log("data",expCom);
+            makeComHtml(expComList);
+            
+        }
+
+    });
+    
+   $('#express-submit').on('click',function(){
+       var type = $('#express-type-code').val();
+       var num = $('#express-nu').val();
+//       var expListData = '';
+//       if(expListData = getExpressList(type,num)){
+       if(type!='' && num !=''){
+           var apikey = {'apikey':'0a6c63dd26f6268752341ed2ef15dba6'};
+           var url = 'http://apis.baidu.com/netpopo/express/express1?type=' + type + '&number=' + num;
+           $.ajax({
+               url:url,
+               method: "GET",
+               headers: apikey,
+    //           async:false,
+               dataType: "json",
+               success: function(data){
+                    console.log("get express list url",url);
+                    var expListData = data;
+                    if(expListData.status == 0){
+                       expListData = expListData.result;
+                       var comName = getExpComName(expListData.type);
+            //                       var comName = '顺丰';
+                       console.log(deliStatus(expListData.deliverystatus));
+                       var html = '<header><p>'+deliStatus(expListData.deliverystatus)+'</p>\
+                                  <h1>'+ comName + '快递，<span><strong>单号</strong>' + expListData.number+'</span></h1></header><ul class="timeline">';
+                       for(var i=0; i< expListData.list.length;i++){
+                           html += '<li><div class="direction-'+(i%2==0? 'r':'l') +'"><div class="flag-wrapper"><span class="hexa"></span><span class="flag">'+expListData.list[i].time.substr(11,9)+'</span><span class="time-wrapper"><span class="time">'+ expListData.list[i].time.substr(0,10) +'</span></span></div><div class="desc">'+ expListData.list[i].status +'</div></div></li>';
+                       }
+                       html +='</ul>';
+        //               console.log(html);
+                       $('.page-express .modal .modal-body').html(html);
+                       $('#expressSearch').modal('toggle');
+
+                   }else{
+                        $('.page-express .modal .modal-body').html('<div class="error-code">查询失败，请重试！</div>');
+                   }
+               },
+               error:function(data){
+                    console.log("failed",data);
+               }
+           });
+
+       } else{
+           alert("快递公司或者单号不能为空！");
+       }
+          /* if(expListData.status == 0){
+               expListData = expListData.result;
+               var comName = getExpComName(expListData.type);
+    //                       var comName = '顺丰';
+               console.log(deliStatus(expListData.deliverystatus));
+               var html = '<header><p>'+deliStatus(expListData.deliverystatus)+'</p>\
+                          <h1>'+ comName + '快递，<span><strong>单号</strong>' + expListData.number+'</span></h1></header><ul class="timeline">';
+               for(var i=0; i< expListData.list.length;i++){
+                   html += '<li><div class="direction-'+(i%2==0? 'r':'l') +'"><div class="flag-wrapper"><span class="hexa"></span><span class="flag">'+expListData.list[i].time.substr(11,9)+'</span><span class="time-wrapper"><span class="time">'+ expListData.list[i].time.substr(0,10) +'</span></span></div><div class="desc">'+ expListData.list[i].status +'</div></div></li>';
+               }
+               html +='</ul>';
+//               console.log(html);
+               $('.page-express .modal .modal-body').html(html);
+               $('#expressSearch').modal('toggle');
+
+           }else{
+                $('.page-express .modal .modal-body').html('<div class="error-code">查询失败，请重试！</div>');
+           }*/
+//       }
+   });
+
+    
+    
+    
    //zodiac typeahead
    
 
@@ -345,6 +499,8 @@ $(document).ready(function($) {
         }).show();
 
     });
+    
+    
                 
     
     
@@ -362,6 +518,98 @@ $(document).ready(function($) {
         orientation:'bottom right',
     });
 }*/
+
+/*page express*/
+var comMap = {}; 
+var makeComHtml = function(expCom){
+    
+    if(expCom.status == 0){
+        var comData = expCom.result;
+        var html = '<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">';
+        for(var i=0; i< comData.length;i++){
+            html += '<div class="panel panel-default"><div class="panel-heading" role="tab" id="heading-'+(i+1)+'"><h4 class="panel-title"><a '+(i==0?'': 'class="collapsed"')+' role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-'+(i+1)+'" aria-expanded="true" aria-controls="collapse-'+(i+1)+'">'+comData[i].name+'</a></h4></div><div id="collapse-'+(i+1)+'" class="panel-collapse collapse'+(i==0?' in':'')+'" role="tabpanel" aria-labelledby="heading-'+(i+1)+'"><div class="panel-body"><address><abbr title="快递公司编号"><i class="ion-ios-pricetag-outline"></i>:</abbr>'+ comData[i].type +'<br><abbr title="固定电话"><i class="ion-android-call"></i>:</abbr>'+comData[i].number+'<br><abbt title="移动电话"><i class="ion-iphone"></i>:</abbr>'+ comData[i].tel +'</address></div></div></div>';
+        }
+        html +='</div>';
+//                console.log("html",html);
+        $('.page-express .modal .modal-body').html(html);
+        $('#expressSearch').modal('toggle');
+    }
+    else{
+        $('.page-express .modal .modal-body').html('<div class="error-code">查询失败，请重试！</div>');
+    }
+}
+/*var getExpressCom = function(){
+    var apikey = {'apikey':'0a6c63dd26f6268752341ed2ef15dba6'};
+    var url = 'http://apis.baidu.com/netpopo/express/express2';
+     $.ajax({
+        url:url, 
+        method: "GET",  
+        headers: apikey, 
+        dataType: "json",
+        async:false, 
+        success: function(data){
+            console.log("url",url);
+            console.log("success",data);
+            return data;
+        },
+        error:function(data){
+            console.log("failed",data);
+        }
+    });
+}*/
+var getExpComName = function( type){
+//    var comList = getExpressCom();
+    var comName = type.substr(0,type.length-7);
+    var comList = expComList;
+    if(comList.status ==0){
+        $.each(comList.result, function (index, ele) {
+            if(ele.type == type){
+               comName = ele.name;
+                return true;
+//                return comName;
+//                alert(comName);
+            }
+        });
+    }
+    return comName; 
+}
+var deliStatus = function( deliverystatus){
+    var status = '';
+    switch(deliverystatus){
+        case '1': status = '正在火速奔向您的途中，您耐心等待';
+            break;
+        case '2': status = '快递小哥就来啦，请保持电话通畅';
+            break;
+        case '3': status = '您的快件已签收，谢谢您的厚爱';
+            break;
+        case '4': status = '哟，派件失败了，小主快快核查一下吧';
+            break;
+        default: status = '正在火速奔向您的途中，您耐心等待';
+            break;
+    }
+    return status;
+}
+/*var getExpressList = function(type,num){
+    var apikey = {'apikey':'0a6c63dd26f6268752341ed2ef15dba6'};
+    var url = 'http://apis.baidu.com/netpopo/express/express1?type=' + type + '&number=' + number;
+     $.ajax({
+        url:url, 
+        method: "GET",  
+        headers: apikey, 
+        async:false, 
+        dataType: "json",
+        success: function(data){
+                console.log("url",url);
+            return data;
+        },
+        error:function(data){
+            console.log("failed",data);
+        }
+    });
+}*/
+/*page train search*/
+
+
 
 var stationSearch = function(station){
     console.log("station",station);
@@ -820,3 +1068,114 @@ var getWeatherCode = function(data){
       }
       return code;
   }
+
+
+var expList = 
+{
+    "status": "0",
+    "msg": "ok",
+    "result": {
+        "number": "471799413917",
+        "type": "sfexpress",
+        "list": [
+            {
+                "time": "2016-04-13 13:30:30",
+                "status": "在官网\"运单资料&签收图\",可查看签收人信息"
+            },
+            {
+                "time": "2016-04-13 13:29:36",
+                "status": "已签收,感谢使用顺丰,期待再次为您服务"
+            },
+            {
+                "time": "2016-04-13 12:53:37",
+                "status": "正在派送途中(派件人:徐程得,电话:15990107893)"
+            },
+            {
+                "time": "2016-04-13 12:41:42",
+                "status": "快件到达 【杭州西湖国力大酒店营业点】"
+            },
+            {
+                "time": "2016-04-13 10:07:50",
+                "status": "快件离开【杭州总集散中心】,正发往 【杭州西湖国力大酒店营业点】"
+            },
+            {
+                "time": "2016-04-13 05:34:33",
+                "status": "快件到达 【杭州总集散中心】"
+            },
+            {
+                "time": "2016-04-13 00:13:51",
+                "status": "快件离开【北京首都机场集散中心2】,正发往下一站"
+            },
+            {
+                "time": "2016-04-12 21:49:33",
+                "status": "快件到达 【北京首都机场集散中心2】"
+            },
+            {
+                "time": "2016-04-12 20:32:03",
+                "status": "快件离开【北京东城俊景苑小区营业点】,正发往 【北京首都机场集散中心2】"
+            },
+            {
+                "time": "2016-04-12 19:44:40",
+                "status": "顺丰速运 已收取快件"
+            }
+        ],
+        "deliverystatus": "3",
+        "issign": "1"
+    }
+};
+var comArr = {
+    "status": "0",
+    "msg": "ok",
+    "result": [
+        {
+            "name": "安信达",
+            "type": "ANXINDA",
+            "letter": "A",
+            "tel": "",
+            "number": ""
+        },
+        {
+            "name": "AAE",
+            "type": "AAEWEB",
+            "letter": "A",
+            "tel": "400-6100-400",
+            "number": "150502359"
+        },
+        {
+            "name": "安捷",
+            "type": "ANJELEX",
+            "letter": "A",
+            "tel": "400-056-5656",
+            "number": "AN21981331"
+        },
+        {
+            "name": "百福东方",
+            "type": "EES",
+            "letter": "B",
+            "tel": "010-84722171/72/73",
+            "number": "108341481"
+        },
+        {
+            "name": "德邦",
+            "type": "DEPPON",
+            "letter": "D",
+            "tel": "400-830-5555 021-31350884",
+            "number": "101117269"
+        },
+        {
+            "name": "DPEX",
+            "type": "DPEX",
+            "letter": "D",
+            "tel": "0755-88297707",
+            "number": ""
+        },
+        {
+            "name": "顺丰",
+            "type": "sfexpress",
+            "letter": "S",
+            "tel": "0755-88297707",
+            "number": ""
+            
+        }
+    ]
+}      
