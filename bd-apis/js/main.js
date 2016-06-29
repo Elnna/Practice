@@ -363,9 +363,11 @@ $(document).ready(function($) {
                        expListData = expListData.result;
                        var comName = getExpComName(expListData.type);
             //                       var comName = '顺丰';
-                       console.log(deliStatus(expListData.deliverystatus));
+                      /*  console.log("type",expListData.type);
+                        console.log("name3",comName);*/
+//                       console.log(deliStatus(expListData.deliverystatus));
                        var html = '<header><p>'+deliStatus(expListData.deliverystatus)+'</p>\
-                                  <h1>'+ comName + '快递，<span><strong>单号</strong>' + expListData.number+'</span></h1></header><ul class="timeline">';
+                                  <h1>'+ comName + '，<span><strong>单号</strong>' + expListData.number+'</span></h1></header><ul class="timeline">';
                        for(var i=0; i< expListData.list.length;i++){
                            html += '<li><div class="direction-'+(i%2==0? 'r':'l') +'"><div class="flag-wrapper"><span class="hexa"></span><span class="flag">'+expListData.list[i].time.substr(11,9)+'</span><span class="time-wrapper"><span class="time">'+ expListData.list[i].time.substr(0,10) +'</span></span></div><div class="desc">'+ expListData.list[i].status +'</div></div></li>';
                        }
@@ -376,6 +378,7 @@ $(document).ready(function($) {
 
                    }else{
                         $('.page-express .modal .modal-body').html('<div class="error-code">查询失败，请重试！</div>');
+                        $('#expressSearch').modal('toggle');
                    }
                },
                error:function(data){
@@ -536,6 +539,7 @@ var makeComHtml = function(expCom){
     }
     else{
         $('.page-express .modal .modal-body').html('<div class="error-code">查询失败，请重试！</div>');
+        $('#expressSearch').modal('toggle');
     }
 }
 /*var getExpressCom = function(){
@@ -557,20 +561,30 @@ var makeComHtml = function(expCom){
         }
     });
 }*/
-var getExpComName = function( type){
+var getExpComName = function(type){
 //    var comList = getExpressCom();
-    var comName = type.substr(0,type.length-7);
+//    var comName = type.substr(0,type.length-7);
+    var comName = '';
     var comList = expComList;
+//    console.log("comlist",comList);
+//    console.log("status",comList.status ==0);
     if(comList.status ==0){
+//        console.log("result",comList.result);
         $.each(comList.result, function (index, ele) {
-            if(ele.type == type){
+           /* console.log("index",index);
+            console.log("compare",ele.type.toLowerCase==type.toLowerCase);
+            console.log("ele type",ele.type);
+            console.log("type",type);*/
+            if(ele.type.toLowerCase() == type.toLowerCase()){
                comName = ele.name;
+//                console.log("name1",comName);
                 return true;
 //                return comName;
 //                alert(comName);
             }
         });
     }
+//    console.log("name2",comName);
     return comName; 
 }
 var deliStatus = function( deliverystatus){

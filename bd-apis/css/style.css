@@ -395,6 +395,7 @@ a.nav-item .active, .nav-item:hover,.nav-item:focus{
 .page-express .form-group{
     left: -20px;
     margin: 0 50px 0 -50px;
+    padding: 10px;
 }
 .page-express .form-group label{
     font-size: 1em;
@@ -665,13 +666,13 @@ a.nav-item .active, .nav-item:hover,.nav-item:focus{
     
 }
 
-
 .page-tickets section .input-group-addon:nth-child(1){
     border: none;
     color: #fff;
     font-size: 1.5em;
     font-weight: bold;
 }
+.page-express section .input-group-addon:nth-child(1),
 .page-tickets section .input-group-addon:nth-child(3),
 .page-tickets section .input-group-addon:nth-child(5),
 .page-tickets section .input-group-addon:nth-child(7){
@@ -679,7 +680,8 @@ a.nav-item .active, .nav-item:hover,.nav-item:focus{
     background: rgba(255,255,255,0.15);
 }
 
-
+.page-express section .input-group-addon:nth-child(1):hover,
+.page-express section .input-group-addon:nth-child(1):hover:after,
 .page-tickets section .input-group-addon:nth-child(3):hover,
 .page-tickets section .input-group-addon:nth-child(3):hover:after,
 .page-tickets section .input-group-addon:nth-child(5):hover,
