@@ -619,8 +619,23 @@ a.nav-item .active, .nav-item:hover,.nav-item:focus{
 
 
 
-
-
+/*page illegal*/
+.page-illegal input.form-control{
+    -webkit-border-radius: 5px;
+    background: transparent;
+    color: #fff;
+}
+.page-illegal .form-horizontal{
+    position: absolute;
+    width: 90%;
+    top: 200px;
+    margin-left: -50px;
+    z-index: 6;
+}
+.page-illegal select{
+    background: transparent;
+    color: #fff;
+}
 
 
 

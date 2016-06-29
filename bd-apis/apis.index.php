@@ -369,22 +369,80 @@ $zodiacDateArr = array_flip($zodiacDateArr);
            <!-- Begin of illegal page -->
 			<div class="section page-illegal page page-cent" id="s-illegal">
 				
-				<!-- Logo -->
-				<!--<div class="logo-container">
-					<img class="h-logo" src="img/logo_only.png" alt="Logo">
-				</div>-->
-				<!-- Content -->
+				<div class="modal fade" role="dialog" aria-labelledby="gridSlabel" id="illegal-search-modal">
+                  <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="gridSlabel">查询结果</h4>
+                      </div>
+
+                      <div class="modal-body">
+
+                      </div>
+                      <div class="modal-footer"></div>
+                    </div><!-- /.modal-content -->
+
+                  </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
 				<section class="content">
-					
-					<header class="header">
-						<div class="h-left">
-							<h2>New <strong>Company</strong></h2>
-						</div>
-						<div class="h-right">
-							<h3>Lorem <br>product</h3>
-							<h4 class="subhead"><a href="#zodiac">Available here soon</a></h4>
-						</div>
-					</header>
+					<div class="form-horizontal" id="car-illegal-search">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" for="car-city">查询地址:</label>
+                            <div class="col-sm-4">
+                                <select class="form-control" id="car-province"></select>
+                            </div>
+                            <div class="col-sm-3">
+                                <select class="form-control" id="car-city"></select>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="car-lsnum-left" class="col-sm-3 control-label">车牌号码:</label>
+                            <div class="col-sm-2">
+                                <select id="car-lsprefix" class="form-control col-sm-6">
+
+                                </select>
+                            </div>
+
+                            <div class="col-sm-2">
+
+                                <select id="car-lsnum" class="form-control col-sm-6">
+                                    <option value="">空</option>
+                                    <?php for( $i=65; $i<=90;$i++):
+                                    ?>
+                                    <option value="<?php echo chr($i);?>"><?php echo chr($i);?></option>
+                                    <?php
+                                    endfor;
+                                    ?>
+
+                                </select>
+                            </div>
+                            <div class="input-group col-sm-3">
+                                <input type="text" class="form-control" id="car-lsnum-left" placeholder="车牌号码后五位">
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="car-type" class="col-sm-3 control-label">车辆类型:</label>
+                            <div class="col-sm-7">
+                                <select id="car-type" class="form-control col-sm-1">
+
+                                </select>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                        </div>
+                        <div class="form-group">
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-3 col-sm-7">
+                                <button type="button" class="btn btn-primary col-sm-5" data-toggle="modal" data-target="#illegal-search-modal" id="illegal-search-btn">违章查询</button>
+                            </div>
+                        </div>
+                    </div>
 				</section>
 				
 				<!-- Scroll down button -->

@@ -615,7 +615,7 @@ strong,
 .page-cent{
     width: 100%;   
     position: relative;
-    text-align: center;
+/*    text-align: center;*/
 }
 .page-cent .content p{
 }
@@ -677,12 +677,12 @@ strong,
 }
 .page p{    
     font-family: 'Opensans';
-    color: #ffffff;
+    color: #222;
     font-size: 16px;
     margin-bottom: 0.75rem;
 }
-.page p.small{
-/*	font-size: 14px;*/
+/*.page p.small{
+	font-size: 14px;
 	font-size: 15px;
 }
 .page p.center{
@@ -693,7 +693,7 @@ strong,
 }
 .page p.light{
     font-family: 'OpenSans-Light';
-}
+}*/
 /*
 .page h4{
 	text-transform: uppercase;
@@ -903,116 +903,7 @@ strong,
 
 /* Mask to disable click */
 
-.pane-weather .clock:before{
-	
-}
 
-.pane-weather .clock .text{
-    position: relative; 
-    width: 100%;
-    font-family: 'Opensans';
-	font-weight: normal;
-    letter-spacing: 0;
-    margin-top: 0.5em;
-    display: block;
-    text-transform: uppercase;
-    color: #fff;
-	text-align: center;
-}
-.pane-weather .clock .block:last-child .digit:after{
-    display: none;
-}
-.pane-weather .clock .elem-center{
-    display: inline-block;
-    position: relative;
-    text-align: center;
-	width: 100%;
-	top: 0;
-	bottom: 0;
-	margin-top: -100px;
-}
-.pane-weather .clock .elem-center .digit{
-    position: relative; 
-    font-size: 240px;
-	letter-spacing: -0.02em;
-	line-height: 1;
-    font-family: 'Opensans';
-	font-weight: 500;
-    color: #fff;
-    display: block;
-	width: auto;
-}
-.pane-weather .clock .elem-center .txt{
-	position: absolute;
-	right: auto;
-	letter-spacing: 0em;
-	top: 1.4em;
-	text-transform: uppercase;
-    font-family: 'Opensans';
-	font-weight: bold;
-	font-size: 24px;
-	width: auto;
-}
-.pane-weather .clock .elem-center .text.top{
-	bottom: 124%;
-}
-.pane-weather .clock .elem-center .text.top img{
-	height: 65px;
-	margin-bottom: 20px;
-}
-
-.pane-weather .clock .elem-bottom{
-	position: relative;
-	width: 100%;
-/*	text-transform: uppercase;*/
-    font-family: 'Opensans';
-	font-weight: bold;
-	font-size: 24px;
-	color: #fff;
-	text-align: center;
-}
-
-.pane-weather .clock .elem-bottom .thin{
-	font-weight: 100;
-}
-.pane-weather .clock .elem-bottom:after,
-.pane-weather .clock .elem-bottom:before{
-	position: absolute;
-	content: '';
-	border-bottom: 1px solid #fff;
-	height: 1px;
-	bottom: 17px;
-}
-.pane-weather .clock .elem-bottom:before{
-	right: 0;
-	left: 75%;
-}
-.pane-weather .clock .elem-bottom:after{
-	left: 0;
-	right: 75%;
-}
-.pane-weather .clock .elem-bottom .deco:after,
-.pane-weather .clock .elem-bottom .deco:before{
-	position: absolute;
-	content: '';
-/*	background: #fff;*/
-	border: 1px solid #fff;
-	width: 20px;
-	height: 120px;
-	bottom: 17px;
-}
-.pane-weather .clock .elem-bottom .deco:before{
-	left: 0;
-	right: auto;
-	border-right: none;
-	border-bottom: none;
-}
-.pane-weather .clock .elem-bottom .deco:after{
-	right: 0;
-	left: auto;
-	border-left: none;
-	border-bottom: none;
-}
 .pane-weather footer {
 	padding: 16px 48px;
 	margin-top: 32px;
