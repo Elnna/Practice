@@ -329,6 +329,11 @@ $zodiacDateArr = array_flip($zodiacDateArr);
                 </div><!-- /.modal -->
 
 				<section class="content">
+                    <header class="p-title">
+                        <h3>快递查询<i class="ion ion-android-bicycle">
+                            </i>
+                        </h3>
+                    </header>
 					<div class="form-horizontal">
                         <div class="form-group">
                             <label for="express-com" class="col-sm-3 control-label">快递公司</label>
@@ -386,9 +391,14 @@ $zodiacDateArr = array_flip($zodiacDateArr);
                   </div><!-- /.modal-dialog -->
                 </div><!-- /.modal -->
 				<section class="content">
+                    <header class="p-title">
+                        <h3>违章查询<i class="ion ion-android-car">
+                            </i>
+                        </h3>
+                    </header>
 					<div class="form-horizontal" id="car-illegal-search">
                         <div class="form-group">
-                            <label class="col-sm-3 control-label" for="car-city">查询地址:</label>
+                            <label class="col-sm-3 control-label" for="car-city">查询地址</label>
                             <div class="col-sm-4">
                                 <select class="form-control" id="car-province"></select>
                             </div>
@@ -399,7 +409,7 @@ $zodiacDateArr = array_flip($zodiacDateArr);
                         </div>
 
                         <div class="form-group">
-                            <label for="car-lsnum-left" class="col-sm-3 control-label">车牌号码:</label>
+                            <label for="car-lsnum-left" class="col-sm-3 control-label">车牌号码</label>
                             <div class="col-sm-2">
                                 <select id="car-lsprefix" class="form-control col-sm-6">
 
@@ -425,7 +435,7 @@ $zodiacDateArr = array_flip($zodiacDateArr);
 
                         </div>
                         <div class="form-group">
-                            <label for="car-type" class="col-sm-3 control-label">车辆类型:</label>
+                            <label for="car-type" class="col-sm-3 control-label">车辆类型</label>
                             <div class="col-sm-7">
                                 <select id="car-type" class="form-control col-sm-1">
 
@@ -531,22 +541,54 @@ $zodiacDateArr = array_flip($zodiacDateArr);
             <!-- Begin of plane tickets page -->
 			<div class="section page-plane-tickets page page-cent" id="s-plane-tickets">
 				
-				<!-- Logo -->
-				<!--<div class="logo-container">
-					<img class="h-logo" src="img/logo_only.png" alt="Logo">
-				</div>-->
+				<div class="modal fade" role="dialog" aria-labelledby="planeGridSlabel" id="plane-search-modal">
+                  <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="planeGridSlabel">查询结果</h4>
+                      </div>
+                      <div class="loading"><i class="fa fa-spinner fa-pulse"></i></div>  
+                      <div class="modal-body">
+
+                      </div>
+                      <!--<div class="modal-footer"></div>-->
+                    </div><!-- /.modal-content -->
+
+                  </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
 				<!-- Content -->
 				<section class="content">
 					
-					<header class="header">
-						<div class="h-left">
-							<h2>New <strong>Company</strong></h2>
-						</div>
-						<div class="h-right">
-							<h3>Lorem <br>product</h3>
-							<h4 class="subhead"><a href="#register">Available here soon</a></h4>
-						</div>
-					</header>
+					<header class="p-title">
+                        <h3>机票查询<i class="ion ion-android-plane">
+                            </i>
+                        </h3>
+                    </header>
+                    <div class="container">
+                        <div class="form-group">
+                            <div class="input-group col-md-5 col-xs-5">
+                                <span class="input-group-addon">航线查询</span>
+                                <input type="text" class="form-control" id="start-city" placeholder="出发城市" >
+                                <div class="input-group-addon" id="city-switch"><span><i class="ion-ios-loop"></i></span></div>
+                                <input type="text" class="form-control" id="dest-city" placeholder="到达城市" >
+                                <span class="input-group-addon"><i class="icon ion-clock"></i></span>
+                                <input type="text" class="form-control"  id="plane-datepicker1" style="width:90px" readonly>
+                                <span class="input-group-addon" data-toggle="modal" data-target="#plane-search-modal" id="route-submit">确定</span>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group col-md-5 col-xs-5">
+                                <span class="input-group-addon">航班查询</span>
+                                <input type="text" class="form-control" id="plane-flight" placeholder="航班号" >
+                                <span class="input-group-addon"><i class="icon ion-clock"></i></span>
+                                <input type="text" class="form-control"  id="plane-datepicker2" style="width:90px" readonly>
+                                <span class="input-group-addon" data-toggle="modal" data-target="#plane-search-modal" id="flight-submit">确定</span>
+                            </div>
+                        </div>
+                    </div>
+                    
 				</section>
 				
 				<!-- Scroll down button -->

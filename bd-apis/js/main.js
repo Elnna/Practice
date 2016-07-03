@@ -96,6 +96,13 @@ var zodiacArr = ["白羊座", "金牛座", "双子座","巨蟹座","狮子座","
 var dayProgressBar = ['all','health','love','money','work'];
 /*express*/
 var expComList = '';
+/*illegal*/
+var carType = '';
+var carManager = '';
+/*plane*/
+var planeCities = ''; 
+var planeNameMap = {};
+
 
 /* 3. Init all plugin on load */
 $(document).ready(function($) {
@@ -428,10 +435,7 @@ $(document).ready(function($) {
                     if(expListData.status == 0){
                        expListData = expListData.result;
                        var comName = getExpComName(expListData.type);
-            //                       var comName = '顺丰';
-                      /*  console.log("type",expListData.type);
-                        console.log("name3",comName);*/
-//                       console.log(deliStatus(expListData.deliverystatus));
+           
                        var html = '<header><p>'+deliStatus(expListData.deliverystatus)+'</p>\
                                   <h1>'+ comName + '，<span><strong>单号</strong>' + expListData.number+'</span></h1></header><ul class="timeline">';
                        for(var i=0; i< expListData.list.length;i++){
@@ -455,28 +459,107 @@ $(document).ready(function($) {
        } else{
            alert("快递公司或者单号不能为空！");
        }
-          /* if(expListData.status == 0){
-               expListData = expListData.result;
-               var comName = getExpComName(expListData.type);
-    //                       var comName = '顺丰';
-               console.log(deliStatus(expListData.deliverystatus));
-               var html = '<header><p>'+deliStatus(expListData.deliverystatus)+'</p>\
-                          <h1>'+ comName + '快递，<span><strong>单号</strong>' + expListData.number+'</span></h1></header><ul class="timeline">';
-               for(var i=0; i< expListData.list.length;i++){
-                   html += '<li><div class="direction-'+(i%2==0? 'r':'l') +'"><div class="flag-wrapper"><span class="hexa"></span><span class="flag">'+expListData.list[i].time.substr(11,9)+'</span><span class="time-wrapper"><span class="time">'+ expListData.list[i].time.substr(0,10) +'</span></span></div><div class="desc">'+ expListData.list[i].status +'</div></div></li>';
-               }
-               html +='</ul>';
-//               console.log(html);
-               $('.page-express .modal .modal-body').html(html);
-               $('#expressSearch').modal('toggle');
-
-           }else{
-                $('.page-express .modal .modal-body').html('<div class="error-code">查询失败，请重试！</div>');
-           }*/
-//       }
+         
    });
 
+    /*plane page*/
+    $('#plane-datepicker1,#plane-datepicker2').datepicker({
+        autoclose: true,//选中之后自动隐藏日期选择框
+        clearBtn: true,//清除按钮
+        format: "yyyy-mm-dd",
+        startDate:'now',
+//        endDate:'+2m',
+        todayHighlight:true,
+        orientation:'bottom right',
+    });
+    $('#city-switch').on('click',function(){
+        var startCity = $('#start-city').val();
+        var destCity = $('#dest-city').val();
+        $('#dest-city').val(startCity);
+        $('#start-city').val(destCity);
+    });
     
+    
+    
+    $.fn.typeahead.Constructor.prototype.blur = function() {
+       var that = this;
+          setTimeout(function () { that.hide() }, 250);
+    };
+    
+    
+    $('#start-city,#dest-city').typeahead({
+        source: function (query, process) {
+            $.when(
+                getPlaneCities()
+                
+            ).then(function(data){
+                console.log("getPlaneCities",planeCities);
+                //success
+                 if(planeCities == ''|| planeCities.error_code != 0 ){
+                    //获取支持的城市列表
+                     setTimeout(1000);
+//                    getPlaneCities();
+                }else{
+                    var names = [];
+                    $.each(planeCities.result, function (index, ele) {
+                        planeNameMap[ele.city] = ele.spell;
+                        names.push(ele.city);
+                    });
+                    process(names);//调用处理函数，格式化
+                }
+            },function(data){});
+        },
+        highlighter: function(item) {
+            return   item + "<small>"+ planeNameMap[item] +"</small>";
+        },
+
+        updater: function(item) {
+            console.log("'" + item + "' selected.");
+            return item;
+        },
+        afterSelect: function (item) {
+//                        $("#").val(planeNameMap[item]);
+            console.log(planeNameMap[item]);//取出选中项的值
+        }
+    });
+    
+    $('#route-submit').on('click',function(){
+        var startCity = $('#start-city').val();
+        var endCity = $('#dest-city').val();
+        var date = $('#plane-datepicker1').val();
+        getPlaneRoute(startCity,endCity,date);
+        
+    });
+    $('#flight-submit').on('click',function(){
+        var flight = $('#plane-flight').val();
+        var date = $('#plane-datepicker2').val();
+        getPlaneFlight(flight,date);
+    });
+    /*airline collapse*/
+
+    $('.modal-body').on('click','.airline-action.is-expandable .airline-title',function() {
+        $(this).parent().toggleClass('is-expanded');
+        $(this).siblings('.airline-content').attr('aria-expanded', $(this).parent().hasClass('is-expanded'));
+    });
+
+    // Expand or navigate back and forth between sections
+    $('.airline-action.is-expandable .airline-title').keyup(function(e) {
+        if (e.which == 13){ //Enter key pressed
+            $(this).click();
+        } else if (e.which == 37 ||e.which == 38) { // Left or Up
+            $(this).closest('.airline-milestone').prev('.airline-milestone').find('.airline-action .airline-title').focus();
+        } else if (e.which == 39 ||e.which == 40) { // Right or Down
+            $(this).closest('.airline-milestone').next('.airline-milestone').find('.airline-action .airline-title').focus();
+        }
+    });
+    
+    //get airport detail:
+    $('.modal-body').on('click','.airline .airport-detial',function(){
+        var code = $(this).attr('name');
+        getAirportDetail(code);
+    });
+    
+    /* end of plane page*/
     
     
    //zodiac typeahead
@@ -645,13 +728,13 @@ var frameEnginehtml = function(frame,engine){
     if(frame =='0'|| frame ==''){
         $('#car-illegal-search .form-group:nth-child(5)').html('');
     }else{
-        frameHtml = '<label for="car-type" class="col-sm-3 control-label">车架号码:</label><div class="input-group col-sm-7"><input type="text" class="form-control" id="car-frame" placeholder="请输入车架号码'+(frame=='100'?'':('后'+frame +'位'))+'"></div>';
+        frameHtml = '<label for="car-type" class="col-sm-3 control-label">车架号码</label><div class="input-group col-sm-7"><input type="text" class="form-control" id="car-frame" placeholder="请输入车架号码'+(frame=='100'?'':('后'+frame +'位'))+'"></div>';
         $('#car-illegal-search .form-group:nth-child(5)').html(frameHtml);
     }
     if(engine == '0' || engine == ''){
         $('#car-illegal-search .form-group:nth-child(4)').html('');
     }else{
-         engineHtml = '<label for="car-type" class="col-sm-3 control-label">发动机号码:</label><div class="input-group col-sm-7"><input type="text" class="form-control" id="car-engine" placeholder="请输入发动机号码'+(engine =='100'?'':('后'+ engine +'位'))+'"></div>';
+         engineHtml = '<label for="car-type" class="col-sm-3 control-label">发动机号码</label><div class="input-group col-sm-7"><input type="text" class="form-control" id="car-engine" placeholder="请输入发动机号码'+(engine =='100'?'':('后'+ engine +'位'))+'"></div>';
          $('#car-illegal-search .form-group:nth-child(4)').html(engineHtml);
     }
 }
@@ -686,8 +769,7 @@ var proMakeHtml = function(i){
    
 }  
 
-var carType = '';
-var carManager = '';
+
 
 var getCarManager = function(){
     var apikey = {'apikey':'0a6c63dd26f6268752341ed2ef15dba6'};
@@ -1062,6 +1144,203 @@ var trainSSSearch = function(from,to,date){
         });
     }
 
+
+/*plane page start*/
+
+            
+var showLoading = function(){
+    $('.loading').removeClass('hide');
+}
+var hideLoading = function(){
+    $('.loading').addClass('hide');
+}
+
+var getPlaneRoute = function(start,end,date=''){
+    var apiKey = '33760b60b674362611ac6241386f5f59';
+    var url = 'http://apis.juhe.cn/plan/bc?key='+ apiKey +'&start='+ start +'&end=' + end + '&date='+date;
+    $.ajax({
+        url:url, 
+        method: "GET",  
+        dataType: "jsonp",
+        callback:'callback',
+        beforeSend:function(data){
+          showLoading();  
+        },
+        success: function(data){
+            console.log("url",url);
+            console.log("get plane route success",data);
+            if(data.error_code == 0){
+                var routeHtml = '<div class="plane-route-tbody"><div class="list-group">';
+                var routeData = data.result;
+                var routeHeader = '<div class="plane-route-thead "><div class="flight-num">航班</div><div class="start-airport">出发机场</div><div class="arrive-airport">到达机场</div><div class="take-off-time">起飞时间</div><div class="arrive-time">到达时间</div><div class="plane-accuracy-rate">准确率</div><div class="flying-date">日期</div></div>'
+                $.each(routeData,function(index,ele){
+                   routeHtml += '<div class="list-group-item"><div class="flight-num">'+ele.FlightNum+'<span class="flight-company">'+ele.Airline+'</span></div><div class="start-airport">'+ele.DepCity+'<span>'+ele.DepTerminal+'</span>'+'</div><i class="ion-android-plane"></i><div class="arrive-airport">' + ele.ArrCity + '<span>' + ele.ArrTerminal + '</span></div><div class="take-off-time"><strong class="plan-time">计划'+ele.DepTime+'</strong><span class="actual-time">实际'+ ele.Dexpected +'</span></div><i class="ion-clock"></i><div class="arrive-time"><strong class="plan-time">计划' + ele.ArrTime + '</strong><span class="actual-time">实际' + ele.Aexpected + '</span></div><div class="plane-accuracy-rate">' + ele.OnTimeRate +'</div><div class="flying-date">'+ ele.FlightDate + '</div></div>';
+                });
+                routeHtml += '</div></div>';
+                $('page-plane-tickets .modal-body').html(routeHeader+routeHtml);
+                hideLoading();
+            }
+        },
+        error:function(data){
+            console.log("failed",data);
+        }
+    });
+    
+}            
+var getPlaneCities = function(){
+    
+    if( planeCities == ''|| planeCities.error_code != 0 ){
+        var apiKey = '33760b60b674362611ac6241386f5f59';
+        var url = 'http://apis.juhe.cn/plan/city?key='+apiKey;
+        $.ajax({
+            url:url, 
+            method: "GET",  
+            dataType: "jsonp",
+            callback:'callback',
+            success: function(data){
+                console.log("url",url);
+                console.log("get plane cities success",data);
+                planeCities = data;
+            },
+            error:function(data){
+                console.log("failed",data);
+            }
+        });
+        
+    }
+    
+}
+var getPlaneStateIcon = function(statid){
+    var stateIcon = '';
+    switch(statid){
+        case '1': stateIcon = 'is-plan';
+            break;
+        case '2': stateIcon = 'is-flying';
+            break;
+        case '3': stateIcon = 'is-arrived';
+            break;
+        case '4': stateIcon = 'is-delay';
+            break;
+        case '5': stateIcon = 'is-cancel';
+            break;
+        default: stateIcon = 'is-arrived';
+            break;
+    }
+    return stateIcon;
+}
+/**
+* 将JSON内容转为数据，并返回
+* @param string code [机场国际三字编号]
+*/  
+var getAirportDetail = function(code){
+    var apiKey = '33760b60b674362611ac6241386f5f59';
+    var url = 'http://apis.juhe.cn/plan/airport?key='+apiKey+'&code=' + code;
+    console.log("get airport url");
+    $.ajax({
+        url:url, 
+        method: "GET",  
+        dataType: "jsonp",
+        callback:'callback',
+        beforeSend:function(data){
+          showLoading();  
+        },
+        success:function(data){
+            console.log("get airport detail successed",data);
+            if(data.error_code == 0){
+                var airportHtml = '<div class="panel-group" id="airport-accordion" role="tablist" aria-multiselectable="true">';
+                $.each(data.result,function(index,ele){
+                    airportHtml += '<div class="panel panel-default">\
+                        <div class="panel-heading" role="tab" id="airportHead'+ index+'">\
+                            <h4 class="panel-title">\
+                                <a role="button" data-toggle="collapse" '+(index == 0 ? 'class="collapsed"':'')+ 'data-parent="#airport-accordion" href="#airport-collapse-'+index+'" aria-expanded="true" aria-controls="airport-collapse-'+index+'">\
+          <span class="airport-city">'+ele.city+'</span>'+ ele.airport + '<span title="国际机场三字编码">('+ele.airport3+'</span><span title="国际机场四字编码">'+ele.airport4+')</span>'+'</a></h4></div>\
+                    <div id="airport-collapse-'+index+'" class="panel-collapse collapse'+(index == 0? ' in':'')+'" role="tabpanel" aria-labelledby="airportHead'+ index+'">\
+                        <div class="panel-body">'+ ele.introduce +'\
+                        </div>\
+                    </div>\
+                </div>';
+       
+                   
+                });
+                airportHtml +=  '</div>';
+                $('page-plane-tickets .modal-body').html(airportHtml);
+                hideLoading();
+            }else{
+                $('page-plane-tickets .modal-body').html('<div class="error-code">机场攻略查询失败，请重试</div>');
+            }
+            
+        },
+        error:function(data){
+            console.log("failed",data);
+        }
+    });
+}
+/**
+* 将JSON内容转为数据，并返回
+* @param string flight [航班号]
+* @param string date [日期]
+*/         
+var getPlaneFlight = function(flight,date=''){
+    var apiKey = '33760b60b674362611ac6241386f5f59';
+    var url = 'http://apis.juhe.cn/plan/snew?name=' + flight + '&date=' + date + '&key='+apiKey;
+    $.ajax({
+        url:url, 
+        method: "GET",  
+        dataType: "jsonp",
+        callback:'callback',
+        beforeSend:function(data){
+            console.log("beforesend",data);
+            showLoading();
+        },
+        success: function(data){
+            console.log("url",url);
+            console.log("get plane flight success",data);
+           
+            if(data.error_code == 0 ){
+                var planeInfo = data.result.info;
+                var planeList = data.result.list;
+                var flightHeader = '<span>'+planeInfo.company+'</span>\
+                                    <span>'+ planeInfo.fno +'</span>';
+                $('.modal-title').html(flightHeader);
+                var flightHtml = '<article class="airline-page">\
+                                    <ul class="airline">\
+                                        <li class="airline-milestone ' + getPlaneStateIcon(planeInfo.stateid) + ' airline-start ">\
+                                            <div class="airline-action">\
+                                                <h2 class="airline-title"><span>' + planeInfo.from_city+ '<i class="ion-location"></i></span>' + '<i class="ion-android-plane"></i><span>'+ planeInfo.to_city + '<i class="ion-location"></i></span> <span>'+planeInfo.state+'</span></h2>\
+                                                <span class="date">'+ planeInfo.ddtime_full + '</span>\
+                                                <div class="airline-content">\
+                                                    <div class="from-city-infos"><p class="airport-name">'+planeInfo.from + '</p><p class="plane-plan-time"><span>计划起飞</span>'+ planeInfo.qftime+'</p><p class="plane-actual-time"><span>实际起飞</span>'+ planeInfo.sjqftime+'</p><p><i class="wi wi-day-' + getWeatherCode(planeInfo.from_weather)+'"></i><small>'+ planeInfo.from_weather_temperature+'</small><small class="airport-detial" name="'+planeInfo.form_code+'">机场攻略</small></p></div>\
+                                                    <div class="arrow-right"></div>\
+                                                    <div class="to-city-infos"><p class="airport-name">'+planeInfo.to+'</p><p class="plane-plan-time"><span>计划到达</span>'+ planeInfo.yjddtime+'</p><p class="plane-actual-time"><span>实际到达</span>'+ planeInfo.sjddtime+'</p><p><i class="wi wi-day-' + getWeatherCode(planeInfo.to_weather)+'"></i><small>'+ planeInfo.to_weather_temperature+'</small><small class="airport-detial" name="'+planeInfo.to_code+'">机场攻略</small></p></div>\
+                                                </div>\
+                                            </div>\
+                                        </li>';
+                $.each(planeList,function(index,ele){
+                   flightHtml += '<li class="airline-milestone '+getPlaneStateIcon(ele.stateid)+'">\
+                                    <div class="airline-action is-expandable">\
+                                        <h2 class="airline-title" aria-controls="airline-milestone-content-'+index+'">' + '<span>' + ele.qf_city + '<i class="ion-location"></i></span><i class="ion-android-plane"></i><span><i class="ion-location"></i>'+ ele.dd_city + '</span> <span>' + ele.state + '</span></h2>\
+                                        <div class="airline-content" id="airline-milestone-content-'+index+'" role="region" aria-expanded="false">\
+                                            <div class="from-city-infos"><p class="airport-name">'+ele.qf+'</p><p class="plane-plan-time"><span>计划起飞</span>'+ ele.jhqftime_full+'</p><p class="plane-actual-time"><span>实际起飞</span>'+ ele.sjqftime_full+'</p><p><small class="airport-detial" name="'+ele.qf_citycode+'">机场攻略</small></p></div>\
+                                            <div class="arrow-right"></div>\
+                                            <div class="to-city-infos"><p class="airport-name">'+ele.dd+'</p><p class="plane-plan-time"><span>计划到达</span>'+ ele.jhddtime_full+'</p><p class="plane-actual-time"><span>实际到达</span>'+ ele.sjddtime_full+'</p><p><small class="airport-detial" name="'+ele.dd_citycode+'">机场攻略</small></p></div>\
+                                        </div>\
+                                    </div>\
+                                </li>'; 
+                });
+                flightHtml += '</ul></article>';
+            }else{
+                flightHtml = '<div class="error-code">航班查询失败，'+ data.reason +'</div>'
+            }
+            hideLoading();
+            $('.page-plane-tickets .modal-body').html(flightHtml);
+        },
+        error:function(data){
+            console.log("failed",data);
+        }
+    });
+}
+/*plane page end*/
+
 var changeZodiacImg = function(imgNameChi){
     var zodiacImgName = '';
     switch(imgNameChi){
@@ -1299,7 +1578,7 @@ var getWeatherCode = function(data){
               break;
               case'雷阵雨': code = 'storm-showers';
               break;
-              case'雷阵雨并伴有冰雹': code = 'radioactive'/* 'hail'*/;
+              case'雷阵雨并伴有冰雹': code = 'hail';
               break;
               case'雨夹雪': code = 'sleet';
               break;
@@ -1315,17 +1594,17 @@ var getWeatherCode = function(data){
               break;
               case'特大暴雨': code = 'thunderstorm';
               break;
-              case'阵雪': code = 'radioactive'/*'snow'*/;
+              case'阵雪': code = 'snow';
               break;
-              case'小雪': code = 'radioactive'/*'snow'*/;
+              case'小雪': code = 'snow';
               break;
-              case'中雪': code = 'radioactive'/*'snow'*/;
+              case'中雪': code = 'snow';
               break;
-              case'大雪': code = 'radioactive'/*'snow'*/;
+              case'大雪': code = 'snow';
               break;
-              case'暴雪': code = 'radioactive'/*'snowthunderstorm'*/;
+              case'暴雪': code = 'snowthunderstorm';
               break;
-              case'雾': code = 'radioactive'/*'fog'*/;
+              case'雾': code = 'fog';
               break;
               case'冻雨': code = 'sleet';
               break;
