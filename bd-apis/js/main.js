@@ -206,7 +206,7 @@ $(document).ready(function($) {
       
     });
     
-    
+    /*weather page*/
     /*change city*/
     $('.header-top h1').on("click",function(e){
 //       alert("success");
@@ -263,7 +263,25 @@ $(document).ready(function($) {
         changeWeather(city);
 
     });
-    
+    $("[data-toggle=popover]").popover({
+        trigger:'manual',
+        placement : 'bottom', //placement of the popover. also can use top, bottom, left or right
+        animation: false
+    }).on("mouseenter", function () {
+        var _this = this;
+        $(this).popover("show");
+        $(this).siblings(".popover").on("mouseleave", function () {
+        $(_this).popover('hide');
+        });
+    }).on("mouseleave", function () {
+        var _this = this;
+        setTimeout(function () {
+        if (!$(".popover:hover").length) {
+        $(_this).popover("hide")
+        }
+        }, 100);
+    });
+    /* weather page end*/
    /* page:  car illage search*/
     
     $.when(

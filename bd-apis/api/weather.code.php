@@ -35,4 +35,25 @@ $weatherCodeArr = array(
 
 $weatherCode = json_encode($weatherCodeArr);
 define('WEATHER_CODE',$weatherCode);
+function getWeatherIndexIcon( $index ){
+    $indexIcon = '';
+    switch($index){
+    
+        case 'gm': $indexIcon = 'ion-ios-medkit';
+            break;
+        case 'fs': $indexIcon = 'ion-umbrella';
+            break;
+        case 'ct': $indexIcon = 'ion-tshirt-outline';
+            break;
+        case 'yd': $indexIcon = 'ion-ios-football';
+            break;
+        case 'xc': $indexIcon = 'ion-model-s';
+            break;
+        case 'ls': $indexIcon = 'ion-ios-sunny-outline';
+            break;
+        default:$indexIcon = 'ion-ios-sunny-outline';
+            break;
+    }
+    return $indexIcon;
+}
 ?>

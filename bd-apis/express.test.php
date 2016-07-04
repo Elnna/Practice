@@ -1,3 +1,52 @@
+<?php 
+header('Content-type:text/html;charset=utf-8');
+require_once('./api/weather.code.php');
+$data = array(
+    array(
+          "name"=>"感冒指数",
+          "code" => "gm",
+          "index" => "",
+          "details" =>"各项气象条件适宜，发生感冒机率较低。但请避免长期处于空调房间中，以防感冒。",
+          "otherName" => "",
+        ),
+    array(
+          "code" => "fs",
+          "details" =>"紫外线强度较弱，建议涂擦SPF在12-15之间，PA+的防晒护肤品。",
+          "index" => "较弱",
+          "name" =>"防晒指数",
+          "otherName" => "",
+        ),
+    array(
+          "name"=>"穿衣指数",
+          "code" => "ct",
+          "index" => "",
+          "details" =>"天气热，建议着短裙、短裤、短薄外套、T恤等夏季服装。",
+          "otherName" => "",
+        ),
+    array(
+          "code" => "yd",
+          "details" =>"阴天，且天气较热，请减少运动时间并降低运动强度。",
+          "index" => "较不宜",
+          "name" =>"运动指数",
+          "otherName" => "",
+        ),
+    array(
+          "name"=>"洗车指数",
+          "code" => "xc",
+          "index" => "不宜",
+          "details" =>"不宜洗车，未来24小时内有雨，如果在此期间洗车，雨水和路上的泥水可能会再次弄脏您的爱车。",
+          "otherName" => "",
+        ),
+    array(
+          "code" => "ls",
+          "details" =>"天气阴沉，不利于水分的迅速蒸发，不太适宜晾晒。若需要晾晒，请尽量选择通风的地点。",
+          "index" => "不太适宜",
+          "name" =>"晾晒指数",
+          "otherName" => "",
+        ),
+      
+      );
+?>
 <html>
     <head>
         <link rel="stylesheet" href="./css/bootstrap.css">
@@ -332,6 +381,28 @@ header h1{
   }
 }
             
+.weather-index{
+    display: inline-block;
+    color: #ccc;
+    
+}            
+.weather-index div{
+    display: block;
+    width: 3em;
+    position: relative;
+    float: left;
+    text-align: center;
+    margin-right: 1em;
+}
+.weather-index i{
+    font-size: 3em;
+} 
+.weather-index small{
+    position: relative;
+    float: left;
+    width: 3em;
+}            
+            
         </style>
     </head>
     <body>
@@ -355,47 +426,7 @@ header h1{
         
         
         
-<!--<header>
-    <p>Worked on all modern browers</p>
-    <h1>CSS based responsive timeline</h1>
-</header>
 
-<ul class="timeline">
-  <li>
-    <div class="direction-r">
-      <div class="flag-wrapper">
-        <span class="hexa"></span>
-        <span class="flag">Lorem ipsum.</span>
-        <span class="time-wrapper"><span class="time">Feb 2015</span></span>
-      </div>
-      <div class="desc">Lorem ipsum Nisi labore aute do aute culpa magna nulla voluptate exercitation deserunt proident.</div>
-    </div>
-  </li>
-
-  <li>
-    <div class="direction-l">
-      <div class="flag-wrapper">
-        <span class="hexa"></span>
-        <span class="flag">Lorem ipsum Anim.</span>
-        <span class="time-wrapper"><span class="time">Dec 2014</span></span>
-      </div>
-      <div class="desc">Lorem ipsum In ut sit in dolor nisi ex magna eu anim anim tempor dolore aliquip enim cupidatat laborum dolore.</div>
-    </div>
-  </li>
-
-  <li>
-    <div class="direction-r">
-      <div class="flag-wrapper">
-        <span class="hexa"></span>
-        <span class="flag">Lorem Occaecat.</span>
-        <span class="time-wrapper"><span class="time">July 2014</span></span>
-      </div>
-      <div class="desc">Lorem ipsum Minim labore Ut cupidatat quis qui deserunt proident fugiat pariatur cillum cupidatat reprehenderit sit id dolor consectetur ut.</div>
-    </div>
-  </li>
-</ul>
-        -->
-        
         
        <div class="form-horizontal">
             <div class="form-group">
@@ -419,23 +450,14 @@ header h1{
                  </div>
               </div>
         </div>
-       <!-- <div class="panel panel-default">
-            <div class="panel-heading">
-                <div class="panel-title">页面js Object数组</div>
-            </div>
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-md-4">
-                        <input id="local_object_data" autocomplete="on" data-provide="typeahead" type="text" class="input-sm form-control" placeholder="请输入（本地Object数据）" />
-                    </div>
-                    <div class="col-md-4">
-                        <button class="btn btn-success" id="look_up_object">LookUP</button>
-                        <button class="btn btn-success" id="get_value_object">GetValue</button>
-                    </div>
-                </div>
-            </div>
+       <div class="weather-index">
+           <?php foreach($data as $ik => $iv):?>
+            <div class="weather-<?php echo $iv['code'];?>"><i data-toggle="popover" title="<?php echo $iv['name'];?>"  data-content="<?php echo $iv['details'] ?>" data-container="body" class="<?php echo getWeatherIndexIcon($iv['code']);?>"></i><small><?php echo $iv['index']; ?></small></div>
+            <?php endforeach;?>
         </div>
-        -->
+        
+        
+        
         <script src="./js/vendor/jquery-1.11.2.min.js"></script>
         <script src="./js/jquery-ui.min.js"></script>
         
@@ -450,7 +472,28 @@ header h1{
             
             
             $(document).ready(function(){
-
+                $("[data-toggle=popover]").popover({
+                    trigger:'manual',
+                    placement : 'bottom', //placement of the popover. also can use top, bottom, left or right
+                   
+//                    title : '<div style="text-align:center; color:red; text-decoration:underline; font-size:14px;"> Muah ha ha</div>', //this is the top title bar of the popover. add some basic css
+                    html: 'true', //needed to show html of course
+                    content : '<div id="popOverBox"><img src="http://www.hd-report.com/wp-content/uploads/2008/08/mr-evil.jpg" width="251" height="201" /></div>', //this is the content of the html box. add the image here or anything you want really.
+                    animation: false
+                }).on("mouseenter", function () {
+                    var _this = this;
+                    $(this).popover("show");
+                    $(this).siblings(".popover").on("mouseleave", function () {
+                    $(_this).popover('hide');
+                    });
+                }).on("mouseleave", function () {
+                    var _this = this;
+                    setTimeout(function () {
+                    if (!$(".popover:hover").length) {
+                    $(_this).popover("hide")
+                    }
+                    }, 100);
+                });
                /* $('select').on('click',function(){
                         getExpressCom();
                 });

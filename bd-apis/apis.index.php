@@ -205,6 +205,11 @@ $zodiacDateArr = array_flip($zodiacDateArr);
                         $today = explode('-',$data['today']['date']);
                         $date = $today[0] . ' 年' . $today[1]. '月' . $today[2] . $data['today']['week'];  
                 ?>
+               <div class="weather-index">
+                   <?php foreach($data['today']['index'] as $ik => $iv):?>
+                    <div class="weather-<?php echo $iv['code'];?>"><i data-toggle="popover" title="<?php echo $iv['name'];?>"  data-content="<?php echo $iv['details'] ?>" data-container="body" class="<?php echo getWeatherIndexIcon($iv['code']);?>"></i><small><?php echo $iv['index']; ?></small></div>
+                    <?php endforeach;?>
+               </div>
                <div class="weather-forecast" data-bgcolor="rgba(95, 25, 208, 0.88)s" id="s-forecast">
 				    <!-- Begin of current weather -->
                    <?php
@@ -302,6 +307,7 @@ $zodiacDateArr = array_flip($zodiacDateArr);
                  <p class="error-code"> Sorry!!!<?php echo $ipWeatherResult['errMsg']; ?></p>
             <?php }?>
 		  </div>
+            
         </div>
 		<!-- End of weather pane -->
         

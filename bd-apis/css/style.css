@@ -377,6 +377,27 @@ a, a:hover,a:visited{
 a.nav-item .active, .nav-item:hover,.nav-item:focus{
     color: #fff;
 }
+.weather-index{
+    display: inline-block;
+    color: #ccc;
+    
+}            
+.weather-index div{
+    display: block;
+    width: 3em;
+    position: relative;
+    float: left;
+    text-align: center;
+    margin-right: 1em;
+}
+.weather-index i{
+    font-size: 3em;
+} 
+.weather-index small{
+    position: relative;
+    float: left;
+    width: 3em;
+}            
 
 .error-code{
     text-align: center;
