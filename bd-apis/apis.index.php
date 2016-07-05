@@ -99,9 +99,9 @@ $zodiacDateArr = array_flip($zodiacDateArr);
         <![endif]-->
         
         <!-- Page Loader -->
-        <div class="page-loader" id="page-loader">
+        <!--<div class="page-loader" id="page-loader">
             <div><i class="ion ion-load-a"></i><p>请耐心等待</p></div>
-        </div>
+        </div>-->
         
         <!-- BEGIN OF site header Menu -->
 		<!-- Add "material" class for a material design style -->
@@ -908,9 +908,9 @@ $zodiacDateArr = array_flip($zodiacDateArr);
         <script src="./js/vendor/all.js"></script>
 		
 		<!-- Detailed vendor scripts -->
-        <!--<script src="./js/vendor/jquery.fullPage.min.js"></script>
+        <script src="./js/vendor/jquery.fullPage.min.js"></script>
         <script src="./js/vendor/jquery.slimscroll.min.js"></script>
-        <script src="./js/vendor/jquery.knob.min.js"></script>
+        <!--<script src="./js/vendor/jquery.knob.min.js"></script>
         <script src="./js/vegas/vegas.min.js"></script>
         <script src="./js/jquery.maximage.js"></script>
         <script src="./js/okvideo.min.js"></script>-->

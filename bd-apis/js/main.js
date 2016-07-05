@@ -20,9 +20,9 @@ $('a.s-scroll').on('click',function() {
 });
 
 // Page Loader : hide loader when all are loaded
-$(window).load(function(){
+/*$(window).load(function(){
     $('#page-loader').addClass('hidden');
-});
+});*/
 
 
 
@@ -565,7 +565,8 @@ $(document).ready(function($) {
     $('.modal-body').on('click','#flight-num',function(){
         var flight = $(this).text();
         $('#page-search-result').modal('toggle');
-        getPlaneFlight(flight);
+        var date = '';
+        getPlaneFlight(flight,date);
     });
     /*airline collapse*/
 
@@ -1213,7 +1214,7 @@ var hideLoading = function(){
     $('.loading').addClass('hide');
 }
 
-var getPlaneRoute = function(start,end,date=''){
+var getPlaneRoute = function(start,end,date){
     var apiKey = '33760b60b674362611ac6241386f5f59';
     var url = 'http://apis.juhe.cn/plan/bc?key='+ apiKey +'&start='+ start +'&end=' + end + '&date='+date;
     $.ajax({
@@ -1344,7 +1345,7 @@ var getAirportDetail = function(code){
 * @param string flight [航班号]
 * @param string date [日期]
 */         
-var getPlaneFlight = function(flight,date=''){
+var getPlaneFlight = function(flight,date){
     var apiKey = '33760b60b674362611ac6241386f5f59';
     var url = 'http://apis.juhe.cn/plan/snew?name=' + flight + '&date=' + date + '&key='+apiKey;
     $.ajax({
