@@ -12,6 +12,9 @@ Date:2016-6-15 ~ 2016-7-6
         font-size: 1em;
         
     }
+    /*.weather-index{
+        width: 60%;
+    }*/
     .weather-type p {
         font-size: 0.75em;
     }

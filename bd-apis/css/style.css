@@ -1577,6 +1577,7 @@ a.nav-item .active, .nav-item:hover,.nav-item:focus{
 .weather-index{
     position: relative;
     width: 50%;
+   
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
