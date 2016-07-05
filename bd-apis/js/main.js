@@ -99,6 +99,7 @@ var expComList = '';
 /*illegal*/
 var carType = '';
 var carManager = '';
+var illData = '';
 /*plane*/
 var planeCities = ''; 
 var planeNameMap = {};
@@ -190,6 +191,8 @@ $(document).ready(function($) {
         
     });
     
+    /*js页面小于768,将pane-weather 放置在fullpage中*/
+    /**/
     
     /*nav slide*/
     $('.nav-item').click(function(e){ 
@@ -280,76 +283,75 @@ $(document).ready(function($) {
         $(_this).popover("hide")
         }
         }, 100);
+    }).on('click',function(){
+        
+        var _this = this;
+        setTimeout(function () {
+        if (!$(".popover:hover").length) {
+        $(_this).popover("hide")
+        }
+        }, 100);
     });
     /* weather page end*/
    /* page:  car illage search*/
-    
-    $.when(
-         getCarType(),
-         getCarManager()
-     ).then(function(data){
-    //success
-         
-         $('#car-province').on('change',function(){
-             var proValue = $(this).val();
-             if(proValue !=''){
-                 if(carManager.status == '0'){
-                 
-                     $.each(carManager.result.data,function(index,ele){
+    $('#car-illegal-search').on('click',function(){
+        getCarType();
+        getCarManager();
+        setTimeout(1000);
+             
+        
+    });
+    $('#car-province').on('change',function(){
+         var proValue = $(this).val();
+         if(proValue !=''){
+             if(carManager.status == '0'){
 
-                         if(ele.province == proValue){
-                              proMakeHtml(index);
-                             return true;
-                         }
-                     });
-                 }
+                 $.each(carManager.result.data,function(index,ele){
+
+                     if(ele.province == proValue){
+                          proMakeHtml(index);
+                         return true;
+                     }
+                 });
              }
-             
-            
-             
-         });
-         $('#car-city').on('change',function(){
-             var cityValue = $('#car-city option:selected').text();
-             if(cityValue !=''){
-                 if(carManager.status == '0'){
-                     $.each(carManager.result.data,function(index,ele){
-                         if(ele.list){
-                             $.each(ele.list,function(index2,ele2){
-                                 if(cityValue == ele2.city){
-                                     cityMakeHtml(index,index2);
-                                 }
-                             });
-                         }
-                         
-                     });
-                 }
-             }
-         });
-         $('#illegal-search-btn').on('click',function(){
-             var proValue = $('#car-province').val();
-             var cityValue = $('#car-city').val();
-             var lsprefixValue = $('#car-lsprefix').val();
-             var lsnumValue = $('#car-lsnum').val();
-             var numValue = $('#car-lsnum-left').val();
-             var typeValue = $('#car-type').val();
-             var frameValue = $('#car-frame').val()?$('#car-frame').val():'';
-             var enginenoValue = $('#car-engine').val()?$('#car-engine').val():'';
-             illegalList(cityValue,lsprefixValue,lsnumValue+numValue,typeValue,frameValue,enginenoValue);
-             console.log("proValue",proValue);
-             console.log("cityValue",cityValue);
-             console.log("lsprefixValue",lsprefixValue);
-             console.log("lsnumValue",lsnumValue);
-             console.log("numValue",numValue);
-             console.log("typeValue",typeValue);
-             console.log("frameValue",frameValue);
-             console.log("enginenoValue",enginenoValue);
-         });
-     },
-     function(data){
-    //failed   
-         console.log("failed");
+         }
      });
-    
+     $('#car-city').on('change',function(){
+         var cityValue = $('#car-city option:selected').text();
+         if(cityValue !=''){
+             if(carManager.status == '0'){
+                 $.each(carManager.result.data,function(index,ele){
+                     if(ele.list){
+                         $.each(ele.list,function(index2,ele2){
+                             if(cityValue == ele2.city){
+                                 cityMakeHtml(index,index2);
+                             }
+                         });
+                     }
+
+                 });
+             }
+         }
+     });
+     $('#illegal-search-btn').on('click',function(){
+         var proValue = $('#car-province').val();
+         var cityValue = $('#car-city').val();
+         var lsprefixValue = $('#car-lsprefix').val();
+         var lsnumValue = $('#car-lsnum').val();
+         var numValue = $('#car-lsnum-left').val();
+         var typeValue = $('#car-type').val();
+         var frameValue = $('#car-frame').val()?$('#car-frame').val():'';
+         var enginenoValue = $('#car-engine').val()?$('#car-engine').val():'';
+         illegalList(cityValue,lsprefixValue,lsnumValue+numValue,typeValue,frameValue,enginenoValue);
+         /*console.log("proValue",proValue);
+         console.log("cityValue",cityValue);
+         console.log("lsprefixValue",lsprefixValue);
+         console.log("lsnumValue",lsnumValue);
+         console.log("numValue",numValue);
+         console.log("typeValue",typeValue);
+         console.log("frameValue",frameValue);
+         console.log("enginenoValue",enginenoValue);*/
+     });
     
     /*page express*/
     
@@ -445,8 +447,10 @@ $(document).ready(function($) {
                url:url,
                method: "GET",
                headers: apikey,
-    //           async:false,
                dataType: "json",
+               beforeSend:function(data){
+                   showLoading();
+               },
                success: function(data){
                     console.log("get express list url",url);
                     var expListData = data;
@@ -461,13 +465,17 @@ $(document).ready(function($) {
                        }
                        html +='</ul>';
         //               console.log(html);
-                       $('.page-express .modal .modal-body').html(html);
-                       $('#expressSearch').modal('toggle');
+                       
+                       $('#page-search-result .modal-body').html(html);
+                       
+                       $('#page-search-result').modal('toggle');
+                        
 
                    }else{
-                        $('.page-express .modal .modal-body').html('<div class="error-code">查询失败，请重试！</div>');
-                        $('#expressSearch').modal('toggle');
+                        $('#page-search-result .modal-body').html('<div class="error-code">查询失败，请重试！</div>');
+                        $('#page-search-result').modal('toggle');
                    }
+                   hideLoading();
                },
                error:function(data){
                     console.log("failed",data);
@@ -552,6 +560,12 @@ $(document).ready(function($) {
         var flight = $('#plane-flight').val();
         var date = $('#plane-datepicker2').val();
         getPlaneFlight(flight,date);
+    });
+    
+    $('.modal-body').on('click','#flight-num',function(){
+        var flight = $(this).text();
+        $('#page-search-result').modal('toggle');
+        getPlaneFlight(flight);
     });
     /*airline collapse*/
 
@@ -660,7 +674,7 @@ $(document).ready(function($) {
         var sta = $('#train-station-search').val();
         stationSearch(sta);
     });
-    $('.page-tickets .modal-body').on('click','.filter-btn',function (e){
+    $('#page-search-result .modal-body').on('click','.filter-btn',function (e){
         var rex = new RegExp($('#filter').val(), 'i');
         console.log(rex);
         $('.searchable tr').after('<tr></tr>').hide();
@@ -704,40 +718,57 @@ $(document).ready(function($) {
 var illegalList = function(carorg,lsprefix,lsnum,lstype,frameno,engineno){
     var url = 'http://apis.baidu.com/netpopo/illegal/illegal?carorg='+carorg+'&lsprefix='+lsprefix+'&lsnum='+lsnum+'&lstype='+lstype+'&frameno='+frameno+'&engineno='+ engineno;
     var apikey = {'apikey':'0a6c63dd26f6268752341ed2ef15dba6'};
-    
-    $.ajax({
-        url:url, 
-        method: "GET",  
-        headers: apikey, 
-        dataType: "json",
-        success: function(data){
-            console.log("get car illegal list url",url);
-            var illData = data;
-            console.log("illData",illData);
-            if(illData.status == '0'){
-                var illHtml = '<div class="panel-group" id="ill-accordion" role="tablist" aria-multiselectable="true">';
-                var totalSocre = 0;
-                var totalPrice = 0;
-                var modalHeader = '';
-                $.each(illData.result.list,function(index,ele){
-                    totalSocre += parseInt(ele.score);
-                    totalPrice += parseInt(ele.price);
-                    illHtml += '<div class="panel panel-default"><div class="panel-heading" role="tab" id="illListheading-'+(index+1)+'"><h4 class="panel-title"><a ' + (index==0?'':'class="collapsed"') + 'role="button" data-toggle="collapse" data-parent="#ill-accordion" href="#illList-'+ (index+1) +'" aria-expanded="true" aria-controls="collapse-'+ (index+1) +'"><span>记<strong>' + ele.score + '</strong>分，罚款<strong>' + ele.price + '</strong>元</span><span>未处理</span></a></h4></div><div id="illList-' + (index+1) + '" class="panel-collapse collapse' +( index == 0 ? ' in' : '') + '" role="tabpanel" aria-labelledby="illListheading-' + (index+1) + '"><div class="panel-body"><p><strong>时间:</strong>' + ele.time + '</p><p><strong>地点:</strong>' + ele.address + '</p><p><strong>描述:</strong>' + ele.content + '</p></div></div></div>'
-                });
-                illHtml += '</div>'
-                modalHeader = '<span><strong>'+ lsprefix+lsnum + '</strong></span><span>共计<strong>'+ illData.result.list.length +'</strong>次违章 计<strong>'+totalSocre+'</strong>分,</span><span>罚款:<strong>'+ totalPrice  +'</strong>元</span>';
-                $('.page-illegal .modal .modal-body').html(illHtml);
-                $('.page-illegal .modal .modal-title').html(modalHeader);
-                
-            }else{
-                $('.page-illegal .modal .modal-body').html('<div class="error-code">查询失败</div>');
+    if(illData == '' || lsnum != illData.result.lsnum){
+        $.ajax({
+            url:url, 
+            method: "GET",  
+            headers: apikey, 
+            dataType: "json",
+            beforeSend:function(data){
+              showLoading();  
+            },
+            success: function(data){
+                console.log("get car illegal list url",url);
+                illData = data;
+                console.log("illData",illData);
+                if(illData.status == '0'){
+                    var illHtml = '<div class="panel-group" id="ill-accordion" role="tablist" aria-multiselectable="true">';
+                    var totalSocre = 0;
+                    var totalPrice = 0;
+                    var modalHeader = '';
+    //                if(illData.result.list.length !=0){
+                        $.each(illData.result.list,function(index,ele){
+                            totalSocre += parseInt(ele.score);
+                            totalPrice += parseInt(ele.price);
+                            illHtml += '<div class="panel panel-default"><div class="panel-heading" role="tab" id="illListheading-'+(index+1)+'"><h4 class="panel-title"><a ' + (index==0?'':'class="collapsed"') + 'role="button" data-toggle="collapse" data-parent="#ill-accordion" href="#illList-'+ (index+1) +'" aria-expanded="true" aria-controls="collapse-'+ (index+1) +'"><span>记<strong>' + ele.score + '</strong>分，罚款<strong>' + ele.price + '</strong>元</span><span>未处理</span></a></h4></div><div id="illList-' + (index+1) + '" class="panel-collapse collapse' +( index == 0 ? ' in' : '') + '" role="tabpanel" aria-labelledby="illListheading-' + (index+1) + '"><div class="panel-body"><p><strong>时间:</strong>' + ele.time + '</p><p><strong>地点:</strong>' + ele.address + '</p><p><strong>描述:</strong>' + ele.content + '</p></div></div></div>';
+                        });
+    //                }
+
+                    illHtml += '</div>';
+                    modalHeader = '<span><strong>'+ lsprefix+lsnum + '</strong></span><span>共计<strong>'+ illData.result.list.length +'</strong>次违章 计<strong>'+totalSocre+'</strong>分,</span><span>罚款:<strong>'+ totalPrice  +'</strong>元</span>';
+                    $('#page-search-result .modal-body').html(illHtml);
+                    $('#page-search-result .modal-title').html(modalHeader);
+    //                $('#page-search-result').modal('toggle');
+
+                    console.log("illegal test1");
+                    
+                }else{
+                    $('.#page-search-result .modal-body').html('<div class="error-code">查询失败</div>');
+    //                $('#page-search-result').modal('toggle');
+                    console.log("illegal test2");
+                }
+                hideLoading();
+                $('#page-search-result').modal('toggle');
+
+            },
+            error:function(data){
+                console.log("failed",data);
             }
-            
-        },
-        error:function(data){
-            console.log("failed",data);
-        }
-    });
+        });
+    }else{
+        setTimeout(1000);
+    }
+    
     
 }            
 var frameEnginehtml = function(frame,engine){
@@ -746,13 +777,13 @@ var frameEnginehtml = function(frame,engine){
     if(frame =='0'|| frame ==''){
         $('#car-illegal-search .form-group:nth-child(5)').html('');
     }else{
-        frameHtml = '<label for="car-type" class="col-sm-3 control-label">车架号码</label><div class="input-group col-sm-7"><input type="text" class="form-control" id="car-frame" placeholder="请输入车架号码'+(frame=='100'?'':('后'+frame +'位'))+'"></div>';
+        frameHtml = '<label for="car-frame" class="col-md-3 col-xs-3 control-label">车架号码</label><div class="input-group col-md-9 col-xs-9 frame-div"><input type="text" class="form-control" id="car-frame" placeholder="请输入车架号码'+(frame=='100'?'':('后'+frame +'位'))+'"></div>';
         $('#car-illegal-search .form-group:nth-child(5)').html(frameHtml);
     }
     if(engine == '0' || engine == ''){
         $('#car-illegal-search .form-group:nth-child(4)').html('');
     }else{
-         engineHtml = '<label for="car-type" class="col-sm-3 control-label">发动机号码</label><div class="input-group col-sm-7"><input type="text" class="form-control" id="car-engine" placeholder="请输入发动机号码'+(engine =='100'?'':('后'+ engine +'位'))+'"></div>';
+         engineHtml = '<label for="car-engine" class="col-md-3 col-xs-3 control-label">发动机号码</label><div class="input-group col-md-9 col-xs-9 engine-div"><input type="text" class="form-control" id="car-engine" placeholder="请输入发动机号码'+(engine =='100'?'':('后'+ engine +'位'))+'"></div>';
          $('#car-illegal-search .form-group:nth-child(4)').html(engineHtml);
     }
 }
@@ -906,13 +937,15 @@ var makeComHtml = function(expCom){
         }
         html +='</div>';
 //                console.log("html",html);
-        $('.page-express .modal .modal-body').html(html);
-        $('#expressSearch').modal('toggle');
+        $('#page-search-result .modal-body').html(html);
+        
+        $('#page-search-result').modal('toggle');
     }
     else{
-        $('.page-express .modal .modal-body').html('<div class="error-code">查询失败，请重试！</div>');
-        $('#expressSearch').modal('toggle');
+        $('#page-search-result .modal-body').html('<div class="error-code">查询失败，请重试！</div>');
+        $('#page-search-result').modal('toggle');
     }
+    hideLoading();
 }
 /*var getExpressCom = function(){
     var apikey = {'apikey':'0a6c63dd26f6268752341ed2ef15dba6'};
@@ -1048,14 +1081,15 @@ var stationSearch = function(station){
                     html += '</ul></td></tr>';
                 }
                 html += '</tbody></table>';
-                $('.page-tickets .modal-body').html(html);
+                $('#page-search-result .modal-body').html(html);
                
                 var html2 = '<address>站点:<strong>'+ data.data.city+'</strong><br>总计:<abbr>'+ data.data.count+'</abbr></address>';
-                $('.page-tickets .modal-footer').html(html2);
+                $('#page-search-result .modal-footer').html(html2);
                 
             } else{
-                $('.page-tickets .modal-body').html('<div class="error-code">'+ data.errmsg +'</div>');
+                $('#page-search-result .modal-body').html('<div class="error-code">'+ data.errmsg +'</div>');
             }
+            $('#page-search-result').modal('toggle');
             
         },
         error:function(data){
@@ -1106,11 +1140,12 @@ var tarinSearch = function(train,date,from,to){
                 '+ start + '~' + end +   '<br>\
                 本趟行程' + data.data.extInfo.intervalMileage +  '公里,行驶' + data.data.extInfo.intervalTime + '<br>\
                 全程' + data.data.extInfo.totalMileage +  '公里,行驶' + data.data.extInfo.totalTime + '<br></address>'
-                $('.page-tickets .modal-body').html(html);
-                $('.page-tickets .modal-footer').html(html2);
+                $('#page-search-result .modal-body').html(html);
+                $('#page-search-result .modal-footer').html(html2);
             }else{
-                $('.page-tickets .modal-body').html('<div class="error-code">'+ data.errmsg +'</div>');
+                $('#page-search-result .modal-body').html('<div class="error-code">'+ data.errmsg +'</div>');
             }
+            $('#page-search-result').modal('toggle');
         },
         error:function(data){
             console.log(data);
@@ -1127,7 +1162,11 @@ var trainSSSearch = function(from,to,date){
             method: "GET",  
             headers: apikey, 
             dataType: "json",
+            beforeSend:function(data){
+              showLoading();  
+            },
             success: function(data){
+                hideLoading();
                 console.log("data",data);
                 if(data.ret){
                     var data = data.data.trainList;
@@ -1149,12 +1188,13 @@ var trainSSSearch = function(from,to,date){
                     }
                     html += '</tbody></table>';
                   
-                     $('.page-tickets .modal-body').html(html);
-                     $('.page-tickets .modal-footer').html('');
+                     $('#page-search-result .modal-body').html(html);
+                     $('#page-search-result .modal-footer').html('');
                 }else{
-                     $('.page-tickets .modal-body').html('<div class="error-code">'+ data.errmsg +'</div>');
-                     $('.page-tickets .modal-footer').html('');
+                     $('#page-search-result .modal-body').html('<div class="error-code">'+ data.errmsg +'</div>');
+                     $('#page-search-result .modal-footer').html('');
                 }
+                $('#page-search-result').modal('toggle');
             },
             error:function(data){
 
@@ -1187,17 +1227,22 @@ var getPlaneRoute = function(start,end,date=''){
         success: function(data){
             console.log("url",url);
             console.log("get plane route success",data);
+            hideLoading();
             if(data.error_code == 0){
                 var routeHtml = '<div class="plane-route-tbody"><div class="list-group">';
                 var routeData = data.result;
-                var routeHeader = '<div class="plane-route-thead "><div class="flight-num">航班</div><div class="start-airport">出发机场</div><div class="arrive-airport">到达机场</div><div class="take-off-time">起飞时间</div><div class="arrive-time">到达时间</div><div class="plane-accuracy-rate">准确率</div><div class="flying-date">日期</div></div>'
+                var routeHeader = '<div class="plane-route-thead "><div class="flight-num-com">航班</div><div class="start-airport">出发机场</div><div class="arrive-airport">到达机场</div><div class="take-off-time">起飞时间</div><div class="arrive-time">到达时间</div><div class="plane-accuracy-rate">准确率</div><div class="flying-date">日期</div></div>';
                 $.each(routeData,function(index,ele){
-                   routeHtml += '<div class="list-group-item"><div class="flight-num">'+ele.FlightNum+'<span class="flight-company">'+ele.Airline+'</span></div><div class="start-airport">'+ele.DepCity+'<span>'+ele.DepTerminal+'</span>'+'</div><i class="ion-android-plane"></i><div class="arrive-airport">' + ele.ArrCity + '<span>' + ele.ArrTerminal + '</span></div><div class="take-off-time"><strong class="plan-time">计划'+ele.DepTime+'</strong><span class="actual-time">实际'+ ele.Dexpected +'</span></div><i class="ion-clock"></i><div class="arrive-time"><strong class="plan-time">计划' + ele.ArrTime + '</strong><span class="actual-time">实际' + ele.Aexpected + '</span></div><div class="plane-accuracy-rate">' + ele.OnTimeRate +'</div><div class="flying-date">'+ ele.FlightDate + '</div></div>';
+                   routeHtml += '<div class="list-group-item"><div class="flight-num-com"><span id="flight-num">' + ele.FlightNum + '</span><span class="flight-company">' + ele.Airline + '</span></div><div class="start-airport">' + ele.DepCity + '<span>' + ele.DepTerminal + '</span>' + '</div><i class="ion-android-plane"></i><div class="arrive-airport">' + ele.ArrCity + '<span>' + ele.ArrTerminal + '</span></div><div class="take-off-time"><strong class="plan-time">计划'+ele.DepTime+'</strong><span class="actual-time">实际'+ ele.Dexpected +'</span></div><i class="ion-clock"></i><div class="arrive-time"><strong class="plan-time">计划' + ele.ArrTime + '</strong><span class="actual-time">实际' + ele.Aexpected + '</span></div><div class="plane-accuracy-rate">' + ele.OnTimeRate +'</div><div class="flying-date">'+ ele.FlightDate + '</div></div>';
                 });
                 routeHtml += '</div></div>';
-                $('page-plane-tickets .modal-body').html(routeHeader+routeHtml);
-                hideLoading();
+                $('#page-search-result .modal-body').html(routeHeader+routeHtml);
+                
+            }else{
+                $('#page-search-result .modal-body').html('<div class="error_code">查询失败,请重试</div>');
             }
+            
+            $('#page-search-result').modal('toggle');
         },
         error:function(data){
             console.log("failed",data);
@@ -1264,6 +1309,7 @@ var getAirportDetail = function(code){
         },
         success:function(data){
             console.log("get airport detail successed",data);
+            hideLoading();
             if(data.error_code == 0){
                 var airportHtml = '<div class="panel-group" id="airport-accordion" role="tablist" aria-multiselectable="true">';
                 $.each(data.result,function(index,ele){
@@ -1281,12 +1327,12 @@ var getAirportDetail = function(code){
                    
                 });
                 airportHtml +=  '</div>';
-                $('page-plane-tickets .modal-body').html(airportHtml);
-                hideLoading();
+                $('#page-search-result .modal-body').html(airportHtml);
+                
             }else{
-                $('page-plane-tickets .modal-body').html('<div class="error-code">机场攻略查询失败，请重试</div>');
+                $('#page-search-result .modal-body').html('<div class="error-code">机场攻略查询失败，请重试</div>');
             }
-            
+//            $('#page-search-result').modal('toggle');
         },
         error:function(data){
             console.log("failed",data);
@@ -1350,7 +1396,8 @@ var getPlaneFlight = function(flight,date=''){
                 flightHtml = '<div class="error-code">航班查询失败，'+ data.reason +'</div>'
             }
             hideLoading();
-            $('.page-plane-tickets .modal-body').html(flightHtml);
+            $('#page-search-result .modal-body').html(flightHtml);
+            $('#page-search-result').modal('toggle');
         },
         error:function(data){
             console.log("failed",data);
@@ -1410,8 +1457,8 @@ var changeZodiacFortune = function(zodiacName,zodiacType){
                if(zodiacType == 'today' || zodiacType == 'tomorrow'){
                    //更改zodiac-name
                    var day = (zodiacType == 'today') ? '今日运势':'明日运势';
-                   var oldDay = $('header.p-title h3')[1].innerText;
-                    $('header.p-title h3')[1].innerText = day;
+                   var oldDay = $('.page-zodiac header.p-title h3')[0].innerText;
+                    $('.page-zodiac header.p-title h3')[0].innerText = day;
                    $("[title='" + oldDay + "']").attr('title',day);
                    var dataArr = [data.all,data.health,data.love,data.money,data.work];
                    $('h3.zodiac-name span:first-child')[0].innerText = zodiacName;
@@ -1428,8 +1475,8 @@ var changeZodiacFortune = function(zodiacName,zodiacType){
                
                if(zodiacType == 'week' || zodiacType == 'nextweek'){
                    var week = (zodiacType == 'week') ? '本周运势':'下周运势';
-                   var oldWeek = $('header.p-title h3')[2].innerText;
-                   $('header.p-title h3')[2].innerText = week;
+                   var oldWeek = $('.page-zodiac header.p-title h3')[1].innerText;
+                   $('.page-zodiac header.p-title h3')[1].innerText = week;
                    $("[title='" + oldWeek + "']").attr('title',day);
                    
                    $('.zodiac-week-info .row:nth-child(1) h5')[0].innerText = data.date;

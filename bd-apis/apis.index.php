@@ -71,9 +71,10 @@ $zodiacDateArr = array_flip($zodiacDateArr);
         <link rel="stylesheet" href="./fonts/opensans/stylesheet.css">
         <link rel="stylesheet" href="./fonts/asap/stylesheet.css">
         <link rel="stylesheet" href="./css/ionicons.min.css">
-        
+        <link rel="stylesheet" href="./css/font-awesome.min.css">
         <!-- Weather CSS style -->
         <link rel="stylesheet" href="./css/weather-icons.css">
+        
          <!-- bootstrap CSS style -->
         <link rel="stylesheet" href="./css/bootstrap.css">
         <link rel="stylesheet" href="./css/bootstrap-datepicker.css">
@@ -85,14 +86,14 @@ $zodiacDateArr = array_flip($zodiacDateArr);
         <link rel="stylesheet" href="./js/vegas/vegas.min.css">
         
 		<!-- Main CSS files -->
-        <link rel="stylesheet" href="./css/main.css">
+<!--        <link rel="stylesheet" href="./css/main.css">-->
         <link rel="stylesheet" href="./css/style.css">
         <link rel="stylesheet" href="./css/main_responsive.css">
-        <link rel="stylesheet" href="./css/style-color1.css">
+<!--        <link rel="stylesheet" href="./css/style-color1.css">-->
         
         <script src="./js/vendor/modernizr-2.7.1.min.js"></script>
     </head>
-    <body id="menu" class="alt-bg">
+    <body id="menu" class="alt-bg row">
         <!--[if lt IE 8]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -194,7 +195,7 @@ $zodiacDateArr = array_flip($zodiacDateArr);
 		</header>
         
 		<!-- Begin of weather pane -->
-		<div class="pane-weather " id="s-weather">
+		<div class="pane-weather" id="s-weather">
 			<div class="content">
                 <?php
                     if($ipWeatherResult['errNum'] == 0){
@@ -205,11 +206,7 @@ $zodiacDateArr = array_flip($zodiacDateArr);
                         $today = explode('-',$data['today']['date']);
                         $date = $today[0] . ' 年' . $today[1]. '月' . $today[2] . $data['today']['week'];  
                 ?>
-               <div class="weather-index">
-                   <?php foreach($data['today']['index'] as $ik => $iv):?>
-                    <div class="weather-<?php echo $iv['code'];?>"><i data-toggle="popover" title="<?php echo $iv['name'];?>"  data-content="<?php echo $iv['details'] ?>" data-container="body" class="<?php echo getWeatherIndexIcon($iv['code']);?>"></i><small><?php echo $iv['index']; ?></small></div>
-                    <?php endforeach;?>
-               </div>
+               
                <div class="weather-forecast" data-bgcolor="rgba(95, 25, 208, 0.88)s" id="s-forecast">
 				    <!-- Begin of current weather -->
                    <?php
@@ -252,7 +249,7 @@ $zodiacDateArr = array_flip($zodiacDateArr);
                    <?php 
                     foreach($forecast as $fk => $fv){
                         $ftype = $fv['type'];
-                        $fc = $convenienceInfo->getWeatherByWeatherId($ftype) ? $convenienceInfo->getWeatherByWeatherId($ftype):'rainy';
+                        $fc = $convenienceInfo->getWeatherByWeatherId($ftype) ? $convenienceInfo->getWeatherByWeatherId($ftype):'rain';
                         $fvdate = explode('-',$fv['date']);
                         $fdate = $fvdate[0] . ' 年' . $fvdate[1]. '月' . $fvdate[2] . '日&nbsp;' . $fv['week'];
 //                        $fdate = $today[0] + "年" + $today[1] + "月" + $fv['date'];
@@ -306,6 +303,11 @@ $zodiacDateArr = array_flip($zodiacDateArr);
             <?php }else{?>
                  <p class="error-code"> Sorry!!!<?php echo $ipWeatherResult['errMsg']; ?></p>
             <?php }?>
+            <div class="weather-index">
+               <?php foreach($data['today']['index'] as $ik => $iv):?>
+                <div class="weather-<?php echo $iv['code'];?>"><i data-toggle="popover" title="<?php echo $iv['name'];?>"  data-content="<?php echo $iv['details'] ?>" data-container="body" class="<?php echo getWeatherIndexIcon($iv['code']);?>"></i><small><?php echo $iv['index']; ?></small></div>
+                <?php endforeach;?>
+           </div>    
 		  </div>
             
         </div>
@@ -313,6 +315,22 @@ $zodiacDateArr = array_flip($zodiacDateArr);
         
         <!-- BEGIN OF site main content content here -->
         <main class="page-main" id="mainpage">             
+        <div class="modal fade" role="dialog" aria-labelledby="GridSlabel" id="page-search-result">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="GridSlabel">查询结果</h4>
+              </div>
+              <div class="loading"><i class="fa fa-spinner fa-pulse"></i></div>  
+              <div class="modal-body">
+
+              </div>
+              <!--<div class="modal-footer"></div>-->
+            </div><!-- /.modal-content -->
+
+          </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
             
 			<!-- Begin of express page -->
 			<div class="section page-express page page-cent" id="s-express">
@@ -342,22 +360,22 @@ $zodiacDateArr = array_flip($zodiacDateArr);
                     </header>
 					<div class="form-horizontal">
                         <div class="form-group">
-                            <label for="express-com" class="col-sm-3 control-label">快递公司</label>
-                            <div class=" input-group col-sm-8">
+                            <label for="express-com" class="col-md-3 col-xs-3 control-label">快递公司</label>
+                            <div class=" input-group col-md-9 col-xs-9">
                                 <span class="input-group-addon" id="expressComList"><i class="ion-ios-list-outline"></i></span>
                                 <input type="text" class="form-control" id="express-type" placeholder="快递公司 顺丰 ">
                                 <input type="hidden" class="form-control" id="express-type-code" placeholder="快递公司编号 顺丰 sf">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="express-nu" class="col-sm-3 control-label">单号</label>
-                            <div class="input-group col-sm-8">
+                            <label for="express-nu" class="col-md-3 col-xs-3 control-label">单号</label>
+                            <div class="input-group col-md-9 col-xs-9">
                                 <span class="input-group-addon"><i class="ion-merge"></i></span>
-                                <input type="email" class="form-control" id="express-nu" placeholder="快递单号">
+                                <input type="text" class="form-control" id="express-nu" placeholder="快递单号">
                             </div>
                         </div>
                          <div class="form-group">
-                             <div class="col-sm-offset-3 col-sm-8">
+                             <div class="col-md-offset-3 col-xs-offset-3 col-md-9 col-xs-9">
                                  <button type="submit" class="btn btn-primary" id="express-submit">确定</button>
                              </div>
                           </div>
@@ -379,23 +397,6 @@ $zodiacDateArr = array_flip($zodiacDateArr);
             
            <!-- Begin of illegal page -->
 			<div class="section page-illegal page page-cent" id="s-illegal">
-				
-				<div class="modal fade" role="dialog" aria-labelledby="gridSlabel" id="illegal-search-modal">
-                  <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="gridSlabel">查询结果</h4>
-                      </div>
-
-                      <div class="modal-body">
-
-                      </div>
-                      <div class="modal-footer"></div>
-                    </div><!-- /.modal-content -->
-
-                  </div><!-- /.modal-dialog -->
-                </div><!-- /.modal -->
 				<section class="content">
                     <header class="p-title">
                         <h3>违章查询<i class="ion ion-android-car">
@@ -404,27 +405,27 @@ $zodiacDateArr = array_flip($zodiacDateArr);
                     </header>
 					<div class="form-horizontal" id="car-illegal-search">
                         <div class="form-group">
-                            <label class="col-sm-3 control-label" for="car-city">查询地址</label>
-                            <div class="col-sm-4">
-                                <select class="form-control" id="car-province"></select>
+                            <label class="col-md-3 col-xs-3 control-label" for="car-city">查询地址</label>
+                            <div class="col-md-5 col-xs-5">
+                                <select class="form-control  col-md-6" id="car-province"></select>
                             </div>
-                            <div class="col-sm-3">
-                                <select class="form-control" id="car-city"></select>
+                            <div class="col-md-4 col-xs-4">
+                                <select class="form-control col-md-6" id="car-city"></select>
                             </div>
 
                         </div>
 
                         <div class="form-group">
-                            <label for="car-lsnum-left" class="col-sm-3 control-label">车牌号码</label>
-                            <div class="col-sm-2">
-                                <select id="car-lsprefix" class="form-control col-sm-6">
+                            <label for="car-lsnum-left" class="col-md-3 col-xs-3 control-label">车牌号码</label>
+                            <div class="col-md-2 col-xs-2">
+                                <select id="car-lsprefix" class="form-control col-md-6">
 
                                 </select>
                             </div>
 
-                            <div class="col-sm-2">
+                            <div class="col-md-3 col-xs-3">
 
-                                <select id="car-lsnum" class="form-control col-sm-6">
+                                <select id="car-lsnum" class="form-control col-md-6">
                                     <option value="">空</option>
                                     <?php for( $i=65; $i<=90;$i++):
                                     ?>
@@ -435,15 +436,15 @@ $zodiacDateArr = array_flip($zodiacDateArr);
 
                                 </select>
                             </div>
-                            <div class="input-group col-sm-3">
+                            <div class="input-group col-md-4 col-xs-4">
                                 <input type="text" class="form-control" id="car-lsnum-left" placeholder="车牌号码后五位">
                             </div>
 
                         </div>
                         <div class="form-group">
-                            <label for="car-type" class="col-sm-3 control-label">车辆类型</label>
-                            <div class="col-sm-7">
-                                <select id="car-type" class="form-control col-sm-1">
+                            <label for="car-type" class="col-md-3 col-xs-3 control-label">车辆类型</label>
+                            <div class="col-md-9 col-xs-9">
+                                <select id="car-type" class="form-control col-md-1">
 
                                 </select>
                             </div>
@@ -454,8 +455,8 @@ $zodiacDateArr = array_flip($zodiacDateArr);
                         <div class="form-group">
                         </div>
                         <div class="form-group">
-                            <div class="col-sm-offset-3 col-sm-7">
-                                <button type="button" class="btn btn-primary col-sm-5" data-toggle="modal" data-target="#illegal-search-modal" id="illegal-search-btn">违章查询</button>
+                            <div class="col-md-offset-3 col-md-9 col-xs-offset-3 col-xs-9">
+                                <button type="button" class="btn btn-primary col-sm-5 col-xs-5" id="illegal-search-btn">违章查询</button>
                             </div>
                         </div>
                     </div>
@@ -478,55 +479,42 @@ $zodiacDateArr = array_flip($zodiacDateArr);
             
             <!-- Begin of tickets page -->
             <div class="section page-tickets page page-cent" id="s-tickets">
-                <div class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" id="trainSearch">
-                    <div class="modal-dialog modal-lg" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                <h4 class="modal-title" id="gridSystemModalLabel">查询结果</h4>
-                            </div>
-                            <div class="modal-body">
-
-                            </div>
-                            <div class="modal-footer"></div>
-                        </div><!-- /.modal-content -->
-                    </div><!-- /.modal-dialog -->
-                </div><!-- /.modal -->
+                
                 <section class="content">
                     <header class="p-title">
                         <h3>火车票查询<i class="ion ion-android-train">
                             </i>
                         </h3>
                     </header>
-                    <div class="container">
+                    <div class="form-horizontal">
                         <div class="form-group">
-                            <div class="input-group col-md-6 col-xs-6">
-                                <div class="input-group-addon"><span>站站查询</span></div>
+                            <label for="start-station" class="col-md-3 col-xs-3 control-label">站站查询</label>
+                            <div class="input-group col-md-9 col-xs-9">
                                 <input type="text" class="form-control" id="start-station" placeholder="出发站" >
                                 <div class="input-group-addon" id="station-change"><span><i class="ion-ios-loop"></i></span></div>
                                 <input type="text" class="form-control" id="dest-station" placeholder="到达站" >
                                 <div class="input-group-addon"><i class="icon ion-clock"></i></div>
-                                <input type="text" class="form-control"  id="ss-datepicker" style="width:90px" readonly>
-                                <div class="input-group-addon" data-toggle="modal" data-target="#trainSearch" id="ss-submit"><span >确定</span></div> 
+                                <input type="text" class="form-control"  id="ss-datepicker"  readonly>
+                                <span class="input-group-addon" id="ss-submit">确定</span>
                             </div>
 
                         </div>
                         <div class="form-group">
-                            <div class="input-group col-md-6 col-xs-6">
-                                <div class="input-group-addon"><span>车次查询</span></div>
+                            <label for="train-search" class="col-md-3 col-xs-3 control-label">车次查询</label>
+                            <div class="input-group col-md-9 col-xs-9">
                                 <input type="text" class="form-control" id="train-search" placeholder="车次 G101">
                                 <div class="input-group-addon"><i class="icon ion-clock"></i></div>
                                 <input type="text" class="form-control"  id="ts-datepicker" readonly>
-                                <div class="input-group-addon" data-toggle="modal" data-target="#trainSearch"><span id="train-submit">确定</span></div>
+                                <span class="input-group-addon" id="train-submit">确定</span>
                             </div>
-                            <p class="help-block">车次的站站查询 = <span>站站查询</span>站点 + <span>车次查询</span>车次、时间</p>
+                            <p class="help-block col-md-9 col-xs-9">车次的站站查询 = <span>站站查询</span>站点 + <span>车次查询</span>车次、时间</p>
 
                         </div>
                         <div class="form-group">
-                            <div class="input-group col-md-6 col-xs-6">
-                                <div class="input-group-addon"><span>车站查询</span></div>
+                            <label for="train-station-search" class="col-md-3 col-xs-3 control-label">车站查询</label>
+                            <div class="input-group col-md-9 col-xs-9">
                                 <input type="text" class="form-control" id="train-station-search" placeholder="北京西">
-                                <div class="input-group-addon" data-toggle="modal" data-target="#trainSearch"><span id="station-search">确定</span></div>
+                                <span class="input-group-addon" id="station-search">确定</span>
                             </div>
                         </div>
                        
@@ -547,22 +535,6 @@ $zodiacDateArr = array_flip($zodiacDateArr);
             <!-- Begin of plane tickets page -->
 			<div class="section page-plane-tickets page page-cent" id="s-plane-tickets">
 				
-				<div class="modal fade" role="dialog" aria-labelledby="planeGridSlabel" id="plane-search-modal">
-                  <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="planeGridSlabel">查询结果</h4>
-                      </div>
-                      <div class="loading"><i class="fa fa-spinner fa-pulse"></i></div>  
-                      <div class="modal-body">
-
-                      </div>
-                      <!--<div class="modal-footer"></div>-->
-                    </div><!-- /.modal-content -->
-
-                  </div><!-- /.modal-dialog -->
-                </div><!-- /.modal -->
 				<!-- Content -->
 				<section class="content">
 					
@@ -571,26 +543,26 @@ $zodiacDateArr = array_flip($zodiacDateArr);
                             </i>
                         </h3>
                     </header>
-                    <div class="container">
+                    <div class="form-horizontal">
                         <div class="form-group">
-                            <div class="input-group col-md-5 col-xs-5">
-                                <span class="input-group-addon">航线查询</span>
+                            <label class="col-md-3 col-xs-3 control-label" for="start-city">航线查询</label>
+                            <div class="input-group col-md-9 col-xs-9 ">
                                 <input type="text" class="form-control" id="start-city" placeholder="出发城市" >
                                 <div class="input-group-addon" id="city-switch"><span><i class="ion-ios-loop"></i></span></div>
                                 <input type="text" class="form-control" id="dest-city" placeholder="到达城市" >
                                 <span class="input-group-addon"><i class="icon ion-clock"></i></span>
                                 <input type="text" class="form-control"  id="plane-datepicker1" style="width:90px" readonly>
-                                <span class="input-group-addon" data-toggle="modal" data-target="#plane-search-modal" id="route-submit">确定</span>
+                                <span class="input-group-addon" id="route-submit">确定</span>
                             </div>
 
                         </div>
                         <div class="form-group">
-                            <div class="input-group col-md-5 col-xs-5">
-                                <span class="input-group-addon">航班查询</span>
+                             <label class="col-md-3 col-xs-3 control-label" for="plane-flight">航班查询</label>
+                            <div class="input-group col-md-9 col-xs-9">
                                 <input type="text" class="form-control" id="plane-flight" placeholder="航班号" >
                                 <span class="input-group-addon"><i class="icon ion-clock"></i></span>
-                                <input type="text" class="form-control"  id="plane-datepicker2" style="width:90px" readonly>
-                                <span class="input-group-addon" data-toggle="modal" data-target="#plane-search-modal" id="flight-submit">确定</span>
+                                <input type="text" class="form-control"  id="plane-datepicker2" readonly>
+                                <span class="input-group-addon"  id="flight-submit">确定</span>
                             </div>
                         </div>
                     </div>
@@ -621,7 +593,29 @@ $zodiacDateArr = array_flip($zodiacDateArr);
                                  <h4 class="modal-title" id="zodiacSearchModalLabel">星座查询</h4>
                             </div>
                             <div class="modal-body">
-                                <input type="text" placeholder="星座名" id="zodiac-input" data-provide="typeahead">
+                                <div class="form-horizontal">
+                                    <div class="form-group">
+                                        <div class="input-group col-md-offset-2 col-xs-offset-2 col-md-8 col-xs-8">
+                                            <input type="text" class="form-control" placeholder="星座名" id="zodiac-input" data-provide="typeahead">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="radio" class="col-md-4 col-xs-4 control-label">日查询</label>
+                                        <div class="col-md-8 col-xs-8 daily-options ">
+                                            <div class="radio-inline"><label><input type="radio" name="daily-option" value="today" checked=""> 今日</label></div>
+                                            <div class="radio-inline"><label><input type="radio" name="daily-option"  value="tomorrow" > 明日</label></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="radio" class="col-md-4 col-xs-4 control-label">周查询</label>
+                                        <div class="col-md-8 col-xs-8 week-options ">
+                                            <div class="radio-inline"><label><input type="radio" checked="" name="week-option" value="week"> 本周</label></div>
+                                            <div class="radio-inline"><label><input type="radio"   name="week-option" value="nextweek"> 下周</label></div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <!--<input type="text" placeholder="星座名" id="zodiac-input" data-provide="typeahead">
                                 <div class="daily-options">
                                     <label for="radio" class="col-sm-4 control-label">日查询</label>
                                     <div class="col-sm-8">
@@ -642,7 +636,7 @@ $zodiacDateArr = array_flip($zodiacDateArr);
                                     <div class="row"></div>
                                     <div class="row"></div>
                                     <div class="row"></div>
-                                </div>
+                                </div>-->
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal" name="cancel">取消</button>
@@ -767,8 +761,8 @@ $zodiacDateArr = array_flip($zodiacDateArr);
                                 $iconArr = array('ion-ios-body','ion-ios-paper','ion-ios-rose','ion-social-yen','ion-briefcase');
                                 foreach($zodiacWeekArr as $k => $v){
                             ?>
-                            <div class="row" title="<?php echo $zodiacWeek[$v];?>">
-                                <p><i class="<?php  echo $iconArr[$k];?>"></i><?php echo $zodiacWeek[$v];?></p>
+                            <div class="row">
+                                <p data-container="body" data-toggle="popover"  data-content="<?php echo $zodiacWeek[$v]; ?>"><i class="<?php  echo $iconArr[$k];?>"></i><?php echo $zodiacWeek[$v];?></p>
                             </div>
                             <?php }?>
                         </div>
@@ -814,8 +808,8 @@ $zodiacDateArr = array_flip($zodiacDateArr);
                                 $iconArr = array('ion-compose','ion-ios-body','ion-ios-rose','ion-social-yen','ion-briefcase');
                                 foreach($zodiacMonArr as $k =>$v){
                             ?>
-                            <div class="row" title="<?php echo $zodiacMonth[$v];?>">
-                                <p><i class="<?php echo $iconArr[$k]; ?>"></i><?php echo $zodiacMonth[$v];?></p>
+                            <div class="row">
+                                <p data-container="body" data-toggle="popover" data-content="<?php echo $zodiacMonth[$v];?>"><i class="<?php echo $iconArr[$k]; ?>"></i><?php echo $zodiacMonth[$v];?></p>
                             </div>
                             <?php }?>
                         </div>
@@ -858,30 +852,19 @@ $zodiacDateArr = array_flip($zodiacDateArr);
                                 <h5><?php echo $zodiacYear['date'];?></h5>
                             </div>
                             
-                            <div class="row" title="<?php echo $zodiacYear['mima']['text'][0];?>" >
-                                <p><i class="ion-stats-bars"></i><span><?php echo $zodiacYear['mima']['info']; ?></span><span><?php echo $zodiacYear['mima']['text'][0];?></span></p>
+                            <div class="row"  >
+                                <p data-container="body" data-toggle="popover" data-content="<?php echo $zodiacYear['mima']['text'][0];?>"><i class="ion-stats-bars"></i><span><?php echo $zodiacYear['mima']['info']; ?></span><span><?php echo $zodiacYear['mima']['text'][0];?></span></p>
                             </div>
                             <?php 
                                 $zodiacYearArr = array('career','love','health','finance');
                                 $iconArr = array('ion-briefcase','heart','ion-ios-body','ion-cash');
                                 foreach($zodiacYearArr as $k => $v){
                             ?>
-                            <div class="row"  title="<?php echo $zodiacYear[$v][0];?>">
-                                <p><i class="<?php echo $iconArr[$k];?>"></i><?php echo $zodiacYear[$v][0];?></p>
+                            <div class="row">
+                                <p data-container="body" data-toggle="popover" data-content="<?php echo $zodiacYear[$v][0];?>"><i class="<?php echo $iconArr[$k];?>"></i><?php echo $zodiacYear[$v][0];?></p>
                             </div>
                             <?php }?>
-                            <!--<div class="row" title="<?php echo $zodiacYear['career'][0];?>" >
-                                <p><i class="ion-briefcase"></i><?php echo $zodiacYear['career'][0]; ?></p>
-                            </div>
-                            <div class="row" title="<?php echo $zodiacYear['love'][0];?>" >
-                                <p><i class="ion-heart"></i><?php echo $zodiacYear['love'][0]; ?></p>
-                            </div>
-                            <div class="row" title="<?php echo $zodiacYear['health'][0];?>" >
-                                <p><i class="ion-ios-body"></i><?php echo $zodiacYear['health'][0]; ?></p>
-                            </div>
-                            <div class="row" title="<?php echo $zodiacYear['finance'][0];?>" >
-                                <p><i class="ion-cash"></i><?php echo $zodiacYear['finance'][0]; ?></p>
-                            </div>-->
+                            
                             <div class="row" >
                                 <p><i class="ion-egg"></i><?php echo $zodiacYear['luckyStone']; ?></p>
                             </div>

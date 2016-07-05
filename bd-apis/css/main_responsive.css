@@ -1,104 +1,100 @@
 /*-----------------------------------------------------------------
-[Legal Notice]
-
-Copyright (c) HighHay/Mivfx
-Before using this template, you should agree with themeforest licenses terms.
-http://themeforest.net/licenses
+Author:Graham,
+Date:2016-6-15 ~ 2016-7-6
 -------------------------------------------------------------------*/
 
 
 /** CSS-AddOn for Large screen First responsiveness approch */
 
 /* Screen small than 1024px */
-@media (max-width : 1120px){
-    .zodiac-week-info,.zodiac-info,
-    .zodiac-month-info,.zodiac-year-info{
-        max-width: 500px;
-    }
-    .zodiac-year-info .row span:first{
-        padding: 0 0.5em;
-        font-weight: 600;
-        color: #ECEAB7;
-    }
-}
-
-
-/* Screen small than 1024px */
 @media (max-width : 1024px){
-	.pane-weather .content{
-		position: absolute;
-		top: 20%;
-		left: 0;
-		right: 0;
-	}
-    #s-current .weather-temp{
-        font-size: 7em;
+    .p-weather-date h6 {
+        font-size: 1em;
+        
     }
-	.weather-temp{
-    	font-size: 6em;
-        margin-top: 10%;
-	}
-    .zodiac-week-info,.zodiac-info,
-    .zodiac-month-info,.zodiac-year-info{
-        max-width: 400px;
+    .weather-type p {
+        font-size: 0.75em;
     }
-    .zodiac-year-info .row span:first{
-        padding: 0 0.5em;
-        font-weight: 600;
-        color: #ECEAB7;
+    .weather-temp {
+        font-size: 4em;
     }
-	/*.pane-weather .clock .elem-bottom .deco:after,
-	.pane-weather .clock .elem-bottom .deco:before{
-		width: 10px;
-		height: 70px;
-		bottom: 17px;
-	}
-	.pane-weather .clock .elem-bottom:before{
-		right: 0;
-		left: 85%;
-	}
-	.pane-weather .clock .elem-bottom:after{
-		left: 0;
-		right: 85%;
-	}
-	.pane-weather .clock .elem-bottom {
-		font-size: 20px;
-	}
-	.pane-weather .clock .elem-bottom>span{
-		margin-top: -6px;
-		vertical-align: top;
-		display: inline-block;
-	}
-	
-	.page-cent .content ,
-    .page-tickets .content {
-		padding-left: 32px;
-		padding-right: 56px;
-	}*/
-	
+	.nav-item span {
+        display: none;
+    }
+    .weather-index i {
+        font-size: 1.2em;
+    }   
+    .form-horizontal label {
+       font-size: 1.2em;
+    }
+    .form-control{
+        font-size: 0.75em;
+    }
+    .help-block{
+        margin-left: 50px;
+    }
+    h3.zodiac-name span:first-child {
+        font-size: 1.25em;
+    }
+    .zodiac-week-info .row p,
+    .zodiac-month-info .row p,
+    .zodiac-year-info .row p{
+        font-size: 0.75em;
+        width: 90%;
+    }
+    
 }
 /* Screen Small than 866px */
 @media (max-width : 866px){
-    
-    .weather-temp{
-    	font-size: 5em;
-	}
-    #s-current .weather-temp{
-        font-size: 6em;
+    .weather-temp {
+        font-size: 3em;
+        margin-top: 50px;
     }
-    .zodiac-week-info,.zodiac-info,
-    .zodiac-month-info,.zodiac-year-info{
-        max-width: 300px;
+    #weather-nav{
+        margin-top: 50px;
+        margin-bottom: 30px;
     }
-    .zodiac-year-info .row span:first{
-        padding: 0 0.5em;
-        font-weight: 600;
-        color: #ECEAB7;
+    .pane-weather .content {
+        
+        margin-top: 160px;
+    }
+    .weather-index {
+        width: 80%;
+    }
+    .p-weather-date {
+        margin: 15px 0;
     }
 }
 /* Screen Small than 768px */
 @media (max-width : 768px){
-	.pane-weather {
+    .pane-weather{
+        display: none;
+    }
+    .header-top{
+        display: none;
+    }
+    .page-main {
+        position: absolute;
+        left: 56px;
+        margin-left: 20px;
+        padding-right: 80px;
+        /* margin-right: 50px; */
+        width: 100%;
+        height: 100%;
+    }
+    .dl-horizontal dt {
+        float: left;
+        width: 160px;
+        overflow: hidden;
+        clear: left;
+        text-align: right;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .dl-horizontal dd {
+        margin-left: 180px;
+      }
+	/*.pane-weather {
 		width: 40%;
 		margin-top: 20px;
 	}
@@ -116,7 +112,7 @@ http://themeforest.net/licenses
         padding: 0 0.5em;
         font-weight: 600;
         color: #ECEAB7;
-    }
+    }*/
 	/*.pane-weather .clock .elem-center .txt {
 		top: 1em;
 		font-size: 20px;
@@ -154,7 +150,7 @@ http://themeforest.net/licenses
 /* Screen Small than 720px */
 @media (max-width : 720px){
 	
-    .weather-temp{
+   /* .weather-temp{
     	font-size: 3em;
 	}
     #s-current .weather-temp{
@@ -190,7 +186,7 @@ http://themeforest.net/licenses
 	.header-top .menu a ,
 	.page p{
 		font-size: 14px;
-	}
+	}*/
 	/*.page .form.send_email_form .fields{
 		height: 35px;
 	}
@@ -198,7 +194,7 @@ http://themeforest.net/licenses
 	.page .form.send_email_form .buttons button{
 		height: 34px;
 	}*/
-	.page-cent .p-title h3{
+	/*.page-cent .p-title h3{
 		font-size: 24px;
 		border-bottom-width: 5px;
 	}
@@ -225,23 +221,26 @@ http://themeforest.net/licenses
         padding: 0 0.5em;
         font-weight: 600;
         color: #ECEAB7;
-    }
+    }*/
     
 }
 /* Screen small than 600 */
 
 /* Screen small than 600 Nexus 7, iPhone 6 plus : 412px*/
 @media (max-width : 600px){
-     .weather-temp{
+    div.zodiac-basic-info {
+        margin-left: 30px;
+    }
+    /* .weather-temp{
     	font-size: 2em;
 	}
     #s-current .weather-temp{
         font-size: 3em;
-    }
+    }*/
    /* #weather-nav{
         top:15vh;
     }*/
-	.pane-weather{
+	/*.pane-weather{
 		top: 20px;
 		left: 35%;
 		bottom: auto;
@@ -262,18 +261,19 @@ http://themeforest.net/licenses
 		margin-top: 0px;
 		float: right;
         font-size: .0.45em;
-    }
+    }*/
    /* .nav-item{
         top:25vh;
     }*/
+/*
     .nav-item span{
         display: none;
     }
     .nav-item span:hover,
     .nav-item span:focus,{
         display: block;
-       /* background-color: #ccc;
-        float: right*/
+        background-color: #ccc;
+        float: right
         font-size: 0.5em;
         color: #fff;
     }
@@ -282,6 +282,7 @@ http://themeforest.net/licenses
         margin-top: 10%;
         
     }
+*/
 	/*
 	.pane-weather .clock .elem-center .txt {
 		top: -4px;
@@ -323,7 +324,7 @@ http://themeforest.net/licenses
 		font-size: 14px;
 	}*/
 	/* Main page */
-	.page-main{
+	/*.page-main{
 		margin-left: auto;
 		width: 100%;
 	}
@@ -347,13 +348,13 @@ http://themeforest.net/licenses
 		margin-right: 2px;
 		bottom: 16px;
 		top: auto;
-	}
+	}*/
 }
 
 /* Screen small than 360px */
 @media (max-width : 360px){
 	
-	.page-zodiac .fields:first-child ,
+	/*.page-zodiac .fields:first-child ,
 	.page-zodiac .zodiac .columns li:first-child {
 		margin-top: 0;
 	}
@@ -368,12 +369,12 @@ http://themeforest.net/licenses
 	
 	.zodiac .social-links{
 		display: none;
-	}
+	}*/
 	
 }
 /* Screen small than 320px */
 @media (max-width : 320px){
-	.pane-weather{
+	/*.pane-weather{
 		top: 36px;
 		left: 0;
 		right: 20px;
@@ -437,13 +438,16 @@ http://themeforest.net/licenses
 	}
 	.header-top .menu a {
 		padding-top: 6px;
-	}
+	}*/
 }
 
 
  
 /* Responsive height */
 @media (max-height : 600px){
+    .weather-index{
+        display: none;
+    }
 	.social-links{
 		display: none;
 	}
@@ -454,7 +458,7 @@ http://themeforest.net/licenses
 /* Responsive height */
 @media (max-height : 420px){
 	
-	.page .content .clock {
+	/*.page .content .clock {
 		-webkit-transform: scale(0.4) translateX(-125%) translateY(-125%);
 		transform: scale(0.4) translateX(-125%) translateY(-125%);
 		position: absolute;
@@ -506,122 +510,24 @@ http://themeforest.net/licenses
 	}
 	.page-footer{
 		display: none;
-	}
+	}*/
 }
 
 
 
-/*page express*/
-@media(min-width: 768px){
-  .page-express .modal-body .timeline {
-    width: 660px;
-    margin: 0 auto;
-    margin-top: 20px;
-  }
 
-  .page-express .modal-body .timeline li:after {
-    content: "";
-    display: block;
-    height: 0;
-    clear: both;
-    visibility: hidden;
-  }
+@media(max-width: 570px){
+    .page-main{
+        min-width:568px;
+    }
   
-  .page-express .modal-body .timeline .hexa {
-    left: -28px;
-    right: auto;
-    top: 8px;
-  }
-
-  .page-express .modal-body .timeline .direction-l .hexa {
-    left: auto;
-    right: -28px;
-  }
-
-  .page-express .modal-body .direction-l {
-    position: relative;
-    width: 310px;
-    float: left;
-    text-align: right;
-  }
-
-  .page-express .modal-body .direction-r {
-    position: relative;
-    width: 310px;
-    float: right;
-    text-align: left;
-  }
-
-  .page-express .modal-body .flag-wrapper {
-    display: inline-block;
-  }
+}
+/*@media(min-width: 400px){
+    .page-main{
+        min-width:568px;
+    }
   
-  .page-express .modal-body .flag {
-    font-size: 18px;
-  }
+}*/
 
-  .page-express .modal-body .direction-l .flag:after {
-    left: auto;
-    right: -16px;
-    top: 50%;
-    margin-top: -8px;
-    border: solid transparent;
-    border-left-color: rgb(254,254,254);
-    border-width: 8px;
-  }
 
-  .page-express .modal-body .direction-r .flag:after {
-    top: 50%;
-    margin-top: -8px;
-    border: solid transparent;
-    border-right-color: rgb(254,254,254);
-    border-width: 8px;
-    left: -8px;
-  }
-
-  .page-express .modal-body .time-wrapper {
-    display: inline;
-    vertical-align: middle;
-    margin: 0;
-  }
-
-  .page-express .modal-body .direction-l .time-wrapper {
-    float: left;
-  }
-
-  .page-express .modal-body .direction-r .time-wrapper {
-    float: right;
-  }
-
-  .page-express .modal-body .time {
-    padding: 5px 10px;
-  }
-
-  .page-express .modal-body .direction-r .desc {
-    margin: 1em 0 0 0.75em;
-  }
-}
-
-@media(min-width: 992px){
-  .page-express .modal-body .timeline {
-    width: 800px;
-    margin: 0 auto;
-    margin-top: 20px;
-  }
-
-  .page-express .modal-body .direction-l {
-    position: relative;
-    width: 380px;
-    float: left;
-    text-align: right;
-  }
-
-  .page-express .modal-body .direction-r {
-    position: relative;
-    width: 380px;
-    float: right;
-    text-align: left;
-  }
-}
-/*end express*/
     
