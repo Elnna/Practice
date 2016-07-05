@@ -596,7 +596,7 @@ header.p-title{
 }
 
 header.p-title h3{
-    text-align: left; */
+    text-align: left; 
     /* text-transform: uppercase; */
     font-size: 32px;
     line-height: 1em;
@@ -2031,7 +2031,7 @@ div .zodiac-conclude span:last-child{
 .zodiac-month-info .row p,
 .zodiac-year-info .row p
 {
-   width: 95%; */
+   width: 95%; 
     margin-right: 0px;
     /* font-size: 0.5em; */
     line-height: 1.2em;
