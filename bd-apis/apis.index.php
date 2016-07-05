@@ -99,9 +99,9 @@ $zodiacDateArr = array_flip($zodiacDateArr);
         <![endif]-->
         
         <!-- Page Loader -->
-        <!--<div class="page-loader" id="page-loader">
-            <div><i class="ion ion-load-a"></i><p>请耐心等待</p></div>
-        </div>-->
+        <div class="page-loader" id="page-loader">
+            <div><i class="fa fa-spinner fa-pulse"></i><p>请耐心等待</p></div>
+        </div>
         
         <!-- BEGIN OF site header Menu -->
 		<!-- Add "material" class for a material design style -->
