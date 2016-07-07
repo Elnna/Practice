@@ -161,7 +161,28 @@ ul, li{
      0 0 4px 1px rgba(0,0,0,0.1);
 }
 
+/*popover*/
+.popover.top.in,
+.popover.bottom.in{
+    background-color: rgba(255, 255, 255, 0.7);
+/*    max-width: 450px;*/
+}
+.popover.top.in{
+    max-width: 500px;
+}
 
+.popover.bottom > .arrow:after{
+    border-bottom-color: rgba(255, 255, 255, 0.7);
+
+}
+.popover.top > .arrow:after{
+    border-top-color: rgba(255, 255, 255, 0.7);
+
+}
+.popover-title{
+    background-color: rgba(247, 247, 247, 0.15);
+    border-bottom: 1px solid rgba(235, 235, 235, 0.42);
+}
 /*body{
   font-family: 'Raleway', sans-serif;
   color: #333;
@@ -573,6 +594,7 @@ ul, li{
     width: 65%;
     height: 100%;
 }
+
 .page-cent .content{
    display: block;
     -webkit-transition: 0.6s;
@@ -593,6 +615,7 @@ header.p-title{
     position: absolute;
     top: 18%;
     margin-left: 20px;
+    width: 100%;
 }
 
 header.p-title h3{
@@ -604,7 +627,7 @@ header.p-title h3{
     border-left: 4px solid currentColor;
     padding-left: 10px;
     margin-left: 6px;
-    max-width: 180px;
+/*    max-width: 180px;*/
 }
 header.p-title i{
     margin-left: 0.5em;
@@ -633,7 +656,8 @@ header.p-title i{
 input,input:hover,input:focus,
 .input-group .form-control,.btn-primary:hover,
 .input-group .form-control:focus,
-.input-group .form-control:hover{
+.input-group .form-control:hover,
+.btn-primary:active:hover{
 /*    -webkit-border-radius: 5px;*/
     
     background: transparent;
@@ -655,7 +679,12 @@ input#express-type.form-control{
     border-top-right-radius: 5px;
 
 }
+.modal abbr i{
+    font-size: 1.5em;
+    color: rgba(140, 143, 152, 0.56);
 
+
+}
 header h1{
   text-align: center;
   font-weight: bold;
@@ -1576,7 +1605,7 @@ a.nav-item .active, .nav-item:hover,.nav-item:focus{
 }
 .weather-index{
     position: relative;
-    width: 50%;
+    width: 60%;
    
     display: flex;
     flex-wrap: wrap;
@@ -1589,7 +1618,7 @@ a.nav-item .active, .nav-item:hover,.nav-item:focus{
     color: rgba(234, 147, 28, 0.53);
 }            
 .weather-index div{
-        display: inline-block;
+    display: inline-block;
     width: 3em;
     position: relative;
     float: left;
@@ -1632,11 +1661,11 @@ a.nav-item .active, .nav-item:hover,.nav-item:focus{
 	font-size: 20px;
 	transition: 0.3s;
 }
-	.p-footer .text{
-		font-size: 12px;
-		font-family: "Opensans";
-		text-transform: uppercase;
-	}
+.p-footer .text{
+    font-size: 12px;
+    font-family: "Opensans";
+    text-transform: uppercase;
+}
 .p-footer:hover .icon{
 	opacity: 0;
 	-webkit-transform: scale(0);
@@ -1674,7 +1703,8 @@ a.nav-item .active, .nav-item:hover,.nav-item:focus{
 .p-footer .arrow-d .circle{
     top: 12px;
     bottom: 12px;
-    left: 12px;
+/*    left: 12px;*/
+    left: 17px;
     right: 12px;
     position: absolute;
     content: "\f340";
@@ -1688,7 +1718,10 @@ a.nav-item .active, .nav-item:hover,.nav-item:focus{
     -webkit-transition: 0.3s;
     transition: 0.3s;
 }
-
+.p-footer .arrow-d .circle i:focus,
+.p-footer .arrow-d .circle i:hover{
+    display: none;
+}
 .p-footer .arrow-d .circle:after{
     top: 12px;
     bottom: 12px;
@@ -1717,10 +1750,10 @@ a.nav-item .active, .nav-item:hover,.nav-item:focus{
 .p-footer .arrow-d:hover .circle{
     background: #5677fc;
     background: rgba(86, 119, 252, 0);
-    top: 0px;
+    top: 1px;
     bottom: 0px;
-    left: 0px;
-    right: 0px; 
+    /* left:0 px; */
+    right: 0px;
 }
 .p-footer .arrow-d:hover .circle:after{	
     border-radius: 0;
@@ -1731,11 +1764,13 @@ a.nav-item .active, .nav-item:hover,.nav-item:focus{
     text-align: right;
     float: right;
     right: 72px;
+    width: 3em;
 }
 .p-footer .arrow-d .after{
     text-align: left;
     float: left;
     left: 72px;
+    width: 4em;
 }
 .p-footer .arrow-d:after,
 .p-footer .arrow-d:before{
@@ -1828,11 +1863,13 @@ div .zodiac-img{
 .zodiac-info-header:visited{
     cursor: pointer;
 }
-
-.zodiac-week header .p-title{
-    position: relative;
-    top: -4px;
+.page-zodiac header.p-title{
+    position: absolute;
+    top: 18%;
+    width: 20%;
+    margin-left: 20px;
 }
+
 .page-zodiac .p-title h3{
     font-size:2em;
     font-weight: 800;
@@ -1903,12 +1940,13 @@ div .zodiac-img{
 }
 div.zodiac-basic-info{
    text-align: left;
-    margin-left: 10px;
+
+    left: 70px;
     margin-top: -15px;
 }
 div.zodiac-basic-info h6{
     color: #fff;
-    font-size: 0.5em;
+    font-size: 0.75em;
     margin: 0px;
 }
 h3.zodiac-name span:first-child{
@@ -1935,13 +1973,14 @@ h4.zodiac-qfriend span:last-child{
 }
 .zodiac-info-header{
     position: fixed;
+    right: 50px;
+    width: 50%;
     top: 28%;
-    width: 70%;
-    margin-left: 25px;
+    margin-right: 50px;
 }
 .zodiac-info-header h5 span:nth-child(1),
 .zodiac-info-header h5 span:nth-child(3){
-    font-size: 0.5em;
+    font-size: 0.75em;
     color: rgba(255,255,255,0.5);
     margin-right: 0.5em;
 }
@@ -2007,7 +2046,7 @@ div .zodiac-conclude span:first-child{
     margin-right: 0.1em;
 }
 div .zodiac-conclude span:last-child{
-    font-size: 0.5em;
+    font-size: 0.75em;
     color: #F9FBE7;
 }
 

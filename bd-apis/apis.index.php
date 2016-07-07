@@ -159,7 +159,7 @@ $zodiacDateArr = array_flip($zodiacDateArr);
         <!-- BEGIN OF site cover -->
         <div class="page-cover" id="s-cover">
             <!-- Cover Background -->
-            <div class="cover-bg pos-abs full-size bg-img" data-image-src="img/bg-default.jpg"></div>
+            <div class="cover-bg pos-abs full-size bg-img" data-image-src="img/bg-slide1.jpg"></div>
 			
             <!-- BEGIN OF Slideshow Background -->
             <div class="cover-bg pos-abs full-size slide-show">
@@ -167,6 +167,9 @@ $zodiacDateArr = array_flip($zodiacDateArr);
 				<i class='img' data-src='./img/bg-slide2.jpg'></i>
 				<i class='img' data-src='./img/bg-slide3.jpg'></i>
 				<i class='img' data-src='./img/bg-slide4.jpg'></i>
+				<i class='img' data-src='./img/bg-slide5.jpg'></i>
+				<i class='img' data-src='./img/bg-slide6.jpg'></i>
+				<i class='img' data-src='./img/bg-slide7.jpg'></i>
 			</div>
             <!-- END OF Slideshow Background -->
             
@@ -305,7 +308,7 @@ $zodiacDateArr = array_flip($zodiacDateArr);
             <?php }?>
             <div class="weather-index">
                <?php foreach($data['today']['index'] as $ik => $iv):?>
-                <div class="weather-<?php echo $iv['code'];?>"><i data-toggle="popover" title="<?php echo $iv['name'];?>"  data-content="<?php echo $iv['details'] ?>" data-container="body" class="<?php echo getWeatherIndexIcon($iv['code']);?>"></i><small><?php echo $iv['index']; ?></small></div>
+                <div class="weather-<?php echo $iv['code'];?>"><i data-placement="bottom" data-toggle="popover" title="<?php echo $iv['name'];?>"  data-content="<?php echo $iv['details'] ?>" data-container="body" class="<?php echo getWeatherIndexIcon($iv['code']);?>"></i><small><?php echo $iv['index']; ?></small></div>
                 <?php endforeach;?>
            </div>    
 		  </div>
@@ -314,23 +317,23 @@ $zodiacDateArr = array_flip($zodiacDateArr);
 		<!-- End of weather pane -->
         
         <!-- BEGIN OF site main content content here -->
-        <main class="page-main" id="mainpage">             
-        <div class="modal fade" role="dialog" aria-labelledby="GridSlabel" id="page-search-result">
-          <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="GridSlabel">查询结果</h4>
-              </div>
-              <div class="loading"><i class="fa fa-spinner fa-pulse"></i></div>  
-              <div class="modal-body">
+        <main class="page-main" id="mainpage" >             
+            <div class="modal fade" role="dialog" aria-labelledby="GridSlabel" id="page-search-result">
+              <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="GridSlabel">查询结果</h4>
+                  </div>
+                  <div class="loading"><i class="fa fa-spinner fa-pulse"></i></div>  
+                  <div class="modal-body">
 
-              </div>
-              <!--<div class="modal-footer"></div>-->
-            </div><!-- /.modal-content -->
+                  </div>
+                  <!--<div class="modal-footer"></div>-->
+                </div><!-- /.modal-content -->
 
-          </div><!-- /.modal-dialog -->
-        </div><!-- /.modal -->
+              </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
             
 			<!-- Begin of express page -->
 			<div class="section page-express page page-cent" id="s-express">
@@ -386,8 +389,8 @@ $zodiacDateArr = array_flip($zodiacDateArr);
                 <footer class="p-footer p-scrolldown">
                     <a href="#illegal">
                         <div class="arrow-d">
-							<div class="before">Scroll</div>
-							<div class="after">Down</div>
+							<div class="before">车辆</div>
+							<div class="after">违章查询</div>
 							<div class="circle"><i class="ion ion-mouse"></i></div>
 						</div>
                     </a>                        
@@ -466,8 +469,8 @@ $zodiacDateArr = array_flip($zodiacDateArr);
                 <footer class="p-footer p-scrolldown">
                     <a href="#tickets">
                         <div class="arrow-d">
-							<div class="before">Scroll</div>
-							<div class="after">Down</div>
+							<div class="before">火车票</div>
+							<div class="after">查询</div>
 							<div class="circle"><i class="ion ion-mouse"></i></div>
 						</div>
                     </a>                        
@@ -523,8 +526,8 @@ $zodiacDateArr = array_flip($zodiacDateArr);
                 <footer class="p-footer p-scrolldown">
                     <a href="#plane-tickets">
                         <div class="arrow-d">
-							<div class="before">Contact</div>
-							<div class="after">Message</div>
+							<div class="before">航班</div>
+							<div class="after">查询</div>
 							<div class="circle"><i class="ion ion-mouse"></i></div>
 						</div>
                     </a>                        
@@ -573,8 +576,8 @@ $zodiacDateArr = array_flip($zodiacDateArr);
                 <footer class="p-footer p-scrolldown">
                     <a href="#zodiac">
                         <div class="arrow-d">
-							<div class="before">Scroll</div>
-							<div class="after">Down</div>
+							<div class="before">星座</div>
+							<div class="after">运势查询</div>
 							<div class="circle"><i class="ion ion-mouse"></i></div>
 						</div>
                     </a>                        
@@ -615,28 +618,6 @@ $zodiacDateArr = array_flip($zodiacDateArr);
                                     </div>
                                     
                                 </div>
-                                <!--<input type="text" placeholder="星座名" id="zodiac-input" data-provide="typeahead">
-                                <div class="daily-options">
-                                    <label for="radio" class="col-sm-4 control-label">日查询</label>
-                                    <div class="col-sm-8">
-                                        <div class="radio-inline"><label><input type="radio" name="daily-option" value="today" checked=""> 今日</label></div>
-                                        <div class="radio-inline"><label><input type="radio" name="daily-option"  value="tomorrow" > 明日</label></div>
-                                    </div>
-                                    
-                                </div>
-                                <div class="week-options">
-                                    <label for="radio" class="col-sm-4 control-label">周查询</label>
-                                    <div class="col-sm-8">
-                                        <div class="radio-inline"><label><input type="radio" checked="" name="week-option" value="week"> 本周</label></div>
-                                        <div class="radio-inline"><label><input type="radio"   name="week-option" value="nextweek"> 下周</label></div>
-                                    </div>
-                                </div>
-                                <div class="zodiac-options">
-                                    <div class="row"></div>
-                                    <div class="row"></div>
-                                    <div class="row"></div>
-                                    <div class="row"></div>
-                                </div>-->
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal" name="cancel">取消</button>
@@ -658,7 +639,7 @@ $zodiacDateArr = array_flip($zodiacDateArr);
                         if($zodiacToday['error_code'] == 0):
                     ?>
                      <div class="zodiac-info-header" >
-                        <div class="zodiac-img col-md-4 col-xs-4" >
+                        <div class="zodiac-img col-md-5 col-xs-5" >
                             <img class="img-rounded" data-src="holder.js/140x140" alt="zodiac" src="img/zodiac/Gemini.png" style="width:140px; height:140px;" >
                         </div>
                         <div class="zodiac-basic-info col-md-6 col-xs-6">
@@ -762,7 +743,7 @@ $zodiacDateArr = array_flip($zodiacDateArr);
                                 foreach($zodiacWeekArr as $k => $v){
                             ?>
                             <div class="row">
-                                <p data-container="body" data-toggle="popover"  data-content="<?php echo $zodiacWeek[$v]; ?>"><i class="<?php  echo $iconArr[$k];?>"></i><?php echo $zodiacWeek[$v];?></p>
+                                <p data-container="body" data-toggle="popover" data-placement="bottom" data-content="<?php echo $zodiacWeek[$v]; ?>"><i class="<?php  echo $iconArr[$k];?>"></i><?php echo $zodiacWeek[$v];?></p>
                             </div>
                             <?php }?>
                         </div>
@@ -809,7 +790,7 @@ $zodiacDateArr = array_flip($zodiacDateArr);
                                 foreach($zodiacMonArr as $k =>$v){
                             ?>
                             <div class="row">
-                                <p data-container="body" data-toggle="popover" data-content="<?php echo $zodiacMonth[$v];?>"><i class="<?php echo $iconArr[$k]; ?>"></i><?php echo $zodiacMonth[$v];?></p>
+                                <p data-container="body" data-placement="top" data-toggle="popover" data-content="<?php echo $zodiacMonth[$v];?>"><i class="<?php echo $iconArr[$k]; ?>"></i><?php echo $zodiacMonth[$v];?></p>
                             </div>
                             <?php }?>
                         </div>
@@ -853,7 +834,7 @@ $zodiacDateArr = array_flip($zodiacDateArr);
                             </div>
                             
                             <div class="row"  >
-                                <p data-container="body" data-toggle="popover" data-content="<?php echo $zodiacYear['mima']['text'][0];?>"><i class="ion-stats-bars"></i><span><?php echo $zodiacYear['mima']['info']; ?></span><span><?php echo $zodiacYear['mima']['text'][0];?></span></p>
+                                <p data-container="body" data-placement="top" data-toggle="popover"  data-content="<?php echo $zodiacYear['mima']['text'][0];?>"><i class="ion-stats-bars"></i><span><?php echo $zodiacYear['mima']['info']; ?></span><span><?php echo $zodiacYear['mima']['text'][0];?></span></p>
                             </div>
                             <?php 
                                 $zodiacYearArr = array('career','love','health','finance');
@@ -861,7 +842,7 @@ $zodiacDateArr = array_flip($zodiacDateArr);
                                 foreach($zodiacYearArr as $k => $v){
                             ?>
                             <div class="row">
-                                <p data-container="body" data-toggle="popover" data-content="<?php echo $zodiacYear[$v][0];?>"><i class="<?php echo $iconArr[$k];?>"></i><?php echo $zodiacYear[$v][0];?></p>
+                                <p data-container="body" data-placement="top" data-toggle="popover" data-content="<?php echo $zodiacYear[$v][0];?>"><i class="<?php echo $iconArr[$k];?>"></i><?php echo $zodiacYear[$v][0];?></p>
                             </div>
                             <?php }?>
                             

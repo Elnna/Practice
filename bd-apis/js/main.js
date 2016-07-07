@@ -26,29 +26,6 @@ $(window).load(function(){
 
 
 
-/* 1. Clock attribute */
-
-/*
-var dateReadableText = 'Upcoming date';
-    if($('.site-config').attr('data-date-readable') && ($('.site-config').attr('data-date-readable') != '')){
-        $('.timeout-day').text('');
-        dateReadableText = $('.site-config').attr('data-date-readable');        
-        $('.timeout-day').text(dateReadableText);
-    }
-$('.clock-countdown').downCount({
-    date: $('.site-config').attr('data-date'),
-    offset: +10
-}, function () {
-    //callback here if finished
-    //alert('YES, done!');
-    var zerodayText = 'An upcoming date';
-    if($('.site-config').attr('data-zeroday-text') && ($('.site-config').attr('data-zeroday-text') != '')){
-        $('.timeout-day').text('');
-        zerodayText = $('.site-config').attr('data-zeroday-text'); 
-    }
-    $('.timeout-day').text(zerodayText);
-});
-*/
 
 
 /* 2. Background for page / section */
@@ -80,7 +57,17 @@ var imageList = $('.slide-show .img');
 var imageSlides = [];
 for (var i = 0; i < imageList.length; i++) {
 	var src = imageList[i].getAttribute('data-src');
-	imageSlides.push({src: src});
+    if(i==2){
+        var transition = 'swirlLeft2';
+        imageSlides.push({src: src,transition:transition});
+    }else if(i== 3){
+        var transition = 'swirlRight2';
+        imageSlides.push({src: src,transition:transition});
+    }else{
+        
+        imageSlides.push({src: src});
+    }
+    
 }
 
 
@@ -130,11 +117,13 @@ $(document).ready(function($) {
 	
 	/* Init Slidesow background */
 	 $('.slide-show').vegas({
-        delay: 5000,
+        transitionDuration: 4000,
+        delay: 10000,
+//        delay: 5000,
         shuffle: true,
         slides: imageSlides,
     	//transition: [ 'zoomOut', 'burn' ],
-		animation: [ 'kenburnsUp', 'kenburnsDown', 'kenburnsLeft', 'kenburnsRight' ]
+		animation: [ 'kenburnsUp', 'kenburnsDown', 'kenburns','random','kenburnsLeft', 'kenburnsRight','kenburnsUp']
     });
 	
 	/* Init video background */
@@ -266,9 +255,16 @@ $(document).ready(function($) {
         changeWeather(city);
 
     });
+    $('#page-search-result').on('shown.bs.modal',function(e){
+        $(this).on('scroll',function(e2){
+            console.log("stop stopPropagation");
+            e2.stopPropagation(); 
+        });
+        
+    });
     $("[data-toggle=popover]").popover({
         trigger:'manual',
-        placement : 'bottom', //placement of the popover. also can use top, bottom, left or right
+//        placement : 'bottom', //placement of the popover. also can use top, bottom, left or right
         animation: false
     }).on("mouseenter", function () {
         var _this = this;
@@ -416,9 +412,8 @@ $(document).ready(function($) {
                 dataType: "json",
 //                    async:false, 
                 success: function(data){
-                    console.log("url",url);
-                    console.log("get express com success",data);
-//                        var comList = getExpressCom();
+                    /*console.log("url",url);
+                    console.log("get express com success",data);*/
                     expComList = data;
                     makeComHtml(expComList);
 
@@ -691,18 +686,6 @@ $(document).ready(function($) {
     
 });
 
-
-/*var pickDate = function(){
-     $('#ss-datepicker,#ts-datepicker').datepicker({
-        autoclose: true,//选中之后自动隐藏日期选择框
-        clearBtn: true,//清除按钮
-        format: "yyyy-mm-dd",
-        startDate:'now',
-        endDate:'+2m',
-        todayHighlight:true,
-        orientation:'bottom right',
-    });
-}*/
 /*page illegal*/
 /**
 * 将JSON内容转为数据，并返回
@@ -792,8 +775,8 @@ var cityMakeHtml = function(i1,i2){
    
     var ele1 = carManager.result.data[i1];
     var ele2 = ele1.list[i2];
-    console.log("city ele1",ele1);
-    console.log("city ele2",ele2);
+    /*console.log("city ele1",ele1);
+    console.log("city ele2",ele2);*/
     
     if(ele1.carorg == ''|| ele2.carorg !=''){
         if(ele1.carorg == ''&& ele2.carorg ==''){
@@ -806,7 +789,7 @@ var cityMakeHtml = function(i1,i2){
         
         
     }
-//    console.log("city debug",$('#car-lsnum [value='+ele2.lsnum+']'));
+   /* console.log("city debug",$('#car-lsnum [value='+ele2.lsnum+']'));*/
     $('#car-lsnum [value='+ele2.lsnum+']').attr('selected','selected');
     $('#car-city [value='+ele2.city+']').attr('selected','selected');
     $('#car-lsprefix [value='+ele2.lsprefix+']').attr('selected','selected');
@@ -934,7 +917,7 @@ var makeComHtml = function(expCom){
         var comData = expCom.result;
         var html = '<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">';
         for(var i=0; i< comData.length;i++){
-            html += '<div class="panel panel-default"><div class="panel-heading" role="tab" id="heading-'+(i+1)+'"><h4 class="panel-title"><a '+(i==0?'': 'class="collapsed"')+' role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-'+(i+1)+'" aria-expanded="true" aria-controls="collapse-'+(i+1)+'">'+comData[i].name+'</a></h4></div><div id="collapse-'+(i+1)+'" class="panel-collapse collapse'+(i==0?' in':'')+'" role="tabpanel" aria-labelledby="heading-'+(i+1)+'"><div class="panel-body"><address><abbr title="快递公司编号"><i class="ion-ios-pricetag-outline"></i>:</abbr>'+ comData[i].type +'<br><abbr title="固定电话"><i class="ion-android-call"></i>:</abbr>'+comData[i].number+'<br><abbt title="移动电话"><i class="ion-iphone"></i>:</abbr>'+ comData[i].tel +'</address></div></div></div>';
+            html += '<div class="panel panel-default"><div class="panel-heading" role="tab" id="heading-'+(i+1)+'"><h4 class="panel-title"><a '+(i==0?'': 'class="collapsed"')+' role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-'+(i+1)+'" aria-expanded="true" aria-controls="collapse-'+(i+1)+'">'+comData[i].name+'</a></h4></div><div id="collapse-'+(i+1)+'" class="panel-collapse collapse'+(i==0?' in':'')+'" role="tabpanel" aria-labelledby="heading-'+(i+1)+'"><div class="panel-body"><address><abbr title="快递公司编号"><i  class="ion-ios-pricetag-outline"></i>公司编号:</abbr>'+ comData[i].type +'<br><abbr title="固定电话"><i class="ion-android-call"></i>固定电话:</abbr>' + comData[i].number+'<br><abbr title="移动电话" ><i class="ion-iphone"></i>移动电话:</abbr>'+ comData[i].tel +'</address></div></div></div>';
         }
         html +='</div>';
 //                console.log("html",html);

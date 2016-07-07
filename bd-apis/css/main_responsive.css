@@ -5,6 +5,12 @@ Date:2016-6-15 ~ 2016-7-6
 
 
 /** CSS-AddOn for Large screen First responsiveness approch */
+@media (min-width : 1240px){
+    .weather-index{
+        width: inherit;
+/*        width: 60%;*/
+    }
+}
 
 /* Screen small than 1024px */
 @media (max-width : 1024px){
@@ -12,9 +18,10 @@ Date:2016-6-15 ~ 2016-7-6
         font-size: 1em;
         
     }
-    /*.weather-index{
-        width: 60%;
-    }*/
+    .weather-index{
+        width: 70%;
+        margin-right: 40px;
+    }
     .weather-type p {
         font-size: 0.75em;
     }
@@ -76,6 +83,7 @@ Date:2016-6-15 ~ 2016-7-6
     .header-top{
         display: none;
     }
+    
     .page-main {
         position: absolute;
         left: 56px;
@@ -84,6 +92,15 @@ Date:2016-6-15 ~ 2016-7-6
         /* margin-right: 50px; */
         width: 100%;
         height: 100%;
+    }
+    img.img-rounded{
+        width: 120px;
+        height: 120px;
+    }
+    .zodiac-info-header{
+        width: 100%;
+        left: 120px;
+        right: 0;
     }
     .dl-horizontal dt {
         float: left;
