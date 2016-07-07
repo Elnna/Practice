@@ -329,7 +329,7 @@ $zodiacDateArr = array_flip($zodiacDateArr);
                   <div class="modal-body">
 
                   </div>
-                  <!--<div class="modal-footer"></div>-->
+                  <div class="modal-footer"></div>
                 </div><!-- /.modal-content -->
 
               </div><!-- /.modal-dialog -->
@@ -868,9 +868,9 @@ $zodiacDateArr = array_flip($zodiacDateArr);
 		<!-- Begin of site footer -->
 		<footer class="page-footer">
 			<div>
-				<a href="http://www.facebook.com/highhay" target="_blank"><i class="ion icon ion-social-facebook"></i></a>
-				<a href="http://www.instagram.com/miradontsoa" target="_blank"><i class="ion icon ion-social-instagram"></i></a>
-				<a href="http://twitter.com/miradontsoa" target="_blank"><i class="ion icon ion-social-twitter"></i></a>
+				<a href="http://www.facebook.com/100004661118364" target="_blank"><i class="ion icon ion-social-facebook"></i></a>
+				<a href="http://weibo.com/u/2829395724" target="_blank"><i class="fa fa-weibo"></i></a>
+				<a href="https://twitter.com/GrahamFlyer" target="_blank"><i class="ion icon ion-social-twitter"></i></a>
 			</div>
 		</footer>
 		<!-- End of site footer -->

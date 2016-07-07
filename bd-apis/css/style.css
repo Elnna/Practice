@@ -1529,6 +1529,7 @@ small.airport-detial{
     font-size: 1.5em;
     font-weight: 700;
     margin: 0 0 0.5em;
+    color: #fff;
 }
 .p-weather-date h6 span{
     color: rgba(255, 255, 255, 0.47);
@@ -1547,6 +1548,7 @@ small.airport-detial{
     font-size: 5em;
     font-weight: 700;
     text-align: center;
+    color: rgba(255, 255, 255, 0.47);
 }
 .weather-temp span{
     font-size: 6em;

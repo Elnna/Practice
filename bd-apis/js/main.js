@@ -255,13 +255,13 @@ $(document).ready(function($) {
         changeWeather(city);
 
     });
-    $('#page-search-result').on('shown.bs.modal',function(e){
+    /*$('#page-search-result').on('shown.bs.modal',function(e){
         $(this).on('scroll',function(e2){
             console.log("stop stopPropagation");
             e2.stopPropagation(); 
         });
         
-    });
+    });*/
     $("[data-toggle=popover]").popover({
         trigger:'manual',
 //        placement : 'bottom', //placement of the popover. also can use top, bottom, left or right
@@ -330,6 +330,7 @@ $(document).ready(function($) {
          }
      });
      $('#illegal-search-btn').on('click',function(){
+         console.log("submit illegal");
          var proValue = $('#car-province').val();
          var cityValue = $('#car-city').val();
          var lsprefixValue = $('#car-lsprefix').val();
@@ -362,7 +363,6 @@ $(document).ready(function($) {
                         method: "GET",  
                         headers: apikey, 
                         dataType: "json",
-    //                    async:false, 
                         success: function(data){
                             console.log("url",url);
                             console.log("get express com success",data);
@@ -410,7 +410,6 @@ $(document).ready(function($) {
                 method: "GET",  
                 headers: apikey, 
                 dataType: "json",
-//                    async:false, 
                 success: function(data){
                     /*console.log("url",url);
                     console.log("get express com success",data);*/
@@ -461,16 +460,19 @@ $(document).ready(function($) {
                        html +='</ul>';
         //               console.log(html);
                        
-                       $('#page-search-result .modal-body').html(html);
                        
-                       $('#page-search-result').modal('toggle');
+//                       $('#page-search-result').modal('toggle');
                         
 
                    }else{
-                        $('#page-search-result .modal-body').html('<div class="error-code">查询失败，请重试！</div>');
-                        $('#page-search-result').modal('toggle');
+                        var html = '<div class="error-code">查询失败，请重试！</div>';
+                        
                    }
+                   $('#page-search-result .modal-body').html(html);
+                   var modalFooter = $('#page-search-result .modal-footer');
+                   modalFooter = modalFooter.parent()[0]?modalFooter.parent()[0].removeChild(modalFooter[0]):'';
                    hideLoading();
+                   $('#page-search-result').modal('toggle');
                },
                error:function(data){
                     console.log("failed",data);
@@ -687,6 +689,36 @@ $(document).ready(function($) {
 });
 
 /*page illegal*/
+var makeIllegalHtml = function(illData,lsprefix,lsnum){
+    if(illData.status == '0'){
+        var illHtml = '<div class="panel-group" id="ill-accordion" role="tablist" aria-multiselectable="true">';
+        var totalSocre = 0;
+        var totalPrice = 0;
+        var modalHeader = '';
+//                if(illData.result.list.length !=0){
+            $.each(illData.result.list,function(index,ele){
+                totalSocre += parseInt(ele.score);
+                totalPrice += parseInt(ele.price);
+                illHtml += '<div class="panel panel-default"><div class="panel-heading" role="tab" id="illListheading-'+(index+1)+'"><h4 class="panel-title"><a ' + (index==0?'':'class="collapsed"') + 'role="button" data-toggle="collapse" data-parent="#ill-accordion" href="#illList-'+ (index+1) +'" aria-expanded="true" aria-controls="collapse-'+ (index+1) +'"><span>记<strong>' + ele.score + '</strong>分，罚款<strong>' + ele.price + '</strong>元</span><span>未处理</span></a></h4></div><div id="illList-' + (index+1) + '" class="panel-collapse collapse' +( index == 0 ? ' in' : '') + '" role="tabpanel" aria-labelledby="illListheading-' + (index+1) + '"><div class="panel-body"><p><strong>时间:</strong>' + ele.time + '</p><p><strong>地点:</strong>' + ele.address + '</p><p><strong>描述:</strong>' + ele.content + '</p></div></div></div>';
+            });
+//                }
+
+        illHtml += '</div>';
+        modalHeader = '<span><strong>'+ lsprefix+lsnum + '</strong></span><span>共计<strong>'+ illData.result.list.length +'</strong>次违章 计<strong>'+totalSocre+'</strong>分,</span><span>罚款:<strong>'+ totalPrice  +'</strong>元</span>';
+        
+        $('#page-search-result .modal-title').html(modalHeader);
+
+        console.log("illegal test1");
+
+    }else{
+        $('#page-search-result .modal-title').html('查询结果');
+        var illHtml = '<div class="error-code">查询失败</div>';
+//                
+        console.log("illegal test2");
+    }
+    $('#page-search-result .modal-body').html(illHtml);
+    $('#page-search-result').modal('toggle');
+}
 /**
 * 将JSON内容转为数据，并返回
 * @param string carorg [管局名称]
@@ -702,6 +734,7 @@ $(document).ready(function($) {
 var illegalList = function(carorg,lsprefix,lsnum,lstype,frameno,engineno){
     var url = 'http://apis.baidu.com/netpopo/illegal/illegal?carorg='+carorg+'&lsprefix='+lsprefix+'&lsnum='+lsnum+'&lstype='+lstype+'&frameno='+frameno+'&engineno='+ engineno;
     var apikey = {'apikey':'0a6c63dd26f6268752341ed2ef15dba6'};
+    
     if(illData == '' || lsnum != illData.result.lsnum){
         $.ajax({
             url:url, 
@@ -715,34 +748,8 @@ var illegalList = function(carorg,lsprefix,lsnum,lstype,frameno,engineno){
                 console.log("get car illegal list url",url);
                 illData = data;
                 console.log("illData",illData);
-                if(illData.status == '0'){
-                    var illHtml = '<div class="panel-group" id="ill-accordion" role="tablist" aria-multiselectable="true">';
-                    var totalSocre = 0;
-                    var totalPrice = 0;
-                    var modalHeader = '';
-    //                if(illData.result.list.length !=0){
-                        $.each(illData.result.list,function(index,ele){
-                            totalSocre += parseInt(ele.score);
-                            totalPrice += parseInt(ele.price);
-                            illHtml += '<div class="panel panel-default"><div class="panel-heading" role="tab" id="illListheading-'+(index+1)+'"><h4 class="panel-title"><a ' + (index==0?'':'class="collapsed"') + 'role="button" data-toggle="collapse" data-parent="#ill-accordion" href="#illList-'+ (index+1) +'" aria-expanded="true" aria-controls="collapse-'+ (index+1) +'"><span>记<strong>' + ele.score + '</strong>分，罚款<strong>' + ele.price + '</strong>元</span><span>未处理</span></a></h4></div><div id="illList-' + (index+1) + '" class="panel-collapse collapse' +( index == 0 ? ' in' : '') + '" role="tabpanel" aria-labelledby="illListheading-' + (index+1) + '"><div class="panel-body"><p><strong>时间:</strong>' + ele.time + '</p><p><strong>地点:</strong>' + ele.address + '</p><p><strong>描述:</strong>' + ele.content + '</p></div></div></div>';
-                        });
-    //                }
-
-                    illHtml += '</div>';
-                    modalHeader = '<span><strong>'+ lsprefix+lsnum + '</strong></span><span>共计<strong>'+ illData.result.list.length +'</strong>次违章 计<strong>'+totalSocre+'</strong>分,</span><span>罚款:<strong>'+ totalPrice  +'</strong>元</span>';
-                    $('#page-search-result .modal-body').html(illHtml);
-                    $('#page-search-result .modal-title').html(modalHeader);
-    //                $('#page-search-result').modal('toggle');
-
-                    console.log("illegal test1");
-                    
-                }else{
-                    $('.#page-search-result .modal-body').html('<div class="error-code">查询失败</div>');
-    //                $('#page-search-result').modal('toggle');
-                    console.log("illegal test2");
-                }
+                makeIllegalHtml(illData,lsprefix,lsnum);
                 hideLoading();
-                $('#page-search-result').modal('toggle');
 
             },
             error:function(data){
@@ -751,6 +758,8 @@ var illegalList = function(carorg,lsprefix,lsnum,lstype,frameno,engineno){
         });
     }else{
         setTimeout(1000);
+        makeIllegalHtml(illData,lsprefix,lsnum);
+        hideLoading();
     }
     
     
@@ -921,14 +930,18 @@ var makeComHtml = function(expCom){
         }
         html +='</div>';
 //                console.log("html",html);
-        $('#page-search-result .modal-body').html(html);
         
-        $('#page-search-result').modal('toggle');
     }
     else{
-        $('#page-search-result .modal-body').html('<div class="error-code">查询失败，请重试！</div>');
-        $('#page-search-result').modal('toggle');
+        var html = '<div class="error-code">查询失败，请重试！</div>';
+
+//        $('#page-search-result').modal('toggle');
     }
+    $('#page-search-result .modal-body').html(html);
+    $('#page-search-result .modal-title').html('查询结果');
+    var modalFooter = $('#page-search-result .modal-footer');
+    modalFooter = modalFooter.parent()[0]?modalFooter.parent()[0].removeChild(modalFooter[0]):'';
+    $('#page-search-result').modal('toggle');
     hideLoading();
 }
 /*var getExpressCom = function(){
@@ -1024,6 +1037,9 @@ var stationSearch = function(station){
         method: "GET",  
         headers: apikey, 
         dataType: "json",
+        beforeSend:function(data){
+          showLoading();  
+        },
         success: function(data){
             console.log("success",data);
             if(data.ret){
@@ -1032,26 +1048,11 @@ var stationSearch = function(station){
                 var ticketInfo = data.data.ticketInfo;
                
                 console.log("filters",filters);
-                /*
-                    <div class="input-group"> <span class="input-group-addon">Filter</span>
-
-    <input id="filter" type="text" class="form-control" placeholder="Type here...">
-</div>
-                */
+               
                 //搜索框
                 var html = '<div class="input-group"><span class="input-group-addon filter-btn">搜索</span><input id="filter" type="text" class="form-control" placeholder="请输入关键字进行搜索" ></div>';
-               /* var html = '<div class="form-inline"><div class="input-group"><div class="input-group-addon filter-btn" ><span >过滤</span></div><div class="input-group"><input id="filter" type="text" class="form-control" placeholder="自定义搜索" ></div>';
-                for(var x in filters){
-                    html += '<div class="form-group"><select class="form-control">';
-                   
-                    html += '<option>' + filtersName(x)+ '</option>';
-                    for(var i=0; i < filters[x].length;i++){
-                        html += '<option value="' + filters[x][i].value + '">'+ filters[x][i].name + '</option>';
-                    }
-                    html += '</select></div>';
-                }
-                html += '</div></div>';
-                */
+              
+               
                 //table
                 html += '<table class="table table-bordered table-hover"><thead><th>车次</th><th>站点</th><th>类型</th><th>出发站</th><th>终点站</th><th>城市</th><th>时间</th><th>座位信息</th></thead><tbody class="searchable">';
                 for(var x in trainInfo){
@@ -1065,14 +1066,21 @@ var stationSearch = function(station){
                     html += '</ul></td></tr>';
                 }
                 html += '</tbody></table>';
-                $('#page-search-result .modal-body').html(html);
                
+                
                 var html2 = '<address>站点:<strong>'+ data.data.city+'</strong><br>总计:<abbr>'+ data.data.count+'</abbr></address>';
+                 
                 $('#page-search-result .modal-footer').html(html2);
                 
             } else{
-                $('#page-search-result .modal-body').html('<div class="error-code">'+ data.errmsg +'</div>');
+                var html = '<div class="error-code">'+ data.errmsg +'</div>';
+                var modalFooter = $('#page-search-result .modal-footer');
+                modalFooter = modalFooter.parent()[0]?modalFooter.parent()[0].removeChild(modalFooter[0]):'';
+                
             }
+            hideLoading();
+            $('#page-search-result .modal-body').html(html);
+            $('#page-search-result .modal-title').html('查询结果');
             $('#page-search-result').modal('toggle');
             
         },
@@ -1093,6 +1101,9 @@ var tarinSearch = function(train,date,from,to){
         method: "GET",  
         headers: apikey, 
         dataType: "json",
+        beforeSend:function(data){
+             showLoading();
+        },
         success: function(data){
             console.log(data);
             if(data.ret){
@@ -1124,11 +1135,17 @@ var tarinSearch = function(train,date,from,to){
                 '+ start + '~' + end +   '<br>\
                 本趟行程' + data.data.extInfo.intervalMileage +  '公里,行驶' + data.data.extInfo.intervalTime + '<br>\
                 全程' + data.data.extInfo.totalMileage +  '公里,行驶' + data.data.extInfo.totalTime + '<br></address>'
-                $('#page-search-result .modal-body').html(html);
+                
+               
                 $('#page-search-result .modal-footer').html(html2);
             }else{
-                $('#page-search-result .modal-body').html('<div class="error-code">'+ data.errmsg +'</div>');
+                var html = '<div class="error-code">'+ data.errmsg +'</div>';
+                var modalFooter = $('#page-search-result .modal-footer');
+                modalFooter = modalFooter.parent()[0]?modalFooter.parent()[0].removeChild(modalFooter[0]):'';
             }
+            hideLoading();
+            $('#page-search-result .modal-body').html(html);
+            $('#page-search-result .modal-title').html('查询结果');
             $('#page-search-result').modal('toggle');
         },
         error:function(data){
@@ -1172,12 +1189,17 @@ var trainSSSearch = function(from,to,date){
                     }
                     html += '</tbody></table>';
                   
-                     $('#page-search-result .modal-body').html(html);
-                     $('#page-search-result .modal-footer').html('');
+                    
+                    
+                    
                 }else{
-                     $('#page-search-result .modal-body').html('<div class="error-code">'+ data.errmsg +'</div>');
-                     $('#page-search-result .modal-footer').html('');
+                    var html = '<div class="error-code">'+ data.errmsg +'</div>';
                 }
+                $('#page-search-result .modal-body').html(html);
+                $('#page-search-result .modal-title').html('查询结果');
+                var modalFooter = $('#page-search-result .modal-footer');
+                modalFooter = modalFooter.parent()[0]?modalFooter.parent()[0].removeChild(modalFooter[0]):'';
+
                 $('#page-search-result').modal('toggle');
             },
             error:function(data){
@@ -1220,12 +1242,18 @@ var getPlaneRoute = function(start,end,date){
                    routeHtml += '<div class="list-group-item"><div class="flight-num-com"><span id="flight-num">' + ele.FlightNum + '</span><span class="flight-company">' + ele.Airline + '</span></div><div class="start-airport">' + ele.DepCity + '<span>' + ele.DepTerminal + '</span>' + '</div><i class="ion-android-plane"></i><div class="arrive-airport">' + ele.ArrCity + '<span>' + ele.ArrTerminal + '</span></div><div class="take-off-time"><strong class="plan-time">计划'+ele.DepTime+'</strong><span class="actual-time">实际'+ ele.Dexpected +'</span></div><i class="ion-clock"></i><div class="arrive-time"><strong class="plan-time">计划' + ele.ArrTime + '</strong><span class="actual-time">实际' + ele.Aexpected + '</span></div><div class="plane-accuracy-rate">' + ele.OnTimeRate +'</div><div class="flying-date">'+ ele.FlightDate + '</div></div>';
                 });
                 routeHtml += '</div></div>';
-                $('#page-search-result .modal-body').html(routeHeader+routeHtml);
+                var routeFooter = '<address>航班总计:<strong>'+ routeData.length+'</strong></address>';
+                var html = routeHeader+routeHtml;
+                $('#page-search-result .modal-footer').html(routeFooter);
                 
             }else{
-                $('#page-search-result .modal-body').html('<div class="error_code">查询失败,请重试</div>');
+                var html = '<div class="error_code">查询失败,请重试</div>';
+                var modalFooter = $('#page-search-result .modal-footer');
+                modalFooter = modalFooter.parent()[0]?modalFooter.parent()[0].removeChild(modalFooter[0]):'';
+
             }
-            
+            $('#page-search-result .modal-body').html(html);
+            $('#page-search-result .modal-title').html('查询结果');
             $('#page-search-result').modal('toggle');
         },
         error:function(data){
@@ -1311,12 +1339,15 @@ var getAirportDetail = function(code){
                    
                 });
                 airportHtml +=  '</div>';
-                $('#page-search-result .modal-body').html(airportHtml);
+                
                 
             }else{
-                $('#page-search-result .modal-body').html('<div class="error-code">机场攻略查询失败，请重试</div>');
+                var airportHtml = '<div class="error-code">机场攻略查询失败，请重试</div>';
             }
-//            $('#page-search-result').modal('toggle');
+            $('#page-search-result .modal-body').html(airportHtml);
+            var modalFooter = $('#page-search-result .modal-footer');
+            modalFooter = modalFooter.parent()[0]?modalFooter.parent()[0].removeChild(modalFooter[0]):'';
+            $('#page-search-result .modal-title').html('查询结果');
         },
         error:function(data){
             console.log("failed",data);
@@ -1380,6 +1411,9 @@ var getPlaneFlight = function(flight,date){
                 flightHtml = '<div class="error-code">航班查询失败，'+ data.reason +'</div>'
             }
             hideLoading();
+             $('#page-search-result .modal-title').html("查询结果");
+            var modalFooter = $('#page-search-result .modal-footer');
+            modalFooter = modalFooter.parent()[0]?modalFooter.parent()[0].removeChild(modalFooter[0]):'';
             $('#page-search-result .modal-body').html(flightHtml);
             $('#page-search-result').modal('toggle');
         },
