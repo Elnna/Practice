@@ -9,11 +9,9 @@ $weather = new weather($appkey);
 
 //根据IP查询天气
 
-//$ipWeatherResult = $weather->getWeatherByIP(getIp());
-$ip = '218.28.144.40';
-$ipWeatherResult = $weather->getWeatherByIP($ip);
+$ipWeatherResult = $weather->getWeatherByIP(getIp());
+//$ipWeatherResult = $weather->getWeatherByIP($ip);
 
-var_dump($ipWeatherResult);
 ?>
 <!DOCTYPE html>
 <html lang="en" class="no-js">
@@ -76,9 +74,7 @@ var_dump($ipWeatherResult);
                     <span>当前湿度<?php echo $data['sk']['humidity']; ?></span> <span><?php echo $data['sk']['wind_direction']; ?></span><span>强度<?php echo $data['sk']['wind_strength'];?></span>
                 </div>
 				<div class="slide__element slide__element--temp"><?php echo $data['sk']['temp'] . '°'?><small>C</small></div>
-                <div class="slide__element slide__element--advice">
-                    <p><span>出行建议</span><span><?php echo $data['today']['dressing_advice']; ?></span></p>
-                </div>
+                
 			</div>
             
             <!-- 未来几天天气 -->

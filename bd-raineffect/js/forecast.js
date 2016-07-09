@@ -11,12 +11,6 @@ $( document ).ready(function() {
         var newHeader1Node = document.createElement('div');
         newHeader1Node.className = 'input-city';
         
-      /*  var newFormNode = document.createElement("form");
-        newFormNode.setAttribute('action','../weather.php');
-        newFormNode.setAttribute('method','post');
-        
-        */
-        
         var newInputNode = document.createElement('input');
         newInputNode.className = 'get-city';
         
@@ -224,18 +218,7 @@ $( document ).ready(function() {
   }
  
      
-  /*  $.ajax({
-       url:url, 
-       method: "GET",  
-       headers: headers, 
-       dataType: "json",
-       success: function(data){
-          var info=data.retData;   
-          $.each(info,function(key,value){
-              $("div").append(key+":"+value+"<br/>"); 
-           });
-        }
- })*/
+ 
     
     /*
     $.ajax({
