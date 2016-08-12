@@ -10,3 +10,15 @@ NOTIC: [2048] Declaration of Common\Model\NewsModel::select() should be compatib
 NOTIC: [2048] Declaration of Common\Model\NewsModel::find() should be compatible with Think\Model::find($options = Array) /var/www/clients/client1/web6/web/singwa/Application/Common/Model/NewsModel.class.php 第 8 行.
 ERR: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: NO)
 
+[ 2016-08-12T11:04:20+08:00 ] 66.249.79.130 /singwa/index.php
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000038s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001212s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.008976s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.009059s ]
+NOTIC: [2048] Declaration of Home\Controller\CommonController::error() should be compatible with Think\Controller::error($message = '', $jumpUrl = '', $ajax = false) /var/www/clients/client1/web6/web/singwa/Application/Home/Controller/CommonController.class.php 第 23 行.
+NOTIC: [2048] Declaration of Common\Model\NewsModel::select() should be compatible with Think\Model::select($options = Array) /var/www/clients/client1/web6/web/singwa/Application/Common/Model/NewsModel.class.php 第 8 行.
+NOTIC: [2048] Declaration of Common\Model\NewsModel::find() should be compatible with Think\Model::find($options = Array) /var/www/clients/client1/web6/web/singwa/Application/Common/Model/NewsModel.class.php 第 8 行.
+ERR: SQLSTATE[42000] [1044] Access denied for user 'c1voguem'@'localhost' to database 'imooc_singcms'
+
