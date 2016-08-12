@@ -13,28 +13,6 @@ $ipWeatherResult = $convenienceInfo->getWeather($city);
 $zodiacType = array('today','tomorrow','week','nextweek','month','year');
 $zodiacName = '双子座';
 
-//火车票查询：
-//getTrainDetail($train,$from,$to,$date)
-$train = 'G101';
-$from = '北京南';
-$to = '上海虹桥';
-$trainDate = '2016-07-01';
-$station = '北京';
-/*
-$trainDetail = $convenienceInfo->getTrainDetail($train,$from,$to,$trainDate);
-$stationSearch = $convenienceInfo->getStationSearch($station);
-$ssSearch = $convenienceInfo->getS2SSearch($from,$to,$trainDate);
-$trainSuggest = $convenienceInfo->getSuggestSearch($station);
-*/
-
-//快递
-//apikey;
-/*$expressApiKey = '40bf371ed022440d';
-$expressCom = 'yunda';
-$expressNu = '1900171113992';*/
-/*
-$expressResult = $convenienceInfo->getExpress($expressApiKey,$expressCom,$expressNu);
-*/
 $expKey = '25b8f22d3ca6bdc864a1b5e7984f0395';
 $convenienceInfo->setAppKey($expKey);//set key;
 $expressResult = $convenienceInfo->getExpressCom();
@@ -145,11 +123,11 @@ $zodiacDateArr = array_flip($zodiacDateArr);
 					</a>
 					<span class="title">星座运势</span>
 				</li>
-				<!--<li data-menuanchor="contact">
-					<a href="#contact"><i class="icon ion ion-email"></i>
+				<li data-menuanchor="about-us">
+					<a href="#about-us"><i class="icon ion ion-ios-information"></i>
 					</a>
-					<span class="title">Contact</span>
-				</li>-->
+					<span class="title">关于我们</span>
+				</li>
 			</ul>
 		</nav>
         <!-- END OF Quick nav icons at left -->
@@ -337,23 +315,6 @@ $zodiacDateArr = array_flip($zodiacDateArr);
             
 			<!-- Begin of express page -->
 			<div class="section page-express page page-cent" id="s-express">
-				
-				<div class="modal fade" role="dialog" aria-labelledby="gridSysModLab" id="expressSearch">
-                  <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="gridSysModLab">查询结果</h4>
-                      </div>
-
-                      <div class="modal-body">
-
-                      </div>
-                      <div class="modal-footer"></div>
-                    </div><!-- /.modal-content -->
-
-                  </div><!-- /.modal-dialog -->
-                </div><!-- /.modal -->
 
 				<section class="content">
                     <header class="p-title">
@@ -861,6 +822,31 @@ $zodiacDateArr = array_flip($zodiacDateArr);
             </div>
             <!-- End of zodiac page  -->   
             
+            <!-- Begin of about us page -->
+            <div class="section page-about-us page page-cent"  id="s-about-us">
+                <section class="content">
+                    <header class="p-title">
+                        <h3>关于我们 <i class="ion ion-ios-information"></i></h3> 
+                    </header>
+                     <article class="text">
+                        <address>
+                            <attr>主要业务：</attr>    承接网站建设、推广、运营<br>
+                            <attr>作者：</attr>    Graham<br>
+                            <attr>邮箱：</attr>    grahamhuang@126.com<br>
+                        </address>
+                    </article>
+                </section>
+                <footer class="p-footer p-scrolldown">
+                    <a href="#about-us">
+                        <div class="arrow-d">
+							<div class="before">About</div>
+							<div class="after">Lorem</div>
+							<div class="circle"><i class="ion ion-mouse"></i></div>
+						</div>
+                    </a>                        
+                </footer>
+            </div>
+            <!-- End of about us page -->
         </main>
 
         <!-- END OF site main content content here -->  

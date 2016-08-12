@@ -143,7 +143,7 @@ $(document).ready(function($) {
 	/** Init fullpage.js */
     $('#mainpage').fullpage({
 		menu: '#qmenu',
-		anchors: ['express', 'illegal', 'tickets','plane-tickets','zodiac'],
+		anchors: ['express', 'illegal', 'tickets','plane-tickets','zodiac','about-us'],
 //        verticalCentered: false,
 //        resize : false,
 //		responsive: 900,
