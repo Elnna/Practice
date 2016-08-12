@@ -1,0 +1,12 @@
+[ 2016-07-29T15:24:01+08:00 ] 172.16.110.0 /index.php&a=error
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000046s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003832s ]
+ERR: 无法加载模块:&a=error
+
+[ 2016-07-29T15:32:04+08:00 ] 172.16.110.0 /index.php&a=error
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000061s ]
+INFO: [ app_init ] --END-- [ RunTime:0.004891s ]
+ERR: 无法加载模块:&a=error
+

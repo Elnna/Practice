@@ -1,0 +1,12 @@
+[ 2016-07-26T09:12:47+08:00 ] 172.16.110.0 /admin.phpc=Menu&a=index&p=2
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000064s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003057s ]
+ERR: 无法加载模块:C=Menu&a=index&p=2
+
+[ 2016-07-26T09:12:56+08:00 ] 172.16.110.0 /admin.php&c=Menu&a=index&p=2
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000046s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002853s ]
+ERR: 无法加载模块:&c=Menu&a=index&p=2
+
