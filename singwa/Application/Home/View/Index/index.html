@@ -6,13 +6,13 @@
         <div class="banner">
           <div class="banner-left">
               <div class="banner-info"><span>阅读数</span><i class="news_count node-{$res['topPic'][0]['news_id']}" news_id="{$res['topPic'][0]['news_id']}">{$res['topPic'][0]['count']}</i></div>
-            <a  target='_blank' href="/index.php?c=detail&id={$res['topPic'][0]['news_id']}"><img width="670" height="360" src="{$res['topPic'][0]['thumb']}" alt="{$res['topPic'][0]['title']}"></a>
+            <a  target='_blank' href="/singwa/index.php?c=detail&id={$res['topPic'][0]['news_id']}"><img width="670" height="360" src="/singwa/{$res['topPic'][0]['thumb']}" alt="{$res['topPic'][0]['title']}"></a>
           </div>
           <div class="banner-right">
             <ul>
                 <volist name="res['topSmallPic']" id="smallPic">
                     <li>
-                        <a target="_blank" href="/index.php?c=detail&id={$smallPic.news_id}"><img width="150" height="113" src="{$smallPic.thumb}" alt="{$smallPic.title}"></a>
+                        <a target="_blank" href="/singwa/index.php?c=detail&id={$smallPic.news_id}"><img width="150" height="113" src="/singwa/{$smallPic.thumb}" alt="{$smallPic.title}"></a>
                     </li> 
                 </volist>
             </ul>
@@ -23,7 +23,7 @@
                 <dl>
                     <dt>{$list.title}</dt>
                     <dd class="news-img">
-                      <a target="_blank" href="/index.php?c=detail&id={$list.news_id}"><img width="200" height="120" src="{$list.thumb}" alt=""></a>
+                      <a target="_blank" href="/singwa/index.php?c=detail&id={$list.news_id}"><img width="200" height="120" src="/singwa/{$list.thumb}" alt=""></a>
                     </dd>
                     <dd class="news-intro">
                       {$list.description}
@@ -41,6 +41,6 @@
   </div>
 </section>
 </body>
-<script src="/Public/js/jquery.js"></script>
-<script src='/Public/js/count.js'></script>
+<script src="__PUBLIC__/js/jquery.js"></script>
+<script src='__PUBLIC__/js/count.js'></script>
 </html>

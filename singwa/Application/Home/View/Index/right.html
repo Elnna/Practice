@@ -9,7 +9,7 @@
                   
               
                 <li class="num{$k} curr">
-                  <a href="/index.php?c=detail&id={$rnew.news_id}">{$rnew.small_title}</a>
+                  <a href="/singwa/index.php?c=detail&id={$rnew.news_id}">{$rnew.small_title}</a>
                   <if condition="$k eq 1">
                     <div class="intro">
                         {$rnew.description}
@@ -23,7 +23,7 @@
         <volist name="res['ads']" id="ad" key="k">
             <div class="right-hot">
             
-            <img src="{$ad.thumb}" alt="{$ad.name}">
+            <img src="/singwa/{$ad.thumb}" alt="{$ad.name}">
             </div>
         </volist>
       </div>

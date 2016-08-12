@@ -8,7 +8,7 @@ class IndexController extends CommonController {
     
     public function index(){
         $news = D('News')->maxcount(); //文章最大阅读量
-        print_r($news);
+//        print_r($news);
         $conds = array('status' => 1);
         $newscount = D('News')->getNewsCount($conds);//文章数量
         $positioncount  = D('Position')->getPositionsCount($conds);
