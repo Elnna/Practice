@@ -1,103 +1,788 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>Graham Huang Project</title>
-        <link rel="stylesheet" type="text/css" href="myvoguemproject/css/bootstrap.css">
-        <link rel="stylesheet" type="text/css" href="myvoguemproject/css/styles.css">
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
 
-    </head>
-    <body>
-        <div class="navbar-wrapper">
-            <div class="navbar navbar-inverse navbar-fixed-top">
-                <div class="container">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapsed" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" href="/">Graham</a>
-                    </div>
-                    <div id="navbar" class="collapse navbar-collapse">
-                       <ul class="nav navbar-nav">
-                           <li class="active"><a href="#">Home</a></li>
-                           <li class="dropdown">
-                               <a id="drupal-dw" class="dropdown-toggle" data-toggle="dropdown" href="#">Drupal</a>
-                               <ul class="dropdown-menu" role="menu" aria-labelledby="drupal-dw">
-                                   <li role="presentation">
-                                       <a role="menuitem" tabindex="-1" target="_blank" href="#">Vogue Mall</a></li>
-                                   <li role="presentation">
-                                       <a role="menuitem" tabindex="-1" href="#">Locus Club</a></li>
-                                   <li role="presentation">
-                                       <a role="menuitem" tabindex="-1" href="#">CJ Home </a></li>
-                               </ul>
-                               
-                           </li>
-                           <li class="dropdown">
-                               <a id="drupal-tp" class="dropdown-toggle" data-toggle="dropdown" href="#">ThinkPHP</a>
-                               <ul class="dropdown-menu" role="menu" aria-labelledby="drupal-tp">
-                                   <li role="presentation">
-                                       <a role="menuitem" tabindex="-1" target="_blank" href="singwa/index.php">资讯网</a></li>
-                                   
-                               </ul>
-                               
-                           </li>
-                           <li class="dropdown">
-                               <a id="other-dw" class="dropdown-toggle" data-toggle="dropdown" href="#">Other</a>
-                               <ul class="dropdown-menu" role="menu" aria-labelledby="other-dw">
-                                   <li role="presentation">
-                                       <a role="menuitem" tabindex="-1" target="_blank" href="myvoguemproject/getLocation.php"> 位置</a></li>
-                                   <li role="presentation">
-                                       <a role="menuitem" tabindex="-1" target="_blank" href="bd-apis/apis.index.php"> 便民窗口</a></li>
-                                   
-                               </ul>
-                               
-                           </li>
+	<title>Home</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+<!--    <link rel="shortcut icon"  href="vgm/img/icon/favicon.ico" type="image/x-icon">-->
+    <link rel="shortcut icon"  href="vgm/img/logo/big_logo.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="vgm/css/bootstrap.min.css">
+    <link rel="stylesheet" href="vgm/css/share.min.css">
+    <link rel="stylesheet" href="vgm/css/main.css" id="color-switcher-link">
+    <link rel="stylesheet" href="vgm/css/animations.css">
+    <link rel="stylesheet" href="vgm/css/fonts.css">
+    
+<!--	<script src="vgm/js/vendor/modernizr-2.6.2.min.js"></script>-->
+</head>
+<body><div id="top"></div>
+<!--[if lt IE 7]>
+<p class="chromeframe">你的浏览器有点 <strong>老旧</strong> 呀. 请 <a href="http://browsehappy.com/">更新你的浏览器</a> or <a href="http://www.google.com/chromeframe/?redirect=true">或者激活谷歌浏览器框架</a> 提高你的体验.</p>
+<![endif]-->
+
+<div id="box_wrapper">
+
+<section id="land" class="parallax dark_section table_section text-center">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 block">
+				<p><img  src="vgm/img/logo/big_logo.png" alt=""></p>
+				<ul class="bxslider">
+					<h3>你是谁</h3>
+					<h3>我是沃格</h3>
+					<h3>你想认识我吗</h3>
+				</ul>
+				<p><a href="#features" class="theme_button"><i class=" rt-icon-star-outline"></i> 点我</a></p>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+<header id="header">
+	<div class="container"><div class="row">
+
+		<a class="navbar-brand" href="./index.html"><img src="vgm/img/logo/logo.png" alt=""></a>
+
+		<div class="col-sm-12 mainmenu_wrap">
+            <div class="main-menu-icon visible-xs">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+		    <ul id="mainmenu" class="nav menu sf-menu responsive-menu superfish">
+                <li class="">
+                    <a href="#top">首页</a>
+                </li>
+                <li class="">
+                    <a href="#features">关于我们</a>
+                </li>
+
+                
+                <li class="dropdown">
+                    <a href="#belowcontent">公司宗旨</a>
+                </li>
 <!--
-                           <li class="dropdown">
-                               <a id="other-dw" class="dropdown-toggle" data-toggle="dropdown" href="#">Other</a>
-                               <ul class="dropdown-menu" role="menu" aria-labelledby="other-dw">
-                                   <li role="presentation">
-                                       <a role="menuitem" tabindex="-1" href="#">XML TABLE</a></li>
-                               </ul>
-                           </li>
+                <li class="">
+                    <a href="#clients">客户</a>
+                </li>
 -->
-                           <li><a href="#">Contact</a></li>
-                           <li><a href="#">About</a></li>
-<!--                           <li><a href="html/practice.php">Practice</a></li>-->
-                       </ul> 
+                <li class="">
+                    <a href="#portfolio">案例</a>
+                </li>
+                
+                <li class="">
+                    <a href="#footer">联系我们</a>
+                </li>
+		</ul>
+	</div>
+
+</div></div>
+</header>
+
+
+<section id="features" class="grey_section">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h2 class="section_header">我是谁 & 做什么</h2>
+				
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="block col-sm-4 to_animate">
+				<div class="arctcle">
+					<div class="single_teaser icons style1">
+						<div class="icons_introimg image-icon">
+							<i class="rt-icon-lightbulb"></i>
+						</div>
+						<h3>分析</h3>
+						<p class="introtext">立足市场环境，分析行业最新状况整理最新资料与数据</p>
+						
+					</div>
+				</div>
+			</div>
+
+			<div class="block col-sm-4 to_animate">
+				<div class="arctcle">
+					<div class="single_teaser icons style1">
+						<div class="icons_introimg image-icon">
+							<i class="rt-icon-cog"></i>
+						</div>
+						<h3>管理</h3>
+						<p class="introtext">根据分析结果，提出有效可行的管理方案，并协助实施</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="block col-sm-4 to_animate">
+				<div class="arctcle">
+					<div class="single_teaser icons style1">
+						<div class="icons_introimg image-icon">
+							<i class="rt-icon-share"></i>
+						</div>
+						<h3>营销&推广</h3>
+						<p class="introtext">互联网时代，内容走心才是真正的营销，卓有成效才是好的推广</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-12">
+				<h3 class="text-center">技能</h3>
+			</div>
+		</div>
+		<div class="row text-center">
+			<div class="col-sm-3 to_animate">
+				<span data-percent="78" class="chart">
+					<span class="percent"></span>
+				</span>
+				<h4 class="text-center">网站设计</h4>
+			</div>
+			<div class="col-sm-3 to_animate">
+				<span data-percent="89" class="chart">
+					<span class="percent"></span>
+				</span>
+				<h4 class="text-center">市场分析</h4>
+			</div>
+			<div class="col-sm-3 to_animate">
+				<span data-percent="98" class="chart">
+					<span class="percent"></span>
+				</span>
+				<h4 class="text-center">营销&推广</h4>
+			</div>
+			<div class="col-sm-3 to_animate">
+				<span data-percent="86" class="chart">
+					<span class="percent"></span>
+				</span>
+				<h4 class="text-center">项目管理</h4>
+			</div>
+
+		</div>
+	</div>
+</section>
+
+
+
+<section id="middle" class="table_section lightgrey_section">
+	<div class="container"><div class="row">
+		<div class="col-sm-12 text-center">
+			<h2 class="text-center section_header">我是谁</h2>
+			<h3>你真的了解我吗</h3>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-6 to_animate">
+			<p class="text-center">
+				<img src="vgm/example/team_man6.jpg" alt="" class="img-rounded">
+			</p>
+		</div>
+		<div class="col-sm-6 to_animate">
+			<h3>首先</h3>
+			<p>沃格咨询有限公司（简称沃格）成立于2016年，总部在深圳南山区，是一家新兴公司，以科技咨询服务为主，为客户提出的问题给出相应的解决方案，并协助实施。</p>
+
+            <h4>主营业务</h4>
+            <ul class="list2">
+                <li>设计网站</li>
+                <li>平面、广告设计</li>
+                <li>微信开发</li>
+                <li>营销策划与推广</li>
+                <li>干货杂铺</li>
+            </ul>  
+
+		</div>
+	</div>
+</div>
+</section>
+
+
+<!--
+<section id="progress" class="grey_section">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h2 class="section_header">我的业务</h2>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="block col-sm-3 to_animate">
+				<div class="arctcle">
+					<div class="single_teaser icons style2">
+						<div class="icons_introimg image-icon">
+							<i class="rt-icon-user"></i>
+						</div>
+						<h2>10</h2>
+						<h3>满意客户</h3>
+
+					</div>
+				</div>
+			</div>
+
+			<div class="block col-sm-3 to_animate">
+				<div class="arctcle">
+					<div class="single_teaser icons style2">
+						<div class="icons_introimg image-icon">
+							<i class="rt-icon-bulb"></i>
+						</div>
+						<h2>25</h2>
+						<h3>完成项目</h3>
+
+					</div>
+				</div>
+			</div>
+			<div class="block col-sm-3 to_animate">
+				<div class="arctcle">
+					<div class="single_teaser icons style2">
+						<div class="icons_introimg image-icon">
+							<i class="rt-icon-paperplane"></i>
+						</div>
+						<h2>150+</h2>
+						<h3>营销策划</h3>
+
+					</div>
+				</div>
+			</div>
+			<div class="block col-sm-3 to_animate">
+				<div class="arctcle">
+					<div class="single_teaser icons style2">
+						<div class="icons_introimg image-icon">
+							<i class="rt-icon-pen"></i>
+						</div>
+						<h2>50+</h2>
+						<h3>干货回馈</h3>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+-->
+
+
+<section id="belowcontent" class="color_section parallax">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h2 class="section_header">我们的宗旨</h2>
+				<h3>客户的满意是最本的宗旨</h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="block col-sm-4 to_animate" data-animation="fadeInTop">
+				<div class="arctcle">
+					<div class="single_teaser icons style5">
+						<div class="icons_introimg image-icon">
+							<i class="rt-icon-user3"></i>
+						</div>
+						<h3 class="">客户权益</h3>
+						<p class="introtext">我们保证坚定不移的维护客户的权益不受损害，所有的工作达到客户满意</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="block col-sm-4 to_animate" data-animation="fadeInTop">
+				<div class="arctcle">
+					<div class="single_teaser icons style5">
+						<div class="icons_introimg image-icon">
+							<i class="rt-icon-like"></i>
+						</div>
+						<h3 class="">客户反馈</h3>
+						<p class="introtext">我们的方案、服务、技术真正为您带来效益的提升，才是最好的反馈</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="block col-sm-4 to_animate" data-animation="fadeInTop">
+				<div class="arctcle">
+					<div class="single_teaser icons style5">
+						<div class="icons_introimg image-icon">
+							<i class="rt-icon-pencil3"></i>
+						</div>
+						<h3 class="">理解</h3>
+						<p class="introtext">竭诚为您服务，理解您的难处，并尽最大可能满足您的要求</p>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+</section>
+
+<!--<section id="video" class="table_section lightgrey_section">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6">
+				<iframe width="600" height="320" src="//www.youtube.com/embed/Vpg9yizPP_g" frameborder="0" allowfullscreen></iframe>
+			</div>
+			<div class="col-sm-6">
+				<h2 class="section_header">You should see this video</h2>
+				<h3>It is Interesting</h3>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni, neque, ad, consequatur, quod nemo cum magnam ea tenetur laboriosam minima a excepturi totam nostrum sapiente architecto qui quo illo est.</p>
+			</div>
+		</div>
+	</div>
+</section>-->
+<!--
+
+<section id="clients" class="dark_section parallax">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h2 class="text-center section_header"><span class="highlight">我的</span> 客户</h2>
+				<h3>你可以成为他们中的一个</h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12">
+
+				<div class="owl-carousel">
+
+					<div class="item">
+						<a href="#"><img src="vgm/example/p_digg.png" alt=""></a>
+					</div>
+					<div class="item">
+						<a href="#"><img src="vgm/example/p_facebook.png" alt=""></a>
+					</div>
+					<div class="item">
+						<a href="#"><img src="vgm/example/p_google.png" alt=""></a>
+					</div>
+
+					<div class="item">
+						<a href="#"><img src="vgm/example/p_linkedin.png" alt=""></a>
+					</div>
+
+					<div class="item">
+						<a href="#"><img src="vgm/example/p_nh.png" alt=""></a>
+					</div>
+
+					<div class="item">
+						<a href="#"><img src="vgm/example/p_stum.png" alt=""></a>
+					</div>
+
+					<div class="item">
+						<a href="#"><img src="vgm/example/p_twitter.png" alt=""></a>
+					</div>
+
+					<div class="item">
+						<a href="#"><img src="vgm/example/p_digg.png" alt=""></a>
+					</div>
+					<div class="item">
+						<a href="#"><img src="vgm/example/p_facebook.png" alt=""></a>
+					</div>
+					<div class="item">
+						<a href="#"><img src="vgm/example/p_google.png" alt=""></a>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+</section>
+
+<section class="light_section" id="testimonials">
+	<div class="container">
+		<div class="row">
+			
+			<div class="col-sm-12 block">
+				<h2 class="text-center section_header"> <span class="highlight">客户们</span>在说些什么</h2>
+				<div class="carousel slide widget_testimonials block" id="carousel-clients">
+					<a data-slide="prev" href="#carousel-clients" class="carousel-control left"></a>
+					<a data-slide="next" href="#carousel-clients" class="carousel-control right"></a>
+					<div class="carousel-inner">
+						<div class="item active">
+							<p class="carousel-introtext">
+								看沃格的网站，挺喜欢的，就让他们帮我做了一个，网站性能不错，所需的价格也公道
+							</p>
+							<p class="carousel-readmore">
+								<span><img src="vgm/example/author.jpg" alt=""></span>
+								John Doe
+							</p>
+						</div>
+						<div class="item">
+							<p class="carousel-introtext">
+								本人急需在微信上开发一个网站，由于资金有限，又不认识是什么技术大牛，正好看到沃格有这方面的服务，便请沃格做了这个项目，非常满意
+							</p>
+							<p class="carousel-readmore">
+								<span><img src="vgm/example/author.jpg" alt=""></span>
+								Catrin Jhonson
+							</p>
+						</div>
+						<div class="item">
+							<p class="carousel-introtext">
+								沃格，值得去了解
+							</p>
+							<p class="carousel-readmore">
+								<span><img src="vgm/example/author.jpg" alt=""></span>
+								Nataly Smith
+							</p>
+						</div>
+						<div class="item">
+							<p class="carousel-introtext">
+								非常感谢沃格，2016年各行各业生意都不景气，个体工商户更面临倒闭的风险，于是请沃格出个营销策划方案，虽然花的钱不多，但沃格给的服务很是周到，业绩明显上升，于是便与其结成合作伙伴
+							</p>
+							<p class="carousel-readmore">
+								<span><img src="vgm/example/author.jpg" alt=""></span>
+								Antony Gore
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+-->
+
+	<section id="portfolio" class="lightgrey_section">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <h2 class="section_header">近期工作</h2>
+                    <h3>仅供参考</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div id="portfolio_wrapper">
+                    <div class="col-sm-12 text-center filters">
+                        <ul id="filtrable">
+                            <li><a class="selected" data-filter="*" href="#">全部</a></li>
+                            <li><a data-filter=".graphicdesign" href="#" class="">图形设计</a></li>
+                            <li><a data-filter=".photography" href="#" class="">相册</a></li>
+                            <li><a data-filter=".webdesign" href="#" class="">网站设计</a></li>
+                        </ul>
+                        <div class="clearfix"></div>
                     </div>
+                    <!-- Items -->
+
+                    <ul class="items-row cols-3 portfolio filtrable clearfix isotope" id="portfolioContainer">
+                        <li class="col-sm-6 col-md-4 item isotope-item  webdesign"> 
+
+                            <!-- Image  --> 
+
+                            <div class="portfolio_item_image">
+                                <img alt="" src="vgm/img/project/news.png">
+                                <div>
+                                    <a class="p-view prettyPhoto" title="" data-gal="prettyPhoto[pp_gal]" href="vgm/img/project/news.png"></a>
+                                    <a class="p-link" title="" href="#"></a>
+                                </div>
+                            </div>
+                            <div class="item_title">
+                                <h4>
+                                    <a href="#">资讯网</a>
+                                    <span class="heart">19</span>
+                                </h4>
+                                <!-- Intro Text -->
+                                <p>基于ThinkPHP框架开发，一个简易了新闻资讯平台</p>
+                            </div>
+                        </li>
+
+                        <li class="col-sm-6 col-md-4 item isotope-item photography webdesign"> 
+
+                            <!-- Image  --> 
+
+                            <div class="portfolio_item_image">
+                                <img alt="" src="vgm/img/project/windows.png">
+                                <div>  
+                                    <a class="p-view prettyPhoto" title="" data-gal="prettyPhoto[pp_gal]" href="vgm/img/project/windows.png"></a>
+                                    <a class="p-link" title="" href="#"></a>
+                                </div>
+                            </div>
+                            <div class="item_title">
+                                <h4>
+                                    <a href="#">便民平台</a>
+                                    <span class="heart">30</span>
+                                </h4>
+                                <!-- Intro Text -->
+                                <p>基于api接口，html5便民窗口平台</p>
+                            </div>     
+                        </li>
+
+                        <li class="col-sm-6 col-md-4 item isotope-item photography webdesign"> 
+
+                            <!-- Image  --> 
+
+                            <div class="portfolio_item_image">
+                                <img alt="" src="vgm/example/intro_img3.jpg">
+                                <div>  
+                                    <a class="p-view prettyPhoto" title="" data-gal="prettyPhoto[pp_gal]" href="vgm/example/intro_img3.jpg"></a>
+                                    <a class="p-link" title="" href="#"></a>
+                                </div>
+                            </div>
+                            <div class="item_title">
+                                <h4>
+                                    <a href="#">Stet clita gubergren</a>
+                                    <span class="heart">19</span>
+                                </h4>
+                                <!-- Intro Text -->
+                                <p>At vero eos et accusam et justo duo dolores et rebum lorem ipsum dolor sit amet.</p>
+                            </div>
+                        </li>
+
+                        <li class="col-sm-6 col-md-4 item isotope-item"> 
+
+                            <!-- Image  --> 
+
+                            <div class="portfolio_item_image">
+                                <img alt="" src="vgm/example/intro_img8.jpg">
+                                <div>  
+                                    <a class="p-view prettyPhoto" title="" data-gal="prettyPhoto[pp_gal]" href="vgm/example/intro_img8.jpg"></a>
+                                    <a class="p-link" title="" href="#"></a>
+                                </div>
+                            </div>
+                            <div class="item_title">
+                                <h4>
+                                    <a href="#">Stet clita gubergren</a>
+                                    <span class="heart">19</span>
+                                </h4>
+                                <!-- Intro Text -->
+                                <p>At vero eos et accusam et justo duo dolores et rebum lorem ipsum dolor sit amet.</p>
+                            </div>               
+                        </li>
+
+                        <li class="col-sm-6 col-md-4 item isotope-item graphicdesign webdesign"> 
+
+                            <!-- Image  --> 
+
+                            <div class="portfolio_item_image">
+                                <img alt="" src="vgm/example/intro_img5.jpg">
+                                <div>  
+                                    <a class="p-view prettyPhoto" title="" data-gal="prettyPhoto[pp_gal]" href="vgm/example/intro_img5.jpg"></a>
+                                    <a class="p-link" title="" href="#"></a>
+                                </div>
+                            </div>
+                            <div class="item_title">
+                                <h4>
+                                    <a href="#">Stet clita gubergren</a>
+                                    <span class="heart">19</span>
+                                </h4>
+                                <!-- Intro Text -->
+                                <p>At vero eos et accusam et justo duo dolores et rebum lorem ipsum dolor sit amet.</p>
+                            </div>               
+                        </li>
+
+                        <li class="col-sm-6 col-md-4 item isotope-item"> 
+
+                            <!-- Image  --> 
+
+                            <div class="portfolio_item_image">
+                                <img alt="" src="vgm/example/intro_img2.jpg">
+                                <div>  
+                                    <a class="p-view prettyPhoto" title="" data-gal="prettyPhoto[pp_gal]" href="vgm/example/intro_img2.jpg"></a>
+                                    <a class="p-link" title="" href="#"></a>
+                                </div>
+                            </div>
+                            <div class="item_title">
+                                <h4>
+                                    <a href="#">Stet clita gubergren</a>
+                                    <span class="heart">19</span>
+                                </h4>
+                                <!-- Intro Text -->
+                                <p>At vero eos et accusam et justo duo dolores et rebum lorem ipsum dolor sit amet.</p>
+                            </div>          
+                        </li>
+
+                        <li class="col-sm-6 col-md-4 item isotope-item photography webdesign"> 
+
+                            <!-- Image  --> 
+
+                            <div class="portfolio_item_image">
+                                <img alt="" src="vgm/example/intro_img1.jpg">
+                                <div>  
+                                    <a class="p-view prettyPhoto" title="" data-gal="prettyPhoto[pp_gal]" href="vgm/example/intro_img1.jpg"></a>
+                                    <a class="p-link" title="" href="#"></a>
+                                </div>
+                            </div>
+                            <div class="item_title">
+                                <h4>
+                                    <a href="#">Stet clita gubergren</a>
+                                    <span class="heart">19</span>
+                                </h4>
+                                <!-- Intro Text -->
+                                <p>At vero eos et accusam et justo duo dolores et rebum lorem ipsum dolor sit amet.</p>
+                            </div>               
+                        </li>
+
+                        <li class="col-sm-6 col-md-4 item isotope-item graphicdesign webdesign"> 
+
+                            <!-- Image  --> 
+
+                            <div class="portfolio_item_image">
+                                <img alt="" src="vgm/example/intro_img7.jpg">
+                                <div>  
+                                    <a class="p-view prettyPhoto" title="" data-gal="prettyPhoto[pp_gal]" href="vgm/example/intro_img7.jpg"></a>
+                                    <a class="p-link" title="" href="#"></a>
+                                </div>
+                            </div>
+                            <div class="item_title">
+                                <h4>
+                                    <a href="#">Stet clita gubergren</a>
+                                    <span class="heart">19</span>
+                                </h4>
+                                <!-- Intro Text -->
+                                <p>At vero eos et accusam et justo duo dolores et rebum lorem ipsum dolor sit amet.</p>
+                            </div>               
+                        </li>      
+
+                        <li class="col-sm-6 col-md-4 item isotope-item"> 
+
+                            <!-- Image  --> 
+
+                            <div class="portfolio_item_image">
+                                <img alt="" src="vgm/example/intro_img6.jpg">
+                                <div>  
+                                    <a class="p-view prettyPhoto" title="" data-gal="prettyPhoto[pp_gal]" href="vgm/example/intro_img6.jpg"></a>
+                                    <a class="p-link" title="" href="#"></a>
+                                </div>
+                            </div>
+                            <div class="item_title">
+                                <h4>
+                                    <a href="#">Stet clita gubergren</a>
+                                    <span class="heart">19</span>
+                                </h4>
+                                <!-- Intro Text -->
+                                <p>At vero eos et accusam et justo duo dolores et rebum lorem ipsum dolor sit amet.</p>
+                            </div>               
+
+                        </li>
+
+                    </ul>
                 </div>
             </div>
         </div>
-        <div id="my-carousel" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#my-carousel" data-slide-to="0" class="active"></li>
-                <li data-tatget="#my-carousel" data-slide-to="1"></li>
-                <li data-tatget="#my-carousel" data-slide-to="2"></li>
-            </ol>
-            <!--Carousel items-->
-            <div class="carousel-inner">
-                <div class="active item"><img src="myvoguemproject/img/slider1.jpg" alt=""></div>
-                <div class="item"><img src="myvoguemproject/img/slider2.jpg" alt=""></div>
-                <div class="item"><img src="myvoguemproject/img/slider3.jpg" alt=""></div>
-            </div>
-            <!--Carousel nav-->
-            <a class="carousel-control left" href="#my-carousel" data-slide="prev"></a>
-            <a class="carousel-control right" href="#my-carousel" data-slide="next"></a>
+	</section>
+
+
+			
+
+			<footer id="footer" class="lightgrey_section">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-12 text-center">
+							<h2 class="section_header">联系 <span class="highlight">我们</span></h2>
+							<h3>敬请致电</h3>
+							<p class="vertical-margin-40">请您在留言时，如实填写您的资料，方便我们与您取得联系，非常感谢</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-12 to_animate">
+							<div class="contact-form">
+								<form class="contact-form" method="post" action="/">
+									<p class="contact-form-name">
+										<label for="name">姓名 <span class="required">*</span></label>
+										<input type="text" aria-required="true" size="30" value="" name="name" id="name" class="form-control" placeholder="名字">
+									</p>
+									<p class="contact-form-email">
+										<label for="email">邮箱 <span class="required">*</span></label>
+										<input type="email" aria-required="true" size="30" value="" name="email" id="email" class="form-control" placeholder="邮箱">
+									</p>
+									<p class="contact-form-subject">
+										<label for="subject">主题</label>
+										<input type="text" size="30" value="" name="subject" id="subject" class="form-control" placeholder="主题">
+									</p>
+									<p class="contact-form-message">
+										<label for="message">问题描述</label>
+										<textarea aria-required="true" rows="8" cols="45" name="message" id="message" class="form-control" placeholder=""></textarea>
+									</p>
+									<p class="contact-form-submit text-center ">
+										<input  class="theme_button" type="submit" value="发送" id="contact_form_submit" name=" contact_submit" >
+									</p>
+								</form>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</footer>  
+
+
+
+<section id="copyright" class="dark_section">
+	<div class="container"><div class="row">
+        <div class="col-sm-12 text-center">
+            
+            <div id="social" class="social-share " data-sites="wechat,weibo,qq,qzone,tencent" data-wechat-qrcode-title="微信扫一扫" data-wechat-qrcode-helper="喜欢就分享到朋友圈吧"></div>
+            <!--<div id="social" class="social-share" data-initialized="true">
+                <a href="#" data-wechat-qrcode-title="微信扫一扫" class="socialfa  icon-wechat" data-image="vgm/img/logo/wechat.jpeg"></a>
+                <a href="#" class="socialfa  icon-weibo"></a>
+                <a href="#" class="socialfa  icon-qq"></a>
+                <a href="#" class="socialfa  icon-qzone"></a>
+            </div>-->
+        </div>  
+        
+       
+   
+<!--
+		<div class="col-sm-12">
+			<div>
+				<p id="social" class="text-center">
+					<a class=" socialfa fa fa-weixin" href="#" title="ＷeChat"></a>
+					<a class=" socialfa fa fa-weibo" href="#" title="Weibo"></a>
+                    <a class=" socialfa fa fa-qq" href="#" title="Weibo"></a>
+					<a class="socialico-google" href="#" title="Google">#</a>
+					<a class="socialico-linkedin" href="#" title="Lindedin">#</a>
+					<a class="socialico-skype" href="#" title="tumblr">#</a>
+				</p>
+			</div>
+		</div>    
+-->
+		<div class="col-sm-12 text-center">
+            <p>&copy; 版权 2016 - <span class="highlight">VGM</span>   <a href="http://voguem.com">沃格咨询有限公司</a></p>
         </div>
 
-        <div class="container resume">
-          
-           
-         
-        </div>
-       
-        <script src="myvoguemproject/js/jquery-1.12.2.min.js"></script>
-        <script src="myvoguemproject/js/bootstrap.js"></script>
-        <script src="myvoguemproject/js/bootstrap-carousel.js"></script>
-       
-    </body>
+	</div></div>
+</section>
+
+</div> <!-- box_wrapper -->
+
+<div class="preloader">
+	<div class="preloaderimg"></div>
+</div>
+
+
+	<script src="vgm/js/vendor/respond.min.js"></script>
+	<script src="vgm/js/vendor/placeholders.min.js"></script>
+	<script src="vgm/js/vendor/jquery-1.11.1.min.js"></script>
+	<script src="vgm/js/vendor/bootstrap.min.js"></script>
+
+	<script src="vgm/js/vendor/jquery.appear.js"></script>
+	<script src="vgm/js/vendor/jquery.flexslider-min.js"></script>
+	<script src="vgm/js/vendor/jquery.prettyPhoto.js"></script>
+	<script src="vgm/js/vendor/jquery.easing.1.3.js"></script>
+	<script src="vgm/js/vendor/jquery.ui.totop.js"></script>
+	<script src="vgm/js/vendor/jquery.isotope.min.js"></script>
+	<script src="vgm/js/vendor/jquery.easypiechart.min.js"></script>
+<!--	<script src='vgm/js/vendor/jflickrfeed.min.js'></script>-->
+
+	<script src='vgm/js/vendor/jquery.fitvids.js'></script>
+	<script src='vgm/js/vendor/jquery.bxslider.min.js'></script>
+	<script src='vgm/js/vendor/jquery.parallax-1.1.3.js'></script>
+	<script src="vgm/js/vendor/jquery.sticky.js"></script>
+	<script src='vgm/js/vendor/jquery.scrollTo-min.js'></script>
+	<script src='vgm/js/vendor/jquery.localscroll-min.js'></script>
+	<script src='vgm/js/vendor/owl.carousel.min.js'></script>
+	<script src='vgm/js/vendor/jquery.nicescroll.min.js'></script>
+	<script src='vgm/js/vendor/jquery.funnyText.min.js'></script>
+	<script src='vgm/js/vendor/social-share.min.js'></script>
+<!--	<script src='twitter/jquery.tweet.min.js'></script>-->
+
+	<script src="vgm/js/plugins.js"></script>
+	<script src="vgm/js/main.js"></script>
+
+	
+</body>
 </html>
