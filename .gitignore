@@ -1,2 +1,3 @@
 #ignore db config
 singwa/Application/Common/Conf/*
+singwa/Application/Runtime/Logs/Home/*
