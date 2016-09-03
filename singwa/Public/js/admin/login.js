@@ -14,7 +14,8 @@ var login = {
         if(!pwd){
             dialog.error("密码不能为空!");
         }
-        // var url = '/index.php?m=admin&c=login&a=check';
+//        var url = window.location.origin + window.location.pathname + '?c=login&a=check';
+        console.log('url', url);
         var url = '/admin.php?c=login&a=check';
         var data = {
             'username':username,
@@ -27,6 +28,7 @@ var login = {
             }
             if(res.status == 1){
                 return dialog.success(res.message,'/admin.php?c=index');
+//                return dialog.success(res.message,window.location.origin + window.location.pathname + '?c=index');
             }
         },'JSON');
     }

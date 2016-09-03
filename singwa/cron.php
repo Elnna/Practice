@@ -22,7 +22,7 @@ if(!$argv || count($argv) <4){
     die('params_is_error');
 }
 $dir = dirname(__FILE__);
-define('HTML_PATH',$dir .'/');
+define('HTML_PATH', $dir .'/');
 
 $_GET['m'] = !isset($_GET['m']) ?  $argv[1] :'admin';
 $_GET['c'] = !isset($_GET['c']) ?  $argv[1] :'index';
