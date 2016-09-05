@@ -2,12 +2,12 @@
 namespace Admin\Controller;
 use Think\Controller;
 
-
+define("TOKEN", "voguemwx");
 class IndexController extends Controller {
     public function index(){
 //        echo C('WX_ACCESS_TOKEN');
         
-       if (!defined("WX_ACCESS_TOKEN")) {
+       if (!defined("TOKEN")) {
             throw new Exception('TOKEN is not defined!');
         }
         
@@ -15,7 +15,7 @@ class IndexController extends Controller {
         $timestamp = $_GET["timestamp"];
         $nonce = $_GET["nonce"];
         $echoStr = $_GET["echostr"];		
-		$token = C('WX_ACCESS_TOKEN');
+		$token = C('TOKEN');
 		$tmpArr = array($token, $timestamp, $nonce);
         // use SORT_STRING rule
 		sort($tmpArr, SORT_STRING);
@@ -26,6 +26,10 @@ class IndexController extends Controller {
 			echo $echoStr;
             exit;
 		}
+//        echo 'tooken';
+    }
+    public function show(){
+        echo 'imooc';
     }
     
     
