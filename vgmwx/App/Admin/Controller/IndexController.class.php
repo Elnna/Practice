@@ -59,21 +59,23 @@ class IndexController extends Controller {
         //.2处理消息类型，并设置回复类型和内空
         $postObj = simplexml_load_string($postArr);
         if(strtolower($postObj->MsgType) == 'event'){
-            $toUser = $postObj->FromuserName;
-            $fromUser = $postObj->ToUserName;
-            $time = time();
-            $msgType = 'text';
-            $content = '欢迎关注我们的微信公众号';
-            $template = '<xml>
-                <ToUserName><![CDATA[%s]]></ToUserName>
-                <FromUserName><![CDATA[%s]]></FromUserName>
-                <CreateTime>%s</CreateTime>
-                <MsgType><![CDATA[%s]]></MsgType>
-                <Content><![CDATA[%s]]></Content>
-                </xml>';
-            $info = sprintf($template,$toUser,$fromUser,$time,$msgType,$content);
-            
-            echo $info;
+            if(strtolower($postObj->MsgType) == 'subscribe'){
+                $toUser = $postObj->FromuserName;
+                $fromUser = $postObj->ToUserName;
+                $time = time();
+                $msgType = 'text';
+                $content = '欢迎关注我们的微信公众号';
+                $template = '<xml>
+                    <ToUserName><![CDATA[%s]]></ToUserName>
+                    <FromUserName><![CDATA[%s]]></FromUserName>
+                    <CreateTime>%s</CreateTime>
+                    <MsgType><![CDATA[%s]]></MsgType>
+                    <Content><![CDATA[%s]]></Content>
+                    </xml>';
+                $info = sprintf($template,$toUser,$fromUser,$time,$msgType,$content);
+
+                echo $info;
+            }
         }
         
     }
