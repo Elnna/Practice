@@ -22,13 +22,60 @@ class IndexController extends Controller {
 		$tmpStr = sha1( $tmpStr );
 		
 		if( $tmpStr == $signature ){
+            //第一次接入wx
 			echo $echoStr;
             exit;
-		}
+		}else{
+            $this->responseMsg();
+        }
         echo 'tooken';
     }
-    public function show(){
-        echo 'imooc';
+    //接收事件推送并回复
+    /*
+    接收格式
+    <xml>
+ <ToUserName><![CDATA[toUser]]></ToUserName>
+ <FromUserName><![CDATA[fromUser]]></FromUserName>
+ <CreateTime>1348831860</CreateTime>
+ <MsgType><![CDATA[text]]></MsgType>
+ <Content><![CDATA[this is a test]]></Content>
+ <MsgId>1234567890123456</MsgId>
+ </xml>
+ 
+ 回复格式
+ 
+ <xml>
+<ToUserName><![CDATA[toUser]]></ToUserName>
+<FromUserName><![CDATA[fromUser]]></FromUserName>
+<CreateTime>12345678</CreateTime>
+<MsgType><![CDATA[text]]></MsgType>
+<Content><![CDATA[你好]]></Content>
+</xml>
+
+    */
+    public function responseMsg(){
+        //1.获取微信推送过来的post数据(xml格式)
+        $postArr = $GLOBALS['HTTP_RAW_POST_DATA'];
+        //.2处理消息类型，并设置回复类型和内空
+        $postObj = simplexml_load_string($postArr);
+        if(strtolower($postObj->MsgType) == 'event'){
+            $toUser = $postObj->FromuserName;
+            $fromUser = $postObj->ToUserName;
+            $time = time();
+            $msgType = 'text';
+            $content = '欢迎关注我们的微信公众号';
+            $template = '<xml>
+                <ToUserName><![CDATA[%s]]></ToUserName>
+                <FromUserName><![CDATA[%s]]></FromUserName>
+                <CreateTime>%s</CreateTime>
+                <MsgType><![CDATA[%s]]></MsgType>
+                <Content><![CDATA[%s]]></Content>
+                </xml>';
+            $info = sprintf($template,$toUser,$fromUser,$time,$msgType,$content);
+            
+            echo $info;
+        }
+        
     }
     
     
