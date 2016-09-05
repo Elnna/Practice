@@ -1,7 +1,7 @@
 <?php
 namespace Admin\Controller;
 use Think\Controller;
-use wechatCallbackapi;
+use \wechatCallbackapi;
 
 class IndexController extends Controller {
     public function index(){
