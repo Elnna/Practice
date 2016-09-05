@@ -3,12 +3,10 @@ namespace Admin\Controller;
 use Think\Controller;
 use Think\Exception;
 
-//define("TOKEN", "voguemwx");
+//define("WX_ACCESS_TOKEN", "voguemwx");
 class IndexController extends Controller {
     public function index(){
-//        echo C('WX_ACCESS_TOKEN');
-        
-       if (!defined("WX_ACCESS_TOKEN")) {
+       if (!C("WX_ACCESS_TOKEN")) {
             throw new Exception('TOKEN is not defined!');
         }
         
