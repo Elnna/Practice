@@ -62,20 +62,20 @@ class IndexController extends Controller {
 //        print_r($postObj);
         if(strtolower($postObj->MsgType) == 'event'){
             if(strtolower($postObj->Event) == 'subscribe'){
-                $toUser = $postObj->FromuserName;
+                $toUser = $postObj->FromUserName;
                 $fromUser = $postObj->ToUserName;
                 $time = time();
                 $msgType = 'text';
                 
                 $content = '欢迎关注我们的微信公众号';
 //                $content = '公众账号' .$postOjb->ToUserName. '\n微信用户的openid' .$postObj->FromUserName .'\n回复消息格式： ' .$tmpstr;
-                $template = '<xml>
+                $template = "<xml>
                     <ToUserName><![CDATA[%s]]></ToUserName>
                     <FromUserName><![CDATA[%s]]></FromUserName>
                     <CreateTime>%s</CreateTime>
                     <MsgType><![CDATA[%s]]></MsgType>
                     <Content><![CDATA[%s]]></Content>
-                    </xml>';
+                    </xml>";
                 $info = sprintf($template,$toUser,$fromUser,$time,$msgType,$content);
 
                 echo $info;
