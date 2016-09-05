@@ -77,12 +77,12 @@ class IndexController extends Controller {
                     <Content><![CDATA[%s]]></Content>
                     </xml>";*/
                  $template = "<xml>
-                    <ToUserName>%s</ToUserName>
-                    <FromUserName>%s</FromUserName>
-                    <CreateTime>%s</CreateTime>
-                    <MsgType>%s</MsgType>
-                    <Content>%s</Content>
-                    </xml>";
+ <ToUserName><![CDATA[%s]]></ToUserName>
+ <FromUserName><![CDATA[%s]]></FromUserName>
+ <CreateTime>%s</CreateTime>
+ <MsgType><![CDATA[%s]]></MsgType>
+ <Content><![CDATA[%s]]></Content>
+ </xml>";
                 
                 $info = sprintf($template,$toUser,$fromUser,$time,$msgType,$content);
 
