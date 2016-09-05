@@ -69,13 +69,7 @@ class IndexController extends Controller {
                 
                 $content = '欢迎关注我们的微信公众号';
 //                $content = '公众账号' .$postOjb->ToUserName. '\n微信用户的openid' .$postObj->FromUserName .'\n回复消息格式： ' .$tmpstr;
-                /*$template = "<xml>
-                    <ToUserName><![CDATA[%s]]></ToUserName>
-                    <FromUserName><![CDATA[%s]]></FromUserName>
-                    <CreateTime>%s</CreateTime>
-                    <MsgType><![CDATA[%s]]></MsgType>
-                    <Content><![CDATA[%s]]></Content>
-                    </xml>";*/
+               
                  $template = "<xml>
  <ToUserName><![CDATA[%s]]></ToUserName>
  <FromUserName><![CDATA[%s]]></FromUserName>
