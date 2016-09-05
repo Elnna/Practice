@@ -58,8 +58,9 @@ class IndexController extends Controller {
         $postArr = $GLOBALS['HTTP_RAW_POST_DATA'];
         //.2处理消息类型，并设置回复类型和内空
         $postObj = simplexml_load_string($postArr);
+//        print_r($postObj);
         if(strtolower($postObj->MsgType) == 'event'){
-            if(strtolower($postObj->Event) == 'subscribe'){
+            if($postObj->Event == 'subscribe'){
                 $toUser = $postObj->FromuserName;
                 $fromUser = $postObj->ToUserName;
                 $time = time();
