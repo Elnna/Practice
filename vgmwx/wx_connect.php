@@ -3,12 +3,14 @@
   * wechat php test
   */
 
+/*
 //define your token
 define("TOKEN", "voguemwx");
 $wechatObj = new wechatCallbackapiTest();
 $wechatObj->valid();
+*/
 
-class wechatCallbackapiTest
+class wechatCallbackapi
 {
 	public function valid()
     {
@@ -16,6 +18,7 @@ class wechatCallbackapiTest
 
         //valid signature , option
         if($this->checkSignature()){
+            
         	echo $echoStr;
         	exit;
         }
@@ -63,7 +66,7 @@ class wechatCallbackapiTest
 	private function checkSignature()
 	{
         // you must define TOKEN by yourself
-        if (!defined("TOKEN")) {
+        if (!defined("WX_ACCESS_TOKEN")) {
             throw new Exception('TOKEN is not defined!');
         }
         
@@ -71,7 +74,7 @@ class wechatCallbackapiTest
         $timestamp = $_GET["timestamp"];
         $nonce = $_GET["nonce"];
         		
-		$token = TOKEN;
+		$token = WX_ACCESS_TOKEN;
 		$tmpArr = array($token, $timestamp, $nonce);
         // use SORT_STRING rule
 		sort($tmpArr, SORT_STRING);
