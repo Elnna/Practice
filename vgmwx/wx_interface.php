@@ -1,14 +1,11 @@
+
 <?php
 /**
   * wechat php test
   */
 
-/*
 //define your token
-define("TOKEN", "voguemwx");
-$wechatObj = new wechatCallbackapiTest();
-$wechatObj->valid();
-*/
+define("TOKEN", "lcousClub189");
 
 class wechatCallbackapi
 {
