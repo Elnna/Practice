@@ -91,7 +91,7 @@ if(!empty($postStr)){
                         
                     );
                     break;
-                case '/::': //表情
+                case '/::)': //表情
                     
                     $info = sprintf(
                         $musicTpl,
@@ -100,8 +100,8 @@ if(!empty($postStr)){
                         time(),
                         "夏洛特烦恼",
                         "金志文",
-                        "http://voguem.com/vgmwx/public/img/xialuo.jpg",
-                        "http://voguem.com/vgmwx/public/music/夏洛特烦恼-金志文.mp3" 
+                        "http://voguem.com/vgmwx/public/music/xialuotefannao-jinzhiwen.mp3",
+                        "http://voguem.com/vgmwx/public/music/hxialuotefannao-jinzhiwen.mp3"
                     );
                     echo $info;
                     break;
