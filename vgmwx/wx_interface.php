@@ -90,7 +90,13 @@ if(!empty($postStr)){
                         )
                         
                     );
-                    
+                default:
+                    $type = "text";
+                    $content = "打开惊喜请输入【jx】\n\n历史文章请输入【wz】\n\n";
+                    $time = time();
+                    $info = sprintf($textTpl,$fromUserName,$toUserName,$time,$type,$content);
+                    echo $info;
+                break;
                     
                     
             }
