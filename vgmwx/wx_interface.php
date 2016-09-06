@@ -28,6 +28,11 @@ if(!empty($postStr)){
     
     if($msgType == 'text'){
         $msgContent = trim($postObj->Content);
+        
+        $fp = fopen("./face.txt",'a');
+        fwrite($fp,$msgContent);
+        fclose();
+        
         if(!empty($msgContent)){
             
             switch($msgContent){
