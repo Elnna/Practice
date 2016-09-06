@@ -22,7 +22,7 @@ if(!empty($postStr)){
                         历史文章请输入【hd】\n\n";
             $time = time();
             $info = sprintf($textTpl,$fromUserName,$toUserName,$time,$type,$content);
-            
+            echo $info;
             
             
             
