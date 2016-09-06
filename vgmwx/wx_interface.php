@@ -38,13 +38,13 @@ if(!empty($postStr)){
             $info .= "<item>\n
             <Title><![CDATA[招贤纳士]]></Title>\n 
             <Description><![CDATA[加入伟志，让生活更精彩！]]></Description>\n
-            <PicUrl><![CDATA[http://all.voguem.com/vgmwx/public/img/1.jpg]]></PicUrl>\n
+            <PicUrl><![CDATA[http://voguem.com/vgmwx/public/img/1.jpg]]></PicUrl>\n
             <Url><![CDATA[http://mp.weixin.qq.com/s?__biz=MzI1MDIxMTI5Mg==&mid=405471567&idx=1&sn=2c4eb54b9247eddf43637e12d1858948&scene=4#wechat_redirect]]></Url>\n
             </item>\n";
              $info .= "<item>\n
             <Title><![CDATA[春末夏初穿什么？]]></Title>\n 
             <Description><![CDATA[来自意大利国际设计大师的手笔，伟志衬褂，男人衣橱的必备品。]]></Description>\n
-            <PicUrl><![CDATA[http://all.voguem.com/vgmwx/public/img/2.jpg]]></PicUrl>\n
+            <PicUrl><![CDATA[http://voguem.com/vgmwx/public/img/2.jpg]]></PicUrl>\n
             <Url><![CDATA[http://mp.weixin.qq.com/s?__biz=MzI1MDIxMTI5Mg==&mid=405522006&idx=1&sn=d7dcd44a6d81cb168ae5e3f02b434b05#rd]]></Url>\n
             </item>\n";
             
