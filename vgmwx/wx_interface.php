@@ -17,9 +17,8 @@ if(!empty($postStr)){
         $event = $postObj->Event;
         if($event == "subscribe"){
             $type = "text";
-            $content = "感谢关注WeiZhi伟志服饰[愉快]！\n\n
-                        获取最新活动消息请输入【hd】\n\n
-                        历史文章请输入【hd】\n\n";
+            $content = "感谢关注WeiZhi伟志服饰[愉快]！\n\n获取最新活动消息请输入【hd】\n\n
+            历史文章请输入【hd】\n\n";
             $time = time();
             $info = sprintf($textTpl,$fromUserName,$toUserName,$time,$type,$content);
             echo $info;
