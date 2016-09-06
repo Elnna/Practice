@@ -121,7 +121,7 @@ $scanSqrcodeUTpl =  "<xml>
 
 
 //已关注
-$scanSqrcodeTpl ＝  "<xml>
+$scanSqrcodeTpl =   "<xml>
                     <ToUserName><![CDATA[%s]]></ToUserName>
                     <FromUserName><![CDATA[%s]]></FromUserName>
                     <CreateTime>%s</CreateTime>
