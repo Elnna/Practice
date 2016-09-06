@@ -91,6 +91,20 @@ if(!empty($postStr)){
                         
                     );
                     break;
+                case '/::': //表情
+                    
+                    $info = sprintf(
+                        $musicTpl,
+                        $fromUserName,
+                        $toUserName,
+                        time(),
+                        "夏洛特烦恼",
+                        "金志文",
+                        "http://voguem.com/vgmwx/public/img/xialuo.jpg",
+                        "http://voguem.com/vgmwx/public/music/夏洛特烦恼-金志文.mp3" 
+                    );
+                    echo $info;
+                    break;
                 default:
                     $type = "text";
                     $content = "打开惊喜[爱心]请输入【jx】\n\n[愉快]历史文章请输入【wz】";
@@ -124,9 +138,11 @@ if(!empty($postStr)){
                 echo $resStr;
             }
             
-            
+           exit; 
         }
     }
+    
+    
 }else{
     echo "Post数据为空";
     exit;
