@@ -5,7 +5,7 @@
   */
 
 //define your token
-define("TOKEN", "lcousClub189");
+define("TOKEN", "lcous189");
 
 class wechatCallbackapi
 {
