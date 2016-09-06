@@ -92,7 +92,7 @@ if(!empty($postStr)){
                     );
                 default:
                     $type = "text";
-                    $content = "打开惊喜请输入【jx】\n\n历史文章请输入【wz】\n\n";
+                    $content = "打开惊喜[爱心]请输入【jx】\n\n[愉快]历史文章请输入【wz】";
                     $time = time();
                     $info = sprintf($textTpl,$fromUserName,$toUserName,$time,$type,$content);
                     echo $info;
