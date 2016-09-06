@@ -13,7 +13,7 @@ if(!empty($postStr)){
     //消息类型
     $msgType = $postObj->MsgType;
     //事件消息
-    if(!$msgType == 'event'){
+    if($msgType == 'event'){
         $event = $postObj->Event;
         if($event == "subscribe"){
             $type = "text";
