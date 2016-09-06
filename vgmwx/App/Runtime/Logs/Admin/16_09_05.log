@@ -18,3 +18,407 @@ INFO: [ app_end ] --START--
 INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000594s ]
 INFO: [ app_end ] --END-- [ RunTime:0.000662s ]
 
+[ 2016-09-05T17:22:44+08:00 ] 42.233.103.247 /vgmwx/admin.php?index.php
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000042s ]
+INFO: [ app_init ] --END-- [ RunTime:0.032782s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001678s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001781s ]
+
+[ 2016-09-05T17:23:57+08:00 ] 42.233.103.247 /vgmwx/admin.php?index.php
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000043s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001051s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000799s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000874s ]
+
+[ 2016-09-05T17:24:23+08:00 ] 101.226.103.59 /vgmwx/admin.php?index.php&signature=88a42872d85fea79606ba228d7f9f20dc0c5e59a&echostr=8884521921325906383&timestamp=1473067467&nonce=1372616175
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000044s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000696s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002867s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002953s ]
+
+[ 2016-09-05T17:24:30+08:00 ] 101.226.103.59 /vgmwx/admin.php?index.php&signature=8777fdcc05d671896842165e531060b55d34c2be&echostr=2034246050872377311&timestamp=1473067478&nonce=1352647616
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000015s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000234s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000313s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000344s ]
+
+[ 2016-09-05T17:25:57+08:00 ] 42.233.103.247 /vgmwx/admin.php?index.php
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000224s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000309s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000343s ]
+
+[ 2016-09-05T17:27:17+08:00 ] 180.153.206.18 /vgmwx/admin.php?index.php
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000254s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000340s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000377s ]
+
+[ 2016-09-05T17:29:27+08:00 ] 101.226.103.70 /vgmwx/admin.php?index.php&signature=237c695ea68309d1ce5ee3a09b2fcc0fda2009c4&echostr=3300328742854803199&timestamp=1473067775&nonce=1825173932
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000261s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000337s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000373s ]
+
+[ 2016-09-05T17:34:39+08:00 ] 101.226.103.69 /vgmwx/admin.php?index.php&signature=99fcd0ae2ae9e4d7cac55d5428f06914ca8c5bf9&echostr=4190478126884584951&timestamp=1473068087&nonce=375257464
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000259s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000361s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000398s ]
+
+[ 2016-09-05T17:35:03+08:00 ] 101.226.103.70 /vgmwx/admin.php?index.php&signature=7d0b2290186c68e39310cbd4c2964c6c6aacc337&echostr=752221592272993647&timestamp=1473068111&nonce=20540236
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000012s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000236s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000313s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000344s ]
+
+[ 2016-09-05T17:38:28+08:00 ] 101.226.103.69 /vgmwx/admin.php/index.html?signature=0ad026f9cf3b0e371d16cfbd42b1689fc262090e&echostr=6983167438585052670&timestamp=1473068316&nonce=1146734276
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000020s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000355s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000824s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000920s ]
+
+[ 2016-09-05T17:41:27+08:00 ] 58.247.206.139 /vgmwx/admin.php/Index/index.php?signature=4899c0701ea11ced90b5e8d7ea684a7ed05636c8&echostr=8465953392416505855&timestamp=1473068495&nonce=1527829403
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000015s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000286s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000441s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000485s ]
+ERR: 非法操作:index.php
+
+[ 2016-09-05T17:41:27+08:00 ] 101.226.66.174 /vgmwx/admin.php/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000019s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000301s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000758s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000837s ]
+
+[ 2016-09-05T17:41:32+08:00 ] 101.226.233.157 /vgmwx/admin.php/Index/index.php?signature=9e88b5bc4f5890d4949f712dd70457d0b8f77e83&echostr=7489670780022685695&timestamp=1473068500&nonce=2136528718
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000016s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000258s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000470s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000505s ]
+ERR: 非法操作:index.php
+
+[ 2016-09-05T17:43:28+08:00 ] 101.226.103.59 /vgmwx/admin.php/Index/index.php?signature=ca521d97f03ce708bfeb1379957dab08a6679221&echostr=6574706315934809720&timestamp=1473068616&nonce=1434457550
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000014s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000265s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000342s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000376s ]
+NOTIC: [2048] Declaration of Admin\Controller\IndexController::show() should be compatible with Think\Controller::show($content, $charset = '', $contentType = '', $prefix = '') /var/www/clients/client1/web6/web/vgmwx/App/Admin/Controller/IndexController.class.php 第 36 行.
+ERR: 非法操作:index.php
+
+[ 2016-09-05T17:43:31+08:00 ] 101.226.103.59 /vgmwx/admin.php/Index/index.php?signature=61c63d3e790ff0d1692f7aae15500da765cbad79&echostr=7360822040317624299&timestamp=1473068619&nonce=1607612873
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000299s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000352s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000390s ]
+NOTIC: [2048] Declaration of Admin\Controller\IndexController::show() should be compatible with Think\Controller::show($content, $charset = '', $contentType = '', $prefix = '') /var/www/clients/client1/web6/web/vgmwx/App/Admin/Controller/IndexController.class.php 第 36 行.
+ERR: 非法操作:index.php
+
+[ 2016-09-05T17:43:41+08:00 ] 101.226.103.70 /vgmwx/admin.php/Index/index?signature=848363f01af6d7c3a27ddc1851ebe9c6554c4874&echostr=697413042030214903&timestamp=1473068629&nonce=407878951
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000018s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000290s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000357s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000398s ]
+NOTIC: [2048] Declaration of Admin\Controller\IndexController::show() should be compatible with Think\Controller::show($content, $charset = '', $contentType = '', $prefix = '') /var/www/clients/client1/web6/web/vgmwx/App/Admin/Controller/IndexController.class.php 第 36 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.019322s ]
+INFO: [ app_end ] --END-- [ RunTime:0.019392s ]
+
+[ 2016-09-05T17:43:48+08:00 ] 42.233.103.247 /vgmwx/admin.php/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000240s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000353s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000391s ]
+NOTIC: [2048] Declaration of Admin\Controller\IndexController::show() should be compatible with Think\Controller::show($content, $charset = '', $contentType = '', $prefix = '') /var/www/clients/client1/web6/web/vgmwx/App/Admin/Controller/IndexController.class.php 第 36 行.
+NOTIC: [8] Undefined index: signature /var/www/clients/client1/web6/web/vgmwx/App/Admin/Controller/IndexController.class.php 第 14 行.
+NOTIC: [8] Undefined index: timestamp /var/www/clients/client1/web6/web/vgmwx/App/Admin/Controller/IndexController.class.php 第 15 行.
+NOTIC: [8] Undefined index: nonce /var/www/clients/client1/web6/web/vgmwx/App/Admin/Controller/IndexController.class.php 第 16 行.
+NOTIC: [8] Undefined index: echostr /var/www/clients/client1/web6/web/vgmwx/App/Admin/Controller/IndexController.class.php 第 17 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.021160s ]
+INFO: [ app_end ] --END-- [ RunTime:0.021215s ]
+
+[ 2016-09-05T17:43:51+08:00 ] 180.163.2.116 /vgmwx/admin.php/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000215s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000295s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000327s ]
+NOTIC: [2048] Declaration of Admin\Controller\IndexController::show() should be compatible with Think\Controller::show($content, $charset = '', $contentType = '', $prefix = '') /var/www/clients/client1/web6/web/vgmwx/App/Admin/Controller/IndexController.class.php 第 36 行.
+NOTIC: [8] Undefined index: signature /var/www/clients/client1/web6/web/vgmwx/App/Admin/Controller/IndexController.class.php 第 14 行.
+NOTIC: [8] Undefined index: timestamp /var/www/clients/client1/web6/web/vgmwx/App/Admin/Controller/IndexController.class.php 第 15 行.
+NOTIC: [8] Undefined index: nonce /var/www/clients/client1/web6/web/vgmwx/App/Admin/Controller/IndexController.class.php 第 16 行.
+NOTIC: [8] Undefined index: echostr /var/www/clients/client1/web6/web/vgmwx/App/Admin/Controller/IndexController.class.php 第 17 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000931s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000964s ]
+
+[ 2016-09-05T17:43:59+08:00 ] 140.207.54.75 /vgmwx/admin.php/Index/index?signature=e918d59ac5c0e2d14abb0781d74b18d4438d5ad2&echostr=2157077975053238246&timestamp=1473068644&nonce=631109483
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000014s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000324s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000421s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000472s ]
+NOTIC: [2048] Declaration of Admin\Controller\IndexController::show() should be compatible with Think\Controller::show($content, $charset = '', $contentType = '', $prefix = '') /var/www/clients/client1/web6/web/vgmwx/App/Admin/Controller/IndexController.class.php 第 36 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000452s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000495s ]
+
+[ 2016-09-05T17:44:01+08:00 ] 58.247.206.154 /vgmwx/admin.php/Index/index?signature=c2b3b8c09642ae0336536a61dea754a1ca0ab060&echostr=4700823673050611323&timestamp=1473068650&nonce=658536902
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000016s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000279s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000358s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000393s ]
+NOTIC: [2048] Declaration of Admin\Controller\IndexController::show() should be compatible with Think\Controller::show($content, $charset = '', $contentType = '', $prefix = '') /var/www/clients/client1/web6/web/vgmwx/App/Admin/Controller/IndexController.class.php 第 36 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000381s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000416s ]
+
+[ 2016-09-05T17:44:17+08:00 ] 58.247.206.153 /vgmwx/admin.php/Index/index?signature=2218cfeffffeb9e24528fa274823d90426f303d3&echostr=7367794464456048255&timestamp=1473068665&nonce=1613536419
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000267s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000566s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000615s ]
+NOTIC: [2048] Declaration of Admin\Controller\IndexController::show() should be compatible with Think\Controller::show($content, $charset = '', $contentType = '', $prefix = '') /var/www/clients/client1/web6/web/vgmwx/App/Admin/Controller/IndexController.class.php 第 36 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000385s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000422s ]
+
+[ 2016-09-05T17:44:32+08:00 ] 180.163.2.117 /vgmwx/admin.php/Index/index.php
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000012s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000253s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000360s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000397s ]
+NOTIC: [2048] Declaration of Admin\Controller\IndexController::show() should be compatible with Think\Controller::show($content, $charset = '', $contentType = '', $prefix = '') /var/www/clients/client1/web6/web/vgmwx/App/Admin/Controller/IndexController.class.php 第 36 行.
+ERR: 非法操作:index.php
+
+[ 2016-09-05T17:45:50+08:00 ] 42.233.103.247 /vgmwx/admin.php/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000014s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000305s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000403s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000446s ]
+NOTIC: [2048] Declaration of Admin\Controller\IndexController::show() should be compatible with Think\Controller::show($content, $charset = '', $contentType = '', $prefix = '') /var/www/clients/client1/web6/web/vgmwx/App/Admin/Controller/IndexController.class.php 第 36 行.
+NOTIC: [8] Undefined index: signature /var/www/clients/client1/web6/web/vgmwx/App/Admin/Controller/IndexController.class.php 第 14 行.
+NOTIC: [8] Undefined index: timestamp /var/www/clients/client1/web6/web/vgmwx/App/Admin/Controller/IndexController.class.php 第 15 行.
+NOTIC: [8] Undefined index: nonce /var/www/clients/client1/web6/web/vgmwx/App/Admin/Controller/IndexController.class.php 第 16 行.
+NOTIC: [8] Undefined index: echostr /var/www/clients/client1/web6/web/vgmwx/App/Admin/Controller/IndexController.class.php 第 17 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000440s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000478s ]
+
+[ 2016-09-05T17:45:52+08:00 ] 42.233.103.247 /vgmwx/admin.php/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000251s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000348s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000385s ]
+NOTIC: [2048] Declaration of Admin\Controller\IndexController::show() should be compatible with Think\Controller::show($content, $charset = '', $contentType = '', $prefix = '') /var/www/clients/client1/web6/web/vgmwx/App/Admin/Controller/IndexController.class.php 第 36 行.
+NOTIC: [8] Undefined index: signature /var/www/clients/client1/web6/web/vgmwx/App/Admin/Controller/IndexController.class.php 第 14 行.
+NOTIC: [8] Undefined index: timestamp /var/www/clients/client1/web6/web/vgmwx/App/Admin/Controller/IndexController.class.php 第 15 行.
+NOTIC: [8] Undefined index: nonce /var/www/clients/client1/web6/web/vgmwx/App/Admin/Controller/IndexController.class.php 第 16 行.
+NOTIC: [8] Undefined index: echostr /var/www/clients/client1/web6/web/vgmwx/App/Admin/Controller/IndexController.class.php 第 17 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000382s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000415s ]
+
+[ 2016-09-05T17:46:37+08:00 ] 42.233.103.247 /vgmwx/admin.php/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000011s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000261s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000702s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000775s ]
+NOTIC: [2048] Declaration of Admin\Controller\IndexController::show() should be compatible with Think\Controller::show($content, $charset = '', $contentType = '', $prefix = '') /var/www/clients/client1/web6/web/vgmwx/App/Admin/Controller/IndexController.class.php 第 36 行.
+
+[ 2016-09-05T17:46:40+08:00 ] 101.226.125.100 /vgmwx/admin.php/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000011s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000260s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000365s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000399s ]
+NOTIC: [2048] Declaration of Admin\Controller\IndexController::show() should be compatible with Think\Controller::show($content, $charset = '', $contentType = '', $prefix = '') /var/www/clients/client1/web6/web/vgmwx/App/Admin/Controller/IndexController.class.php 第 36 行.
+
+[ 2016-09-05T17:46:41+08:00 ] 117.185.27.113 /vgmwx/admin.php/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000015s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000256s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000351s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000389s ]
+NOTIC: [2048] Declaration of Admin\Controller\IndexController::show() should be compatible with Think\Controller::show($content, $charset = '', $contentType = '', $prefix = '') /var/www/clients/client1/web6/web/vgmwx/App/Admin/Controller/IndexController.class.php 第 36 行.
+
+[ 2016-09-05T17:46:48+08:00 ] 180.153.206.20 /vgmwx/admin.php/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000014s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000312s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000394s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000439s ]
+NOTIC: [2048] Declaration of Admin\Controller\IndexController::show() should be compatible with Think\Controller::show($content, $charset = '', $contentType = '', $prefix = '') /var/www/clients/client1/web6/web/vgmwx/App/Admin/Controller/IndexController.class.php 第 36 行.
+
+[ 2016-09-05T17:47:51+08:00 ] 42.233.103.247 /vgmwx/admin.php/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000258s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000357s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000391s ]
+NOTIC: [2048] Declaration of Admin\Controller\IndexController::show() should be compatible with Think\Controller::show($content, $charset = '', $contentType = '', $prefix = '') /var/www/clients/client1/web6/web/vgmwx/App/Admin/Controller/IndexController.class.php 第 37 行.
+ERR: TOKEN is not defined!
+
+[ 2016-09-05T17:53:20+08:00 ] 42.233.103.247 /vgmwx/admin.php/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000017s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000315s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000395s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000435s ]
+NOTIC: [2048] Declaration of Admin\Controller\IndexController::show() should be compatible with Think\Controller::show($content, $charset = '', $contentType = '', $prefix = '') /var/www/clients/client1/web6/web/vgmwx/App/Admin/Controller/IndexController.class.php 第 35 行.
+NOTIC: [8] Undefined index: signature /var/www/clients/client1/web6/web/vgmwx/App/Admin/Controller/IndexController.class.php 第 13 行.
+NOTIC: [8] Undefined index: timestamp /var/www/clients/client1/web6/web/vgmwx/App/Admin/Controller/IndexController.class.php 第 14 行.
+NOTIC: [8] Undefined index: nonce /var/www/clients/client1/web6/web/vgmwx/App/Admin/Controller/IndexController.class.php 第 15 行.
+NOTIC: [8] Undefined index: echostr /var/www/clients/client1/web6/web/vgmwx/App/Admin/Controller/IndexController.class.php 第 16 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000402s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000439s ]
+
+[ 2016-09-05T17:53:28+08:00 ] 58.247.206.152 /vgmwx/admin.php/Index/index?signature=eb609dcab9a38f6cfa5eca4c7ddb1ab3d6a6ece8&echostr=8707337005490329758&timestamp=1473069214&nonce=1284844618
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000018s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000304s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000395s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000443s ]
+NOTIC: [2048] Declaration of Admin\Controller\IndexController::show() should be compatible with Think\Controller::show($content, $charset = '', $contentType = '', $prefix = '') /var/www/clients/client1/web6/web/vgmwx/App/Admin/Controller/IndexController.class.php 第 35 行.
+
+[ 2016-09-05T18:29:47+08:00 ] 42.233.103.247 /vgmwx/admin.php/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000022s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000401s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000428s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000474s ]
+NOTIC: [8] Undefined index: signature /var/www/clients/client1/web6/web/vgmwx/App/Admin/Controller/IndexController.class.php 第 13 行.
+NOTIC: [8] Undefined index: timestamp /var/www/clients/client1/web6/web/vgmwx/App/Admin/Controller/IndexController.class.php 第 14 行.
+NOTIC: [8] Undefined index: nonce /var/www/clients/client1/web6/web/vgmwx/App/Admin/Controller/IndexController.class.php 第 15 行.
+NOTIC: [8] Undefined index: echostr /var/www/clients/client1/web6/web/vgmwx/App/Admin/Controller/IndexController.class.php 第 16 行.
+NOTIC: [8] Undefined index: HTTP_RAW_POST_DATA /var/www/clients/client1/web6/web/vgmwx/App/Admin/Controller/IndexController.class.php 第 58 行.
+NOTIC: [8] Trying to get property of non-object /var/www/clients/client1/web6/web/vgmwx/App/Admin/Controller/IndexController.class.php 第 62 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000418s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000459s ]
+
+[ 2016-09-05T20:22:54+08:00 ] 42.233.103.247 /vgmwx/admin.php/Index/show
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000015s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000292s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000373s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000407s ]
+
+[ 2016-09-05T20:23:05+08:00 ] 42.233.103.247 /vgmwx/admin.php/Index/show
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000015s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000333s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000444s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000498s ]
+
+[ 2016-09-05T20:23:28+08:00 ] 42.233.103.247 /vgmwx/admin.php/Index/show
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000308s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000410s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000449s ]
+
+[ 2016-09-05T20:24:26+08:00 ] 42.233.103.247 /vgmwx/admin.php/Index/show
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000016s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000271s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000368s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000408s ]
+
+[ 2016-09-05T20:33:20+08:00 ] 42.233.103.247 /vgmwx/admin.php/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000021s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000308s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000396s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000441s ]
+NOTIC: [2048] Declaration of Admin\Controller\IndexController::show() should be compatible with Think\Controller::show($content, $charset = '', $contentType = '', $prefix = '') /var/www/clients/client1/web6/web/vgmwx/App/Admin/Controller/IndexController.class.php 第 136 行.
+NOTIC: [8] Undefined index: signature /var/www/clients/client1/web6/web/vgmwx/App/Admin/Controller/IndexController.class.php 第 13 行.
+NOTIC: [8] Undefined index: timestamp /var/www/clients/client1/web6/web/vgmwx/App/Admin/Controller/IndexController.class.php 第 14 行.
+NOTIC: [8] Undefined index: nonce /var/www/clients/client1/web6/web/vgmwx/App/Admin/Controller/IndexController.class.php 第 15 行.
+NOTIC: [8] Undefined index: echostr /var/www/clients/client1/web6/web/vgmwx/App/Admin/Controller/IndexController.class.php 第 16 行.
+NOTIC: [8] Undefined index: HTTP_RAW_POST_DATA /var/www/clients/client1/web6/web/vgmwx/App/Admin/Controller/IndexController.class.php 第 58 行.
+NOTIC: [8] Trying to get property of non-object /var/www/clients/client1/web6/web/vgmwx/App/Admin/Controller/IndexController.class.php 第 63 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000403s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000435s ]
+
+[ 2016-09-05T20:33:23+08:00 ] 42.233.103.247 /vgmwx/admin.php/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000015s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000264s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000333s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000367s ]
+NOTIC: [2048] Declaration of Admin\Controller\IndexController::show() should be compatible with Think\Controller::show($content, $charset = '', $contentType = '', $prefix = '') /var/www/clients/client1/web6/web/vgmwx/App/Admin/Controller/IndexController.class.php 第 136 行.
+NOTIC: [8] Undefined index: signature /var/www/clients/client1/web6/web/vgmwx/App/Admin/Controller/IndexController.class.php 第 13 行.
+NOTIC: [8] Undefined index: timestamp /var/www/clients/client1/web6/web/vgmwx/App/Admin/Controller/IndexController.class.php 第 14 行.
+NOTIC: [8] Undefined index: nonce /var/www/clients/client1/web6/web/vgmwx/App/Admin/Controller/IndexController.class.php 第 15 行.
+NOTIC: [8] Undefined index: echostr /var/www/clients/client1/web6/web/vgmwx/App/Admin/Controller/IndexController.class.php 第 16 行.
+NOTIC: [8] Undefined index: HTTP_RAW_POST_DATA /var/www/clients/client1/web6/web/vgmwx/App/Admin/Controller/IndexController.class.php 第 58 行.
+NOTIC: [8] Trying to get property of non-object /var/www/clients/client1/web6/web/vgmwx/App/Admin/Controller/IndexController.class.php 第 63 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000358s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000387s ]
+
