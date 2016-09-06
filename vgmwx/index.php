@@ -2,6 +2,7 @@
 require_once('./wx_interface.php');
 
 $wechatObj = new wechatCallbackapi();
-$wechatObj->valid();
+$token = 'weizhi';
+$wechatObj->valid($token);
 
 echo 'hello wx interface';
