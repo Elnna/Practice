@@ -30,7 +30,7 @@ if(!empty($postStr)){
         $msgContent = trim($postObj->Content);
         if(!empty($msgContent)){
             
-            /*switch($msgContent){
+            switch($msgContent){
                 case 'jx':
                     $res_arr = array(
                         array(
@@ -45,17 +45,17 @@ if(!empty($postStr)){
                         ),
                         array(
                             "招贤纳士",
-                            "http://voguem.com/vgmwx/public/img/1.jpg",
+                            "http://voguem.com/vgmwx/public/img/2.jpg",
                             "http://mp.weixin.qq.com/s?__biz=MzI1MDIxMTI5Mg==&mid=405522006&idx=1&sn=d7dcd44a6d81cb168ae5e3f02b434b05#rd"
                         ),
                         array(
                             "春末夏初穿什么",
-                            "http://voguem.com/vgmwx/public/img/1.jpg",
+                            "http://voguem.com/vgmwx/public/img/3.jpg",
                             "http://mp.weixin.qq.com/s?__biz=MzI1MDIxMTI5Mg==&mid=405522006&idx=1&sn=d7dcd44a6d81cb168ae5e3f02b434b05#rd"
                         ),
                         array(
                             "招贤纳士",
-                            "http://voguem.com/vgmwx/public/img/1.jpg",
+                            "http://voguem.com/vgmwx/public/img/4.jpg",
                             "http://mp.weixin.qq.com/s?__biz=MzI1MDIxMTI5Mg==&mid=405522006&idx=1&sn=d7dcd44a6d81cb168ae5e3f02b434b05#rd"
                         )
                         
@@ -92,39 +92,9 @@ if(!empty($postStr)){
                     );
                     
                     
-            }*/
-            if($msgContent == 'jx'){
-                
-            
-                $res_arr = array(
-                        array(
-                            "关注有惊喜",
-                            "http://voguem.com/vgmwx/public/img/gz.jpg",
-                            "http://mp.weixin.qq.com/s?__biz=MzI1MDIxMTI5Mg==&mid=405522006&idx=1&sn=d7dcd44a6d81cb168ae5e3f02b434b05#rd"
-                        ),
-                        array(
-                            "伟志夏季给你清凉",
-                            "http://voguem.com/vgmwx/public/img/1.jpg",
-                            "http://mp.weixin.qq.com/s?__biz=MzI1MDIxMTI5Mg==&mid=405522006&idx=1&sn=d7dcd44a6d81cb168ae5e3f02b434b05#rd"
-                        ),
-                        array(
-                            "招贤纳士",
-                            "http://voguem.com/vgmwx/public/img/1.jpg",
-                            "http://mp.weixin.qq.com/s?__biz=MzI1MDIxMTI5Mg==&mid=405522006&idx=1&sn=d7dcd44a6d81cb168ae5e3f02b434b05#rd"
-                        ),
-                        array(
-                            "春末夏初穿什么",
-                            "http://voguem.com/vgmwx/public/img/1.jpg",
-                            "http://mp.weixin.qq.com/s?__biz=MzI1MDIxMTI5Mg==&mid=405522006&idx=1&sn=d7dcd44a6d81cb168ae5e3f02b434b05#rd"
-                        ),
-                        array(
-                            "招贤纳士",
-                            "http://voguem.com/vgmwx/public/img/1.jpg",
-                            "http://mp.weixin.qq.com/s?__biz=MzI1MDIxMTI5Mg==&mid=405522006&idx=1&sn=d7dcd44a6d81cb168ae5e3f02b434b05#rd"
-                        )
-                        
-                    );
+                    
             }
+            
             $count = count($res_arr);
             if($count > 0){
                 $resStr ="<xml>\n
