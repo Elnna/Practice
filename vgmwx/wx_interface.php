@@ -101,7 +101,7 @@ if(!empty($postStr)){
                         "夏洛特烦恼",
                         "金志文",
                         "http://voguem.com/vgmwx/public/music/xialuotefannao-jinzhiwen.mp3",
-                        "http://voguem.com/vgmwx/public/music/hxialuotefannao-jinzhiwen.mp3"
+                        "http://voguem.com/vgmwx/public/music/hxiaoluotefannao-jinzhiwen.mp3"
                     );
                     echo $info;
                     break;
