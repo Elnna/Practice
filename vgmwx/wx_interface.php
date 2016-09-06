@@ -15,11 +15,11 @@ if(!empty($postStr)){
     if(!$msgType == 'event'){
         $event = $postObj->Event;
         if($event == "subscribe"){
-           /* $type = "text";
+            $type = "text";
             $content = "感谢关注WeiZhi伟志服饰[愉快]！";
             $time = time();
-            $info = sprintf($textTpl,$fromUserName,$toUserName,$time,$type,$content);*/
-            $info = "<xml>\n
+            $info = sprintf($textTpl,$fromUserName,$toUserName,$time,$type,$content);
+            /*$info = "<xml>\n
                     <ToUserName><![CDATA[" .$fromUserName ."]]></ToUserName>\n
                     <FromUserName><![CDATA[" .$toUserName ."]]></FromUserName>\n
                     <CreateTime>". time() . "</CreateTime>\n
@@ -45,7 +45,7 @@ if(!empty($postStr)){
             <Url><![CDATA[http://mp.weixin.qq.com/s?__biz=MzI1MDIxMTI5Mg==&mid=405522006&idx=1&sn=d7dcd44a6d81cb168ae5e3f02b434b05#rd]]></Url>\n
             </item>\n";
             $info .= "</Articles>\n
-                    </xml>";
+                    </xml>";*/
             
             echo $info;
             
