@@ -1,7 +1,0 @@
-<xml>
-             <ToUserName><![CDATA[o3Em6wUGfQRJ_gmbKMhIalJ3jp9Y]]></ToUserName>
-             <FromUserName><![CDATA[gh_b52879251025]]></FromUserName>
-             <CreateTime>1473223798</CreateTime>
-             <MsgType><![CDATA[]]></MsgType>
-             <Content><![CDATA[图片上传成功]]></Content>
-             </xml>
