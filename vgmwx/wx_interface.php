@@ -195,7 +195,7 @@ if(!empty($postStr)){
         //http://api.map.baidu.com/cloudrgc/v1?geotable_id=4&ak=fDb9hmtLGcgdtgm7zCBiQgdeuTjqp6lp&coord_type=wgs84ll&location=23.12004,113.30764
         
         ob_start();
-        readfile($gMapApiUrl.$geotable_id.$ak.$coord_type.$location);
+        readfile($bdMapApiUrl.$geotable_id.$ak.$coord_type.$location);
         $res = ob_get_contents();
         ob_end_clean();
         
