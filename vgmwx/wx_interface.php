@@ -211,10 +211,10 @@ if(!empty($postStr)){
         if(!empty($res)){
             $fn = './public/tmp/map'.  date('YmdHis'). '.txt';
             $fp = fopen($fn,'w');
-            fwrite($fp,$postObj);
-            fwrite($fp,$bdMapApiUrl);
+            fwrite($fp,$postStr);
+            /*fwrite($fp,$bdMapApiUrl);
             fwrite($fp,$res);
-            
+            */
             fclose($fp);
         }else{
             $msgType = 'text';
