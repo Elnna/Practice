@@ -210,6 +210,8 @@ if(!empty($postStr)){
             $city = $res->address_component->city;
             //新浪天气查询接口:
             $weatherApiUrl = "http://php.weather.sina.com.cn/xml.php?password=DJOYnieT8234jlsK";
+            $city=str_replace(array("市","县","区"),array("","",""),$city);
+            
             $city = "&city=".urlencode(iconv("UTF-8","GBK",$city));
             //0:当天,1:第二天,...
             $day = "&day=0";
