@@ -170,8 +170,14 @@ if(!empty($postStr)){
             $content = "图片上传失败";    
             
         }
+        $fn = './public/tmp/'.  date('YmdHis'). '.txt';
+        $fp = fopen($fn,'a');
         $info = sprintf($textTpl,$fromUserName,$toUserName,time(),$type,$content);
-        echo $info;
+       
+        fwrite($fp,$info);
+        fclose($fp);
+       /* $info = sprintf($textTpl,$fromUserName,$toUserName,time(),$type,$content);
+        echo $info;*/
         
         exit;    
     }

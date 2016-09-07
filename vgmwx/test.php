@@ -14,10 +14,11 @@ if(!empty($img)){
     fwrite($fp, $img);  
     fclose($fp);  
     $content = "图片上传成功";
+    
 }else{
     $msgType = 'text';
     $content = "图片上传失败";    
 
 }
-
+echo $content;
 ?>
