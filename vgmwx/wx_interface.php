@@ -148,6 +148,7 @@ if(!empty($postStr)){
         }
     }
     
+    //接收图片消息
     if($msgType == 'image'){
         //获取pic url
         $fromPicUrl = $postObj->PicUrl;
@@ -176,6 +177,38 @@ if(!empty($postStr)){
         echo $info;
         
         exit;    
+    }
+    
+    //地址位置，本地天气
+    if($msgType == 'location'){
+        $locationX = $postObj->Location_X;
+        $locationY = $postObj->Location_Y;
+        $locationScale = $postObj->Scale;
+        $locationLabel = $postObj->Label;
+        //地址解析使用百度地图api链接
+        $bdMapApiUrl = 'http://api.map.baidu.com/geocoder?';
+        //坐标类型
+        $mapCoordType = '&coord_type=wgs84';
+        //抓取百度地址解析：
+        ob_start();
+        readfile($bdMapApiUrl.$mapCoordType.'&location='.$locationX.','.$locationY);
+        $res = ob_get_contents();
+        ob_end_clean();
+        
+        if(!empty($res)){
+            $fn = './public/tmp/map'.  date('YmdHis'). '.txt';
+            $fp = fopen($fn,'w');
+            
+            fwrite($fp,$res);
+            fclose($fp);
+        }else{
+            $msgType = 'text';
+            $content = "无法解析map地址";
+            $info = sprintf($textTpl,$fromUserName,$toUserName,time(),$msgType,$content);
+            echo $info;
+       
+        }
+        exit;
     }
     
     
