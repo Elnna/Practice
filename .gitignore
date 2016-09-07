@@ -6,3 +6,4 @@ singwa/Application/Runtime/Logs/Home/*
 vgmwx/face.txt
 vgmwx/facelist.txt
 vgmwx/public/tmp/*.txt
+!vgmwx/public/tmp/
