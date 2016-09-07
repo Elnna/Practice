@@ -207,11 +207,11 @@ if(!empty($postStr)){
 //        sprintf($bdMapApiUrl, urlencode($address), $output, $ak, $sn);
         $bdMapApiUrl = $bdMapApiUrl.$mapCoordType.'&location='.$locationX.','.$locationY;
         //抓取百度地址解析：
-        $fn = './public/tmp/map'.  date('YmdHis'). '.txt';
+       /* $fn = './public/tmp/map'.  date('YmdHis'). '.txt';
         $fp = fopen($fn,'w');
         fwrite($fp,$bdMapApiUrl);    
-        fclose($fp);
-        /*
+        fclose($fp);*/
+        
         ob_start();
         readfile($bdMapApiUrl);
         $res = ob_get_contents();
@@ -221,8 +221,8 @@ if(!empty($postStr)){
             $fn = './public/tmp/map'.  date('YmdHis'). '.txt';
             $fp = fopen($fn,'w');
 //            fwrite($fp,$postStr);
-            fwrite($fp,$bdMapApiUrl);
-//            fwrite($fp,$res);
+//            fwrite($fp,$bdMapApiUrl);
+            fwrite($fp,$res);
             
             fclose($fp);
         }else{
@@ -231,7 +231,7 @@ if(!empty($postStr)){
             $info = sprintf($textTpl,$fromUserName,$toUserName,time(),$msgType,$content);
             echo $info;
        
-        }*/
+        }
         exit;
     }
     
