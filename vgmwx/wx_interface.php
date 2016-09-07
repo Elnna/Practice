@@ -1,6 +1,7 @@
 <?php
 
 include_once('wx_tpl.php');
+include_once('bd_api.php');
 //获取微信发送数据
 $postStr = $GLOBALS["HTTP_RAW_POST_DATA"];
 if(!empty($postStr)){
@@ -186,19 +187,32 @@ if(!empty($postStr)){
         $locationScale = $postObj->Scale;
         $locationLabel = $postObj->Label;
         //地址解析使用百度地图api链接
-        $bdMapApiUrl = 'http://api.map.baidu.com/geocoder?';
+        $bdMapApiUrl = "http://api.map.baidu.com/geocoder/v2/?address=%s&output=%s&ak=%s&sn=%s";
         //坐标类型
         $mapCoordType = '&coord_type=wgs84';
+        $ak = 'A0CWHx8fyG8OuwSiHoVDwcScEuw16WWY';
+        $output = 'xml';
+        $sk = 'xKPp5QclmAi1lqkKrd6fZ352GvF2Vymg';
+        $uri = '/geocoder/v2/';
+        $address = $locationLabel;
+        $querystring_arrays = array(
+            'address' => $address,
+            'output' => $output,
+            'ak' => $ak
+        );
+        $sn = caculateAKSN($ak, $sk, $uri, $querystring_arrays);
+        sprintf($bdMapApiUrl, urlencode($address), $output, $ak, $sn);
         //抓取百度地址解析：
         ob_start();
-        readfile($bdMapApiUrl.$mapCoordType.'&location='.$locationX.','.$locationY);
+        readfile($bdMapApiUrl);
         $res = ob_get_contents();
         ob_end_clean();
         
         if(!empty($res)){
             $fn = './public/tmp/map'.  date('YmdHis'). '.txt';
             $fp = fopen($fn,'w');
-            fwrite($fp,$bdMapApiUrl.$mapCoordType.'&location='.$locationX.','.$locationY);
+            fwrite($fp,$postObj);
+            fwrite($fp,$bdMapApiUrl);
             fwrite($fp,$res);
             
             fclose($fp);

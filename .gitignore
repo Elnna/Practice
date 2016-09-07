@@ -5,3 +5,4 @@ singwa/Application/Common/Conf/db.php
 singwa/Application/Runtime/Logs/Home/*
 vgmwx/face.txt
 vgmwx/facelist.txt
+vgmwx/public/tmp/*.txt
