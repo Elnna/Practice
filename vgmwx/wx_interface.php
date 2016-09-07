@@ -215,7 +215,7 @@ if(!empty($postStr)){
             ob_start();
             readfile($weatherApiUrl.$city.$day);
             $weather = ob_get_contents();
-            if(!empty($weather)){
+            if(!empty($weather) && strstr($weather,'Weather')){
                 preg_match_all("/\<city\>(.*?)\<\/city\>/",$weather,$wCity);
                 preg_match_all("/\<status2\>(.*?)\<\/status2\>/",$weather,$wStatus2);
                 preg_match_all("/\<status1\>(.*?)\<\/status1\>/",$weather,$wStatus1);
