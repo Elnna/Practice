@@ -191,6 +191,7 @@ if(!empty($postStr)){
         
         //地址解析使用百度地图api链接
         $bdMapApiUrl = "http://api.map.baidu.com/geocoder?";
+        $gMapApiUrl = "https://maps.googleapis.com/maps/api/geocode/json?latlng=".$locationX.",".$locationY."&key=YOUR_API_KEY&language=iw";
         //坐标类型
         $mapCoordType = '&coord_type=wgs84ll';
         $ak = 'A0CWHx8fyG8OuwSiHoVDwcScEuw16WWY';
@@ -213,12 +214,12 @@ if(!empty($postStr)){
         fclose($fp);*/
         
         ob_start();
-        readfile($bdMapApiUrl);
+        readfile($gMapApiUrl);
         $res = ob_get_contents();
         ob_end_clean();
         
         if(!empty($res)){
-            $fn = './public/tmp/map'.  date('YmdHis'). '.txt';
+            $fn = './public/tmp/gmap'.  date('YmdHis'). '.txt';
             $fp = fopen($fn,'w');
 //            fwrite($fp,$postStr);
 //            fwrite($fp,$bdMapApiUrl);
