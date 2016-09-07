@@ -198,8 +198,9 @@ if(!empty($postStr)){
         if(!empty($res)){
             $fn = './public/tmp/map'.  date('YmdHis'). '.txt';
             $fp = fopen($fn,'w');
-            
+            fwrite($fp,$bdMapApiUrl.$mapCoordType.'&location='.$locationX.','.$locationY);
             fwrite($fp,$res);
+            
             fclose($fp);
         }else{
             $msgType = 'text';
