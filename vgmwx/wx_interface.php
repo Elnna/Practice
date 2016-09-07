@@ -21,18 +21,18 @@ if(!empty($postStr)){
             $time = time();
             $info = sprintf($textTpl,$fromUserName,$toUserName,$time,$type,$content);
             echo $info;
-            exit;
             
+            exit;
         }
     }
     
     if($msgType == 'text'){
         $msgContent = trim($postObj->Content);
         
-        $fp = fopen("./face.txt",'a');
+       /* $fp = fopen("./face.txt",'a');
         fwrite($fp,$msgContent);
         fwrite($fp,', ');
-        fclose();
+        fclose();*/
         
         if(!empty($msgContent)){
             
@@ -146,6 +146,34 @@ if(!empty($postStr)){
             
            exit; 
         }
+    }
+    
+    if($msgType == 'image'){
+        //获取pic url
+        $fromPicUrl = $postObj->PicUrl;
+        //构造pic存储名字
+        $filename = './public/img/'. $fromUserName. date('YmdHis'). '.jpg';
+        
+        ob_start();  
+        //make file that output from url goes to buffer  
+        readfile($url);  
+        //file_get_contents($url);  这个方法不行的！！！只能用readfile  
+        $img = ob_get_contents();  
+        ob_end_clean();  
+        if(!empty($img)){
+            $fp = fopen($filename, "a"); //append  
+            fwrite($fp, $img);  
+            fclose($fp);  
+            $content = "图片上传成功";
+        }else{
+            $msgType = 'text';
+            $content = "图片上传失败";    
+            
+        }
+        $info = sprintf($textTpl,$fromUserName,$toUserName,time(),$type,$content);
+        echo $info;
+        
+        exit;    
     }
     
     
