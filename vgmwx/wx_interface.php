@@ -186,32 +186,10 @@ if(!empty($postStr)){
         $locationY = $postObj->Location_Y;
         $locationScale = $postObj->Scale;
         $locationLabel = $postObj->Label;
-        //云逆地址解析
-        //http://api.map.baidu.com/cloudrgc/v1?location=40.055,116.308&geotable_id=135675&coord_type=bd09ll&ak=QPTtujW7FzsUjbGlilkpw6D5
         
-        //地址解析使用百度地图api链接
-        $bdMapApiUrl = "http://api.map.baidu.com/geocoder?";
-        $gMapApiUrl = "https://maps.googleapis.com/maps/api/geocode/json?latlng=".$locationX.",".$locationY."&key=AIzaSyA-L3r2g5jeuGtbEKQWkbwwx81c2ZJ4LnE&language=iw";
-        //坐标类型
-        $mapCoordType = '&coord_type=wgs84ll';
-        $ak = 'A0CWHx8fyG8OuwSiHoVDwcScEuw16WWY';
-        $output = 'xml';
-        $sk = 'xKPp5QclmAi1lqkKrd6fZ352GvF2Vymg';
-        $uri = '/geocoder/v2/';
-        $address = $locationLabel;
-        $querystring_arrays = array(
-            'address' => $address,
-            'output' => $output,
-            'ak' => $ak
-        );
-        $sn = caculateAKSN($ak, $sk, $uri, $querystring_arrays);
-//        sprintf($bdMapApiUrl, urlencode($address), $output, $ak, $sn);
-        $bdMapApiUrl = $bdMapApiUrl.$mapCoordType.'&location='.$locationX.','.$locationY;
-        //抓取百度地址解析：
-       /* $fn = './public/tmp/map'.  date('YmdHis'). '.txt';
-        $fp = fopen($fn,'w');
-        fwrite($fp,$bdMapApiUrl);    
-        fclose($fp);*/
+        //使用gmap地址解析
+        $gMapApiUrl = "https://maps.googleapis.com/maps/api/geocode/xml?latlng=".$locationX.",".$locationY."&key=AIzaSyA-L3r2g5jeuGtbEKQWkbwwx81c2ZJ4LnE&language=zh-CN";
+        
         
         ob_start();
         readfile($gMapApiUrl);
