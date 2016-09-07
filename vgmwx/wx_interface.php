@@ -200,13 +200,32 @@ if(!empty($postStr)){
         ob_end_clean();
         
         if(!empty($res)){
-            $fn = './public/tmp/bdmap'.  date('YmdHis'). '.txt';
+           /* $fn = './public/tmp/bdmap'.  date('YmdHis'). '.txt';
             $fp = fopen($fn,'w');
-//            fwrite($fp,$postStr);
-//            fwrite($fp,$bdMapApiUrl);
+
             fwrite($fp,$res);
             
+            fclose($fp);*/
+            $res = json_decode($res);
+            $city = $res->address_component->city;
+            //新浪天气查询接口:
+            $weatherApiUrl = "http://php.weather.sina.com.cn/xml.php?password=DJOYnieT8234jlsK";
+            $city = "&city=".urlencode(iconv("UTF-8","GBK",$city));
+            //0:当天,1:第二天,...
+            $day = "&day=0";
+            //抓取天气
+            ob_start();
+            readfile($weatherApiUrl.$city.$day);
+            $weather = ob_get_contents();
+            ob_end_clean();
+            $fn = './public/tmp/weather'.  date('YmdHis'). '.txt';
+            $fp = fopen($fn,'w');
+
+            fwrite($fp,$weather);
+            
             fclose($fp);
+            
+            
         }else{
             $msgType = 'text';
             $content = "无法解析map地址";
