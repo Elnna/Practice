@@ -186,18 +186,21 @@ if(!empty($postStr)){
         $locationY = $postObj->Location_Y;
         $locationScale = $postObj->Scale;
         $locationLabel = $postObj->Label;
-        
-        //使用gmap地址解析
-        $gMapApiUrl = "https://maps.googleapis.com/maps/api/geocode/xml?latlng=".$locationX.",".$locationY."&key=AIzaSyA-L3r2g5jeuGtbEKQWkbwwx81c2ZJ4LnE&language=zh-CN";
-        
+        $geotable_id = "geotable_id=42";
+        $ak = "&ak=fDb9hmtLGcgdtgm7zCBiQgdeuTjqp6lp";
+        $coord_type="&coord_type=wgs84ll";
+        $location = "&location=" .$locationX.",".$locationY;
+       
+        $bdMapApiUrl = "http://api.map.baidu.com/cloudrgc/v1?";
+        //http://api.map.baidu.com/cloudrgc/v1?geotable_id=4&ak=fDb9hmtLGcgdtgm7zCBiQgdeuTjqp6lp&coord_type=wgs84ll&location=23.12004,113.30764
         
         ob_start();
-        readfile($gMapApiUrl);
+        readfile($gMapApiUrl.$geotable_id.$ak.$coord_type.$location);
         $res = ob_get_contents();
         ob_end_clean();
         
         if(!empty($res)){
-            $fn = './public/tmp/gmap'.  date('YmdHis'). '.txt';
+            $fn = './public/tmp/bdmap'.  date('YmdHis'). '.txt';
             $fp = fopen($fn,'w');
 //            fwrite($fp,$postStr);
 //            fwrite($fp,$bdMapApiUrl);
