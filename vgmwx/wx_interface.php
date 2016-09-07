@@ -161,7 +161,7 @@ if(!empty($postStr)){
         $img = ob_get_contents();  
         ob_end_clean();  
         if(!empty($img)){
-            $fp = fopen($filename, "a"); //append  
+            $fp = @fopen($filename, "a"); //append  
             fwrite($fp, $img);  
             fclose($fp);  
             $content = "图片上传成功";
