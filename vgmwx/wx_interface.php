@@ -215,14 +215,39 @@ if(!empty($postStr)){
             ob_start();
             readfile($weatherApiUrl.$city.$day);
             $weather = ob_get_contents();
-           /* ob_end_clean();
-            $fn = './public/tmp/weather'.  date('YmdHis'). '.txt';
-            $fp = fopen($fn,'w');
-
-            fwrite($fp,$weather);
-            
-            fclose($fp);*/
-            
+            if(!empty($weather)){
+                preg_match_all("/\<city\>(.*?)\<\/city\>/",$weather,$wCity);
+                preg_match_all("/\<status2\>(.*?)\<\/status2\>/",$weather,$wStatus2);
+                preg_match_all("/\<status1\>(.*?)\<\/status1\>/",$weather,$wStatus1);
+                preg_match_all("/\<temperature2\>(.*?)\<\/temperature2\>/",$weather,$wTemperature2);
+                preg_match_all("/\<temperature1\>(.*?)\<\/temperature1\>/",$weather,$wTemperature1);
+                preg_match_all("/\<direction2\>(.*?)\<\/direction2\>/",$weather,$wDirection2);
+                preg_match_all("/\<direction1\>(.*?)\<\/direction1\>/",$weather,$wDirection1);
+                preg_match_all("/\<power2\>(.*?)\<\/power2\>/",$weather,$wPower2);
+                preg_match_all("/\<power1\>(.*?)\<\/power1\>/",$weather,$wPower1);
+                preg_match_all("/\<chy_shuoming\>(.*?)\<\/chy_shuoming\>/",$weather,$wChy_shuoming);
+                preg_match_all("/\<savedate_weather\>(.*?)\<\/savedate_weather\>/",$weather,$wSavedate_weather);
+                //检查天气是否一致
+                if($wStatus2 == $wStatus1){
+                    $wStatus = $wStatus2[1][0];
+                }else{
+                    $wStatus = $wStatus2[1][0] ."转" . $wStatus1[1][0];
+                }
+                $weatherRes = array(
+                    $wCity[1][0] . "天气预报",
+                    "发布:" . $wSavedate_weather[1][0],
+                    "气候:" . $wStatus,
+                    "气温:" . $wTemperature2[1][0] . '-' . $wTemperature1[1][0],
+                    "风向(力):" . $wDirection2[1][0] . ' ' . $wPower2[1][0] . '级 - ' . $wDirection1[1][0] . ' ' . $wPower1[1][0],
+                    "穿衣:" . $wChy_shuoming[1][0]   
+                );
+                $weatherRes = implode("\n",$weatherRes);
+                $msgType = "text";
+                $info = sprintf($textTpl,$fromUserName,$toUserName,time(),$msgType,$weatherRes);
+                echo $info;
+               
+            }
+        
             
         }else{
             $msgType = 'text';

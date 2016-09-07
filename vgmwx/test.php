@@ -22,7 +22,7 @@ if(!empty($img)){
 }
 echo $content;*/
 //include_once('bdmapexp.txt');
-$res = '{"status":0,"message":"ok","location":{"lat":32.13334141291585,"lng":114.11728592505813},"address_component":{"country":"中国","province":"河南省","city":"信阳市","district":"平桥区","street":"G312(沪霍线)","street_number":"","admin_area_code":411503,"country_code":"0"},"formatted_address":"河南省信阳市平桥区G312(沪霍线)","recommended_location_description":"夏家老塆西南51米"}';
+/*$res = '{"status":0,"message":"ok","location":{"lat":32.13334141291585,"lng":114.11728592505813},"address_component":{"country":"中国","province":"河南省","city":"信阳市","district":"平桥区","street":"G312(沪霍线)","street_number":"","admin_area_code":411503,"country_code":"0"},"formatted_address":"河南省信阳市平桥区G312(沪霍线)","recommended_location_description":"夏家老塆西南51米"}';
 $json1 = json_decode($res);
 
 var_dump($json1);
@@ -46,7 +46,10 @@ $city = @iconv( "utf-8", "gb2312//IGNORE",$city);
               //查询当天
                 $day="&day=0";
 echo $weather_api_url.$city.$day."<hr/>";
-echo $city;
-//echo phpinfo();
+echo $city;*/
+
+$weather = file_get_contents('./weatherexp.txt');
+preg_match_all("/\<status2\>(.*?)\<\/status2\>/",$weather,$wStatus2);
+var_dump($wStatus2);
 
 ?>
