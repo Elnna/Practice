@@ -215,13 +215,13 @@ if(!empty($postStr)){
             ob_start();
             readfile($weatherApiUrl.$city.$day);
             $weather = ob_get_contents();
-            ob_end_clean();
+           /* ob_end_clean();
             $fn = './public/tmp/weather'.  date('YmdHis'). '.txt';
             $fp = fopen($fn,'w');
 
             fwrite($fp,$weather);
             
-            fclose($fp);
+            fclose($fp);*/
             
             
         }else{
