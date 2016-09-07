@@ -164,18 +164,14 @@ if(!empty($postStr)){
             $fp = @fopen($filename, "a"); //append  
             fwrite($fp, $img);  
             fclose($fp);  
+            
             $content = "图片上传成功";
         }else{
-            $msgType = 'text';
-            $content = "图片上传失败";    
-            
+            $content = "图片上传失败";      
         }
-       /* $fn = './public/tmp/'.  date('YmdHis'). '.txt';
-        $fp = fopen($fn,'a');
-        $info = sprintf($textTpl,$fromUserName,$toUserName,time(),$msgType,$content);
+        
+        $msgType = 'text';
        
-        fwrite($fp,$info);
-        fclose($fp);*/
         $info = sprintf($textTpl,$fromUserName,$toUserName,time(),$msgType,$content);
         echo $info;
         

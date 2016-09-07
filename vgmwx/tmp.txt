@@ -83,3 +83,12 @@ if(!empty($postStr)){
     }
 }
 wx_interface();*/
+
+
+
+/* $fn = './public/tmp/'.  date('YmdHis'). '.txt';
+        $fp = fopen($fn,'a');
+        $info = sprintf($textTpl,$fromUserName,$toUserName,time(),$msgType,$content);
+       
+        fwrite($fp,$info);
+        fclose($fp);*/
