@@ -31,6 +31,7 @@ if(!empty($postStr)){
         
         $fp = fopen("./face.txt",'a');
         fwrite($fp,$msgContent);
+        fwrite($fp,'\n');
         fclose();
         
         if(!empty($msgContent)){
