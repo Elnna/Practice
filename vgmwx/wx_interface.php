@@ -200,12 +200,7 @@ if(!empty($postStr)){
         ob_end_clean();
         
         if(!empty($res)){
-           /* $fn = './public/tmp/bdmap'.  date('YmdHis'). '.txt';
-            $fp = fopen($fn,'w');
-
-            fwrite($fp,$res);
-            
-            fclose($fp);*/
+          
             $res = json_decode($res);
             $city = $res->address_component->city;
             //新浪天气查询接口:
@@ -215,12 +210,9 @@ if(!empty($postStr)){
             $city = "&city=".urlencode(iconv("UTF-8","GBK",$city));
             //0:当天,1:第二天,...
             $day = "&day=0";
-            $fn = './public/tmp/weather'.  date('YmdHis'). '.txt';
-            $fp = fopen($fn,'w');
-            fwrite($fp,$weatherApiUrl.$city.$day);
-            fclose($fp);
+            
             //抓取天气
-           /* ob_start();
+            ob_start();
             readfile($weatherApiUrl.$city.$day);
             $weather = ob_get_contents();
             ob_end_clean();
@@ -229,7 +221,7 @@ if(!empty($postStr)){
 
             fwrite($fp,$weather);
             
-            fclose($fp);*/
+            fclose($fp);
             
             
         }else{
