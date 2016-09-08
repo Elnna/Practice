@@ -1,4 +1,5 @@
 <?php
+//include_once('../../config.php');
 class mysqliDB{
     public static $mysqli = null;
     /*
@@ -6,7 +7,9 @@ class mysqliDB{
     * @param string $err
     */
     function error($err){
-        die("对不起，您的操作有误，错误原因为：" . $err);
+//        die("对不起，您的操作有误，错误原因为：" . $err);
+        echo "对不起，您的操作有误，错误原因为：" . $err;
+        return false;
     }
     /*
     * 连接数据库
@@ -19,8 +22,8 @@ class mysqliDB{
     *   @param string $dbcharset 字符集/编码
     * @return boolean
     */
-//    public function __construct($config = ''){
-    public function connect($config = ''){
+    public function __construct($config = ''){
+//    public function connect($config = ''){
         if(!class_exists('mysqli')){
             $this->error('不支持mysqli,请先开启');
         }
@@ -39,15 +42,15 @@ class mysqliDB{
             }
 
             if(self::$mysqli->errno){
-                error('('. self::$mysqli->errno . ')' . self::$mysqli->error);
+                $this->error('('. self::$mysqli->errno . ')' . self::$mysqli->error);
                 return false;
             }
             if(!self::$mysqli->set_charset("utf8")){
-                error('('. self::$mysqli->errno . ')' . self::$mysqli->error);
+                $this->error('('. self::$mysqli->errno . ')' . self::$mysqli->error);
             }
-            return self::$mysqli;
+            
         }
-        
+        return self::$mysqli;
     }
     
     /*
@@ -58,7 +61,9 @@ class mysqliDB{
     function query($sql){
        
         if((($query = mysqli_query(self::$mysqli,$sql))) === false){
-            $this->error($sql . '<br/>' . mysqli_error(self::$mysqli));
+            echo $sql . '<br/>' . mysqli_error(self::$mysqli);
+            return null;
+//            $this->error($sql . '<br/>' . mysqli_error(self::$mysqli));
         }else{
           
             return $query;
@@ -108,10 +113,11 @@ class mysqliDB{
         $types = $this->getTypes($arr[0]);
         $this->addSpecialChar($table);
         $sql = "INSERT INTO {$table}({$fields}) VALUES {$binds} ";
-
+        
         $stmt = self::$mysqli->prepare($sql);
         if(!$stmt){
             $this->error("sql stament 为空");
+            return false;
         }
         foreach($arr as $k => $v){
             extract($v);
@@ -127,7 +133,9 @@ class mysqliDB{
         foreach($vals as $v){
             call_user_func_array(array($stmt, 'bind_param'), array_merge(array($types), $v));
             mysqli_stmt_execute($stmt);
-            $store[] = $stmt->insert_id;
+            $store['stmt'] = $stmt;
+            $store['insert_id'] = $stmt->insert_id;
+//            $store[] = $stmt->insert_id;
         }
         unset($v);
         return $store;  
