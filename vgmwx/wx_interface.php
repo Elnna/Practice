@@ -35,7 +35,7 @@ if(!empty($postStr)){
             $l = 0;
             $content = $l++ . "  " . $fromUserName . "  " . date("Y-m-d H:i:s") . " 退订\n"; 
             
-            $fp = fopen($fn, "w");
+            $fp = fopen($fn, "a");
             fwrite($fp,$content);
             fclose($fp);
             
