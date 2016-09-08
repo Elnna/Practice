@@ -31,9 +31,15 @@ if(!empty($postStr)){
             
             $content = "";
             $fn = './public/tmp/unsubscribe.txt';
-            $fp = fopen($fn, "r");
+//            $fp = fopen($fn, "r");
             $l = 0;
-            while(!feof($fp)){
+            $content = $l++ . "  " . $fromUserName . "  " . date("Y-m-d H:i:s") . " 退订\n"; 
+            
+            $fp = fopen($fn, "w");
+            fwrite($fp,$content);
+            fclose($fp);
+            
+           /* while(!feof($fp)){
                 $line = fgets($fp,4096);    //逐行读取
                 if(!strstr($line,$fromUserName)){
                     $content = $l++ . "  " . $fromUserName . "  " . date("Y-m-d H:i:s") . " 退订\r\n"; 
@@ -46,7 +52,7 @@ if(!empty($postStr)){
                 $fp = fopen($fn, "w");
                 fwrite($fp,$content);
                 fclose($fp);
-            }
+            }*/
             
             exit;
             
