@@ -16,6 +16,7 @@ if(!empty($postStr)){
     //事件消息
     if($msgType == 'event'){
         $event = $postObj->Event;
+        //订阅
         if($event == "subscribe"){
             $type = "text";
             $content = "欢迎新朋友 [愉快] !\n\n关注WeiZhi伟志服饰\n有惊喜[爱心]\n\n打开惊喜请输入【jx】\n\n历史文章请输入【wz】\n\n";
@@ -24,6 +25,17 @@ if(!empty($postStr)){
             echo $info;
             
             exit;
+        }
+        //退订消息的接收
+        if($event == 'unsubscribe'){
+            
+            $content = $fromUserName . "  " . date("Y-m-d H:i:s") . " 退订\r\n";
+            $fn = './public/tmp/unsubscribe.txt';
+            $fp = fopen($fn, "a");
+            fwrite($fp,$content);
+            fclose($fp);
+            exit;
+            
         }
     }
     
@@ -258,7 +270,7 @@ if(!empty($postStr)){
         }
         exit;
     }
-    
+   
     
 }else{
     echo "Post数据为空";
