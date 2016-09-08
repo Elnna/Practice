@@ -31,7 +31,7 @@ if(!empty($postStr)){
             
             $content = "";
             $fn = './public/tmp/unsubscribe.txt';
-            $fp = fopen($fn, "r");
+            $fp = fopen($fn, "rb");
             $l = 0;
           
             
@@ -46,7 +46,7 @@ if(!empty($postStr)){
             fclose($fp);
             
             if(!empty($content)){
-                $fp = fopen($fn, "a");
+                $fp = fopen($fn, "ab");
                 fwrite($fp,$content);
                 fclose($fp);
             }
