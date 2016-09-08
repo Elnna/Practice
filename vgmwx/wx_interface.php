@@ -29,11 +29,25 @@ if(!empty($postStr)){
         //退订消息的接收
         if($event == 'unsubscribe'){
             
-            $content = $fromUserName . "  " . date("Y-m-d H:i:s") . " 退订\r\n";
+            $content = "";
             $fn = './public/tmp/unsubscribe.txt';
-            $fp = fopen($fn, "a");
-            fwrite($fp,$content);
+            $fp = fopen($fn, "r");
+            $l = 0;
+            while(!feof($fp)){
+                $line = fgets($fp,4096);    //逐行读取
+                if(!strstr($line,$fromUserName)){
+                    $content = $l++ . "  " . $fromUserName . "  " . date("Y-m-d H:i:s") . " 退订\r\n"; 
+                    break;
+                }
+            }
             fclose($fp);
+            
+            if(!empty($content)){
+                $fp = fopen($fn, "w");
+                fwrite($fp,$content);
+                fclose($fp);
+            }
+            
             exit;
             
         }

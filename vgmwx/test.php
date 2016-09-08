@@ -48,8 +48,11 @@ $city = @iconv( "utf-8", "gb2312//IGNORE",$city);
 echo $weather_api_url.$city.$day."<hr/>";
 echo $city;*/
 
-$weather = file_get_contents('./weatherexp.txt');
+/*$weather = file_get_contents('./weatherexp.txt');
 preg_match_all("/\<status2\>(.*?)\<\/status2\>/",$weather,$wStatus2);
-var_dump($wStatus2);
+var_dump($wStatus2);*/
+$str = "o3Em6wUGfQRJ_gmbKMhIalJ3jp9Y  2016-09-08 00:28:11 退订";
+echo strstr($str,"dddGfQRJ_gmbKMhIalJ3jp9Y")? "存在": "不存在";
+
 
 ?>
