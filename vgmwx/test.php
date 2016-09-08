@@ -51,8 +51,32 @@ echo $city;*/
 /*$weather = file_get_contents('./weatherexp.txt');
 preg_match_all("/\<status2\>(.*?)\<\/status2\>/",$weather,$wStatus2);
 var_dump($wStatus2);*/
+/*
 $str = "o3Em6wUGfQRJ_gmbKMhIalJ3jp9Y  2016-09-08 00:28:11 退订";
 echo strstr($str,"dddGfQRJ_gmbKMhIalJ3jp9Y")? "存在": "不存在";
+*/
+$fn = './public/local/unsubscribe.txt';
+$fp = fopen($fn, "r");
+$l = 0;
+$fromUserName = "o3Em6wUGfQRJ_gmbKMhIalJ3jp9Y";
+echo $fromUserName . "<hr/>";
+while(!feof($fp)){
+    $line = fgets($fp,4096);    //逐行读取
+    echo $line . "<hr/>";
+    $l++;
+    if(!strstr($line,$fromUserName)){
+        $content = $l . "  " . $fromUserName . "  " . date("Y-m-d H:i:s") . " 退订\n"; 
+        
+    }
+}
+fclose($fp);
+
+if(!empty($content)){
+    $fp = fopen($fn, "a");
+    fwrite($fp,$content);
+    fclose($fp);
+}
+
 
 
 ?>

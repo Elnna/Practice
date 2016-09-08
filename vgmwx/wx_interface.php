@@ -39,7 +39,7 @@ if(!empty($postStr)){
                 $line = fgets($fp,4096);    //逐行读取
                 $l++;
                 if(!strstr($line,$fromUserName)){
-                    $content = $l . "  " . $fromUserName . "  " . date("Y-m-d H:i:s") . " 退订\r\n"; 
+                    $content = $l . "  " . $fromUserName . "  " . date("Y-m-d H:i:s") . " 退订\n"; 
                    
                 }
             }
