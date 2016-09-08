@@ -55,7 +55,7 @@ var_dump($wStatus2);*/
 $str = "o3Em6wUGfQRJ_gmbKMhIalJ3jp9Y  2016-09-08 00:28:11 退订";
 echo strstr($str,"dddGfQRJ_gmbKMhIalJ3jp9Y")? "存在": "不存在";
 */
-$fn = './public/local/unsubscribe.txt';
+/*$fn = './public/local/unsubscribe.txt';
 $fp = fopen($fn, "r");
 $l = 0;
 $fromUserName = "o3Em6wUGfQRJ_gmbKMhIalJ3jp9Y";
@@ -75,8 +75,9 @@ if(!empty($content)){
     $fp = fopen($fn, "a");
     fwrite($fp,$content);
     fclose($fp);
-}
+}*/
 
+echo chr(48);
 
 
 ?>

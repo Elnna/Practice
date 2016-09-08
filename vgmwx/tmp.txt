@@ -64,6 +64,7 @@ if(!empty($postStr)){
     exit;
 }
 
+
 /*function wx_interface(){
     $echoStr = $_GET["echostr"];
     $signature = $_GET["signature"];
