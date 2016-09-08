@@ -9,3 +9,4 @@ vgmwx/public/tmp/*.txt
 !vgmwx/public/tmp/
 vgmwx/public/local/*
 !vgmwx/public/local/
+vgmwx/config.php
