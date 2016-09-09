@@ -699,59 +699,116 @@ function multi($num, $perpage, $curpage, $mpurl, $ajax=0, $ajax_f='',$flag='') {
 		}
 		$multipage = '';
 		if($curpage - $offset > 1 && $pages > $page) {
-			$multipage .= "<a ";
+			$multipage .= "<li><a ";
 			if($ajax) {
 				$multipage .= "href=\"javascript:{$ajax_f}($flag,1);\"";
 			} else {
-				$multipage .= "href=\"{$mpurl}page=1{$urlplus}\"";
+				$multipage .= "href=\"{$mpurl}page=1\"";
 			}
-			$multipage .= " class=\"first\">首</a>";
+			$multipage .= " class=\"first\">首</a></li>";
 		}
 		if($curpage > 1) {
-			$multipage .= "<a ";
+			$multipage .= "<li><a ";
 			if($ajax) {
 				$multipage .= "href=\"javascript:{$ajax_f}($flag,".($curpage-1).");\" ";
 			} else {
-				$multipage .= "href=\"{$mpurl}page=".($curpage-1)."$urlplus\"";
+				$multipage .= "href=\"{$mpurl}page=".($curpage-1)."\"";
 			}
-			$multipage .= " class=\"prev\">&lt;&lt; </a>";
+			$multipage .= " >&laquo; </a></li>";
 		}
 		for($i = $from; $i <= $to; $i++) {
 			if($i == $curpage) {
-				$multipage .= '<a href="###" class="cur">'.$i.'</strong>';
+				$multipage .= '<li><a href="###" class="cur">'.$i.'</strong>';
 			} else {
-				$multipage .= "<a ";
+				$multipage .= "<li><a ";
 				if($ajax) {
 					$multipage .= "href=\"javascript:{$ajax_f}($flag,$i);\" ";
 				} else {
-					$multipage .= "href=\"{$mpurl}page=$i{$urlplus}\"";
+					$multipage .= "href=\"{$mpurl}page=$i\"";
 				}
-				$multipage .= ">$i</a>";
+				$multipage .= ">$i</a></li>";
 			}
 		}
 		if($curpage < $pages) {
-			$multipage .= "<a ";
+			$multipage .= "<li><a ";
 			if($ajax) {
 				$multipage .= "href=\"javascript:{$ajax_f}($flag,".($curpage+1).");\" ";
 			} else {
-				$multipage .= "href=\"{$mpurl}page=".($curpage+1)."{$urlplus}\"";
+				$multipage .= "href=\"{$mpurl}page=".($curpage+1)."\"";
 			}
-			$multipage .= " class=\"next\"> &gt;&gt;</a>";
+			$multipage .= " > &laquo;</a></li>";
 		}
 		if($to < $pages) {
-			$multipage .= "<a ";
+			$multipage .= "<li><a ";
 			if($ajax) {
 				$multipage .= "href=\"javascript:{$ajax_f}($flag,$pages);\" ";
 			} else {
-				$multipage .= "href=\"{$mpurl}page=$pages{$urlplus}\"";
+				$multipage .= "href=\"{$mpurl}page=$pages\"";
 			}
-			$multipage .= " class=\"last\">尾</a>";
+			$multipage .= " class=\"last\">尾</a></li>";
 		}
 		if($multipage) {
 			//$multipage = '<em>&nbsp;'.$num.'&nbsp;</em>'.$multipage;
 		}
 	}
 	return $multipage;
+}
+
+function page($page,$total,$phpfile,$pagesize=10,$pagelen=7){
+    $pagecode = '';//定义变量，存放分页生成的HTML
+    $page = intval($page);//避免非数字页码
+    $total = intval($total);//保证总记录数值类型正确
+    if(!$total) return array();//总记录数为零返回空数组
+    $pages = ceil($total/$pagesize);//计算总分页
+    //处理页码合法性
+    if($page<1) $page = 1;
+    if($page>$pages) $page = $pages;
+    //计算查询偏移量
+    $offset = $pagesize*($page-1);
+    //页码范围计算
+    $init = 1;//起始页码数
+    $max = $pages;//结束页码数
+    $pagelen = ($pagelen%2)?$pagelen:$pagelen+1;//页码个数
+    $pageoffset = ($pagelen-1)/2;//页码个数左右偏移量
+    
+   $pagecode = "<li>";
+    //第几页,共几页
+    //如果是第一页，则不显示第一页和上一页的连接
+//    if($page!=1){
+        $pagecode.="<a href=\"{$phpfile}?page=1\">&laquo;</a></li>";//第一页
+       
+//    }
+    //分页数大于页码个数时可以偏移
+    if($pages>$pagelen){
+        //如果当前页小于等于左偏移
+        if($page<=$pageoffset){
+            $init=1;
+            $max = $pagelen;
+        }else{//如果当前页大于左偏移
+            //如果当前页码右偏移超出最大分页数
+            if($page+$pageoffset>=$pages+1){
+                $init = $pages-$pagelen+1;
+            }else{
+                //左右偏移都存在时的计算
+                $init = $page-$pageoffset;
+                $max = $page+$pageoffset;
+            }
+        }
+    }
+    //生成html
+    for($i=$init;$i<=$max;$i++){
+//        if($i==$page){
+//            $pagecode.="<li><a href='###'> $i </a></li>";
+//        } else {
+            $pagecode.="<li><a href=\"{$phpfile}?page={$i}\">$i</a></li>";
+//        }
+    }
+//    if($page!=$pages){
+       
+        $pagecode.="<li><a href=\"{$phpfile}?page={$pages}\">&raquo;</a></li>";//最后一页
+//    }
+    return $pagecode;
+
 }
 
 ?>

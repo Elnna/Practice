@@ -2,27 +2,15 @@
 //添加部门
 include_once('../config.php');
 include_once('./libs/base.class.php');
-include_once('./libs/mysqli.class.php');
-$mysqli = new mysqliDB($config);
+extract($config);
+$mysqli = new mysqli($dbhost,$dbuser,$dbpwd,$dbname);
+$mysqli->set_charset($dbcharset);
 
-//var_dump($_POST);
-
-$classId = isset($_GET['class_id']) ? intval($_GET['class_id']): "";
 $action = isset($_POST['action']) ? $_POST['action']:"";
 $action = string::un_script_code($action);
 $action = string::un_html($action);
-if($classId){
-    $sql = "select * from class where class_id=$classId";
-    session_start();
-    $classVal = $mysqli->mysqli_query($sql);
-    $_SESSION['classVal'] = $classVal;
-    if(!$classVal){
-        echo "<script>alert('无此部门');history.back();</script>";
-        exit;
-    }
-}
 
-//
+
 if(in_array($action,array('update','insert'))){
     //获取表单传入数据
     $oldClassId = intval($_POST['class_id']);
@@ -33,49 +21,49 @@ if(in_array($action,array('update','insert'))){
         
 //        echo var_dump($_POST);
         echo "<script>alert('请输入部门名称');history.back();</script>";
+        exit;
     }
     //default 
     $nowTime = date("Y-m-d H:i:s",time());
     $table = 'class';
     if($oldClassId){
         //修改部门名称、所属、更新时间
-        
-        $arr = array(
-            'class_name' => $className,
-            'class_fid' => $classFid,
-            'edittime' => $nowTime
-        );
-        $where = "class_id=$classId";
-        $res = $mysqli->update($table,$arr,$where);
+        $sql = "update class set class_name='$className',class_fid='$classFid',edittime='$nowTime' where class_id='$oldClassId'";
+        $mysqli->query($sql);
     }else{
         //新增记录
-        $arr = array(
-            array(
-                'class_name' => $className,
-                'class_fid' => $classFid,
-                'edittime' => $nowTime,
-                'addtime' => $nowTime,
-                'status' => 1
-            )
-        );
-        $res = $mysqli->insert($table,$arr);
-       
+        $sql = "insert into class(class_name,class_fid,edittime,addtime,status)  values('$className','$classFid','$nowTime','$nowTime',1)";
+        $mysqli->query($sql);
+        
     }
-    if(empty($res)){
-        echo "<script>alert('".$res."');history.back();</script>";
+    if($mysqli->errno != 0){
+        
+        echo "<script>alert('".$mysqli->error."');history.back();</script>";
         exit;
+        
     }else{
-        $newClassId = $res['insert_id'];
-        echo "<script>alert('操作成功！');location='../classview.php?class_id=$newClassId';</script>";
+        if(!$oldClassId){
+            $newClassId = $mysqli->insert_id;
+            $sql = "select class_fid,class_name from class where class_id=$newClassId";
+
+            $classVal = $mysqli->query($sql)->fetch_array(MYSQLI_ASSOC);
+
+            session_start();
+            $_SESSION['classVal'] = $classVal;
+
+            echo "<script>alert('操作成功！');location='../class.update.php?class_id=$newClassId';</script>";
+            exit;
+        }else{
+            echo "<script>alert('操作成功！');location='../class.update.php';</script>";
+            exit;
+        }
+        
         
     }
     
-    $sql = "select class_name, class_id from class where `status`=1 order by class_fid asc";
-    $query = $mysqli->query($sql);
-    $classList = $mysqli->findAll($query);
-    session_start();
-    $_SESSION['classList'] = $classList;
+    
     
 }
+
 ?>
 

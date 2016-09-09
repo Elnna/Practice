@@ -1,6 +1,22 @@
-<?php session_start();
-$classVal = isset($_SESSION['classVal'])?$_SESSION['classVal']:"";
-$classList = isset($_SESSION['classList'])?$_SESSION['classList']:"";
+<?php 
+include_once('./config.php');
+extract($config);
+$mysqli = new mysqli($dbhost,$dbuser,$dbpwd,$dbname);
+$mysqli->set_charset($dbcharset);
+$sql = "select class_name, class_id from class where `status`=1 order by class_fid asc";
+
+//获取上级部门
+$classList = $mysqli->query($sql)->fetch_all(MYSQLI_ASSOC);
+$mysqli->close();
+
+$classId = isset($_GET['class_id'])&&!empty($_GET['class_id'])?intval($_GET['class_id']):"" ;
+
+if(!empty($classId)){
+    session_start();
+    $classVal = isset($_SESSION['classVal'])?$_SESSION['classVal']:"";  
+}else{
+    $classVal = "";
+}
 ?>
 <!DOCTYPE HTML>
 <html lang="zh-CN">
@@ -9,13 +25,14 @@ $classList = isset($_SESSION['classList'])?$_SESSION['classList']:"";
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>添加部门</title>
         <link href="./public/css/bootstrap.min.css" rel="stylesheet">
+        <link href="./public/css/mystyle.css" rel="stylesheet">
     </head>
     <body>
         <div class="container">
             <!--页面名称-->
             <h3>
-                部门添加|修改
-                <a href="./admin/class.manager.php">返回</a>
+                部门<a href="./class.update.php" class="<?php echo empty($classId)?'active current' : 'active';?>">添加</a>|<a href="./class.update.php?class_id=<?=$classId;?>" class="<?php echo !empty($classId)?'active current' : 'disabled';?>">修改</a>
+                <a href="./class.view.php" >返回</a>
             </h3>
             <!--表单-->
            
@@ -23,7 +40,7 @@ $classList = isset($_SESSION['classList'])?$_SESSION['classList']:"";
               <div class="form-group">
                 <label for="className" class="col-sm-2 control-label">部门名称</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="className" name="class_name" placeholder="部门名称" value="<?=$classVal;?>">
+                  <input type="text" class="form-control" id="className" name="class_name" placeholder="部门名称" value="<?php echo  empty($classVal) ? "":$classVal['class_name'];?>">
                 </div>
               </div>
                 
@@ -37,7 +54,7 @@ $classList = isset($_SESSION['classList'])?$_SESSION['classList']:"";
                             if(!empty($classList)):
                                 foreach($classList as $v): 
                                 if(!empty($classVal)){
-                                    $classSelect = ($classVal['class_fid'] == $v['class_fid'] ) ? " selected" : "";
+                                    $classSelect = ($classVal['class_fid'] == $v['class_id'] ) ? " selected" : "";
                                 }else{
                                     $classSelect = "";
                                 }
@@ -56,7 +73,7 @@ $classList = isset($_SESSION['classList'])?$_SESSION['classList']:"";
                 <?php 
                 $actionVal = isset($_GET['class_id']) && !empty($_GET['class_id']) ? 'update' : 'insert'; ?>
               <input type="hidden" name="action" value="<?=$actionVal;?>">
-              <input type="hidden" name="class_id" value="<?=$classVal;?>">
+              <input type="hidden" name="class_id" value="<?=$classId;?>">
                 
              
               <div class="form-group">
