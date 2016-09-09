@@ -3,6 +3,8 @@ include_once('./config.php');
 extract($config);
 $mysqli = new mysqli($dbhost,$dbuser,$dbpwd,$dbname);
 $mysqli->set_charset($dbcharset);
+echo phpinfo();
+exit;
 $sql = "select class_name, class_id from class where `status`=1 order by class_fid asc";
 
 //获取上级部门
