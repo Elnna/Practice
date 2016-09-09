@@ -3,12 +3,18 @@ include_once('./config.php');
 extract($config);
 $mysqli = new mysqli($dbhost,$dbuser,$dbpwd,$dbname);
 $mysqli->set_charset($dbcharset);
-echo phpinfo();
-exit;
+var_dump($mysqli);
+echo "<hr/>sql:";
 $sql = "select class_name, class_id from class where `status`=1 order by class_fid asc";
-
+echo $sql ."<hr/>query:";
 //获取上级部门
-$classList = $mysqli->query($sql)->fetch_all(MYSQLI_ASSOC);
+$query = $mysqli->query($sql);
+var_dump($query);
+echo "<hr/>res:";
+$res = $query->fetch_all(MYSQLI_ASSOC);
+//$classList = $mysqli->query($sql)->fetch_all(MYSQLI_ASSOC);
+var_dump($res);
+exit;
 $mysqli->close();
 
 $classId = isset($_GET['class_id'])&&!empty($_GET['class_id'])?intval($_GET['class_id']):"" ;
