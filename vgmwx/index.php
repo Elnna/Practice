@@ -6,3 +6,4 @@ $token = 'weizhi';
 $wechatObj->valid($token);
 
 echo 'hello wx interface';
+phpinfo();
