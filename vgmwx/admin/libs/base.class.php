@@ -140,7 +140,7 @@ class cgi
 }
 
 
-Class string
+Class string1
 {
 	function string()
 	{
@@ -201,7 +201,7 @@ Class string
 			{
 				if ($i == $start)  //检测头一个字符的时候，是否需要忽略半个中文
 				{
-					$cut_length = string::is_cn_utf8_str($str, $i);
+					$cut_length = string1::is_cn_utf8_str($str, $i);
 					
 					if ( $cut_length!= -1)
 					{
@@ -242,7 +242,7 @@ Class string
 		}
 		
 		return $r_str . $t_str;
-		//return preg_replace("/(&)(#\d{5};)/e", "string::un_html_callback('\\1', '\\2')", $r_str . $t_str);
+		//return preg_replace("/(&)(#\d{5};)/e", "string1::un_html_callback('\\1', '\\2')", $r_str . $t_str);
 		
 	}
 
@@ -264,7 +264,7 @@ Class string
 			{
 				if ($i == $start)  //检测头一个字符的时候，是否需要忽略半个中文
 				{
-					if (string::is_cn_str($str, $i) == 1)
+					if (string1::is_cn_str($str, $i) == 1)
 					{
 						if ($ignore)
 						{
@@ -292,7 +292,7 @@ Class string
 			}
 		}
 		return $r_str . $t_str;
-		//return preg_replace("/(&)(#\d{5};)/e", "string::un_html_callback('\\1', '\\2')", $r_str . $t_str);
+		//return preg_replace("/(&)(#\d{5};)/e", "string1::un_html_callback('\\1', '\\2')", $r_str . $t_str);
 		
 	}
 	
@@ -496,9 +496,9 @@ function is_mobile($mobile)
 				"\""	=> "&quot;",
 				"'"	=> "&#039;",
 			);
-		//$str = string::esc_korea_change($str);
+		//$str = string1::esc_korea_change($str);
 		$str = strtr($str, $s);
-		//$str = string::esc_korea_restore($str);
+		//$str = string1::esc_korea_restore($str);
 		return $str;
 	}
 	
@@ -523,9 +523,9 @@ function is_mobile($mobile)
 			"\""	=> "&quot;",
 			"'"		=> "&#039;",
 		);
-//		$str = string::esc_korea_change($str);
+//		$str = string1::esc_korea_change($str);
 		$str = strtr($str, $s);
-//		$str = string::esc_korea_restore($str);        
+//		$str = string1::esc_korea_restore($str);        
 		return $str;
 	}
 
@@ -548,9 +548,9 @@ function is_mobile($mobile)
 		);
 		
 		
-//		$str = string::esc_korea_change($str);
+//		$str = string1::esc_korea_change($str);
 		$str = strtr($str, $s);
-//		$str = string::esc_korea_restore($str);
+//		$str = string1::esc_korea_restore($str);
 		return $str;
 	}
 	
@@ -576,10 +576,10 @@ function is_mobile($mobile)
 		// 过滤非法词汇
 
 		// 过滤非法ASCII字符串
-		$str = string::esc_ascii($str);
+		$str = string1::esc_ascii($str);
 
 		// 过滤SQL语句	
-		//$str = string::esc_mysql($str);
+		//$str = string1::esc_mysql($str);
 		
 
 		return $str;
@@ -595,7 +595,7 @@ function is_mobile($mobile)
 	{
 		$s			= array();
 		$s["/<script[^>]*?>.*?<\/script>/si"] = "";
-		return string::filt_string($str, $s, true);
+		return string1::filt_string($str, $s, true);
 	}
 	
 	/**
@@ -611,7 +611,7 @@ function is_mobile($mobile)
 		$s["\\"]	= "\\\\";
 		$s["\""]	= "\\\"";
 		$s["'"]		= "\\'";
-		$html = string::filt_string($html, $s);
+		$html = string1::filt_string($html, $s);
 		$html = implode("\\\r\n", explode("\r\n", $html));
 		
 		return "document.write(\"\\\r\n" . $html . "\\\r\n\");";
@@ -809,6 +809,18 @@ function page($page,$total,$phpfile,$pagesize=10,$pagelen=7){
 //    }
     return $pagecode;
 
+}
+
+function getTypes($arr=array()){
+    $strType = '';
+    if(!empty($arr)){
+        foreach($arr as $var){
+            $chrType = substr((string)gettype($var),0,1);
+            $strType .= (!in_array($chrType,array("i","d","s"))) ? "b" : $chrType;
+        }
+    }
+
+    return $strType;
 }
 
 ?>

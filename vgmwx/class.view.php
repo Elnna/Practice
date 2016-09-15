@@ -68,7 +68,7 @@ if($count){
                                 <td><?php echo $v['class_id'];?></td>
                                 <td><?php echo $v['class_name'];?></td>
                                 <td><?php echo $v['fclass_name'];?></td>
-                                <td><a href="class.update.php">编辑</a><span>|</span><a href="./admin/class.manager.php?action=del&class_id=<?=$v['class_id'];?>">删除</a></td>
+                                <td><a href="class.update.php">编辑</a><span>|</span><a href="./admin/admin.class.manager.php?action=del&class_id=<?=$v['class_id'];?>">删除</a></td>
                             </tr>
                 <?php 
                         endforeach;

@@ -44,7 +44,7 @@ if(!empty($classId)){
             </h3>
             <!--表单-->
            
-            <form  action="./admin/class.add.php" method="post" name="class-add" id="class-add" enctype="multipart/form-data" class="form-horizontal" role="form" >
+            <form  action="./admin/admin.class.add.php" method="post" name="class-add" id="class-add" enctype="multipart/form-data" class="form-horizontal" role="form" >
               <div class="form-group">
                 <label for="className" class="col-sm-2 control-label">部门名称</label>
                 <div class="col-sm-10">

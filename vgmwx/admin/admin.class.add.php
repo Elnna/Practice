@@ -7,14 +7,14 @@ $mysqli = new mysqli($dbhost,$dbuser,$dbpwd,$dbname);
 $mysqli->set_charset($dbcharset);
 
 $action = isset($_POST['action']) ? $_POST['action']:"";
-$action = string::un_script_code($action);
-$action = string::un_html($action);
+$action = string1::un_script_code($action);
+$action = string1::un_html($action);
 
 
 if(in_array($action,array('update','insert'))){
     //获取表单传入数据
     $oldClassId = intval($_POST['class_id']);
-    $className = string::un_script_code($_POST['class_name']);
+    $className = string1::un_script_code($_POST['class_name']);
     $classFid = intval($_POST['class_fid']);
     //检测
     if(empty($className)){

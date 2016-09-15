@@ -8,8 +8,8 @@ $mysqli->set_charset($dbcharset);
 
 //获取操作标识
 $action = isset($_GET['action'])?$_GET['action']:"";
-$action = string::un_script_code($action);
-$action = string::un_html($action);
+$action = string1::un_script_code($action);
+$action = string1::un_html($action);
 
 
 //是否删除
