@@ -28,8 +28,8 @@ $classList = $mysqli->query($classSql)->fetch_all(MYSQLI_ASSOC);
 $mysqli->close();
 $rosterStatus = array('在职','休假','病假','离职');
 
-
-
+/*$require = empty($roster)||empty($roster['roster_pic'])?'required':'';
+echo "require:".$require.'<hr/>';*/
 ?>
 
 <!DOCTYPE HTML>
@@ -52,7 +52,7 @@ $rosterStatus = array('在职','休假','病假','离职');
             </h3>
             <h4><small>请在电脑上使用该后台，否则无法上传照片...</small></h4>
             
-            <form class="form-horizontal" role="form" action="./admin/roster.update.php" method="post" name="roster-add" id="roster-add" enctype="multipart/form-data" >
+            <form class="form-horizontal" role="form" action="./admin/admin.roster.update.php" method="post" name="roster-add" id="roster-add" enctype="multipart/form-data" >
                 <div class="form-group">
                     <label for="rosterName" class="col-sm-2 control-label">姓名</label>
                     <div class="col-sm-10">
@@ -68,8 +68,26 @@ $rosterStatus = array('在职','休假','病假','离职');
                 <div class="form-group">
                     <label for="rosterPic" class="control-label col-sm-2" >照片</label>
                     <div class="col-sm-10">
+                        <?php 
+                            if(!empty($roster)&&!empty($roster['roster_pic'])):
+                                session_start();
+                                $_SESSION['roster_pic'] = $roster['roster_pic'];
+                        ?>
+                        <div id="show-roster-img">
+                            <img src="<?=substr($roster['roster_pic'],1);?>" alt="员工照片" width="140px" height="140px" class="img-rounded">
+                            <button type="button" class="btn btn-primary">修改</button>
+                        </div>
+                        <?php endif;?>
                         
-                        <input id="rosterPic"  value="<?=!empty($roster)?$roster['roster_pic']:'';?>" name="roster_pic" type="file" class="file" class="file" multiple data-show-upload="false" data-show-caption="true" required>
+                        <?php 
+                        $require = empty($roster)||empty($roster['roster_pic'])?'required':''; 
+                        $display = $require ? 'show':'hide';
+                        
+                        ?>
+                        <div id="rosterPic" class="<?=$display;?>">
+                        
+                            <input   name="roster_pic" type="file" class="file file-loading " multiple data-show-upload="false"  data-allowed-file-extensions='["jpg","png","jpeg"]' <?=$require;?>>
+                        </div>
                     </div>
                     
                 </div>
@@ -160,13 +178,13 @@ $rosterStatus = array('在职','休假','病假','离职');
                 <div class="form-group">
                     <label for="rosterIn" class="col-sm-2 control-label">入职</label>
                     <div class="col-sm-10">
-                        <input type="datetime-local" class="form-control" id="rosterIn" value="<?=!empty($roster)?$roster['roster_in']:'';?>" name="roster_in" required>
+                        <input type="datetime" class="form-control" id="rosterIn" value="<?=!empty($roster)?$roster['roster_in']:'';?>" name="roster_in" required>
                     </div>
                 </div>
                 
 
                 <input type="hidden" name="roster_id" value="<?=$rosterId;?>">
-
+                
 
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
@@ -180,6 +198,14 @@ $rosterStatus = array('在职','休假','病假','离职');
         <script src='./public/js/bootstrap.min.js'></script>
         <script src='./public/js/fileinput.min.js'></script>
 <!--        <script src='./public/js/zh.js'></script>-->
-
+        <script>
+            $(document).on('ready',function(){
+               $('#show-roster-img button').on('click',function(){
+                   $(this).parent().addClass('hide');
+                   $('#rosterPic').removeClass('hide').addClass('show');
+               });
+            });
+        </script>
+        
     </body>
 </html>

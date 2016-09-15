@@ -1,3 +1,10 @@
 a.current{
     color:#308e31;
 }
+
+.hide{
+    display: none;
+}
+.show{
+    display: block;
+}

@@ -9,8 +9,11 @@ $mysqli->set_charset($dbcharset);
 
 if(!empty($_POST)){
    
-    var_dump($_POST);
+   /* var_dump($_POST);
     echo "<hr>";
+    var_dump($_FILES);
+    echo "<hr>";
+//    exit();*/
     $fileName = '';
 
     $rosterId = isset($_POST['roster_id'])?intval($_POST['roster_id']):'';
@@ -19,7 +22,7 @@ if(!empty($_POST)){
     $roster_number = $_POST['roster_number'];
     
     if($_FILES['roster_pic']['error'] == UPLOAD_ERR_OK){
-        $fileExtArr = array('jpg','png');
+        $fileExtArr = array('jpg','png','jpeg');
         $fileExt = explode("/",$_FILES['roster_pic']['type'])[1];
        
         if(!in_array($fileExt,$fileExtArr)){
@@ -29,9 +32,13 @@ if(!empty($_POST)){
         $tmpName = $_FILES['roster_pic']['tmp_name'];
         $fileName = '../public/upload/' .  substr(md5($roster_number),0,6).date('YmHis').".".$fileExt;
 
-//        move_uploaded_file($tmpName,$fileName);
+        move_uploaded_file($tmpName,$fileName);
+    }else{
+        session_start();
+        $fileName = $_SESSION['roster_pic'];
+//        var_dump($_SESSION);
     }
-    
+    exit();
    
     $in = array('roster_pic' => $fileName);
     
@@ -54,7 +61,7 @@ if(!empty($_POST)){
         
         }
 
-        echo 'sql' . $sql . "<hr/>";
+//        echo 'sql' . $sql . "<hr/>";
         
         $data = array_merge(array_slice($_POST,0,2), $in, array_slice($_POST,2));
         
@@ -75,7 +82,7 @@ if(!empty($_POST)){
         if($stmt->affected_rows){
             if($stmt->insert_id){
 //                echo "<script>alert('新增员工'+$stmt->insert_id+'成功');</script>";
-                echo "<script>alert('新增员工'+$stmt->insert_id+'成功');location='../roster.update.php';</script>";
+                echo "<script>alert('新增员工'+$stmt->insert_id+'成功');location='../roster.view.php';</script>";
                 exit();
             }else{
 //                echo "<script>alert('修改成功');</script>";
@@ -93,5 +100,6 @@ if(!empty($_POST)){
     }catch(mysqli_sql_exception $e){
         echo $e->getMessage;
     }
+    $mysqli->close();
 }
 

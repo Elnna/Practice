@@ -12,7 +12,7 @@ $count = $mysqli->query($sql)->fetch_row()[0];
 $page = isset($_GET['page']) ? intval($_GET['page']):0;
 
 $classMList  ="";
-
+$multi = '';
 if($count){
     //每页条数
     $pageNum = 3;
@@ -85,10 +85,9 @@ if($count){
             </table>
             <nav>
                 <ul class="pagination">
-<!--                    <li><a href="class.view.php?page=0">&laquo;</a></li>-->
-                    <?php echo $multi;?>
                     
-<!--                    <li><a href="class.view.php?page=<?=isset($pages)?$pages:0;?>">&raquo;</a></li>-->
+                    <?php echo $multi? $multi:'';?>
+                    
                 </ul>
             </nav>
         </div>
