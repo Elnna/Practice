@@ -92,6 +92,8 @@ if($count){
                                 <td>
                                     <a href="roster.update.php?roster_id=<?=$v['roster_id'];?>">编辑</a>
                                     <span>|</span>
+                                    <a href="roster.detail.php?roster_id=<?=$v['roster_id'];?>">查看</a>
+                                    <span>|</span>
                                     <a href="./admin/admin.roster.manager.php?action=del&class_id=<?=$v['class_id'];?>">删除</a>
                                 </td>
                             </tr>

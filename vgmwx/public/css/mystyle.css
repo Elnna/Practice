@@ -1,3 +1,4 @@
+
 a.current{
     color:#308e31;
 }
@@ -7,4 +8,21 @@ a.current{
 }
 .show{
     display: block;
+}
+h3{
+    font-size: 2em;
+    margin-bottom: 50px;
+}
+.dl-horizontal dt,
+.dl-horizontal dd{
+    margin-bottom: 10px;
+    
+}
+.dl-horizontal dt{
+    font-size: 20px;
+    margin-right: 30px;
+}
+.dl-horizontal dd{
+    font-size: 15px;
+    padding-left: 50px;
 }
