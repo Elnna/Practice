@@ -1,0 +1,29 @@
+<div class="col-sm-3 col-md-3">
+        <div class="right-title">
+          <h3>文章排行</h3>
+          <span>TOP ARTICLES</span>
+        </div>
+        <div class="right-content">
+          <ul>
+              <volist name="res['rankNews']" id="rnew" key="k">
+                  
+              
+                <li class="num{$k} curr">
+                  <a href="/singwa/index.php?c=detail&id={$rnew.news_id}">{$rnew.small_title}</a>
+                  <if condition="$k eq 1">
+                    <div class="intro">
+                        {$rnew.description}
+                    </div>
+                  </if>
+                 
+                </li>
+            </volist>
+          </ul>
+        </div>
+        <volist name="res['ads']" id="ad" key="k">
+            <div class="right-hot">
+            
+            <img src="/singwa/{$ad.thumb}" alt="{$ad.name}">
+            </div>
+        </volist>
+      </div>

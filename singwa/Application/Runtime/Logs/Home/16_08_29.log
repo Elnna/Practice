@@ -1,0 +1,160 @@
+[ 2016-08-29T01:14:16+08:00 ] 180.76.15.12 /singwa/index.php?c=detail&id=31
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000047s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003194s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002028s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002130s ]
+NOTIC: [2048] Declaration of Home\Controller\CommonController::error() should be compatible with Think\Controller::error($message = '', $jumpUrl = '', $ajax = false) /var/www/clients/client1/web6/web/singwa/Application/Home/Controller/CommonController.class.php 第 23 行.
+NOTIC: [2048] Declaration of Common\Model\NewsModel::select() should be compatible with Think\Model::select($options = Array) /var/www/clients/client1/web6/web/singwa/Application/Common/Model/NewsModel.class.php 第 8 行.
+NOTIC: [2048] Declaration of Common\Model\NewsModel::find() should be compatible with Think\Model::find($options = Array) /var/www/clients/client1/web6/web/singwa/Application/Common/Model/NewsModel.class.php 第 8 行.
+SQL: SHOW COLUMNS FROM `cms_news` [ RunTime:0.0047s ]
+SQL: SELECT * FROM `cms_news` WHERE ( news_id=31 ) LIMIT 1   [ RunTime:0.0015s ]
+SQL: UPDATE `cms_news` SET `count`='11' WHERE ( news_id=31 ) [ RunTime:0.0008s ]
+NOTIC: [2048] Declaration of Common\Model\NewsContentModel::find() should be compatible with Think\Model::find($options = Array) /var/www/clients/client1/web6/web/singwa/Application/Common/Model/NewsContentModel.class.php 第 42 行.
+SQL: SHOW COLUMNS FROM `cms_news_content` [ RunTime:0.0008s ]
+SQL: SELECT * FROM `cms_news_content` WHERE ( news_id=31 ) LIMIT 1   [ RunTime:0.0042s ]
+SQL: SELECT * FROM `cms_news` WHERE `status` = 1 ORDER BY count desc,news_id desc LIMIT 10   [ RunTime:0.0004s ]
+NOTIC: [2048] Declaration of Common\Model\PositionContentModel::select() should be compatible with Think\Model::select($options = Array) /var/www/clients/client1/web6/web/singwa/Application/Common/Model/PositionContentModel.class.php 第 106 行.
+NOTIC: [2048] Declaration of Common\Model\PositionContentModel::find() should be compatible with Think\Model::find($options = Array) /var/www/clients/client1/web6/web/singwa/Application/Common/Model/PositionContentModel.class.php 第 106 行.
+SQL: SHOW COLUMNS FROM `cms_position_content` [ RunTime:0.0008s ]
+SQL: SELECT * FROM `cms_position_content` WHERE `status` = 1 AND `position_id` = 5 ORDER BY id desc LIMIT 2   [ RunTime:0.0008s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000083s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000163s ]
+NOTIC: [2048] Declaration of Common\Model\BasicModel::save() should be compatible with Think\Model::save($data = '', $options = Array) /var/www/clients/client1/web6/web/singwa/Application/Common/Model/BasicModel.class.php 第 28 行.
+NOTIC: [2048] Declaration of Common\Model\BasicModel::select() should be compatible with Think\Model::select($options = Array) /var/www/clients/client1/web6/web/singwa/Application/Common/Model/BasicModel.class.php 第 28 行.
+NOTIC: [2048] Declaration of Common\Model\MenuModel::find() should be compatible with Think\Model::find($options = Array) /var/www/clients/client1/web6/web/singwa/Application/Common/Model/MenuModel.class.php 第 88 行.
+SQL: SHOW COLUMNS FROM `cms_menu` [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cms_menu` WHERE `status` = 1 AND `type` = 0 ORDER BY listorder desc,menu_id desc  [ RunTime:0.0006s ]
+NOTIC: [8] Undefined index: name /var/www/clients/client1/web6/web/singwa/Application/Runtime/Cache/Home/0d75cb75cd30b13fdd4834afd69acb19.php 第 60 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.033985s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.034035s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000655s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000703s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001165s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001202s ]
+
+[ 2016-08-29T02:58:47+08:00 ] 180.76.15.12 /singwa/index.php?c=detail&id=30
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000031s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000379s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000405s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000454s ]
+NOTIC: [2048] Declaration of Home\Controller\CommonController::error() should be compatible with Think\Controller::error($message = '', $jumpUrl = '', $ajax = false) /var/www/clients/client1/web6/web/singwa/Application/Home/Controller/CommonController.class.php 第 23 行.
+NOTIC: [2048] Declaration of Common\Model\NewsModel::select() should be compatible with Think\Model::select($options = Array) /var/www/clients/client1/web6/web/singwa/Application/Common/Model/NewsModel.class.php 第 8 行.
+NOTIC: [2048] Declaration of Common\Model\NewsModel::find() should be compatible with Think\Model::find($options = Array) /var/www/clients/client1/web6/web/singwa/Application/Common/Model/NewsModel.class.php 第 8 行.
+SQL: SHOW COLUMNS FROM `cms_news` [ RunTime:0.0010s ]
+SQL: SELECT * FROM `cms_news` WHERE ( news_id=30 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: UPDATE `cms_news` SET `count`='11' WHERE ( news_id=30 ) [ RunTime:0.0003s ]
+NOTIC: [2048] Declaration of Common\Model\NewsContentModel::find() should be compatible with Think\Model::find($options = Array) /var/www/clients/client1/web6/web/singwa/Application/Common/Model/NewsContentModel.class.php 第 42 行.
+SQL: SHOW COLUMNS FROM `cms_news_content` [ RunTime:0.0005s ]
+SQL: SELECT * FROM `cms_news_content` WHERE ( news_id=30 ) LIMIT 1   [ RunTime:0.0014s ]
+SQL: SELECT * FROM `cms_news` WHERE `status` = 1 ORDER BY count desc,news_id desc LIMIT 10   [ RunTime:0.0003s ]
+NOTIC: [2048] Declaration of Common\Model\PositionContentModel::select() should be compatible with Think\Model::select($options = Array) /var/www/clients/client1/web6/web/singwa/Application/Common/Model/PositionContentModel.class.php 第 106 行.
+NOTIC: [2048] Declaration of Common\Model\PositionContentModel::find() should be compatible with Think\Model::find($options = Array) /var/www/clients/client1/web6/web/singwa/Application/Common/Model/PositionContentModel.class.php 第 106 行.
+SQL: SHOW COLUMNS FROM `cms_position_content` [ RunTime:0.0005s ]
+SQL: SELECT * FROM `cms_position_content` WHERE `status` = 1 AND `position_id` = 5 ORDER BY id desc LIMIT 2   [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000051s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000096s ]
+NOTIC: [2048] Declaration of Common\Model\BasicModel::save() should be compatible with Think\Model::save($data = '', $options = Array) /var/www/clients/client1/web6/web/singwa/Application/Common/Model/BasicModel.class.php 第 28 行.
+NOTIC: [2048] Declaration of Common\Model\BasicModel::select() should be compatible with Think\Model::select($options = Array) /var/www/clients/client1/web6/web/singwa/Application/Common/Model/BasicModel.class.php 第 28 行.
+NOTIC: [2048] Declaration of Common\Model\MenuModel::find() should be compatible with Think\Model::find($options = Array) /var/www/clients/client1/web6/web/singwa/Application/Common/Model/MenuModel.class.php 第 88 行.
+SQL: SHOW COLUMNS FROM `cms_menu` [ RunTime:0.0005s ]
+SQL: SELECT * FROM `cms_menu` WHERE `status` = 1 AND `type` = 0 ORDER BY listorder desc,menu_id desc  [ RunTime:0.0002s ]
+NOTIC: [8] Undefined index: name /var/www/clients/client1/web6/web/singwa/Application/Runtime/Cache/Home/0d75cb75cd30b13fdd4834afd69acb19.php 第 60 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.011011s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.011047s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000202s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000238s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000408s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000453s ]
+
+[ 2016-08-29T14:44:30+08:00 ] 180.76.15.159 /singwa/index.php?c=detail&id=32
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000025s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000873s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000775s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000822s ]
+NOTIC: [2048] Declaration of Home\Controller\CommonController::error() should be compatible with Think\Controller::error($message = '', $jumpUrl = '', $ajax = false) /var/www/clients/client1/web6/web/singwa/Application/Home/Controller/CommonController.class.php 第 23 行.
+NOTIC: [2048] Declaration of Common\Model\NewsModel::select() should be compatible with Think\Model::select($options = Array) /var/www/clients/client1/web6/web/singwa/Application/Common/Model/NewsModel.class.php 第 8 行.
+NOTIC: [2048] Declaration of Common\Model\NewsModel::find() should be compatible with Think\Model::find($options = Array) /var/www/clients/client1/web6/web/singwa/Application/Common/Model/NewsModel.class.php 第 8 行.
+SQL: SHOW COLUMNS FROM `cms_news` [ RunTime:0.0029s ]
+SQL: SELECT * FROM `cms_news` WHERE ( news_id=32 ) LIMIT 1   [ RunTime:0.0014s ]
+SQL: UPDATE `cms_news` SET `count`='11' WHERE ( news_id=32 ) [ RunTime:0.0009s ]
+NOTIC: [2048] Declaration of Common\Model\NewsContentModel::find() should be compatible with Think\Model::find($options = Array) /var/www/clients/client1/web6/web/singwa/Application/Common/Model/NewsContentModel.class.php 第 42 行.
+SQL: SHOW COLUMNS FROM `cms_news_content` [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cms_news_content` WHERE ( news_id=32 ) LIMIT 1   [ RunTime:0.0011s ]
+SQL: SELECT * FROM `cms_news` WHERE `status` = 1 ORDER BY count desc,news_id desc LIMIT 10   [ RunTime:0.0002s ]
+NOTIC: [2048] Declaration of Common\Model\PositionContentModel::select() should be compatible with Think\Model::select($options = Array) /var/www/clients/client1/web6/web/singwa/Application/Common/Model/PositionContentModel.class.php 第 106 行.
+NOTIC: [2048] Declaration of Common\Model\PositionContentModel::find() should be compatible with Think\Model::find($options = Array) /var/www/clients/client1/web6/web/singwa/Application/Common/Model/PositionContentModel.class.php 第 106 行.
+SQL: SHOW COLUMNS FROM `cms_position_content` [ RunTime:0.0005s ]
+SQL: SELECT * FROM `cms_position_content` WHERE `status` = 1 AND `position_id` = 5 ORDER BY id desc LIMIT 2   [ RunTime:0.0008s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000052s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000092s ]
+NOTIC: [2048] Declaration of Common\Model\BasicModel::save() should be compatible with Think\Model::save($data = '', $options = Array) /var/www/clients/client1/web6/web/singwa/Application/Common/Model/BasicModel.class.php 第 28 行.
+NOTIC: [2048] Declaration of Common\Model\BasicModel::select() should be compatible with Think\Model::select($options = Array) /var/www/clients/client1/web6/web/singwa/Application/Common/Model/BasicModel.class.php 第 28 行.
+NOTIC: [2048] Declaration of Common\Model\MenuModel::find() should be compatible with Think\Model::find($options = Array) /var/www/clients/client1/web6/web/singwa/Application/Common/Model/MenuModel.class.php 第 88 行.
+SQL: SHOW COLUMNS FROM `cms_menu` [ RunTime:0.0005s ]
+SQL: SELECT * FROM `cms_menu` WHERE `status` = 1 AND `type` = 0 ORDER BY listorder desc,menu_id desc  [ RunTime:0.0009s ]
+NOTIC: [8] Undefined index: name /var/www/clients/client1/web6/web/singwa/Application/Runtime/Cache/Home/0d75cb75cd30b13fdd4834afd69acb19.php 第 60 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.017020s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.017054s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000535s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000576s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000736s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000781s ]
+
+[ 2016-08-29T21:33:49+08:00 ] 180.76.15.27 /singwa/index.php?c=detail&id=28
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000023s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000692s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001012s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001068s ]
+NOTIC: [2048] Declaration of Home\Controller\CommonController::error() should be compatible with Think\Controller::error($message = '', $jumpUrl = '', $ajax = false) /var/www/clients/client1/web6/web/singwa/Application/Home/Controller/CommonController.class.php 第 23 行.
+NOTIC: [2048] Declaration of Common\Model\NewsModel::select() should be compatible with Think\Model::select($options = Array) /var/www/clients/client1/web6/web/singwa/Application/Common/Model/NewsModel.class.php 第 8 行.
+NOTIC: [2048] Declaration of Common\Model\NewsModel::find() should be compatible with Think\Model::find($options = Array) /var/www/clients/client1/web6/web/singwa/Application/Common/Model/NewsModel.class.php 第 8 行.
+SQL: SHOW COLUMNS FROM `cms_news` [ RunTime:0.0011s ]
+SQL: SELECT * FROM `cms_news` WHERE ( news_id=28 ) LIMIT 1   [ RunTime:0.0006s ]
+SQL: UPDATE `cms_news` SET `count`='17' WHERE ( news_id=28 ) [ RunTime:0.0006s ]
+NOTIC: [2048] Declaration of Common\Model\NewsContentModel::find() should be compatible with Think\Model::find($options = Array) /var/www/clients/client1/web6/web/singwa/Application/Common/Model/NewsContentModel.class.php 第 42 行.
+SQL: SHOW COLUMNS FROM `cms_news_content` [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cms_news_content` WHERE ( news_id=28 ) LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT * FROM `cms_news` WHERE `status` = 1 ORDER BY count desc,news_id desc LIMIT 10   [ RunTime:0.0008s ]
+NOTIC: [2048] Declaration of Common\Model\PositionContentModel::select() should be compatible with Think\Model::select($options = Array) /var/www/clients/client1/web6/web/singwa/Application/Common/Model/PositionContentModel.class.php 第 106 行.
+NOTIC: [2048] Declaration of Common\Model\PositionContentModel::find() should be compatible with Think\Model::find($options = Array) /var/www/clients/client1/web6/web/singwa/Application/Common/Model/PositionContentModel.class.php 第 106 行.
+SQL: SHOW COLUMNS FROM `cms_position_content` [ RunTime:0.0005s ]
+SQL: SELECT * FROM `cms_position_content` WHERE `status` = 1 AND `position_id` = 5 ORDER BY id desc LIMIT 2   [ RunTime:0.0005s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000042s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000081s ]
+NOTIC: [2048] Declaration of Common\Model\BasicModel::save() should be compatible with Think\Model::save($data = '', $options = Array) /var/www/clients/client1/web6/web/singwa/Application/Common/Model/BasicModel.class.php 第 28 行.
+NOTIC: [2048] Declaration of Common\Model\BasicModel::select() should be compatible with Think\Model::select($options = Array) /var/www/clients/client1/web6/web/singwa/Application/Common/Model/BasicModel.class.php 第 28 行.
+NOTIC: [2048] Declaration of Common\Model\MenuModel::find() should be compatible with Think\Model::find($options = Array) /var/www/clients/client1/web6/web/singwa/Application/Common/Model/MenuModel.class.php 第 88 行.
+SQL: SHOW COLUMNS FROM `cms_menu` [ RunTime:0.0004s ]
+SQL: SELECT * FROM `cms_menu` WHERE `status` = 1 AND `type` = 0 ORDER BY listorder desc,menu_id desc  [ RunTime:0.0008s ]
+NOTIC: [8] Undefined index: name /var/www/clients/client1/web6/web/singwa/Application/Runtime/Cache/Home/0d75cb75cd30b13fdd4834afd69acb19.php 第 60 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.013243s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013278s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000711s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000757s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001078s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001120s ]
+

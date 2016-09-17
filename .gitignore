@@ -1,0 +1,11 @@
+#ignore db config
+singwa/Application/Common/Conf/db.php
+!singwa/Application/Common/Conf/
+
+singwa/Application/Runtime/Logs/Home/*
+
+vgmwx/public/tmp/*.txt
+!vgmwx/public/tmp/
+vgmwx/public/local/*
+!vgmwx/public/local/
+vgmwx/config.php
