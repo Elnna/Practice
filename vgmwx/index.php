@@ -8,7 +8,7 @@ $wechatObj->valid($token);
 */
 
 
-var_dump($_FILES);
+//var_dump($_FILES);
 
 /*if(!empty($_FILES['roster_pic']['name'])){
         

@@ -1,5 +1,7 @@
 <?php 
 include_once('./config.php');
+var_dump($config);
+exit;
 extract($config);
 $mysqli = new mysqli($dbhost,$dbuser,$dbpwd,$dbname);
 $mysqli->set_charset($dbcharset);
