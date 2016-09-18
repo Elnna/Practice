@@ -24,6 +24,7 @@ $wechatObj->valid($token);
 }else{
     echo "empty";
 }*/
+phpinfo();
 ?>
 <html lang="zh-CN">
     <head>
