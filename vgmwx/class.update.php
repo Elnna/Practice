@@ -15,6 +15,8 @@ $sql = "select class_name, class_id from class where `status`=1 order by class_f
 echo "<hr/>res:";*/
 //$res = $query->fetch_all(MYSQLI_ASSOC);
 $classList = $mysqli->query($sql)->fetch_all(MYSQLI_ASSOC);
+var_dump($classList);
+exit;
 /*var_dump($res);
 exit;*/
 $mysqli->close();
