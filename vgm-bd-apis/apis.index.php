@@ -228,11 +228,12 @@ $zodiacDateArr = array_flip($zodiacDateArr);
                    
                    <!-- Begin of forecast weather -->
                    <?php 
+//                        var_dump($forecast);
                     foreach($forecast as $fk => $fv){
                         $ftype = $fv['type'];
                         $fc = $convenienceInfo->getWeatherByWeatherId($ftype) ? $convenienceInfo->getWeatherByWeatherId($ftype):'rain';
-                        $fvdate = explode('-',$fv['date']);
-                        $fdate = $fvdate[0] . ' 年' . $fvdate[1]. '月' . $fvdate[2] . '日&nbsp;' . $fv['week'];
+                        
+                        $fdate = mb_substr($date,0,11) . $fv['week'];
 //                        $fdate = $today[0] + "年" + $today[1] + "月" + $fv['date'];
                         
                         $fweather = '<span>' . $fv['type'] .'</span><span>' . $fv['fengxiang'] . '</span><span>' . $fv['fengli'] . '</span>';
@@ -268,8 +269,7 @@ $zodiacDateArr = array_flip($zodiacDateArr);
                         foreach($forecast as $fk => $fv){
                             $ftype = $fv['type'];
                             $fweather = $convenienceInfo->getWeatherByWeatherId($ftype) ? $convenienceInfo->getWeatherByWeatherId($ftype):'rainy';
-                            $fvdate = explode('-',$fv['date']);
-                            $fdate =$fvdate[2] . '/' . $fvdate[1];
+                            $fdate = $fv['date'].'/'.mb_substr($date,8,2);
                             $anchor = array_search($fv['week'],$weeksArr);
 
                     ?>
