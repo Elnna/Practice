@@ -18,6 +18,7 @@ class UserController extends Controller
 		return $this->render('index');
 	}
 	public function actionLogin(){
+		$this->layout = 'layoutnav';
 		return $this->render('login');
 	}
 }

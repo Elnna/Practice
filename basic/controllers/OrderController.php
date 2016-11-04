@@ -15,9 +15,11 @@ class OrderController extends Controller
 	}*/
 	public $layout = false;
 	public function actionIndex(){
+		$this->layout = 'layoutnav';
 		return $this->render('index');
 	}
 	public function actionCheckout(){
+		$this->layout = 'layout';
 		return $this->render('checkout');
 	}
 }

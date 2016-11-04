@@ -17,7 +17,7 @@ class IndexController extends Controller
 		/*$this->layout = false; 	//禁止布局
 		return $this->render('index');*/
 		/*return $this->renderPartial('index');//默认去掉模版的头部和尾部*/
-		$this->layout = 'layout1';
+		$this->layout = 'layout';
 		return $this->render('index');
 	}
 }

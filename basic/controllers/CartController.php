@@ -15,6 +15,7 @@ class CartController extends Controller
 	}*/
 	public $layout = false;
 	public function actionIndex(){
+		$this->layout = 'layout';
 		return $this->render('index');
 	}
 	

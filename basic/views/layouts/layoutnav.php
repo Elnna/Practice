@@ -7,10 +7,11 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 		<meta name="description" content="">
 		<meta name="author" content="">
-	    <meta name="keywords" content="MediaCenter, Template, eCommerce">
+	    <meta name="keywords" content="">
 	    <meta name="robots" content="all">
 
-	    <title>慕课商城</title>
+	    <title>订单列表 - 慕课商城</title>
+
 	    <!-- Bootstrap Core CSS -->
 	    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 	    
@@ -21,8 +22,8 @@
 		<link rel="stylesheet" href="assets/css/owl.transitions.css">
 		<link rel="stylesheet" href="assets/css/animate.min.css">
 
-        
-        <!-- Icons/Glyphs -->
+		
+		<!-- Icons/Glyphs -->
 		<link rel="stylesheet" href="assets/css/font-awesome.min.css">
 		
 		<!-- Favicon -->
@@ -33,7 +34,6 @@
 			<script src="assets/js/html5shiv.js"></script>
 			<script src="assets/js/respond.min.js"></script>
 		<![endif]-->
-
  
 	</head>
 <body>
@@ -204,10 +204,321 @@
 <!-- ============================================================= SHOPPING CART DROPDOWN : END ============================================================= -->		</div><!-- /.top-cart-row -->
 
 	</div><!-- /.container -->
+
+	<!-- ========================================= NAVIGATION ========================================= -->
+<nav id="top-megamenu-nav" class="megamenu-vertical animate-dropdown">
+    <div class="container">
+        <div class="yamm navbar">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mc-horizontal-menu-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div><!-- /.navbar-header -->
+            
+            <div class="collapse navbar-collapse" id="mc-horizontal-menu-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">电子产品</a>
+                        <ul class="dropdown-menu">
+                            <li><div class="yamm-content">
+    <div class="row">
+       <div class="col-xs-12 col-sm-4">
+            <h2>Laptops &amp; Notebooks</h2>
+            <ul>
+                <li><a href="#">Power Supplies Power</a></li>
+                <li><a href="#">Power Supply Testers Sound </a></li>
+                <li><a href="#">Sound Cards (Internal)</a></li>
+                <li><a href="#">Video Capture &amp; TV Tuner Cards</a></li>
+                <li><a href="#">Other</a></li>
+            </ul>
+        </div><!-- /.col -->
+
+        <div class="col-xs-12 col-sm-4">
+            <h2>Computers &amp; Laptops</h2>
+            <ul>
+                <li><a href="#">Computer Cases &amp; Accessories</a></li>
+                <li><a href="#">CPUs, Processors</a></li>
+                <li><a href="#">Fans, Heatsinks &amp; Cooling</a></li>
+                <li><a href="#">Graphics, Video Cards</a></li>
+                <li><a href="#">Interface, Add-On Cards</a></li>
+                <li><a href="#">Laptop Replacement Parts</a></li>
+                <li><a href="#">Memory (RAM)</a></li>
+                <li><a href="#">Motherboards</a></li>
+                <li><a href="#">Motherboard &amp; CPU Combos</a></li>
+                <li><a href="#">Motherboard Components &amp; Accs</a></li>
+            </ul>
+        </div><!-- /.col -->
+
+        <div class="col-xs-12 col-sm-4">
+            <h2>Dekstop Parts</h2>
+            <ul>
+                <li><a href="#">Power Supplies Power</a></li>
+                <li><a href="#">Power Supply Testers Sound</a></li>
+                <li><a href="#">Sound Cards (Internal)</a></li>
+                <li><a href="#">Video Capture &amp; TV Tuner Cards</a></li>
+                <li><a href="#">Other</a></li>
+            </ul>
+        </div><!-- /.col -->
+    </div><!-- /.row -->
+</div><!-- /.yamm-content --></li>
+                        </ul>
+                    </li>
+                            
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">电子产品</a>
+                        <ul class="dropdown-menu">
+                            <li><div class="yamm-content">
+    <div class="row">
+       <div class="col-xs-12 col-sm-4">
+            <h2>Laptops &amp; Notebooks</h2>
+            <ul>
+                <li><a href="#">Power Supplies Power</a></li>
+                <li><a href="#">Power Supply Testers Sound </a></li>
+                <li><a href="#">Sound Cards (Internal)</a></li>
+                <li><a href="#">Video Capture &amp; TV Tuner Cards</a></li>
+                <li><a href="#">Other</a></li>
+            </ul>
+        </div><!-- /.col -->
+
+        <div class="col-xs-12 col-sm-4">
+            <h2>Computers &amp; Laptops</h2>
+            <ul>
+                <li><a href="#">Computer Cases &amp; Accessories</a></li>
+                <li><a href="#">CPUs, Processors</a></li>
+                <li><a href="#">Fans, Heatsinks &amp; Cooling</a></li>
+                <li><a href="#">Graphics, Video Cards</a></li>
+                <li><a href="#">Interface, Add-On Cards</a></li>
+                <li><a href="#">Laptop Replacement Parts</a></li>
+                <li><a href="#">Memory (RAM)</a></li>
+                <li><a href="#">Motherboards</a></li>
+                <li><a href="#">Motherboard &amp; CPU Combos</a></li>
+                <li><a href="#">Motherboard Components &amp; Accs</a></li>
+            </ul>
+        </div><!-- /.col -->
+        
+        <div class="col-xs-12 col-sm-4">
+            <h2>Dekstop Parts</h2>
+            <ul>
+                <li><a href="#">Power Supplies Power</a></li>
+                <li><a href="#">Power Supply Testers Sound</a></li>
+                <li><a href="#">Sound Cards (Internal)</a></li>
+                <li><a href="#">Video Capture &amp; TV Tuner Cards</a></li>
+                <li><a href="#">Other</a></li>
+            </ul>
+        </div><!-- /.col -->
+    </div><!-- /.row -->
+</div><!-- /.yamm-content --></li>
+                        </ul>
+                    </li>
+                            
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">电子产品</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Computer Cases &amp; Accessories</a></li>
+                            <li><a href="#">CPUs, Processors</a></li>
+                            <li><a href="#">Fans, Heatsinks &amp; Cooling</a></li>
+                            <li><a href="#">Graphics, Video Cards</a></li>
+                            <li><a href="#">Interface, Add-On Cards</a></li>
+                            <li><a href="#">Laptop Replacement Parts</a></li>
+                            <li><a href="#">Memory (RAM)</a></li>
+                            <li><a href="#">Motherboards</a></li>
+                            <li><a href="#">Motherboard &amp; CPU Combos</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">电子产品</a>
+                        <ul class="dropdown-menu">
+                            <li><div class="yamm-content">
+    <div class="row">
+       <div class="col-xs-12 col-sm-4">
+            <h2>Laptops &amp; Notebooks</h2>
+            <ul>
+                <li><a href="#">Power Supplies Power</a></li>
+                <li><a href="#">Power Supply Testers Sound </a></li>
+                <li><a href="#">Sound Cards (Internal)</a></li>
+                <li><a href="#">Video Capture &amp; TV Tuner Cards</a></li>
+                <li><a href="#">Other</a></li>
+            </ul>
+        </div><!-- /.col -->
+
+        <div class="col-xs-12 col-sm-4">
+            <h2>Computers &amp; Laptops</h2>
+            <ul>
+                <li><a href="#">Computer Cases &amp; Accessories</a></li>
+                <li><a href="#">CPUs, Processors</a></li>
+                <li><a href="#">Fans, Heatsinks &amp; Cooling</a></li>
+                <li><a href="#">Graphics, Video Cards</a></li>
+                <li><a href="#">Interface, Add-On Cards</a></li>
+                <li><a href="#">Laptop Replacement Parts</a></li>
+                <li><a href="#">Memory (RAM)</a></li>
+                <li><a href="#">Motherboards</a></li>
+                <li><a href="#">Motherboard &amp; CPU Combos</a></li>
+                <li><a href="#">Motherboard Components &amp; Accs</a></li>
+            </ul>
+        </div><!-- /.col -->
+
+        <div class="col-xs-12 col-sm-4">
+            <h2>Dekstop Parts</h2>
+            <ul>
+                <li><a href="#">Power Supplies Power</a></li>
+                <li><a href="#">Power Supply Testers Sound</a></li>
+                <li><a href="#">Sound Cards (Internal)</a></li>
+                <li><a href="#">Video Capture &amp; TV Tuner Cards</a></li>
+                <li><a href="#">Other</a></li>
+            </ul>
+        </div><!-- /.col -->
+    </div><!-- /.row -->
+</div><!-- /.yamm-content --></li>
+                        </ul>
+                    </li>
+                    
+                    
+                    <li class="dropdown yamm-fw">
+                        <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">电子产品</a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <div class="yamm-content">
+                                    <div class="row">
+                                       <div class="col-xs-12 col-sm-3">
+                                            <h2>Laptops &amp; Notebooks</h2>
+                                            <ul>
+                                                <li><a href="#">Power Supplies Power</a></li>
+                                                <li><a href="#">Power Supply Testers Sound </a></li>
+                                                <li><a href="#">Sound Cards (Internal)</a></li>
+                                                <li><a href="#">Video Capture &amp; TV Tuner Cards</a></li>
+                                                <li><a href="#">Other</a></li>
+                                            </ul>
+                                        </div><!-- /.col -->
+
+                                        <div class="col-xs-12 col-sm-3">
+                                            <h2>Computers &amp; Laptops</h2>
+                                            <ul>
+                                                <li><a href="#">Computer Cases &amp; Accessories</a></li>
+                                                <li><a href="#">CPUs, Processors</a></li>
+                                                <li><a href="#">Fans, Heatsinks &amp; Cooling</a></li>
+                                                <li><a href="#">Graphics, Video Cards</a></li>
+                                                <li><a href="#">Interface, Add-On Cards</a></li>
+                                                <li><a href="#">Laptop Replacement Parts</a></li>
+                                                <li><a href="#">Memory (RAM)</a></li>
+                                                <li><a href="#">Motherboards</a></li>
+                                                <li><a href="#">Motherboard &amp; CPU Combos</a></li>
+                                                <li><a href="#">Motherboard Components &amp; Accs</a></li>
+                                            </ul>
+                                        </div><!-- /.col -->
+
+                                        <div class="col-xs-12 col-sm-3">
+                                            <h2>Desktop Parts</h2>
+                                            <ul>
+                                                <li><a href="#">Power Supplies Power</a></li>
+                                                <li><a href="#">Power Supply Testers Sound</a></li>
+                                                <li><a href="#">Sound Cards (Internal)</a></li>
+                                                <li><a href="#">Video Capture &amp; TV Tuner Cards</a></li>
+                                                <li><a href="#">Other</a></li>
+                                            </ul>
+                                        </div><!-- /.col -->
+
+                                        <div class="col-xs-12 col-sm-3">
+                                            <h2>Laptops &amp; Notebooks</h2>
+                                            <ul>
+                                                <li><a href="#">Power Supplies Power</a></li>
+                                                <li><a href="#">Power Supply Testers Sound </a></li>
+                                                <li><a href="#">Sound Cards (Internal)</a></li>
+                                                <li><a href="#">Video Capture &amp; TV Tuner Cards</a></li>
+                                                <li><a href="#">Other</a></li>
+                                            </ul>
+                                        </div><!-- /.col -->
+                                    </div><!-- /.row -->
+                                </div><!-- /.yamm-content -->
+                            </li>
+                        </ul>
+                    </li><!-- /.yamm-fw -->
+                    
+                    
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">电子产品</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Motherboard Components &amp; Accs</a></li>
+                            <li><a href="#">Power Supplies Power</a></li>
+                            <li><a href="#">Power Supply TestersSound </a></li>
+                            <li><a href="#">Sound Cards (Internal)</a></li>
+                            <li><a href="#">Video Capture &amp; TV Tuner Cards</a></li>
+                            <li><a href="#">Other</a></li>
+                        </ul>
+                    </li>
+                    
+                    
+                    <li class="dropdown hidden-md">
+                        <a href="#" class="dropdown-toggle" data-hover="dropdown">电子产品</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Laptops &amp; Notebooks</a></li>
+                            <li><a href="#">RTV</a></li>
+                            <li><a href="#">TV &amp; Audio</a></li>
+                            <li><a href="#">Gadgets</a></li>
+                            <li><a href="#">Cameras</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="dropdown navbar-right hidden-md">
+                        <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">电子产品</a>
+                        <ul class="dropdown-menu">
+                            <li><div class="yamm-content">
+    <div class="row">
+       <div class="col-xs-12 col-sm-4">
+            <h2>Laptops &amp; Notebooks</h2>
+            <ul>
+                <li><a href="#">Power Supplies Power</a></li>
+                <li><a href="#">Power Supply Testers Sound </a></li>
+                <li><a href="#">Sound Cards (Internal)</a></li>
+                <li><a href="#">Video Capture &amp; TV Tuner Cards</a></li>
+                <li><a href="#">Other</a></li>
+            </ul>
+        </div><!-- /.col -->
+
+        <div class="col-xs-12 col-sm-4">
+            <h2>Computers &amp; Laptops</h2>
+            <ul>
+                <li><a href="#">Computer Cases &amp; Accessories</a></li>
+                <li><a href="#">CPUs, Processors</a></li>
+                <li><a href="#">Fans, Heatsinks &amp; Cooling</a></li>
+                <li><a href="#">Graphics, Video Cards</a></li>
+                <li><a href="#">Interface, Add-On Cards</a></li>
+                <li><a href="#">Laptop Replacement Parts</a></li>
+                <li><a href="#">Memory (RAM)</a></li>
+                <li><a href="#">Motherboards</a></li>
+                <li><a href="#">Motherboard &amp; CPU Combos</a></li>
+                <li><a href="#">Motherboard Components &amp; Accs</a></li>
+            </ul>
+        </div><!-- /.col -->
+
+        <div class="col-xs-12 col-sm-4">
+            <h2>Dekstop Parts</h2>
+            <ul>
+                <li><a href="#">Power Supplies Power</a></li>
+                <li><a href="#">Power Supply Testers Sound</a></li>
+                <li><a href="#">Sound Cards (Internal)</a></li>
+                <li><a href="#">Video Capture &amp; TV Tuner Cards</a></li>
+                <li><a href="#">Other</a></li>
+            </ul>
+        </div><!-- /.col -->
+    </div><!-- /.row -->
+</div><!-- /.yamm-content --></li>
+                        </ul>
+                    </li>
+                </ul><!-- /.navbar-nav -->
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.navbar -->
+    </div><!-- /.container -->
+</nav><!-- /.megamenu-vertical -->
+<!-- ========================================= NAVIGATION : END ========================================= -->
 </header>
 
+<!-- ============================================================= HEADER : END ============================================================= -->		
 <?php echo $content;?>
-
+<!-- ============================================================= FOOTER ============================================================= -->
 <footer id="footer" class="color-bg">
     
     <div class="container">
@@ -424,7 +735,7 @@
                 <!-- ============================================================= CONTACT INFO ============================================================= -->
 <div class="contact-info">
     <div class="footer-logo">
-        <img alt="logo" src="assets/images/logo.PNG" width="233" height="54"/>
+		<img alt="logo" src="assets/images/logo.PNG" width="233" height="54"/>
     </div><!-- /.footer-logo -->
     
     <p class="regular-bold"> 请通过电话，电子邮件随时联系我们</p>
@@ -525,24 +836,31 @@
     </div><!-- /.copyright-bar -->
 
 </footer><!-- /#footer -->
-<!-- ============================================================= FOOTER : END ============================================================= -->   </div><!-- /.wrapper -->
+<!-- ============================================================= FOOTER : END ============================================================= -->	</div><!-- /.wrapper -->
 
-    <!-- JavaScripts placed at the end of the document so the pages load faster -->
-    <script src="assets/js/jquery-1.10.2.min.js"></script>
-    <script src="assets/js/jquery-migrate-1.2.1.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/gmap3.min.js"></script>
-    <script src="assets/js/bootstrap-hover-dropdown.min.js"></script>
-    <script src="assets/js/owl.carousel.min.js"></script>
-    <script src="assets/js/css_browser_selector.min.js"></script>
-    <script src="assets/js/echo.min.js"></script>
-    <script src="assets/js/jquery.easing-1.3.min.js"></script>
-    <script src="assets/js/bootstrap-slider.min.js"></script>
+	<!-- JavaScripts placed at the end of the document so the pages load faster -->
+	<script src="assets/js/jquery-1.10.2.min.js"></script>
+	<script src="assets/js/jquery-migrate-1.2.1.js"></script>
+	<script src="assets/js/bootstrap.min.js"></script>
+	<script src="assets/js/gmap3.min.js"></script>
+	<script src="assets/js/bootstrap-hover-dropdown.min.js"></script>
+	<script src="assets/js/owl.carousel.min.js"></script>
+	<script src="assets/js/css_browser_selector.min.js"></script>
+	<script src="assets/js/echo.min.js"></script>
+	<script src="assets/js/jquery.easing-1.3.min.js"></script>
+	<script src="assets/js/bootstrap-slider.min.js"></script>
     <script src="assets/js/jquery.raty.min.js"></script>
     <script src="assets/js/jquery.prettyPhoto.min.js"></script>
     <script src="assets/js/jquery.customSelect.min.js"></script>
     <script src="assets/js/wow.min.js"></script>
-    <script src="assets/js/scripts.js"></script>
+	<script src="assets/js/scripts.js"></script>
+
+    <script>
+        $("#createlink").click(function(){
+            $(".billing-address").slideDown();
+        });
+        
+    </script>
 
 </body>
 </html>
