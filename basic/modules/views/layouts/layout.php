@@ -368,6 +368,7 @@
             pic.attr("style", "margin-left:120px");
             $("#product-pics").parent().append(pic);
         });
+        
 
     </script>
 
