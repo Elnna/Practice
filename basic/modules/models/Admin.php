@@ -40,14 +40,20 @@ class Admin extends ActiveRecord
             [['admin_user', 'admin_password'], 'unique', 'targetAttribute' => ['admin_user', 'admin_password'], 'message' => 'The combination of Admin User and Admin Password has already been taken.'],
             [['admin_user', 'admin_email'], 'unique', 'targetAttribute' => ['admin_user', 'admin_email'], 'message' => 'The combination of Admin User and Admin Email has already been taken.'],
         ];*/
+        //字段，验证规则，提示信息，场模式
         return [
-            ['admin_user','required','message' => '管理员账户不能为空'],
-            ['admin_password', 'required', 'message' => '管理员密码不能为空'],
-            ['rememberMe','boolean'],
-            ['admin_password', 'validatePass']
+            ['admin_user','required','message' => '管理员账户不能为空', 'on' => ['login', 'seekpwd']],
+            ['admin_password', 'required', 'message' => '管理员密码不能为空','on' => 'login'],
+            ['rememberMe','boolean', 'on' => 'login'],
+            ['admin_password', 'validatePass', 'on' => 'login'],
+            ['admin_email','required','message' => '电子邮箱不能为空', 'on' => 'seekpwd'],
+            ['admin_email', 'email','message' => '电子邮箱格式不正确', 'on' => 'seekpwd'],
+            ['admin_email', 'validateEmail', 'on' => 'seekpwd']
+
         ];
     }
     public function validatePass(){
+        
         if(!$this->hasErrors()){
             $data = self::find()->where('admin_user = :user and admin_password = :pass', [":user" => $this->admin_user,":pass" => md5($this->admin_password)])->one();
             if(is_null($data)){
@@ -56,7 +62,23 @@ class Admin extends ActiveRecord
         }
     }
 
+    public function validateEmail(){
+        
+        if(!$this->hasErrors()){
+            $data = self::find()->where('admin_user = :user and admin_email = :email', [':user'=> $this->admin_user, ':email' => $this->admin_email])->one();
+            if(is_null($data)){
+                $this->addError('admin_email', '管理员用户不匹配');
+            }
+        }
+    }
+    
+    /**
+     * 登录验证
+     * @param  [array] $data [ form表单传过来的数据]
+     * @return [type]       [description]
+     */
     public function login($data){
+        $this->scenario = 'login';//场景
         if($this->load($data) && $this->validate()){
             //将用户信息写入session
             $lifetime = $this->rememberMe ? 24*3600 : 0;    //保存一天
@@ -67,6 +89,14 @@ class Admin extends ActiveRecord
             ];
             $this->updateAll(['login_time' => time(),'modified_time' => time(),'login_ip' => ip2long(Yii::$app->request->userIp)],'admin_user = :user', [':user' => $this->admin_user]);
             return (bool)$session['admin']['isLogin'];
+        }
+        return false;
+    }
+
+    public function seekPwd($data){
+        $this->scenario = 'seekpwd';//场景
+        if($this->load($data)&& $this->validate()){
+
         }
         return false;
     }

@@ -45,7 +45,12 @@ class PublicController extends Controller
     }
 
     public function actionSeekpwd($pwd = '')
-    {
-    	return $this->render('seekpwd');
+    {   
+        $model = new Admin;
+        if(Yii::$app->request->isPost){
+            $post = Yii::$app->request->post();
+            $model->seekPwd($post);
+        }
+    	return $this->render('seekpwd',['model' => $model]);
     }
 }

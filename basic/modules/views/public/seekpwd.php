@@ -1,8 +1,12 @@
+<?php 
+    use \yii\bootstrap\ActiveForm; //载入form表单
+    use \yii\helpers\Html;  //生成submitbutton
+?>
 <!DOCTYPE html>
 <html class="login-bg">
     
     <head>
-        <title>慕课商城 - 后台管理</title>
+        <title>慕课商城 - 找回密码</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <!-- bootstrap -->
         <link href="assets/admin/css/bootstrap/bootstrap.css" rel="stylesheet" />
@@ -25,22 +29,27 @@
     <body>
         <div class="row-fluid login-wrapper">
             <a class="brand" href="index.html"></a>
-            <form id="w0" action="/index.php?r=admin%2Fpublic%2Fseekpwd" method="post" role="form">
+           
                 <input type="hidden" name="_csrf" value="YW1ZZHZ4el8TIz4CDkpXNVBVODQODg8KEF04KCMbMikFKggdRAw5LQ==">
+                 <?php $form = ActiveForm::begin([
+                    'fieldConfig' =>[
+                        'template' => '{error}{input}'
+                    ]
+                ]); ?>
                 <div class="span4 box">
                     <div class="content-wrap">
                         <h6>慕课商城 - 找回密码</h6>
-                        <div class="form-group field-admin-adminuser">
-                            <p class="help-block help-block-error"></p>
-                            <input type="text" id="admin-adminuser" class="span12" name="Admin[adminuser]" placeholder="管理员账号"></div>
-                        <div class="form-group field-admin-adminemail">
-                            <p class="help-block help-block-error"></p>
-                            <input type="text" id="admin-adminemail" class="span12" name="Admin[adminemail]" placeholder="管理员电子邮箱"></div>
-                        <a href="/index.php?r=admin%2Fpublic%2Flogin" class="forgot">返回登录</a>
-                        <button type="submit" class="btn-glow primary login">找回密码</button></div>
+                            <?php echo $form->field($model,'admin_user')->textInput(['class'=>'span12','placeholder' => '管理员账号']); ?>
+                            <?php echo $form->field($model,'admin_email')->textInput(['class'=>'span12','placeholder' => '管理员邮箱']); ?>
+
+                            <a href="<?php echo yii\helpers\Url::to(['public/login']);?>" class="forgot">返回登录</a>
+                            
+                            <?php echo Html::submitButton('找回密码',['class' =>'btn-glow primary login' ]); ?>
+                    </div>
                 </div>
-            </form>
+            <?php ActiveForm::end(); ?>
         </div>
+        
         <!-- scripts -->
         <script src="assets/admin/js/jquery-latest.js"></script>
         <script src="assets/admin/js/bootstrap.min.js"></script>
