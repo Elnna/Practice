@@ -33,7 +33,7 @@
                 <input type="hidden" name="_csrf" value="VGVVTVVZb0UmKzIrLWtCL2VdNB0tLxoQJVU0AQA6JzMwIgQ0Zy0sNw==">
                 <?php $form = ActiveForm::begin([
                     'fieldConfig' =>[
-                        'template' => '{input}'
+                        'template' => '{error}{input}'
                     ]
                 ]); ?>
                 <div class="span4 box">
