@@ -1,2 +1,4 @@
 add 把变更录入索引中
 commit 记录索引态
+commit 记录索引态
+commit 记录索引态
