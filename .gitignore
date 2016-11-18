@@ -1,7 +1,7 @@
 #ignore db config
 singwa/Application/Common/Conf/db.php
 !singwa/Application/Common/Conf/
-
+basic/config/*
 singwa/Application/Runtime/Logs/Home/*
 
 vgmwx/public/tmp/*.txt
