@@ -96,9 +96,23 @@ class Admin extends ActiveRecord
     public function seekPwd($data){
         $this->scenario = 'seekpwd';//场景
         if($this->load($data)&& $this->validate()){
+            $time = time();
+            $token = $this->createToken($data['Admin']['admin_user'],$time);
+            $mailer = Yii::$app->mailer->compose('seekpwdtpl',['admin_user' => $data['Admin']['admin_user'],'time' => $time, 'token' => $token])
+                 ->setFrom('clairelv_69@126.com')
+                 ->setTo($data['Admin']['admin_email'])
+                 ->setSubject('慕课商城-找回密码');
+            if($mailer->send()){
+                return true;
+            }
 
+                 
         }
         return false;
+    }
+
+    public  function createToken($adminUser,$time){
+        return md5(md5($adminUser).base64_encode(Yii::$app->request->userIp).md5($time));
     }
 
     /**

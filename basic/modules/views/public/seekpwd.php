@@ -39,6 +39,9 @@
                 <div class="span4 box">
                     <div class="content-wrap">
                         <h6>慕课商城 - 找回密码</h6>
+                            <?php if(Yii::$app->session->hasFlash('info')){
+                                echo Yii::$app->session->getFlash('info');
+                            }?>
                             <?php echo $form->field($model,'admin_user')->textInput(['class'=>'span12','placeholder' => '管理员账号']); ?>
                             <?php echo $form->field($model,'admin_email')->textInput(['class'=>'span12','placeholder' => '管理员邮箱']); ?>
 

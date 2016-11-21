@@ -49,7 +49,9 @@ class PublicController extends Controller
         $model = new Admin;
         if(Yii::$app->request->isPost){
             $post = Yii::$app->request->post();
-            $model->seekPwd($post);
+            if($model->seekPwd($post)){
+                Yii::$app->session->setFlash('info','电子邮件发送成功');
+            }
         }
     	return $this->render('seekpwd',['model' => $model]);
     }
