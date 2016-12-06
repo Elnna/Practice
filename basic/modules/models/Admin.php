@@ -19,6 +19,7 @@ use Yii;
 class Admin extends ActiveRecord
 {
     public $rememberMe = true;
+    public $repwd;
     /**
      * @inheritdoc
      */
@@ -43,12 +44,14 @@ class Admin extends ActiveRecord
         //字段，验证规则，提示信息，场模式
         return [
             ['admin_user','required','message' => '管理员账户不能为空', 'on' => ['login', 'seekpwd']],
-            ['admin_password', 'required', 'message' => '管理员密码不能为空','on' => 'login'],
+            ['admin_password', 'required', 'message' => '管理员密码不能为空','on' => ['login','changepass']],
             ['rememberMe','boolean', 'on' => 'login'],
             ['admin_password', 'validatePass', 'on' => 'login'],
             ['admin_email','required','message' => '电子邮箱不能为空', 'on' => 'seekpwd'],
             ['admin_email', 'email','message' => '电子邮箱格式不正确', 'on' => 'seekpwd'],
-            ['admin_email', 'validateEmail', 'on' => 'seekpwd']
+            ['admin_email', 'validateEmail', 'on' => 'seekpwd'],
+            ['repwd','required','message' => '确认密码不能为空','on'=> 'changepass'],
+            ['repwd','compare','compareAttribute' => 'admin_password','message' => '两次密码不一致', 'on' => 'changepass']
 
         ];
     }
@@ -113,6 +116,18 @@ class Admin extends ActiveRecord
 
     public  function createToken($adminUser,$time){
         return md5(md5($adminUser).base64_encode(Yii::$app->request->userIp).md5($time));
+    }
+    public function changePass($data)
+    {
+        $this->scenario = 'changepass';
+        $admin_user = $data['Admin']['admin_user'];
+        if($this->load($data) && $this->validate()){
+            $this->admin_user = $admin_user;
+            
+            return (bool)$this->updateAll(['admin_password' => md5($this->admin_password)],'admin_user = :user', [':user' => $this->admin_user]);
+        }
+        return false;
+        
     }
 
     /**
